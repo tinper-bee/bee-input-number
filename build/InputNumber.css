@@ -1,0 +1,21 @@
+/* FormGroup */
+/*  Navlayout  */
+.u-input-number {
+  display: flex; }
+
+.u-input-number .u-form-control {
+  width: 50px;
+  text-align: center; }
+
+.u-input-number .u-input-group-addon {
+  cursor: default;
+  width: auto;
+  padding: 6px;
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none; }
+
+.disabled.u-input-group-addon {
+  cursor: not-allowed;
+  background: #ffe;
+  color: #ccc; }
