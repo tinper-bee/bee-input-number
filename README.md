@@ -17,12 +17,36 @@
 
 react bee-input-number component for tinper-bee
 
-some description...
 
-## 使用方法
+组织所有form元素的集合地
 
+
+## 使用
+使用单独的bee-input-number包
+#### 组件引入
+先进行下载bee-input-number包
+
+```
+npm install --save bee-input-number
+```
+组件调用
 ```js
 
+React.render(
+	<InputNumber/>
+, document.getElementById('target'));
+
+```
+#### 样式引入
+- 可以使用link引入dist目录下bee-form.css
+```
+<link rel="stylesheet" href="./node_modules/build/bee-input-number.css">
+```
+- 可以在js中import样式
+```js
+import "./node_modules/src/InputNumber.scss"
+//或是
+import "./node_modules/build/bee-input-number.css"
 ```
 
 
@@ -31,13 +55,18 @@ some description...
 
 |参数|说明|类型|默认值|
 |:--|:---:|:--:|---:|
+|className|类名|string|-|
+|max|最大值|number|-|
+|min|最小值|number|-|
+|step|间隔值|number|1|
+|value|默认值|number|0|
+
 
 #### 开发调试
 
 ```sh
-$ npm install -g bee-tools
-$ git clone https://github.com/tinper-bee/bee-input-number
-$ cd bee-input-number
+$ git clone https://github.com/tinper-bee/bee-form
+$ cd bee-form
 $ npm install
 $ npm run dev
 ```

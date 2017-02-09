@@ -15,15 +15,14 @@
   },
   "homepage": "https://github.com/tinper-bee/bee-input-number.git",
   "author": "Yonyou FED",
-    "repository": "http://github.com/tinper-bee/bee-input-number",
-    "bugs": "https://github.com/tinper-bee/bee-input-number.git/issues",
-    "license": "MIT",
-
-    "main":"./build/index.js",
-    "config":{
+  "repository": "http://github.com/tinper-bee/bee-input-number",
+  "bugs": "https://github.com/tinper-bee/bee-input-number.git/issues",
+  "license": "MIT",
+  "main": "./build/index.js",
+  "config": {
     "port": 3000
-    },
-    "scripts": {
+  },
+  "scripts": {
     "dev": "bee-tools run start",
     "build": "bee-tools run build",
     "lint": "bee-tools run lint",
@@ -32,21 +31,24 @@
     "coveralls": "bee-tools run coverage",
     "browsers": "bee-tools run browsers",
     "pub": "bee-tools run pub"
-    },
-    "dependencies": {
-      "classnames": "^2.2.5",
-      "tinper-bee-core": "latest"
-    },
-    "devDependencies": {
-      "chai": "^3.5.0",
-      "enzyme": "^2.4.1",
-      "react": "15.3.2",
-      "react-addons-test-utils": "15.3.2",
-      "react-dom": "15.3.2",
-      "console-polyfill": "~0.2.1",
-      "es5-shim": "~4.1.10",
-      "bee-panel": "latest",
-      "bee-layout": "latest",
-      "bee-button": "latest"
-    }
+  },
+  "dependencies": {
+    "babel-runtime": "^6.22.0",
+    "bee-form-control": "^0.1.7",
+    "bee-input-group": "^0.1.12",
+    "classnames": "^2.2.5",
+    "tinper-bee-core": "latest"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "enzyme": "^2.4.1",
+    "react": "15.3.2",
+    "react-addons-test-utils": "15.3.2",
+    "react-dom": "15.3.2",
+    "console-polyfill": "~0.2.1",
+    "es5-shim": "~4.1.10",
+    "bee-panel": "latest",
+    "bee-layout": "latest",
+    "bee-button": "latest"
+  }
 }

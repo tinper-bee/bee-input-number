@@ -11,7 +11,32 @@ const CARET = <i className="uf uf-arrow-down"></i>;
 const CARETUP = <i className="uf uf-arrow-up"></i>;
 
 
-{demolist}
+/**
+*
+* @title 这是标题
+* @description 这是描述
+*
+*/
+class Demo1 extends Component {
+render () {
+return (
+<InputNumber/>
+)
+}
+}/**
+*
+* @title 这是标题
+* @description 自定义max=12,min=5,step=2
+*
+*/
+class Demo2 extends Component {
+	render () {
+		return (
+			<InputNumber max={12} min={5} step={2}/>
+		)
+	}
+}var DemoArray = [{"example":<Demo1 />,"title":" 这是标题","code":"/**\n*\n* @title 这是标题\n* @description 这是描述\n*\n*/\nclass Demo1 extends Component {\nrender () {\nreturn (\n<InputNumber/>\n)\n}\n}","desc":" 这是描述"},{"example":<Demo2 />,"title":" 这是标题","code":"/**\n*\n* @title 这是标题\n* @description 自定义max=12,min=5,step=2\n*\n*/\nclass Demo2 extends Component {\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber max={12} min={5} step={2}/>\n\t\t)\n\t}\n}","desc":" 自定义max=12,min=5,step=2"}]
+
 
 class Demo extends Component {
     constructor(props){
