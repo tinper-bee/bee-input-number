@@ -8,9 +8,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _classNames = require('classNames');
+var _classnames = require('classnames');
 
-var _classNames2 = _interopRequireDefault(_classNames);
+var _classnames2 = _interopRequireDefault(_classnames);
 
 var _reactDom = require('react-dom');
 
@@ -23,10 +23,6 @@ var _beeInputGroup2 = _interopRequireDefault(_beeInputGroup);
 var _beeFormControl = require('bee-form-control');
 
 var _beeFormControl2 = _interopRequireDefault(_beeFormControl);
-
-var _classnames = require('classnames');
-
-var _classnames2 = _interopRequireDefault(_classnames);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -155,7 +151,7 @@ var InputNumber = function (_Component) {
 
         return _react2["default"].createElement(
             _beeInputGroup2["default"],
-            { className: (0, _classNames2["default"])(className, clsPrefix) },
+            { className: (0, _classnames2["default"])(className, clsPrefix) },
             _react2["default"].createElement(
                 _beeInputGroup2["default"].Addon,
                 { className: this.state.minusDisabled && 'disabled', onClick: this.minus },
