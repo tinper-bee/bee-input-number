@@ -147,7 +147,8 @@ var InputNumber = function (_Component) {
             step = _props3.step,
             clsPrefix = _props3.clsPrefix,
             className = _props3.className,
-            others = _objectWithoutProperties(_props3, ['max', 'min', 'step', 'clsPrefix', 'className']);
+            onChange = _props3.onChange,
+            others = _objectWithoutProperties(_props3, ['max', 'min', 'step', 'clsPrefix', 'className', 'onChange']);
 
         return _react2["default"].createElement(
             _beeInputGroup2["default"],
@@ -157,7 +158,7 @@ var InputNumber = function (_Component) {
                 { className: this.state.minusDisabled && 'disabled', onClick: this.minus },
                 '-'
             ),
-            _react2["default"].createElement(_beeFormControl2["default"], { value: this.state.value, onChange: this.onChange }),
+            _react2["default"].createElement(_beeFormControl2["default"], { value: this.state.value, onChange: onChange }),
             _react2["default"].createElement(
                 _beeInputGroup2["default"].Addon,
                 { className: this.state.plusDisabled && 'disabled', onClick: this.plus },
