@@ -92,12 +92,12 @@ class InputNumber extends Component{
         }
     }
     render() {
-       const {max,min,step,clsPrefix,className, ...others} = this.props;
+       const {max,min,step,clsPrefix,className,onChange, ...others} = this.props;
 
         return (
           <InputGroup className={classnames(className, clsPrefix)}>
             <InputGroup.Addon className={ this.state.minusDisabled && 'disabled'} onClick={this.minus}>-</InputGroup.Addon>
-            <FormControl value={this.state.value} onChange={this.onChange}/>
+            <FormControl value={this.state.value} onChange={onChange}/>
             <InputGroup.Addon className={this.state.plusDisabled && 'disabled'} onClick={this.plus}>+</InputGroup.Addon>
           </InputGroup>
         );
