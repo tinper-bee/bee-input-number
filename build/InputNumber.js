@@ -61,7 +61,7 @@ var InputNumber = function (_Component) {
         var currentMinusDisabled = false;
         var currentPlusDisabled = false;
         if (_this.props.value) {
-            currentValue = _this.props.value || 0;
+            currentValue = Number(_this.props.value) || 0;
         } else if (_this.props.min) {
             currentValue = _this.props.min;
         } else {
@@ -81,7 +81,7 @@ var InputNumber = function (_Component) {
         };
         _this.plus = _this.plus.bind(_this);
         _this.minus = _this.minus.bind(_this);
-        _this.onChange = _this.onChange.bind(_this);
+        _this.handleChange = _this.handleChange.bind(_this);
         return _this;
     }
 
@@ -89,19 +89,22 @@ var InputNumber = function (_Component) {
         console.log('ComponentWillMount' + this.props.min);
     };
 
-    InputNumber.prototype.onChange = function onChange() {
-        if (typeOf(this.props.value) !== number) {
-            this.setState({ value: 0 });
-        }
+    InputNumber.prototype.handleChange = function handleChange(event) {
+        var onChange = this.props.onChange;
+
+        this.setState({ value: Number(event.target.value) });
+        onChange && onChange(Number(event.target.value));
     };
 
     InputNumber.prototype.minus = function minus(e) {
-        var _props = this.props,
-            min = _props.min,
-            step = _props.step;
+        var _props = this.props;
+        var min = _props.min;
+        var step = _props.step;
+        var onChange = _props.onChange;
 
         if (!min) {
             this.setState({ value: this.state.value - step });
+            onChange && onChange(this.state.value - step);
             if (this.state.plusDisabled) {
                 this.setState({ plusDisabled: false });
             }
@@ -109,6 +112,7 @@ var InputNumber = function (_Component) {
         }
         if (this.state.value - step >= min) {
             this.setState({ value: this.state.value - step });
+            onChange && onChange(this.state.value - step);
             if (this.state.plusDisabled) {
                 this.setState({ plusDisabled: false });
             }
@@ -118,12 +122,15 @@ var InputNumber = function (_Component) {
     };
 
     InputNumber.prototype.plus = function plus() {
-        var _props2 = this.props,
-            max = _props2.max,
-            step = _props2.step;
+        var _props2 = this.props;
+        var max = _props2.max;
+        var step = _props2.step;
+        var onChange = _props2.onChange;
 
         if (!max) {
             this.setState({ value: this.state.value + step });
+
+            onChange && onChange(this.state.value + step);
             if (this.state.minusDisabled) {
                 this.setState({ minusDisabled: false });
             }
@@ -131,7 +138,7 @@ var InputNumber = function (_Component) {
         }
         if (this.state.value + step <= max) {
             this.setState({ value: this.state.value + step });
-
+            onChange && onChange(this.state.value + step);
             if (this.state.minusDisabled) {
                 this.setState({ minusDisabled: false });
             }
@@ -141,14 +148,14 @@ var InputNumber = function (_Component) {
     };
 
     InputNumber.prototype.render = function render() {
-        var _props3 = this.props,
-            max = _props3.max,
-            min = _props3.min,
-            step = _props3.step,
-            clsPrefix = _props3.clsPrefix,
-            className = _props3.className,
-            onChange = _props3.onChange,
-            others = _objectWithoutProperties(_props3, ['max', 'min', 'step', 'clsPrefix', 'className', 'onChange']);
+        var _props3 = this.props;
+        var max = _props3.max;
+        var min = _props3.min;
+        var step = _props3.step;
+        var clsPrefix = _props3.clsPrefix;
+        var className = _props3.className;
+
+        var others = _objectWithoutProperties(_props3, ['max', 'min', 'step', 'clsPrefix', 'className']);
 
         return _react2["default"].createElement(
             _beeInputGroup2["default"],
@@ -158,7 +165,7 @@ var InputNumber = function (_Component) {
                 { className: this.state.minusDisabled && 'disabled', onClick: this.minus },
                 '-'
             ),
-            _react2["default"].createElement(_beeFormControl2["default"], { value: this.state.value, onChange: onChange }),
+            _react2["default"].createElement(_beeFormControl2["default"], { value: this.state.value, onChange: this.handleChange }),
             _react2["default"].createElement(
                 _beeInputGroup2["default"].Addon,
                 { className: this.state.plusDisabled && 'disabled', onClick: this.plus },

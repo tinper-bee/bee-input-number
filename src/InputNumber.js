@@ -16,7 +16,7 @@ const defaultProps = {
   clsPrefix: 'u-input-number'
 }
 class InputNumber extends Component{
-    
+
     constructor(props) {
         super(props);
         // 初始化状态，加减按钮是否可用，根据当前值判断
@@ -24,7 +24,7 @@ class InputNumber extends Component{
         let currentMinusDisabled = false;
         let currentPlusDisabled = false;
         if(this.props.value) {
-            currentValue = this.props.value || 0;
+            currentValue = Number(this.props.value) || 0;
         }else if(this.props.min){
             currentValue = this.props.min;
         }else{
@@ -44,20 +44,22 @@ class InputNumber extends Component{
         }
         this.plus = this.plus.bind(this);
         this.minus = this.minus.bind(this);
-        this.onChange = this.onChange.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
+
     ComponentWillMount() {
         console.log('ComponentWillMount'+this.props.min);
     }
-    onChange() {
-        if(typeOf(this.props.value)!==number) {
-            this.setState({value:0});
-        }
+    handleChange(event) {
+        const { onChange } = this.props;
+        this.setState({value: Number(event.target.value)});
+        onChange && onChange(Number(event.target.value));
     }
     minus(e) {
-        const {min,step} = this.props;
+        const {min,step,onChange} = this.props;
         if(!min) {
             this.setState({value:this.state.value-step});
+            onChange && onChange(this.state.value-step);
             if(this.state.plusDisabled) {
                 this.setState({plusDisabled:false});
             }
@@ -65,6 +67,7 @@ class InputNumber extends Component{
         }
         if((this.state.value-step) >= min){
             this.setState({value:this.state.value-step});
+            onChange && onChange(this.state.value-step);
             if(this.state.plusDisabled) {
                 this.setState({plusDisabled:false});
             }
@@ -73,9 +76,11 @@ class InputNumber extends Component{
         }
     }
     plus() {
-        const {max,step} = this.props;
+        const {max,step,onChange} = this.props;
         if(!max) {
             this.setState({value:this.state.value+step});
+
+            onChange && onChange(this.state.value+step);
             if(this.state.minusDisabled) {
                 this.setState({minusDisabled:false});
             }
@@ -83,7 +88,7 @@ class InputNumber extends Component{
         }
         if((this.state.value+step) <= max){
             this.setState({value:this.state.value+step});
-            
+            onChange && onChange(this.state.value+step);
             if(this.state.minusDisabled) {
                 this.setState({minusDisabled:false});
             }
@@ -92,12 +97,12 @@ class InputNumber extends Component{
         }
     }
     render() {
-       const {max,min,step,clsPrefix,className,onChange, ...others} = this.props;
+       const {max,min,step,clsPrefix,className, ...others} = this.props;
 
         return (
           <InputGroup className={classnames(className, clsPrefix)}>
             <InputGroup.Addon className={ this.state.minusDisabled && 'disabled'} onClick={this.minus}>-</InputGroup.Addon>
-            <FormControl value={this.state.value} onChange={onChange}/>
+            <FormControl value={this.state.value} onChange = { this.handleChange }/>
             <InputGroup.Addon className={this.state.plusDisabled && 'disabled'} onClick={this.plus}>+</InputGroup.Addon>
           </InputGroup>
         );
@@ -107,4 +112,3 @@ class InputNumber extends Component{
 InputNumber.defaultProps = defaultProps;
 InputNumber.propTypes = propTypes;
 export default InputNumber;
-
