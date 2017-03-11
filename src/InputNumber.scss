@@ -2,7 +2,7 @@
 @import "../node_modules/tinper-bee-core/scss/minxin-mixins";
 
 .u-input-number{
-  display:flex;
+  //display:flex;
 }
 .u-input-number .u-form-control{
   width: 50px;
@@ -20,4 +20,25 @@
   cursor: not-allowed;
   background: #ffe;
   color: #ccc;
+}
+
+
+.u-input-number .u-input-group.simple .u-input-group-btn {
+    position: relative;
+    top: 0;
+    z-index: 2;
+    right: 20px;
+}
+.u-input-number .u-input-group.simple .u-input-group-btn .icon-group{
+    border-left: 1px solid #d9d9d9;
+    width: 22px;
+    height: 100%;
+    background: #fff;
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    border-radius: 0 4px 4px 0;
+    -webkit-transition: opacity .24s linear .1s;
+    transition: opacity .24s linear .1s;
 }
