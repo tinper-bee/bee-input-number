@@ -97,10 +97,10 @@ var InputNumber = function (_Component) {
     };
 
     InputNumber.prototype.minus = function minus(e) {
-        var _props = this.props;
-        var min = _props.min;
-        var step = _props.step;
-        var onChange = _props.onChange;
+        var _props = this.props,
+            min = _props.min,
+            step = _props.step,
+            onChange = _props.onChange;
 
         if (!min) {
             this.setState({ value: this.state.value - step });
@@ -122,10 +122,10 @@ var InputNumber = function (_Component) {
     };
 
     InputNumber.prototype.plus = function plus() {
-        var _props2 = this.props;
-        var max = _props2.max;
-        var step = _props2.step;
-        var onChange = _props2.onChange;
+        var _props2 = this.props,
+            max = _props2.max,
+            step = _props2.step,
+            onChange = _props2.onChange;
 
         if (!max) {
             this.setState({ value: this.state.value + step });
@@ -148,14 +148,13 @@ var InputNumber = function (_Component) {
     };
 
     InputNumber.prototype.render = function render() {
-        var _props3 = this.props;
-        var max = _props3.max;
-        var min = _props3.min;
-        var step = _props3.step;
-        var clsPrefix = _props3.clsPrefix;
-        var className = _props3.className;
-
-        var others = _objectWithoutProperties(_props3, ['max', 'min', 'step', 'clsPrefix', 'className']);
+        var _props3 = this.props,
+            max = _props3.max,
+            min = _props3.min,
+            step = _props3.step,
+            clsPrefix = _props3.clsPrefix,
+            className = _props3.className,
+            others = _objectWithoutProperties(_props3, ['max', 'min', 'step', 'clsPrefix', 'className']);
 
         return _react2["default"].createElement(
             _beeInputGroup2["default"],
