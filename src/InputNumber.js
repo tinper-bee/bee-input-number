@@ -13,7 +13,8 @@ const propTypes = {
 const defaultProps = {
   value:0,
   step:1,
-  clsPrefix: 'u-input-number'
+  clsPrefix: 'u-input-number',
+  iconStyle: 'double'
 }
 class InputNumber extends Component{
 
@@ -97,13 +98,20 @@ class InputNumber extends Component{
         }
     }
     render() {
-       const {max,min,step,clsPrefix,className, ...others} = this.props;
+       const {max,min,step,clsPrefix,className,iconStyle, ...others} = this.props;
 
         return (
-          <InputGroup className={classnames(className, clsPrefix)}>
-            <InputGroup.Addon className={ this.state.minusDisabled && 'disabled'} onClick={this.minus}>-</InputGroup.Addon>
-            <FormControl value={this.state.value} onChange = { this.handleChange }/>
-            <InputGroup.Addon className={this.state.plusDisabled && 'disabled'} onClick={this.plus}>+</InputGroup.Addon>
+          <InputGroup className={classnames(className, clsPrefix)} simple={ iconStyle == 'one' }>
+            {
+                iconStyle == 'double' ? (
+                    <InputGroup.Addon className={ this.state.minusDisabled && 'disabled'} onClick={this.minus}>-</InputGroup.Addon>
+                    <FormControl value={this.state.value} onChange = { this.handleChange }/>
+                    <InputGroup.Addon className={this.state.plusDisabled && 'disabled'} onClick={this.plus}>+</InputGroup.Addon>
+                ) : (
+
+                )
+            }
+
           </InputGroup>
         );
     }
