@@ -3,19 +3,20 @@ import classnames from 'classnames';
 import ReactDom from 'react-dom';
 import InputGroup from 'bee-input-group';
 import FormControl from 'bee-form-control';
-import Icon from 'bee-icon';
 
 const propTypes = {
   max:PropTypes.number,
   min:PropTypes.number,
   step: PropTypes.number,
-  value: PropTypes.number
+  value: PropTypes.number,
+  autoWidth: PropTypes.bool,
 }
 const defaultProps = {
   value:0,
   step:1,
   clsPrefix: 'u-input-number',
-  iconStyle: 'double'
+  iconStyle: 'double',
+  autoWidth: false,
 }
 class InputNumber extends Component{
 
@@ -99,57 +100,32 @@ class InputNumber extends Component{
         }
     }
     render() {
-       const {max,min,step,clsPrefix,className,iconStyle, ...others} = this.props;
+       const {max, min, step, clsPrefix, className, iconStyle, autoWidth, ...others} = this.props;
+
+       let classes = {
+           [`${clsPrefix}-auto`] : autoWidth,
+           [`${clsPrefix}`] : true,
+       }
 
         return (
             <div>
             {
                 iconStyle == 'double' ? (
-                    <InputGroup className={classnames(className, clsPrefix)}>
+                    <InputGroup className={classnames(className, classes)} {...others}>
                     <InputGroup.Addon className={ this.state.minusDisabled && 'disabled'} onClick={this.minus}>-</InputGroup.Addon>
                     <FormControl value={this.state.value} onChange = { this.handleChange }/>
                     <InputGroup.Addon className={this.state.plusDisabled && 'disabled'} onClick={this.plus}>+</InputGroup.Addon>
                     </InputGroup>
                 ) : (
-                    <InputGroup className={classnames(className, clsPrefix)} simple>
-                    <FormControl value={this.state.value} style={{ width: 70, textAlign: 'left' }} onChange = { this.handleChange }/>
-                        <InputGroup.Button style={{ position: 'relative', top: 0, right: 0}}>
-                    <div className="icon-group"
-                    style={{ borderLeft: '1px solid #d9d9d9', width: 22, height: '28px', background:' #fff',
-                            position: 'absolute',
-                            top: 1,
-                            right: 1,
-                            borderRadius: '0 4px 4px 0',
-                            WebkitTransition: 'opacity .24s linear .1s',
-                            transition: 'opacity .24s linear .1s'}}>
-                                <span onClick={this.plus} style={{textAlign: 'center',lineHeight: 0,
-                                                height: '50%',
-                                                overflow: 'hidden',
-                                                color: 'rgba(0,0,0,.43)',
-                                                position: 'relative',
-                                                WebkitTransition: 'all .1s linear',
-                                                transition: 'all .1s linear',
-                                                display: 'block',
-                                                width: '100%',
-                                                cursor: 'pointer',
-                                                fontWeight: '700'}}>
-                                                <span style={{ fontSize: 12, lineHeight: '12px'}}  className="uf uf-arrow-up"></span>
+                    <InputGroup className={classnames(className, classes)} simple  {...others}>
+                    <FormControl value={this.state.value} onChange = { this.handleChange }/>
+                        <InputGroup.Button>
+                            <div className="icon-group">
+                                <span onClick={this.plus} className="plus">
+                                <span className="uf uf-arrow-up"></span>
                                                 </span>
-                                <span onClick={this.minus} style={{textAlign: 'center',lineHeight: 0,
-                                                height: '50%',
-                                                overflow: 'hidden',
-                                                color: 'rgba(0,0,0,.43)',
-                                                position: 'relative',
-                                                WebkitTransition: 'all .1s linear',
-                                                transition: 'all .1s linear',
-                                                display: 'block',
-                                                width: '100%',
-                                                borderTop: '1px solid #d9d9d9',
-                                                top: 0,
-                                                cursor: 'pointer',
-                                                fontWeight: '700'}}
-                                                >
-                                                <span style={{ fontSize: 12, lineHeight: '12px'}} className=" uf uf-arrow-down"></span>
+                                <span onClick={this.minus} className="reduce">
+                                                <span className=" uf uf-arrow-down"></span>
                                 </span>
                             </div>
                         </InputGroup.Button>

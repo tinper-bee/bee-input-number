@@ -4,8 +4,8 @@
 .u-input-number{
   //display:flex;
 }
-.u-input-number .u-form-control{
-  width: 50px;
+.u-input-number.u-input-group .u-form-control{
+  width: 70px;
   text-align: center;
 }
 .u-input-number .u-input-group-addon{
@@ -23,22 +23,72 @@
 }
 
 
-.u-input-number .u-input-group.simple .u-input-group-btn {
+.u-input-number.u-input-group.simple .u-input-group-btn {
     position: relative;
     top: 0;
     z-index: 2;
-    right: 20px;
+    right: 0;
 }
-.u-input-number .u-input-group.simple .u-input-group-btn .icon-group{
+
+
+.u-input-number-auto .u-form-control{
+    width: 100%;
+}
+.u-input-number.u-input-group.simple .u-form-control {
+    text-align: left;
+    width: 70px;
+}
+.u-input-number.u-input-group.simple.u-input-number-auto .u-form-control {
+    width: 100%;
+}
+.u-input-number.u-input-group.simple .u-input-group-btn .icon-group{
+    position: absolute;
+    top: 1px;
+    right: 2px;
     border-left: 1px solid #d9d9d9;
     width: 22px;
-    height: 100%;
+    height: 28px;
     background: #fff;
-    position: absolute;
-    top: 0;
-    right: 0;
-    opacity: 0;
     border-radius: 0 4px 4px 0;
     -webkit-transition: opacity .24s linear .1s;
     transition: opacity .24s linear .1s;
+
+    .plus{
+        position: relative;
+        display: block;
+        width: 100%;
+        text-align: center;
+        line-height: 0;
+        height: 50%;
+        overflow: hidden;
+        color: rgba(0,0,0,.43);
+        -webkit-transition: all .1s linear;
+        transition: all .1s linear;
+        cursor: pointer;
+        font-weight: 700;
+    }
+    .reduce{
+        position: relative;
+        top: 0;
+        display: block;
+        width: 100%;
+        text-align: center;
+        border-top: 1px solid #d9d9d9;
+        line-height: 0;
+        height: 50%;
+        overflow: hidden;
+        color: rgba(0,0,0,.43);
+        -webkit-transition: all .1s linear;
+        transition: all .1s linear;
+        cursor: pointer;
+        font-weight: 700;
+    }
+    .uf{
+        font-size: 12px;
+        line-height: 12px;
+        &:hover{
+            color: blue;
+        }
+    }
+
 }
