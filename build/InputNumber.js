@@ -99,15 +99,16 @@ var InputNumber = function (_Component) {
     InputNumber.prototype.handleChange = function handleChange(event) {
         var onChange = this.props.onChange;
 
+
         this.setState({ value: Number(event.target.value) });
         onChange && onChange(Number(event.target.value));
     };
 
     InputNumber.prototype.minus = function minus(e) {
-        var _props = this.props;
-        var min = _props.min;
-        var step = _props.step;
-        var onChange = _props.onChange;
+        var _props = this.props,
+            min = _props.min,
+            step = _props.step,
+            onChange = _props.onChange;
 
         if (!min) {
             this.setState({ value: this.state.value - step });
@@ -128,11 +129,11 @@ var InputNumber = function (_Component) {
         }
     };
 
-    InputNumber.prototype.plus = function plus() {
-        var _props2 = this.props;
-        var max = _props2.max;
-        var step = _props2.step;
-        var onChange = _props2.onChange;
+    InputNumber.prototype.plus = function plus(e) {
+        var _props2 = this.props,
+            max = _props2.max,
+            step = _props2.step,
+            onChange = _props2.onChange;
 
         if (!max) {
             this.setState({ value: this.state.value + step });
@@ -157,16 +158,16 @@ var InputNumber = function (_Component) {
     InputNumber.prototype.render = function render() {
         var _classes;
 
-        var _props3 = this.props;
-        var max = _props3.max;
-        var min = _props3.min;
-        var step = _props3.step;
-        var clsPrefix = _props3.clsPrefix;
-        var className = _props3.className;
-        var iconStyle = _props3.iconStyle;
-        var autoWidth = _props3.autoWidth;
-
-        var others = _objectWithoutProperties(_props3, ['max', 'min', 'step', 'clsPrefix', 'className', 'iconStyle', 'autoWidth']);
+        var _props3 = this.props,
+            max = _props3.max,
+            min = _props3.min,
+            step = _props3.step,
+            clsPrefix = _props3.clsPrefix,
+            className = _props3.className,
+            iconStyle = _props3.iconStyle,
+            autoWidth = _props3.autoWidth,
+            onChange = _props3.onChange,
+            others = _objectWithoutProperties(_props3, ['max', 'min', 'step', 'clsPrefix', 'className', 'iconStyle', 'autoWidth', 'onChange']);
 
         var classes = (_classes = {}, _defineProperty(_classes, clsPrefix + '-auto', autoWidth), _defineProperty(_classes, '' + clsPrefix, true), _classes);
 
