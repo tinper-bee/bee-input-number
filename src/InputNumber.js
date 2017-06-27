@@ -55,6 +55,7 @@ class InputNumber extends Component{
     }
     handleChange(event) {
         const { onChange } = this.props;
+
         this.setState({value: Number(event.target.value)});
         onChange && onChange(Number(event.target.value));
     }
@@ -78,7 +79,7 @@ class InputNumber extends Component{
             this.setState({minusDisabled:true});
         }
     }
-    plus() {
+    plus(e) {
         const {max,step,onChange} = this.props;
         if(!max) {
             this.setState({value:this.state.value+step});
@@ -100,7 +101,7 @@ class InputNumber extends Component{
         }
     }
     render() {
-       const {max, min, step, clsPrefix, className, iconStyle, autoWidth, ...others} = this.props;
+       const {max, min, step, clsPrefix, className, iconStyle, autoWidth, onChange, ...others} = this.props;
 
        let classes = {
            [`${clsPrefix}-auto`] : autoWidth,
