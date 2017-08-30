@@ -12,48 +12,7 @@ const CARET = <i className="uf uf-arrow-down"></i>;
 const CARETUP = <i className="uf uf-arrow-up"></i>;
 
 
-/**
-*
-* @title 这是标题
-* @description 这是描述
-*
-*/
-class Demo1 extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            value: 5
-        }
-        this.handleChange = this.handleChange.bind(this);
-    }
-    handleChange (value) {
-        console.log("----" + value);
-        this.setState({
-            value: value
-        })
-    }
-render () {
-return (
-    <div>
-        <InputNumber value={this.state.value} onChange={ this.handleChange }/>
-        <span>{ this.state.value }</span>
-    </div>
-)
-}
-}
-/**
-*
-* @title 这是标题
-* @description 自定义max=12,min=5,step=2
-*
-*/
-class Demo2 extends Component {
-	render () {
-		return (
-			<InputNumber max={12} min={5} step={2}/>
-		)
-	}
-}var DemoArray = [{"example":<Demo1 />,"title":" 这是标题","code":"/**\r\n*\r\n* @title 这是标题\r\n* @description 这是描述\r\n*\r\n*/\r\nclass Demo1 extends Component {\r\n    constructor(props){\r\n        super(props);\r\n        this.state = {\r\n            value: 5\r\n        }\r\n        this.handleChange = this.handleChange.bind(this);\r\n    }\r\n    handleChange (value) {\r\n        console.log(\"----\" + value);\r\n        this.setState({\r\n            value: value\r\n        })\r\n    }\r\nrender () {\r\nreturn (\r\n    <div>\r\n        <InputNumber value={this.state.value} onChange={ this.handleChange }/>\r\n        <span>{ this.state.value }</span>\r\n    </div>\r\n)\r\n}\r\n}\r\n","desc":" 这是描述"},{"example":<Demo2 />,"title":" 这是标题","code":"/**\r\n*\r\n* @title 这是标题\r\n* @description 自定义max=12,min=5,step=2\r\n*\r\n*/\r\nclass Demo2 extends Component {\r\n\trender () {\r\n\t\treturn (\r\n\t\t\t<InputNumber max={12} min={5} step={2}/>\r\n\t\t)\r\n\t}\r\n}","desc":" 自定义max=12,min=5,step=2"}]
+var Demo1 = require("./demolist/Demo1");var Demo2 = require("./demolist/Demo2");var DemoArray = [{"example":<Demo1 />,"title":" 这是标题","code":"/**\n*\n* @title 这是标题\n* @description 这是描述\n*\n*/\n\n\nimport React, { Component } from 'react';\nimport InputNumber from 'tinper-bee';\n\nclass Demo1 extends Component {\n    constructor(props){\n        super(props);\n        this.state = {\n            value: 5\n        }\n        this.handleChange = this.handleChange.bind(this);\n    }\n    handleChange (value) {\n        console.log(\"----\" + value);\n        this.setState({\n            value: value\n        })\n    }\nrender () {\nreturn (\n    <div>\n        <InputNumber value={this.state.value} onChange={ this.handleChange }/>\n    </div>\n)\n}\n}\n\n","desc":" 这是描述"},{"example":<Demo2 />,"title":" 这是标题","code":"/**\n*\n* @title 这是标题\n* @description 自定义max=12,min=5,step=2\n*\n*/\n\nimport React, { Component } from 'react';\nimport InputNumber from 'tinper-bee';\n\nclass Demo2 extends Component {\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber max={12} min={5} step={2}/>\n\t\t)\n\t}\n}\n\n","desc":" 自定义max=12,min=5,step=2"}]
 
 
 class Demo extends Component {

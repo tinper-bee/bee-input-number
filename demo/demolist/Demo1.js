@@ -4,6 +4,11 @@
 * @description 这是描述
 *
 */
+
+
+import React, { Component } from 'react';
+import InputNumber from '../../src';
+
 class Demo1 extends Component {
     constructor(props){
         super(props);
@@ -22,8 +27,9 @@ render () {
 return (
     <div>
         <InputNumber value={this.state.value} onChange={ this.handleChange }/>
-        <span>{ this.state.value }</span>
     </div>
 )
 }
 }
+
+export default Demo1;

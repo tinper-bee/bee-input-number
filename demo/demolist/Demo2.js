@@ -4,6 +4,10 @@
 * @description 自定义max=12,min=5,step=2
 *
 */
+
+import React, { Component } from 'react';
+import InputNumber from '../../src';
+
 class Demo2 extends Component {
 	render () {
 		return (
@@ -11,3 +15,5 @@ class Demo2 extends Component {
 		)
 	}
 }
+
+export default Demo2;
