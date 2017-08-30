@@ -8,12 +8,15 @@ const propTypes = {
   max:PropTypes.number,
   min:PropTypes.number,
   step: PropTypes.number,
-  value: PropTypes.number
+  value: PropTypes.number,
+  autoWidth: PropTypes.bool,
 }
 const defaultProps = {
   value:0,
   step:1,
-  clsPrefix: 'u-input-number'
+  clsPrefix: 'u-input-number',
+  iconStyle: 'double',
+  autoWidth: false,
 }
 class InputNumber extends Component{
 
@@ -52,6 +55,7 @@ class InputNumber extends Component{
     }
     handleChange(event) {
         const { onChange } = this.props;
+
         this.setState({value: Number(event.target.value)});
         onChange && onChange(Number(event.target.value));
     }
@@ -75,7 +79,7 @@ class InputNumber extends Component{
             this.setState({minusDisabled:true});
         }
     }
-    plus() {
+    plus(e) {
         const {max,step,onChange} = this.props;
         if(!max) {
             this.setState({value:this.state.value+step});
@@ -97,14 +101,42 @@ class InputNumber extends Component{
         }
     }
     render() {
-       const {max,min,step,clsPrefix,className, ...others} = this.props;
+       const {max, min, step, clsPrefix, className, iconStyle, autoWidth, onChange, ...others} = this.props;
+
+       let classes = {
+           [`${clsPrefix}-auto`] : autoWidth,
+           [`${clsPrefix}`] : true,
+       }
 
         return (
-          <InputGroup className={classnames(className, clsPrefix)}>
-            <InputGroup.Addon className={ this.state.minusDisabled && 'disabled'} onClick={this.minus}>-</InputGroup.Addon>
-            <FormControl value={this.state.value} onChange = { this.handleChange }/>
-            <InputGroup.Addon className={this.state.plusDisabled && 'disabled'} onClick={this.plus}>+</InputGroup.Addon>
-          </InputGroup>
+            <div>
+            {
+                iconStyle == 'double' ? (
+                    <InputGroup className={classnames(className, classes)} {...others}>
+                    <InputGroup.Addon className={ this.state.minusDisabled && 'disabled'} onClick={this.minus}>-</InputGroup.Addon>
+                    <FormControl value={this.state.value} onChange = { this.handleChange }/>
+                    <InputGroup.Addon className={this.state.plusDisabled && 'disabled'} onClick={this.plus}>+</InputGroup.Addon>
+                    </InputGroup>
+                ) : (
+                    <InputGroup className={classnames(className, classes)} simple  {...others}>
+                    <FormControl value={this.state.value} onChange = { this.handleChange }/>
+                        <InputGroup.Button>
+                            <div className="icon-group">
+                                <span onClick={this.plus} className="plus">
+                                <span className="uf uf-arrow-up"></span>
+                                                </span>
+                                <span onClick={this.minus} className="reduce">
+                                                <span className=" uf uf-arrow-down"></span>
+                                </span>
+                            </div>
+                        </InputGroup.Button>
+                    </InputGroup>
+                )
+            }
+            </div>
+
+
+
         );
     }
 };
