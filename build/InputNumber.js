@@ -26,6 +26,10 @@ var _beeFormControl = require('bee-form-control');
 
 var _beeFormControl2 = _interopRequireDefault(_beeFormControl);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
@@ -41,11 +45,11 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 
 var propTypes = {
-    max: _react.PropTypes.number,
-    min: _react.PropTypes.number,
-    step: _react.PropTypes.number,
-    value: _react.PropTypes.number,
-    autoWidth: _react.PropTypes.bool
+    max: _propTypes2["default"].number,
+    min: _propTypes2["default"].number,
+    step: _propTypes2["default"].number,
+    value: _propTypes2["default"].number,
+    autoWidth: _propTypes2["default"].bool
 };
 var defaultProps = {
     value: 0,

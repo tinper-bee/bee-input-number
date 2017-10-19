@@ -1,8 +1,9 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import classnames from 'classnames';
 import ReactDom from 'react-dom';
 import InputGroup from 'bee-input-group';
 import FormControl from 'bee-form-control';
+import PropTypes from 'prop-types';
 
 const propTypes = {
   max:PropTypes.number,
