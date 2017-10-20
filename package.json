@@ -1,6 +1,6 @@
 {
  "name": "bee-input-number",
- "version": "1.0.0",
+ "version": "1.0.1",
  "description": "InputNumber ui component for react",
  "keywords": [
   "react",
@@ -57,4 +57,3 @@
   "bee-button": "latest"
  }
 }
-
