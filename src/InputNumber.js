@@ -54,11 +54,11 @@ class InputNumber extends Component{
     ComponentWillMount() {
         console.log('ComponentWillMount'+this.props.min);
     }
-    handleChange(event) {
+    handleChange(value) {
         const { onChange } = this.props;
 
-        this.setState({value: Number(event.target.value)});
-        onChange && onChange(Number(event.target.value));
+        this.setState({value: Number(value)});
+        onChange && onChange(Number(value));
     }
     minus(e) {
         const {min,step,onChange} = this.props;

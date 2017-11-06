@@ -100,12 +100,12 @@ var InputNumber = function (_Component) {
         console.log('ComponentWillMount' + this.props.min);
     };
 
-    InputNumber.prototype.handleChange = function handleChange(event) {
+    InputNumber.prototype.handleChange = function handleChange(value) {
         var onChange = this.props.onChange;
 
 
-        this.setState({ value: Number(event.target.value) });
-        onChange && onChange(Number(event.target.value));
+        this.setState({ value: Number(value) });
+        onChange && onChange(Number(value));
     };
 
     InputNumber.prototype.minus = function minus(e) {
