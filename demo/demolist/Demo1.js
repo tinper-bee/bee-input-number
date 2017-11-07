@@ -1,35 +1,35 @@
 /**
-*
-* @title 这是标题
-* @description 这是描述
-*
-*/
+ *
+ * @title 这是标题
+ * @description 这是描述
+ *
+ */
 
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import InputNumber from '../../src';
 
 class Demo1 extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
-            value: 5
+            value: 0
         }
-        this.handleChange = this.handleChange.bind(this);
     }
-    handleChange (value) {
-        console.log("----" + value);
+
+    handleChange = (value) => {
         this.setState({
             value: value
         })
     }
-render () {
-return (
-    <div>
-        <InputNumber value={this.state.value} onChange={ this.handleChange }/>
-    </div>
-)
-}
+
+    render() {
+        return (
+            <div>
+                <InputNumber precision={2} min={0} value={this.state.value} onChange={ this.handleChange }/>
+            </div>
+        )
+    }
 }
 
 export default Demo1;
