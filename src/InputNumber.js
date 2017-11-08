@@ -11,7 +11,8 @@ const propTypes = {
     value: PropTypes.number,
     autoWidth: PropTypes.bool,
     precision: PropTypes.number,
-    format: PropTypes.func
+    format: PropTypes.func,
+    delay: PropTypes.number
 };
 
 const defaultProps = {
@@ -20,6 +21,7 @@ const defaultProps = {
     clsPrefix: 'u-input-number',
     iconStyle: 'double',
     autoWidth: false,
+    delay: 300
 };
 
 class InputNumber extends Component {
@@ -50,10 +52,16 @@ class InputNumber extends Component {
             minusDisabled: currentMinusDisabled,
             plusDisabled: currentPlusDisabled
         }
+
+        this.timer = null;
     }
 
     ComponentWillMount() {
 
+    }
+
+    ComponentWillUnMount() {
+        this.clear();
     }
 
     handleChange = (value) => {
@@ -66,7 +74,7 @@ class InputNumber extends Component {
     }
 
     detail = (value, step, type) => {
-        let { precision } = this.props;
+        let {precision} = this.props;
 
         let valueFloat = this.separate(value);
         let stepFloat = this.separate(step);
@@ -75,18 +83,16 @@ class InputNumber extends Component {
         let stepFloatLength = stepFloat.toString().length;
         let valueFloatLength = valueFloat.toString().length;
 
-        if(typeof precision === 'undefined'){
+        if (typeof precision === 'undefined') {
             precision = Math.max(stepFloatLength, valueFloatLength);
         }
         let coefficient = Math.pow(10, Math.abs(stepFloatLength - valueFloatLength));
-        if(type === 'add'){
-            ans = (value * coefficient + step * coefficient)/coefficient;
-        }else{
-            ans = (value * coefficient - step * coefficient)/coefficient;
+        if (type === 'add') {
+            ans = (value * coefficient + step * coefficient) / coefficient;
+        } else {
+            ans = (value * coefficient - step * coefficient) / coefficient;
         }
 
-
-        console.log(ans.toFixed(precision), precision);
         return ans.toFixed(precision);
 
     }
@@ -107,7 +113,7 @@ class InputNumber extends Component {
 
     minus = () => {
         const {min, step, onChange} = this.props;
-        let value  = this.detail(this.state.value, step, 'reduce');
+        let value = this.detail(this.state.value, step, 'reduce');
         if (typeof min === "undefined") {
 
             this.setState({
@@ -152,24 +158,52 @@ class InputNumber extends Component {
         }
     }
 
+    clear = () => {
+        if (this.timer) {
+            clearTimeout(this.timer);
+        }
+    }
+
+    handlePlusMouseDown = (e) => {
+        let {delay} = this.props;
+        this.plus();
+        this.clear();
+        this.timer = setTimeout(() => {
+            this.handlePlusMouseDown();
+        }, delay);
+    }
+
+    handleReduceMouseDown = (e) => {
+        let {delay} = this.props;
+        this.minus();
+        this.clear();
+        this.timer = setTimeout(() => {
+            this.handleReduceMouseDown();
+        }, delay);
+    }
+
     render() {
-        const {max, min, step, clsPrefix, className, iconStyle, autoWidth, onChange, format, precision, ...others} = this.props;
+        const {max, min, step, clsPrefix, className, delay, iconStyle, autoWidth, onChange, format, precision, ...others} = this.props;
 
         let classes = {
             [`${clsPrefix}-auto`]: autoWidth,
             [`${clsPrefix}`]: true,
         };
 
-        let { value, minusDisabled, plusDisabled } = this.state;
+        let {value, minusDisabled, plusDisabled} = this.state;
+
+
         //value = format ? format(value) : value;
         return (
             <div>
                 {
                     iconStyle === 'double' ? (
-                        <InputGroup className={classnames(className, classes)} >
+                        <InputGroup className={classnames(className, classes)}>
                             <InputGroup.Addon
                                 className={ minusDisabled && 'disabled'}
-                                onClick={this.minus}>
+                                onMouseDown={ this.handleReduceMouseDown}
+                                onMouseLeave={ this.clear }
+                                onMouseUp={ this.clear }>
                                 -
                             </InputGroup.Addon>
                             <FormControl
@@ -179,7 +213,9 @@ class InputNumber extends Component {
                             />
                             <InputGroup.Addon
                                 className={plusDisabled && 'disabled'}
-                                onClick={this.plus}>
+                                onMouseDown={ this.handlePlusMouseDown}
+                                onMouseLeave={ this.clear }
+                                onMouseUp={ this.clear }>
                                 +
                             </InputGroup.Addon>
                         </InputGroup>
@@ -187,7 +223,7 @@ class InputNumber extends Component {
                         <InputGroup
                             className={classnames(className, classes)}
                             simple
-                            >
+                        >
                             <FormControl
                                 {...others}
                                 value={value}
@@ -196,13 +232,17 @@ class InputNumber extends Component {
                             <InputGroup.Button>
                                 <div className="icon-group">
                                 <span
-                                    onClick={this.plus}
-                                    className="plus">
+                                    onMouseDown={ this.handlePlusMouseDown}
+                                    onMouseLeave={ this.clear }
+                                    onMouseUp={ this.clear }
+                                    className={classnames('plus',{'disabled': plusDisabled})}>
                                     <span className="uf uf-arrow-up"/>
                                 </span>
                                     <span
-                                        onClick={this.minus}
-                                        className="reduce">
+                                        onMouseDown={ this.handleReduceMouseDown}
+                                        onMouseLeave={ this.clear }
+                                        onMouseUp={ this.clear }
+                                        className={classnames("reduce",{'disabled': minusDisabled})}>
                                         <span className=" uf uf-arrow-down"/>
                                 </span>
                                 </div>
@@ -211,9 +251,6 @@ class InputNumber extends Component {
                     )
                 }
             </div>
-
-
-
         );
     }
 }

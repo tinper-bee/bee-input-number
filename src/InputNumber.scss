@@ -66,6 +66,11 @@
         transition: all .1s linear;
         cursor: pointer;
         font-weight: 700;
+        &.disabled{
+            cursor: not-allowed;
+            background: #ffe;
+            color: #ccc;
+        }
     }
     .reduce{
         position: relative;
@@ -82,6 +87,11 @@
         transition: all .1s linear;
         cursor: pointer;
         font-weight: 700;
+        &.disabled{
+            cursor: not-allowed;
+            background: #ffe;
+            color: #ccc;
+        }
     }
     .uf{
         font-size: 12px;
