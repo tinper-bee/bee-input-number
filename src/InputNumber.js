@@ -33,18 +33,22 @@ class InputNumber extends Component {
         let currentMinusDisabled = false;
         let currentPlusDisabled = false;
 
-        if (this.props.value) {
-            currentValue = Number(this.props.value) || 0;
-        } else if (this.props.min) {
-            currentValue = this.props.min;
+        if (props.value) {
+            currentValue = Number(props.value) || 0;
+        } else if (props.min) {
+            currentValue = props.min;
         } else {
             currentValue = 0;
         }
-        if (currentValue <= this.props.min) {
+        if (currentValue <= props.min) {
             currentMinusDisabled = true;
         }
-        if (currentValue >= this.props.max) {
+        if (currentValue >= props.max) {
             currentPlusDisabled = true;
+        }
+
+        if(props.hasOwnProperty('precision')){
+            currentValue = currentValue.toFixed(props.precision);
         }
 
         this.state = {
@@ -131,7 +135,9 @@ class InputNumber extends Component {
             if (this.state.plusDisabled) {
                 this.setState({plusDisabled: false});
             }
-        } else {
+        }
+
+        if(value <= min){
             this.setState({minusDisabled: true});
         }
     }
@@ -153,7 +159,9 @@ class InputNumber extends Component {
             if (this.state.minusDisabled) {
                 this.setState({minusDisabled: false});
             }
-        } else {
+        }
+
+        if(value >= max){
             this.setState({plusDisabled: true});
         }
     }
@@ -193,7 +201,7 @@ class InputNumber extends Component {
         let {value, minusDisabled, plusDisabled} = this.state;
 
 
-        //value = format ? format(value) : value;
+        value = format ? format(value) : value;
         return (
             <div>
                 {

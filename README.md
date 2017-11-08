@@ -60,6 +60,9 @@ import "./node_modules/build/bee-input-number.css"
 |min|最小值|number|-|
 |step|间隔值|number|1|
 |value|默认值|number|0|
+|format|显示内容的格式化|function|-|
+|precision|显示精度|number|显示小数点后面的位数|
+|delay|当持续按住增减按钮式，变换的速度（毫秒）|number|300|
 
 
 #### 开发调试

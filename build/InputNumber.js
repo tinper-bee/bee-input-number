@@ -14,10 +14,6 @@ var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _reactDom = require('react-dom');
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
 var _beeInputGroup = require('bee-input-group');
 
 var _beeInputGroup2 = _interopRequireDefault(_beeInputGroup);
@@ -49,14 +45,19 @@ var propTypes = {
     min: _propTypes2["default"].number,
     step: _propTypes2["default"].number,
     value: _propTypes2["default"].number,
-    autoWidth: _propTypes2["default"].bool
+    autoWidth: _propTypes2["default"].bool,
+    precision: _propTypes2["default"].number,
+    format: _propTypes2["default"].func,
+    delay: _propTypes2["default"].number
 };
+
 var defaultProps = {
     value: 0,
     step: 1,
     clsPrefix: 'u-input-number',
     iconStyle: 'double',
-    autoWidth: false
+    autoWidth: false,
+    delay: 300
 };
 
 var InputNumber = function (_Component) {
@@ -68,21 +69,154 @@ var InputNumber = function (_Component) {
         // 初始化状态，加减按钮是否可用，根据当前值判断
         var _this = _possibleConstructorReturn(this, _Component.call(this, props));
 
+        _this.handleChange = function (value) {
+            var onChange = _this.props.onChange;
+
+
+            value = _this.detail(value, 0, 'reduce');
+
+            _this.setState({ value: value });
+            onChange && onChange(value);
+        };
+
+        _this.detail = function (value, step, type) {
+            var precision = _this.props.precision;
+
+
+            var valueFloat = _this.separate(value);
+            var stepFloat = _this.separate(step);
+
+            var ans = void 0;
+            var stepFloatLength = stepFloat.toString().length;
+            var valueFloatLength = valueFloat.toString().length;
+
+            if (typeof precision === 'undefined') {
+                precision = Math.max(stepFloatLength, valueFloatLength);
+            }
+            var coefficient = Math.pow(10, Math.abs(stepFloatLength - valueFloatLength));
+            if (type === 'add') {
+                ans = (value * coefficient + step * coefficient) / coefficient;
+            } else {
+                ans = (value * coefficient - step * coefficient) / coefficient;
+            }
+
+            return ans.toFixed(precision);
+        };
+
+        _this.separate = function (value) {
+            value = value.toString();
+            if (value.indexOf('.') > -1) {
+                return value.split('.')[1];
+            } else {
+                return "";
+            }
+        };
+
+        _this.minus = function () {
+            var _this$props = _this.props,
+                min = _this$props.min,
+                step = _this$props.step,
+                onChange = _this$props.onChange;
+
+            var value = _this.detail(_this.state.value, step, 'reduce');
+            if (typeof min === "undefined") {
+
+                _this.setState({
+                    value: value
+                });
+                onChange && onChange(value);
+                if (_this.state.plusDisabled) {
+                    _this.setState({ plusDisabled: false });
+                }
+                return;
+            }
+            if (value >= min) {
+                _this.setState({ value: value });
+                onChange && onChange(value);
+                if (_this.state.plusDisabled) {
+                    _this.setState({ plusDisabled: false });
+                }
+            }
+
+            if (value <= min) {
+                _this.setState({ minusDisabled: true });
+            }
+        };
+
+        _this.plus = function () {
+            var _this$props2 = _this.props,
+                max = _this$props2.max,
+                step = _this$props2.step,
+                onChange = _this$props2.onChange;
+
+            var value = _this.detail(_this.state.value, step, 'add');
+            if (typeof max === "undefined") {
+                _this.setState({ value: value });
+                onChange && onChange(value);
+                if (_this.state.minusDisabled) {
+                    _this.setState({ minusDisabled: false });
+                }
+                return;
+            }
+            if (value <= max) {
+                _this.setState({ value: value });
+                onChange && onChange(value);
+                if (_this.state.minusDisabled) {
+                    _this.setState({ minusDisabled: false });
+                }
+            }
+
+            if (value >= max) {
+                _this.setState({ plusDisabled: true });
+            }
+        };
+
+        _this.clear = function () {
+            if (_this.timer) {
+                clearTimeout(_this.timer);
+            }
+        };
+
+        _this.handlePlusMouseDown = function (e) {
+            var delay = _this.props.delay;
+
+            _this.plus();
+            _this.clear();
+            _this.timer = setTimeout(function () {
+                _this.handlePlusMouseDown();
+            }, delay);
+        };
+
+        _this.handleReduceMouseDown = function (e) {
+            var delay = _this.props.delay;
+
+            _this.minus();
+            _this.clear();
+            _this.timer = setTimeout(function () {
+                _this.handleReduceMouseDown();
+            }, delay);
+        };
+
         var currentValue = void 0;
         var currentMinusDisabled = false;
         var currentPlusDisabled = false;
-        if (_this.props.value) {
-            currentValue = Number(_this.props.value) || 0;
-        } else if (_this.props.min) {
-            currentValue = _this.props.min;
+
+        if (props.value) {
+            currentValue = Number(props.value) || 0;
+        } else if (props.min) {
+            currentValue = props.min;
         } else {
             currentValue = 0;
         }
-        if (currentValue <= _this.props.min) {
+        if (currentValue <= props.min) {
             currentMinusDisabled = true;
         }
-        if (currentValue >= _this.props.max) {
+        if (currentValue >= props.max) {
             currentPlusDisabled = true;
+        }
+
+        if (props.hasOwnProperty('precision')) {
+            currentValue = currentValue.toFixed(props.precision);
         }
 
         _this.state = {
@@ -90,112 +224,88 @@ var InputNumber = function (_Component) {
             minusDisabled: currentMinusDisabled,
             plusDisabled: currentPlusDisabled
         };
-        _this.plus = _this.plus.bind(_this);
-        _this.minus = _this.minus.bind(_this);
-        _this.handleChange = _this.handleChange.bind(_this);
+
+        _this.timer = null;
         return _this;
     }
 
-    InputNumber.prototype.ComponentWillMount = function ComponentWillMount() {
-        console.log('ComponentWillMount' + this.props.min);
+    InputNumber.prototype.ComponentWillMount = function ComponentWillMount() {};
+
+    InputNumber.prototype.ComponentWillUnMount = function ComponentWillUnMount() {
+        this.clear();
     };
 
-    InputNumber.prototype.handleChange = function handleChange(value) {
-        var onChange = this.props.onChange;
+    /**
+     * 分离小数和整数
+     * @param value
+     * @returns {*}
+     */
 
-
-        this.setState({ value: Number(value) });
-        onChange && onChange(Number(value));
-    };
-
-    InputNumber.prototype.minus = function minus(e) {
-        var _props = this.props,
-            min = _props.min,
-            step = _props.step,
-            onChange = _props.onChange;
-
-        if (!min) {
-            this.setState({ value: this.state.value - step });
-            onChange && onChange(this.state.value - step);
-            if (this.state.plusDisabled) {
-                this.setState({ plusDisabled: false });
-            }
-            return;
-        }
-        if (this.state.value - step >= min) {
-            this.setState({ value: this.state.value - step });
-            onChange && onChange(this.state.value - step);
-            if (this.state.plusDisabled) {
-                this.setState({ plusDisabled: false });
-            }
-        } else {
-            this.setState({ minusDisabled: true });
-        }
-    };
-
-    InputNumber.prototype.plus = function plus(e) {
-        var _props2 = this.props,
-            max = _props2.max,
-            step = _props2.step,
-            onChange = _props2.onChange;
-
-        if (!max) {
-            this.setState({ value: this.state.value + step });
-
-            onChange && onChange(this.state.value + step);
-            if (this.state.minusDisabled) {
-                this.setState({ minusDisabled: false });
-            }
-            return;
-        }
-        if (this.state.value + step <= max) {
-            this.setState({ value: this.state.value + step });
-            onChange && onChange(this.state.value + step);
-            if (this.state.minusDisabled) {
-                this.setState({ minusDisabled: false });
-            }
-        } else {
-            this.setState({ plusDisabled: true });
-        }
-    };
 
     InputNumber.prototype.render = function render() {
         var _classes;
 
-        var _props3 = this.props,
-            max = _props3.max,
-            min = _props3.min,
-            step = _props3.step,
-            clsPrefix = _props3.clsPrefix,
-            className = _props3.className,
-            iconStyle = _props3.iconStyle,
-            autoWidth = _props3.autoWidth,
-            onChange = _props3.onChange,
-            others = _objectWithoutProperties(_props3, ['max', 'min', 'step', 'clsPrefix', 'className', 'iconStyle', 'autoWidth', 'onChange']);
+        var _props = this.props,
+            max = _props.max,
+            min = _props.min,
+            step = _props.step,
+            clsPrefix = _props.clsPrefix,
+            className = _props.className,
+            delay = _props.delay,
+            iconStyle = _props.iconStyle,
+            autoWidth = _props.autoWidth,
+            onChange = _props.onChange,
+            format = _props.format,
+            precision = _props.precision,
+            others = _objectWithoutProperties(_props, ['max', 'min', 'step', 'clsPrefix', 'className', 'delay', 'iconStyle', 'autoWidth', 'onChange', 'format', 'precision']);
 
         var classes = (_classes = {}, _defineProperty(_classes, clsPrefix + '-auto', autoWidth), _defineProperty(_classes, '' + clsPrefix, true), _classes);
 
+        var _state = this.state,
+            value = _state.value,
+            minusDisabled = _state.minusDisabled,
+            plusDisabled = _state.plusDisabled;
+
+
+        value = format ? format(value) : value;
         return _react2["default"].createElement(
             'div',
             null,
-            iconStyle == 'double' ? _react2["default"].createElement(
+            iconStyle === 'double' ? _react2["default"].createElement(
                 _beeInputGroup2["default"],
-                _extends({ className: (0, _classnames2["default"])(className, classes) }, others),
+                { className: (0, _classnames2["default"])(className, classes) },
                 _react2["default"].createElement(
                     _beeInputGroup2["default"].Addon,
-                    { className: this.state.minusDisabled && 'disabled', onClick: this.minus },
+                    {
+                        className: minusDisabled && 'disabled',
+                        onMouseDown: this.handleReduceMouseDown,
+                        onMouseLeave: this.clear,
+                        onMouseUp: this.clear },
                     '-'
                 ),
-                _react2["default"].createElement(_beeFormControl2["default"], { value: this.state.value, onChange: this.handleChange }),
+                _react2["default"].createElement(_beeFormControl2["default"], _extends({}, others, {
+                    value: value,
+                    onChange: this.handleChange
+                })),
                 _react2["default"].createElement(
                     _beeInputGroup2["default"].Addon,
-                    { className: this.state.plusDisabled && 'disabled', onClick: this.plus },
+                    {
+                        className: plusDisabled && 'disabled',
+                        onMouseDown: this.handlePlusMouseDown,
+                        onMouseLeave: this.clear,
+                        onMouseUp: this.clear },
                     '+'
                 )
             ) : _react2["default"].createElement(
                 _beeInputGroup2["default"],
-                _extends({ className: (0, _classnames2["default"])(className, classes), simple: true }, others),
-                _react2["default"].createElement(_beeFormControl2["default"], { value: this.state.value, onChange: this.handleChange }),
+                {
+                    className: (0, _classnames2["default"])(className, classes),
+                    simple: true
+                },
+                _react2["default"].createElement(_beeFormControl2["default"], _extends({}, others, {
+                    value: value,
+                    onChange: this.handleChange
+                })),
                 _react2["default"].createElement(
                     _beeInputGroup2["default"].Button,
                     null,
@@ -204,12 +314,20 @@ var InputNumber = function (_Component) {
                         { className: 'icon-group' },
                         _react2["default"].createElement(
                             'span',
-                            { onClick: this.plus, className: 'plus' },
+                            {
+                                onMouseDown: this.handlePlusMouseDown,
+                                onMouseLeave: this.clear,
+                                onMouseUp: this.clear,
+                                className: (0, _classnames2["default"])('plus', { 'disabled': plusDisabled }) },
                             _react2["default"].createElement('span', { className: 'uf uf-arrow-up' })
                         ),
                         _react2["default"].createElement(
                             'span',
-                            { onClick: this.minus, className: 'reduce' },
+                            {
+                                onMouseDown: this.handleReduceMouseDown,
+                                onMouseLeave: this.clear,
+                                onMouseUp: this.clear,
+                                className: (0, _classnames2["default"])("reduce", { 'disabled': minusDisabled }) },
                             _react2["default"].createElement('span', { className: ' uf uf-arrow-down' })
                         )
                     )
