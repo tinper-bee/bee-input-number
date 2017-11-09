@@ -116,54 +116,77 @@ class InputNumber extends Component {
     }
 
     minus = () => {
-        const {min, step, onChange} = this.props;
-        let value = this.detail(this.state.value, step, 'reduce');
-        if (typeof min === "undefined") {
+        const {min, max, step, onChange} = this.props;
+        let {value} = this.state;
+        if(typeof min === "undefined"){
+            value = this.detail(this.state.value, step, 'reduce');
+        }else{
+            if(value < min){
+                value = min;
+            }else{
+                let reducedValue = this.detail(this.state.value, step, 'reduce');
+                if(reducedValue >= min){
+                    value = reducedValue;
+                }
+            }
+        }
 
+        if(value > max){
+            value = this.detail(max, step, 'reduce');
+        }
+
+        this.setState({
+            value
+        });
+        onChange && onChange(value);
+        this.detailDisable(value);
+    }
+    detailDisable = (value) => {
+        const { max, min } = this.props;
+
+        if(value >= max){
             this.setState({
-                value: value
-            });
-            onChange && onChange(value);
-            if (this.state.plusDisabled) {
-                this.setState({plusDisabled: false});
-            }
-            return;
+                plusDisabled: true
+            })
+        }else{
+            this.setState({
+                plusDisabled: false
+            })
         }
-        if (value >= min) {
-            this.setState({value: value});
-            onChange && onChange(value);
-            if (this.state.plusDisabled) {
-                this.setState({plusDisabled: false});
-            }
-        }
-
         if(value <= min){
-            this.setState({minusDisabled: true});
+            this.setState({
+                minusDisabled: true
+            })
+        }else{
+            this.setState({
+                minusDisabled: false
+            })
         }
     }
 
     plus = () => {
-        const {max, step, onChange} = this.props;
-        let value = this.detail(this.state.value, step, 'add');
-        if (typeof max === "undefined") {
-            this.setState({value});
-            onChange && onChange(value);
-            if (this.state.minusDisabled) {
-                this.setState({minusDisabled: false});
-            }
-            return;
-        }
-        if (value <= max) {
-            this.setState({value});
-            onChange && onChange(value);
-            if (this.state.minusDisabled) {
-                this.setState({minusDisabled: false});
+        const {max, min, step, onChange} = this.props;
+        let { value } = this.state;
+        if(typeof max === "undefined"){
+            value = this.detail(this.state.value, step, 'add');
+        }else{
+            if(value > max){
+                value = max;
+            }else{
+                let addedValue = this.detail(this.state.value, step, 'add');
+                if(addedValue <= max){
+                    value = addedValue;
+                }
             }
         }
-
-        if(value >= max){
-            this.setState({plusDisabled: true});
+        if(value < min){
+            value = this.detail(min, step, 'add');
         }
+        this.setState({
+            value
+        });
+        onChange && onChange(value);
+        this.detailDisable(value);
     }
 
     clear = () => {

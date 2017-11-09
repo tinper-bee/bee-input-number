@@ -1,7 +1,7 @@
 /**
 *
 * @title 这是标题
-* @description 自定义max=12,min=5,step=2
+* @description 自定义max=12,min=5,step=0.1
 *
 */
 
@@ -11,7 +11,7 @@ import InputNumber from '../../src';
 class Demo2 extends Component {
 	render () {
 		return (
-			<InputNumber max={12} min={5} step={2}/>
+			<InputNumber max={12} min={5} step={0.1}/>
 		)
 	}
 }
