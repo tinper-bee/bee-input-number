@@ -189,6 +189,10 @@ class InputNumber extends Component {
         this.detailDisable(value);
     }
 
+    onBlur = () => {
+
+    }
+
     clear = () => {
         if (this.timer) {
             clearTimeout(this.timer);
