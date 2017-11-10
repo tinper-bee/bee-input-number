@@ -58,6 +58,7 @@ class InputNumber extends Component {
         }
 
         this.timer = null;
+        this.tempStorage = currentValue;
     }
 
     ComponentWillMount() {
@@ -69,12 +70,42 @@ class InputNumber extends Component {
     }
 
     handleChange = (value) => {
-        const {onChange} = this.props;
+        const {onChange, min, max} = this.props;
 
-        value = this.detail(value, 0, 'reduce');
-
+        //value = this.detail(value, 0, 'reduce');
+        if(!isNaN(value) && value >= min && value <= max){
+            this.tempStorage = value;
+        }
         this.setState({value});
         onChange && onChange(value);
+    }
+
+    handleFocus = (e) => {
+        let { onFocus, min, max } = this.props;
+        let value = e.target.value;
+        if(!isNaN(value) && value >= min && value <= max){
+            this.tempStorage = e.target.value;
+        }
+        onFocus && onFocus();
+    }
+
+    handleBlur = (e) => {
+        const { onBlur } = this.props;
+        let value = Number(e.target.value);
+        if(isNaN(value)){
+            value = this.tempStorage;
+            this.setState({
+                value
+            });
+            this.detailDisable(value);
+        }else{
+            this.minus();
+            this.plus();
+        }
+
+
+
+        onBlur && onBlur();
     }
 
     detail = (value, step, type) => {
@@ -142,9 +173,9 @@ class InputNumber extends Component {
         this.detailDisable(value);
     }
     detailDisable = (value) => {
-        const { max, min } = this.props;
+        const { max, min, step } = this.props;
 
-        if(value >= max){
+        if(value >= max || Number(value) + Number(step) > max){
             this.setState({
                 plusDisabled: true
             })
@@ -153,7 +184,7 @@ class InputNumber extends Component {
                 plusDisabled: false
             })
         }
-        if(value <= min){
+        if(value <= min || value -step < min){
             this.setState({
                 minusDisabled: true
             })
@@ -162,6 +193,7 @@ class InputNumber extends Component {
                 minusDisabled: false
             })
         }
+
     }
 
     plus = () => {
@@ -218,7 +250,7 @@ class InputNumber extends Component {
     }
 
     render() {
-        const {max, min, step, clsPrefix, className, delay, iconStyle, autoWidth, onChange, format, precision, ...others} = this.props;
+        const {max, min, step, clsPrefix, className, delay, onBlur, onFocus, iconStyle, autoWidth, onChange, format, precision, ...others} = this.props;
 
         let classes = {
             [`${clsPrefix}-auto`]: autoWidth,
@@ -244,6 +276,8 @@ class InputNumber extends Component {
                             <FormControl
                                 {...others}
                                 value={value}
+                                onBlur={ this.handleBlur }
+                                onFocus={this.handleFocus}
                                 onChange={ this.handleChange }
                             />
                             <InputGroup.Addon
@@ -262,6 +296,8 @@ class InputNumber extends Component {
                             <FormControl
                                 {...others}
                                 value={value}
+                                onBlur={ this.handleBlur }
+                                onFocus={this.handleFocus}
                                 onChange={ this.handleChange }
                             />
                             <InputGroup.Button>
