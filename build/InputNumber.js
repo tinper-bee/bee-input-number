@@ -70,13 +70,49 @@ var InputNumber = function (_Component) {
         var _this = _possibleConstructorReturn(this, _Component.call(this, props));
 
         _this.handleChange = function (value) {
-            var onChange = _this.props.onChange;
+            var _this$props = _this.props,
+                onChange = _this$props.onChange,
+                min = _this$props.min,
+                max = _this$props.max;
 
+            //value = this.detail(value, 0, 'reduce');
 
-            value = _this.detail(value, 0, 'reduce');
-
+            if (!isNaN(value) && value >= min && value <= max) {
+                _this.tempStorage = value;
+            }
             _this.setState({ value: value });
             onChange && onChange(value);
+        };
+
+        _this.handleFocus = function (e) {
+            var _this$props2 = _this.props,
+                onFocus = _this$props2.onFocus,
+                min = _this$props2.min,
+                max = _this$props2.max;
+
+            var value = e.target.value;
+            if (!isNaN(value) && value >= min && value <= max) {
+                _this.tempStorage = e.target.value;
+            }
+            onFocus && onFocus();
+        };
+
+        _this.handleBlur = function (e) {
+            var onBlur = _this.props.onBlur;
+
+            var value = Number(e.target.value);
+            if (isNaN(value)) {
+                value = _this.tempStorage;
+                _this.setState({
+                    value: value
+                });
+                _this.detailDisable(value);
+            } else {
+                _this.minus();
+                _this.plus();
+            }
+
+            onBlur && onBlur();
         };
 
         _this.detail = function (value, step, type) {
@@ -113,62 +149,92 @@ var InputNumber = function (_Component) {
         };
 
         _this.minus = function () {
-            var _this$props = _this.props,
-                min = _this$props.min,
-                step = _this$props.step,
-                onChange = _this$props.onChange;
+            var _this$props3 = _this.props,
+                min = _this$props3.min,
+                max = _this$props3.max,
+                step = _this$props3.step,
+                onChange = _this$props3.onChange;
+            var value = _this.state.value;
 
-            var value = _this.detail(_this.state.value, step, 'reduce');
             if (typeof min === "undefined") {
+                value = _this.detail(_this.state.value, step, 'reduce');
+            } else {
+                if (value < min) {
+                    value = min;
+                } else {
+                    var reducedValue = _this.detail(_this.state.value, step, 'reduce');
+                    if (reducedValue >= min) {
+                        value = reducedValue;
+                    }
+                }
+            }
 
+            if (value > max) {
+                value = _this.detail(max, step, 'reduce');
+            }
+
+            _this.setState({
+                value: value
+            });
+            onChange && onChange(value);
+            _this.detailDisable(value);
+        };
+
+        _this.detailDisable = function (value) {
+            var _this$props4 = _this.props,
+                max = _this$props4.max,
+                min = _this$props4.min,
+                step = _this$props4.step;
+
+
+            if (value >= max || Number(value) + Number(step) > max) {
                 _this.setState({
-                    value: value
+                    plusDisabled: true
                 });
-                onChange && onChange(value);
-                if (_this.state.plusDisabled) {
-                    _this.setState({ plusDisabled: false });
-                }
-                return;
+            } else {
+                _this.setState({
+                    plusDisabled: false
+                });
             }
-            if (value >= min) {
-                _this.setState({ value: value });
-                onChange && onChange(value);
-                if (_this.state.plusDisabled) {
-                    _this.setState({ plusDisabled: false });
-                }
-            }
-
-            if (value <= min) {
-                _this.setState({ minusDisabled: true });
+            if (value <= min || value - step < min) {
+                _this.setState({
+                    minusDisabled: true
+                });
+            } else {
+                _this.setState({
+                    minusDisabled: false
+                });
             }
         };
 
         _this.plus = function () {
-            var _this$props2 = _this.props,
-                max = _this$props2.max,
-                step = _this$props2.step,
-                onChange = _this$props2.onChange;
+            var _this$props5 = _this.props,
+                max = _this$props5.max,
+                min = _this$props5.min,
+                step = _this$props5.step,
+                onChange = _this$props5.onChange;
+            var value = _this.state.value;
 
-            var value = _this.detail(_this.state.value, step, 'add');
             if (typeof max === "undefined") {
-                _this.setState({ value: value });
-                onChange && onChange(value);
-                if (_this.state.minusDisabled) {
-                    _this.setState({ minusDisabled: false });
-                }
-                return;
-            }
-            if (value <= max) {
-                _this.setState({ value: value });
-                onChange && onChange(value);
-                if (_this.state.minusDisabled) {
-                    _this.setState({ minusDisabled: false });
+                value = _this.detail(_this.state.value, step, 'add');
+            } else {
+                if (value > max) {
+                    value = max;
+                } else {
+                    var addedValue = _this.detail(_this.state.value, step, 'add');
+                    if (addedValue <= max) {
+                        value = addedValue;
+                    }
                 }
             }
-
-            if (value >= max) {
-                _this.setState({ plusDisabled: true });
+            if (value < min) {
+                value = _this.detail(min, step, 'add');
             }
+            _this.setState({
+                value: value
+            });
+            onChange && onChange(value);
+            _this.detailDisable(value);
         };
 
         _this.clear = function () {
@@ -226,6 +292,7 @@ var InputNumber = function (_Component) {
         };
 
         _this.timer = null;
+        _this.tempStorage = currentValue;
         return _this;
     }
 
@@ -252,12 +319,14 @@ var InputNumber = function (_Component) {
             clsPrefix = _props.clsPrefix,
             className = _props.className,
             delay = _props.delay,
+            onBlur = _props.onBlur,
+            onFocus = _props.onFocus,
             iconStyle = _props.iconStyle,
             autoWidth = _props.autoWidth,
             onChange = _props.onChange,
             format = _props.format,
             precision = _props.precision,
-            others = _objectWithoutProperties(_props, ['max', 'min', 'step', 'clsPrefix', 'className', 'delay', 'iconStyle', 'autoWidth', 'onChange', 'format', 'precision']);
+            others = _objectWithoutProperties(_props, ['max', 'min', 'step', 'clsPrefix', 'className', 'delay', 'onBlur', 'onFocus', 'iconStyle', 'autoWidth', 'onChange', 'format', 'precision']);
 
         var classes = (_classes = {}, _defineProperty(_classes, clsPrefix + '-auto', autoWidth), _defineProperty(_classes, '' + clsPrefix, true), _classes);
 
@@ -285,6 +354,8 @@ var InputNumber = function (_Component) {
                 ),
                 _react2["default"].createElement(_beeFormControl2["default"], _extends({}, others, {
                     value: value,
+                    onBlur: this.handleBlur,
+                    onFocus: this.handleFocus,
                     onChange: this.handleChange
                 })),
                 _react2["default"].createElement(
@@ -304,6 +375,8 @@ var InputNumber = function (_Component) {
                 },
                 _react2["default"].createElement(_beeFormControl2["default"], _extends({}, others, {
                     value: value,
+                    onBlur: this.handleBlur,
+                    onFocus: this.handleFocus,
                     onChange: this.handleChange
                 })),
                 _react2["default"].createElement(
