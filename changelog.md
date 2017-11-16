@@ -1,4 +1,12 @@
+<a name="1.0.4"></a>
+## 1.0.4 (2017-11-10)
 
-|时间|说明|修复版本|
-|---|----|---|
-|2017-8-30|修改示例|0.0.9|
+
+### Bug Fixes
+
+* 输入数字bug ([3241d17](https://github.com/tinper-bee/bee-input-number/commit/3241d17))
+* 输入数字bug ([b95f340](https://github.com/tinper-bee/bee-input-number/commit/b95f340))
+* 输入超量限制 ([e4080ef](https://github.com/tinper-bee/bee-input-number/commit/e4080ef))
+
+
+
