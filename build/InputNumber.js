@@ -98,7 +98,9 @@ var InputNumber = function (_Component) {
         };
 
         _this.handleBlur = function (e) {
-            var onBlur = _this.props.onBlur;
+            var _this$props3 = _this.props,
+                onBlur = _this$props3.onBlur,
+                step = _this$props3.step;
 
             var value = Number(e.target.value);
             if (isNaN(value)) {
@@ -108,8 +110,8 @@ var InputNumber = function (_Component) {
                 });
                 _this.detailDisable(value);
             } else {
-                _this.minus();
-                _this.plus();
+                console.log(value - step);
+                _this.plus(value - step);
             }
 
             onBlur && onBlur();
@@ -148,21 +150,21 @@ var InputNumber = function (_Component) {
             }
         };
 
-        _this.minus = function () {
-            var _this$props3 = _this.props,
-                min = _this$props3.min,
-                max = _this$props3.max,
-                step = _this$props3.step,
-                onChange = _this$props3.onChange;
-            var value = _this.state.value;
+        _this.minus = function (value) {
+            var _this$props4 = _this.props,
+                min = _this$props4.min,
+                max = _this$props4.max,
+                step = _this$props4.step,
+                onChange = _this$props4.onChange;
+
 
             if (typeof min === "undefined") {
-                value = _this.detail(_this.state.value, step, 'reduce');
+                value = _this.detail(value, step, 'reduce');
             } else {
                 if (value < min) {
                     value = min;
                 } else {
-                    var reducedValue = _this.detail(_this.state.value, step, 'reduce');
+                    var reducedValue = _this.detail(value, step, 'reduce');
                     if (reducedValue >= min) {
                         value = reducedValue;
                     }
@@ -170,7 +172,7 @@ var InputNumber = function (_Component) {
             }
 
             if (value > max) {
-                value = _this.detail(max, step, 'reduce');
+                value = max;
             }
 
             _this.setState({
@@ -181,10 +183,10 @@ var InputNumber = function (_Component) {
         };
 
         _this.detailDisable = function (value) {
-            var _this$props4 = _this.props,
-                max = _this$props4.max,
-                min = _this$props4.min,
-                step = _this$props4.step;
+            var _this$props5 = _this.props,
+                max = _this$props5.max,
+                min = _this$props5.min,
+                step = _this$props5.step;
 
 
             if (value >= max || Number(value) + Number(step) > max) {
@@ -207,28 +209,27 @@ var InputNumber = function (_Component) {
             }
         };
 
-        _this.plus = function () {
-            var _this$props5 = _this.props,
-                max = _this$props5.max,
-                min = _this$props5.min,
-                step = _this$props5.step,
-                onChange = _this$props5.onChange;
-            var value = _this.state.value;
+        _this.plus = function (value) {
+            var _this$props6 = _this.props,
+                max = _this$props6.max,
+                min = _this$props6.min,
+                step = _this$props6.step,
+                onChange = _this$props6.onChange;
 
             if (typeof max === "undefined") {
-                value = _this.detail(_this.state.value, step, 'add');
+                value = _this.detail(value, step, 'add');
             } else {
                 if (value > max) {
                     value = max;
                 } else {
-                    var addedValue = _this.detail(_this.state.value, step, 'add');
+                    var addedValue = _this.detail(value, step, 'add');
                     if (addedValue <= max) {
                         value = addedValue;
                     }
                 }
             }
             if (value < min) {
-                value = _this.detail(min, step, 'add');
+                value = min;
             }
             _this.setState({
                 value: value
@@ -245,8 +246,9 @@ var InputNumber = function (_Component) {
 
         _this.handlePlusMouseDown = function (e) {
             var delay = _this.props.delay;
+            var value = _this.state.value;
 
-            _this.plus();
+            _this.plus(value);
             _this.clear();
             _this.timer = setTimeout(function () {
                 _this.handlePlusMouseDown();
@@ -255,8 +257,9 @@ var InputNumber = function (_Component) {
 
         _this.handleReduceMouseDown = function (e) {
             var delay = _this.props.delay;
+            var value = _this.state.value;
 
-            _this.minus();
+            _this.minus(value);
             _this.clear();
             _this.timer = setTimeout(function () {
                 _this.handleReduceMouseDown();

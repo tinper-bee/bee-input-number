@@ -90,7 +90,7 @@ class InputNumber extends Component {
     }
 
     handleBlur = (e) => {
-        const { onBlur } = this.props;
+        const { onBlur, step } = this.props;
         let value = Number(e.target.value);
         if(isNaN(value)){
             value = this.tempStorage;
@@ -99,8 +99,8 @@ class InputNumber extends Component {
             });
             this.detailDisable(value);
         }else{
-            this.minus();
-            this.plus();
+            console.log(value - step)
+            this.plus(value - step);
         }
 
 
@@ -146,16 +146,16 @@ class InputNumber extends Component {
         }
     }
 
-    minus = () => {
+    minus = (value) => {
         const {min, max, step, onChange} = this.props;
-        let {value} = this.state;
+
         if(typeof min === "undefined"){
-            value = this.detail(this.state.value, step, 'reduce');
+            value = this.detail(value, step, 'reduce');
         }else{
             if(value < min){
                 value = min;
             }else{
-                let reducedValue = this.detail(this.state.value, step, 'reduce');
+                let reducedValue = this.detail(value, step, 'reduce');
                 if(reducedValue >= min){
                     value = reducedValue;
                 }
@@ -163,7 +163,7 @@ class InputNumber extends Component {
         }
 
         if(value > max){
-            value = this.detail(max, step, 'reduce');
+            value = max;
         }
 
         this.setState({
@@ -196,23 +196,22 @@ class InputNumber extends Component {
 
     }
 
-    plus = () => {
+    plus = (value) => {
         const {max, min, step, onChange} = this.props;
-        let { value } = this.state;
         if(typeof max === "undefined"){
-            value = this.detail(this.state.value, step, 'add');
+            value = this.detail(value, step, 'add');
         }else{
             if(value > max){
                 value = max;
             }else{
-                let addedValue = this.detail(this.state.value, step, 'add');
+                let addedValue = this.detail(value, step, 'add');
                 if(addedValue <= max){
                     value = addedValue;
                 }
             }
         }
         if(value < min){
-            value = this.detail(min, step, 'add');
+            value = min;
         }
         this.setState({
             value
@@ -221,9 +220,6 @@ class InputNumber extends Component {
         this.detailDisable(value);
     }
 
-    onBlur = () => {
-
-    }
 
     clear = () => {
         if (this.timer) {
@@ -233,7 +229,8 @@ class InputNumber extends Component {
 
     handlePlusMouseDown = (e) => {
         let {delay} = this.props;
-        this.plus();
+        let {value} = this.state;
+        this.plus(value);
         this.clear();
         this.timer = setTimeout(() => {
             this.handlePlusMouseDown();
@@ -242,7 +239,8 @@ class InputNumber extends Component {
 
     handleReduceMouseDown = (e) => {
         let {delay} = this.props;
-        this.minus();
+        let {value} = this.state;
+        this.minus(value);
         this.clear();
         this.timer = setTimeout(() => {
             this.handleReduceMouseDown();
