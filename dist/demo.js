@@ -80,7 +80,7 @@
 	
 	var CARETUP = _react2['default'].createElement('i', { className: 'uf uf-arrow-up' });
 	
-	var Demo1 = __webpack_require__(116);var Demo2 = __webpack_require__(117);var Demo3 = __webpack_require__(118);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 这是标题", "code": "/**\n *\n * @title 这是标题\n * @description 这是描述\n *\n */\n\n\nimport React, {Component} from 'react';\nimport InputNumber from 'bee-input-number';\n\nclass Demo1 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\n    render() {\n        return (\n            <div>\n                <InputNumber precision={2} min={0} value={this.state.value} onChange={ this.handleChange }/>\n            </div>\n        )\n    }\n}\n\n", "desc": " 这是描述" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 这是标题", "code": "/**\n*\n* @title 这是标题\n* @description 自定义max=12,min=5,step=0.1\n*\n*/\n\nimport React, { Component } from 'react';\nimport InputNumber from 'bee-input-number';\n\nclass Demo2 extends Component {\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber max={12} min={5} step={0.1}/>\n\t\t)\n\t}\n}\n\n", "desc": " 自定义max=12,min=5,step=0.1" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 这是标题", "code": "/**\n*\n* @title 这是标题\n* @description 自定义max=12,min=5,step=2\n*\n*/\n\nimport React, { Component } from 'react';\nimport InputNumber from 'bee-input-number'; \n\nclass Demo3 extends Component {\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber iconStyle=\"one\" max={12} min={5} step={2}/>\n\t\t)\n\t}\n}\n\n", "desc": " 自定义max=12,min=5,step=2" }];
+	var Demo1 = __webpack_require__(116);var Demo2 = __webpack_require__(117);var Demo3 = __webpack_require__(118);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 这是标题", "code": "/**\n *\n * @title 这是标题\n * @description 这是描述\n *\n */\n\n\nimport React, {Component} from 'react';\nimport InputNumber from 'bee-input-number';\n\nclass Demo1 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\n    render() {\n        return (\n            <div>\n                <InputNumber precision={2} min={0} value={this.state.value} onChange={ this.handleChange }/>\n            </div>\n        )\n    }\n}\n\n", "desc": " 这是描述" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 这是标题", "code": "/**\n*\n* @title 这是标题\n* @description 自定义max=12,min=5,step=0.1\n*\n*/\n\nimport React, { Component } from 'react';\nimport InputNumber from 'bee-input-number';\n\nclass Demo2 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\tmax={12}\n\t\t\t\tmin={5}\n\t\t\t\tstep={0.1}\n\t\t\t\tvalue={this.state.value}\n\t\t\t\tonChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\n", "desc": " 自定义max=12,min=5,step=0.1" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 这是标题", "code": "/**\n*\n* @title 这是标题\n* @description 自定义max=12,min=5,step=2\n*\n*/\n\nimport React, { Component } from 'react';\nimport InputNumber from 'bee-input-number'; \n\nclass Demo3 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\ticonStyle=\"one\"\n\t\t\t\tmax={12}\n\t\t\t\tmin={5}\n\t\t\t\tstep={2}\n\t\t\t\tvalue={this.state.value}\n\t\t\t\tonChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\n", "desc": " 自定义max=12,min=5,step=2" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -7873,6 +7873,36 @@
 	    delay: 300
 	};
 	
+	function judgeValue(props) {
+	    var currentValue = void 0;
+	    var currentMinusDisabled = false;
+	    var currentPlusDisabled = false;
+	
+	    if (props.value) {
+	        currentValue = Number(props.value) || 0;
+	    } else if (props.min) {
+	        currentValue = props.min;
+	    } else {
+	        currentValue = 0;
+	    }
+	    if (currentValue <= props.min) {
+	        currentMinusDisabled = true;
+	    }
+	    if (currentValue >= props.max) {
+	        currentPlusDisabled = true;
+	    }
+	
+	    if (props.hasOwnProperty('precision')) {
+	        currentValue = currentValue.toFixed(props.precision);
+	    }
+	
+	    return {
+	        value: currentValue,
+	        minusDisabled: currentMinusDisabled,
+	        plusDisabled: currentPlusDisabled
+	    };
+	}
+	
 	var InputNumber = function (_Component) {
 	    _inherits(InputNumber, _Component);
 	
@@ -7880,6 +7910,7 @@
 	        _classCallCheck(this, InputNumber);
 	
 	        // 初始化状态，加减按钮是否可用，根据当前值判断
+	
 	        var _this = _possibleConstructorReturn(this, _Component.call(this, props));
 	
 	        _this.handleChange = function (value) {
@@ -8079,40 +8110,30 @@
 	            }, delay);
 	        };
 	
-	        var currentValue = void 0;
-	        var currentMinusDisabled = false;
-	        var currentPlusDisabled = false;
-	
-	        if (props.value) {
-	            currentValue = Number(props.value) || 0;
-	        } else if (props.min) {
-	            currentValue = props.min;
-	        } else {
-	            currentValue = 0;
-	        }
-	        if (currentValue <= props.min) {
-	            currentMinusDisabled = true;
-	        }
-	        if (currentValue >= props.max) {
-	            currentPlusDisabled = true;
-	        }
-	
-	        if (props.hasOwnProperty('precision')) {
-	            currentValue = currentValue.toFixed(props.precision);
-	        }
+	        var data = judgeValue(props);
 	
 	        _this.state = {
-	            value: currentValue,
-	            minusDisabled: currentMinusDisabled,
-	            plusDisabled: currentPlusDisabled
+	            value: data.value,
+	            minusDisabled: data.minusDisabled,
+	            plusDisabled: data.plusDisabled
 	        };
 	
 	        _this.timer = null;
-	        _this.tempStorage = currentValue;
+	        _this.tempStorage = data.value;
 	        return _this;
 	    }
 	
 	    InputNumber.prototype.ComponentWillMount = function ComponentWillMount() {};
+	
+	    InputNumber.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+	        var data = judgeValue(nextProps);
+	        this.setState({
+	            value: data.value,
+	            minusDisabled: data.minusDisabled,
+	            plusDisabled: data.plusDisabled
+	        });
+	        this.tempStorage = data.value;
+	    };
 	
 	    InputNumber.prototype.ComponentWillUnMount = function ComponentWillUnMount() {
 	        this.clear();
@@ -8822,7 +8843,7 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	    value: true
 	});
 	
 	var _react = __webpack_require__(4);
@@ -8849,19 +8870,36 @@
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
 	
 	var Demo2 = function (_Component) {
-		_inherits(Demo2, _Component);
+	    _inherits(Demo2, _Component);
 	
-		function Demo2() {
-			_classCallCheck(this, Demo2);
+	    function Demo2(props) {
+	        _classCallCheck(this, Demo2);
 	
-			return _possibleConstructorReturn(this, _Component.apply(this, arguments));
-		}
+	        var _this = _possibleConstructorReturn(this, _Component.call(this, props));
 	
-		Demo2.prototype.render = function render() {
-			return _react2['default'].createElement(_src2['default'], { max: 12, min: 5, step: 0.1 });
-		};
+	        _this.handleChange = function (value) {
+	            _this.setState({
+	                value: value
+	            });
+	        };
 	
-		return Demo2;
+	        _this.state = {
+	            value: 0
+	        };
+	        return _this;
+	    }
+	
+	    Demo2.prototype.render = function render() {
+	        return _react2['default'].createElement(_src2['default'], {
+	            max: 12,
+	            min: 5,
+	            step: 0.1,
+	            value: this.state.value,
+	            onChange: this.handleChange
+	        });
+	    };
+	
+	    return Demo2;
 	}(_react.Component);
 	
 	exports['default'] = Demo2;
@@ -8874,7 +8912,7 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+					value: true
 	});
 	
 	var _react = __webpack_require__(4);
@@ -8901,19 +8939,37 @@
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
 	
 	var Demo3 = function (_Component) {
-		_inherits(Demo3, _Component);
+					_inherits(Demo3, _Component);
 	
-		function Demo3() {
-			_classCallCheck(this, Demo3);
+					function Demo3(props) {
+									_classCallCheck(this, Demo3);
 	
-			return _possibleConstructorReturn(this, _Component.apply(this, arguments));
-		}
+									var _this = _possibleConstructorReturn(this, _Component.call(this, props));
 	
-		Demo3.prototype.render = function render() {
-			return _react2['default'].createElement(_src2['default'], { iconStyle: 'one', max: 12, min: 5, step: 2 });
-		};
+									_this.handleChange = function (value) {
+													_this.setState({
+																	value: value
+													});
+									};
 	
-		return Demo3;
+									_this.state = {
+													value: 0
+									};
+									return _this;
+					}
+	
+					Demo3.prototype.render = function render() {
+									return _react2['default'].createElement(_src2['default'], {
+													iconStyle: 'one',
+													max: 12,
+													min: 5,
+													step: 2,
+													value: this.state.value,
+													onChange: this.handleChange
+									});
+					};
+	
+					return Demo3;
 	}(_react.Component);
 	
 	exports['default'] = Demo3;

@@ -60,6 +60,36 @@ var defaultProps = {
     delay: 300
 };
 
+function judgeValue(props) {
+    var currentValue = void 0;
+    var currentMinusDisabled = false;
+    var currentPlusDisabled = false;
+
+    if (props.value) {
+        currentValue = Number(props.value) || 0;
+    } else if (props.min) {
+        currentValue = props.min;
+    } else {
+        currentValue = 0;
+    }
+    if (currentValue <= props.min) {
+        currentMinusDisabled = true;
+    }
+    if (currentValue >= props.max) {
+        currentPlusDisabled = true;
+    }
+
+    if (props.hasOwnProperty('precision')) {
+        currentValue = currentValue.toFixed(props.precision);
+    }
+
+    return {
+        value: currentValue,
+        minusDisabled: currentMinusDisabled,
+        plusDisabled: currentPlusDisabled
+    };
+}
+
 var InputNumber = function (_Component) {
     _inherits(InputNumber, _Component);
 
@@ -67,6 +97,7 @@ var InputNumber = function (_Component) {
         _classCallCheck(this, InputNumber);
 
         // 初始化状态，加减按钮是否可用，根据当前值判断
+
         var _this = _possibleConstructorReturn(this, _Component.call(this, props));
 
         _this.handleChange = function (value) {
@@ -266,40 +297,30 @@ var InputNumber = function (_Component) {
             }, delay);
         };
 
-        var currentValue = void 0;
-        var currentMinusDisabled = false;
-        var currentPlusDisabled = false;
-
-        if (props.value) {
-            currentValue = Number(props.value) || 0;
-        } else if (props.min) {
-            currentValue = props.min;
-        } else {
-            currentValue = 0;
-        }
-        if (currentValue <= props.min) {
-            currentMinusDisabled = true;
-        }
-        if (currentValue >= props.max) {
-            currentPlusDisabled = true;
-        }
-
-        if (props.hasOwnProperty('precision')) {
-            currentValue = currentValue.toFixed(props.precision);
-        }
+        var data = judgeValue(props);
 
         _this.state = {
-            value: currentValue,
-            minusDisabled: currentMinusDisabled,
-            plusDisabled: currentPlusDisabled
+            value: data.value,
+            minusDisabled: data.minusDisabled,
+            plusDisabled: data.plusDisabled
         };
 
         _this.timer = null;
-        _this.tempStorage = currentValue;
+        _this.tempStorage = data.value;
         return _this;
     }
 
     InputNumber.prototype.ComponentWillMount = function ComponentWillMount() {};
+
+    InputNumber.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+        var data = judgeValue(nextProps);
+        this.setState({
+            value: data.value,
+            minusDisabled: data.minusDisabled,
+            plusDisabled: data.plusDisabled
+        });
+        this.tempStorage = data.value;
+    };
 
     InputNumber.prototype.ComponentWillUnMount = function ComponentWillUnMount() {
         this.clear();

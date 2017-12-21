@@ -24,50 +24,72 @@ const defaultProps = {
     delay: 300
 };
 
+function judgeValue(props) {
+    let currentValue;
+    let currentMinusDisabled = false;
+    let currentPlusDisabled = false;
+
+    if (props.value) {
+        currentValue = Number(props.value) || 0;
+    } else if (props.min) {
+        currentValue = props.min;
+    } else {
+        currentValue = 0;
+    }
+    if (currentValue <= props.min) {
+        currentMinusDisabled = true;
+    }
+    if (currentValue >= props.max) {
+        currentPlusDisabled = true;
+    }
+
+    if(props.hasOwnProperty('precision')){
+        currentValue = currentValue.toFixed(props.precision);
+    }
+
+    return {
+        value: currentValue,
+        minusDisabled: currentMinusDisabled,
+        plusDisabled: currentPlusDisabled
+    }
+}
+
 class InputNumber extends Component {
 
     constructor(props) {
         super(props);
         // 初始化状态，加减按钮是否可用，根据当前值判断
-        let currentValue;
-        let currentMinusDisabled = false;
-        let currentPlusDisabled = false;
 
-        if (props.value) {
-            currentValue = Number(props.value) || 0;
-        } else if (props.min) {
-            currentValue = props.min;
-        } else {
-            currentValue = 0;
-        }
-        if (currentValue <= props.min) {
-            currentMinusDisabled = true;
-        }
-        if (currentValue >= props.max) {
-            currentPlusDisabled = true;
-        }
-
-        if(props.hasOwnProperty('precision')){
-            currentValue = currentValue.toFixed(props.precision);
-        }
+        let data = judgeValue(props);
 
         this.state = {
-            value: currentValue,
-            minusDisabled: currentMinusDisabled,
-            plusDisabled: currentPlusDisabled
+            value: data.value,
+            minusDisabled: data.minusDisabled,
+            plusDisabled: data.plusDisabled
         }
 
         this.timer = null;
-        this.tempStorage = currentValue;
+        this.tempStorage = data.value;
     }
 
     ComponentWillMount() {
 
     }
+    componentWillReceiveProps(nextProps){
+        let data = judgeValue(nextProps);
+        this.setState({
+            value: data.value,
+            minusDisabled: data.minusDisabled,
+            plusDisabled: data.plusDisabled
+        });
+        this.tempStorage = data.value;
+    }
 
     ComponentWillUnMount() {
         this.clear();
     }
+
+
 
     handleChange = (value) => {
         const {onChange, min, max} = this.props;
