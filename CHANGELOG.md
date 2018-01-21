@@ -1,10 +1,10 @@
 <a name="1.1.0"></a>
-# [1.1.0](https://github.com/tinper-bee/bee-input-number/compare/1.0.5...1.1.0) (2017-12-21)
+# [1.1.0](https://github.com/tinper-bee/bee-input-number/compare/1.0.4...1.1.0) (2018-01-21)
 
 
 
-<a name="1.0.5"></a>
-## [1.0.5](https://github.com/tinper-bee/bee-input-number/compare/b95f340...1.0.5) (2017-11-20)
+<a name="1.0.4"></a>
+## [1.0.4](https://github.com/tinper-bee/bee-input-number/compare/b95f340...1.0.4) (2017-11-10)
 
 
 ### Bug Fixes
