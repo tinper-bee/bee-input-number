@@ -1,5 +1,7 @@
 @import "../node_modules/tinper-bee-core/scss/minxin-variables";
 @import "../node_modules/tinper-bee-core/scss/minxin-mixins";
+@import "../node_modules/bee-form-control/src/FormControl.scss";
+@import "../node_modules/bee-input-group/src/InputGroup.scss";
 
 .u-input-number {
   &.u-input-group.simple .u-input-group-btn {
