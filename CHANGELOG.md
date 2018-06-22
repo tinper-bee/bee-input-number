@@ -1,3 +1,13 @@
+<a name="1.1.3"></a>
+## [1.1.3](https://github.com/tinper-bee/bee-input-number/compare/v1.1.1...v1.1.3) (2018-06-22)
+
+
+### Bug Fixes
+
+* **bee-input-number:** 样式受bee-input-group 的min-width影响 ([1997abd](https://github.com/tinper-bee/bee-input-number/commit/1997abd))
+
+
+
 <a name="1.1.1"></a>
 ## [1.1.1](https://github.com/tinper-bee/bee-input-number/compare/1.1.0...v1.1.1) (2018-06-22)
 
