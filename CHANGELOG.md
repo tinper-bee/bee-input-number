@@ -1,5 +1,5 @@
 <a name="1.1.1"></a>
-## [1.1.1](https://github.com/tinper-bee/bee-input-number/compare/1.1.0...1.1.1) (2018-06-22)
+## [1.1.1](https://github.com/tinper-bee/bee-input-number/compare/1.1.0...v1.1.1) (2018-06-22)
 
 
 ### Bug Fixes
