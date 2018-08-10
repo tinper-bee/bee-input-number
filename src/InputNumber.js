@@ -12,7 +12,8 @@ const propTypes = {
     autoWidth: PropTypes.bool,
     precision: PropTypes.number,
     format: PropTypes.func,
-    delay: PropTypes.number
+    delay: PropTypes.number,
+    disabled:PropTypes.bool
 };
 
 const defaultProps = {
@@ -250,7 +251,8 @@ class InputNumber extends Component {
     }
 
     handlePlusMouseDown = (e) => {
-        let {delay} = this.props;
+        let {delay,disabled} = this.props;
+        if(disabled)return;
         let {value} = this.state;
         this.plus(value);
         this.clear();
@@ -270,7 +272,7 @@ class InputNumber extends Component {
     }
 
     render() {
-        const {max, min, step, clsPrefix, className, delay, onBlur, onFocus, iconStyle, autoWidth, onChange, format, precision, ...others} = this.props;
+        const {max, min, step, clsPrefix, className, disabled,delay, onBlur, onFocus, iconStyle, autoWidth, onChange, format, precision, ...others} = this.props;
 
         let classes = {
             [`${clsPrefix}-auto`]: autoWidth,
@@ -279,15 +281,17 @@ class InputNumber extends Component {
 
         let {value, minusDisabled, plusDisabled} = this.state;
 
-
         value = format ? format(value) : value;
+        let _class = disabled?'disabled':plusDisabled && 'disabled';
+
         return (
             <div>
                 {
                     iconStyle === 'double' ? (
                         <InputGroup className={classnames(className, classes)}>
                             <InputGroup.Addon
-                                className={ minusDisabled && 'disabled'}
+                            // className={plusDisabled && 'disabled'}
+                                className={_class}
                                 onMouseDown={ this.handleReduceMouseDown}
                                 onMouseLeave={ this.clear }
                                 onMouseUp={ this.clear }>
@@ -295,13 +299,15 @@ class InputNumber extends Component {
                             </InputGroup.Addon>
                             <FormControl
                                 {...others}
+                                disabled
                                 value={value}
                                 onBlur={ this.handleBlur }
                                 onFocus={this.handleFocus}
                                 onChange={ this.handleChange }
                             />
                             <InputGroup.Addon
-                                className={plusDisabled && 'disabled'}
+                                // className={plusDisabled && 'disabled'}
+                                className={_class}
                                 onMouseDown={ this.handlePlusMouseDown}
                                 onMouseLeave={ this.clear }
                                 onMouseUp={ this.clear }>

@@ -76,7 +76,7 @@
 	
 	var CARETUP = _react2['default'].createElement('i', { className: 'uf uf-arrow-up' });
 	
-	var Demo1 = __webpack_require__(105);var Demo2 = __webpack_require__(117);var Demo3 = __webpack_require__(118);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 这是标题", "code": "/**\n *\n * @title 这是标题\n * @description 这是描述\n *\n */\n\n\nimport React, {Component} from 'react';\nimport { InputNumber } from 'tinper-bee';\n\nclass Demo1 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\n    render() {\n        return (\n            <div>\n                <InputNumber precision={2} min={0} value={this.state.value} onChange={ this.handleChange }/>\n            </div>\n        )\n    }\n}\n\n", "desc": " 这是描述" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 这是标题", "code": "/**\n*\n* @title 这是标题\n* @description 自定义max=12,min=5,step=0.1\n*\n*/\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\n\nclass Demo2 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\tmax={12}\n\t\t\t\tmin={5}\n\t\t\t\tstep={0.1}\n\t\t\t\tvalue={this.state.value}\n\t\t\t\tonChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\n", "desc": " 自定义max=12,min=5,step=0.1" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 这是标题", "code": "/**\n*\n* @title 这是标题\n* @description 自定义max=12,min=5,step=2\n*\n*/\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee'; \n\nclass Demo3 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\ticonStyle=\"one\"\n\t\t\t\tmax={12}\n\t\t\t\tmin={5}\n\t\t\t\tstep={2}\n\t\t\t\tvalue={this.state.value}\n\t\t\t\tonChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\n", "desc": " 自定义max=12,min=5,step=2" }];
+	var Demo1 = __webpack_require__(105);var Demo2 = __webpack_require__(117);var Demo3 = __webpack_require__(118);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 这是标题", "code": "/**\n *\n * @title 这是标题\n * @description 这是描述\n *\n */\n\n\nimport React, {Component} from 'react';\nimport { InputNumber } from 'tinper-bee';\n\nclass Demo1 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\n    render() {\n        return (\n            <div>\n                <InputNumber disabled precision={2} min={0} value={this.state.value} onChange={ this.handleChange }/>\n            </div>\n        )\n    }\n}\n\n", "desc": " 这是描述" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 这是标题", "code": "/**\n*\n* @title 这是标题\n* @description 自定义max=12,min=5,step=0.1\n*\n*/\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\n\nclass Demo2 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\tmax={12}\n\t\t\t\tmin={5}\n\t\t\t\tstep={0.1}\n\t\t\t\tvalue={this.state.value}\n\t\t\t\tonChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\n", "desc": " 自定义max=12,min=5,step=0.1" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 这是标题", "code": "/**\n*\n* @title 这是标题\n* @description 自定义max=12,min=5,step=2\n*\n*/\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee'; \n\nclass Demo3 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\ticonStyle=\"one\"\n\t\t\t\tmax={12}\n\t\t\t\tmin={5}\n\t\t\t\tstep={2}\n\t\t\t\tvalue={this.state.value}\n\t\t\t\tonChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\n", "desc": " 自定义max=12,min=5,step=2" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -576,7 +576,7 @@
 	  /**
 	   * You can use a custom element for this component
 	   */
-	  componentClass: _propTypes2["default"].oneOfType([_propTypes2["default"].element, _propTypes2["default"].string])
+	  componentClass: _propTypes2["default"].oneOf([_propTypes2["default"].element, _propTypes2["default"].string])
 	};
 	
 	var defaultProps = {
@@ -7856,7 +7856,7 @@
 	        return _react2['default'].createElement(
 	            'div',
 	            null,
-	            _react2['default'].createElement(_src2['default'], { precision: 2, min: 0, value: this.state.value, onChange: this.handleChange })
+	            _react2['default'].createElement(_src2['default'], { disabled: true, precision: 2, min: 0, value: this.state.value, onChange: this.handleChange })
 	        );
 	    };
 	
@@ -7939,7 +7939,8 @@
 	    autoWidth: _propTypes2['default'].bool,
 	    precision: _propTypes2['default'].number,
 	    format: _propTypes2['default'].func,
-	    delay: _propTypes2['default'].number
+	    delay: _propTypes2['default'].number,
+	    disabled: _propTypes2['default'].bool
 	};
 	
 	var defaultProps = {
@@ -8167,7 +8168,11 @@
 	        };
 	
 	        _this.handlePlusMouseDown = function (e) {
-	            var delay = _this.props.delay;
+	            var _this$props7 = _this.props,
+	                delay = _this$props7.delay,
+	                disabled = _this$props7.disabled;
+	
+	            if (disabled) return;
 	            var value = _this.state.value;
 	
 	            _this.plus(value);
@@ -8233,6 +8238,7 @@
 	            step = _props.step,
 	            clsPrefix = _props.clsPrefix,
 	            className = _props.className,
+	            disabled = _props.disabled,
 	            delay = _props.delay,
 	            onBlur = _props.onBlur,
 	            onFocus = _props.onFocus,
@@ -8241,7 +8247,7 @@
 	            onChange = _props.onChange,
 	            format = _props.format,
 	            precision = _props.precision,
-	            others = _objectWithoutProperties(_props, ['max', 'min', 'step', 'clsPrefix', 'className', 'delay', 'onBlur', 'onFocus', 'iconStyle', 'autoWidth', 'onChange', 'format', 'precision']);
+	            others = _objectWithoutProperties(_props, ['max', 'min', 'step', 'clsPrefix', 'className', 'disabled', 'delay', 'onBlur', 'onFocus', 'iconStyle', 'autoWidth', 'onChange', 'format', 'precision']);
 	
 	        var classes = (_classes = {}, _defineProperty(_classes, clsPrefix + '-auto', autoWidth), _defineProperty(_classes, '' + clsPrefix, true), _classes);
 	
@@ -8252,6 +8258,8 @@
 	
 	
 	        value = format ? format(value) : value;
+	        var _class = disabled ? 'disabled' : plusDisabled && 'disabled';
+	
 	        return _react2['default'].createElement(
 	            'div',
 	            null,
@@ -8261,13 +8269,15 @@
 	                _react2['default'].createElement(
 	                    _beeInputGroup2['default'].Addon,
 	                    {
-	                        className: minusDisabled && 'disabled',
+	                        // className={plusDisabled && 'disabled'}
+	                        className: _class,
 	                        onMouseDown: this.handleReduceMouseDown,
 	                        onMouseLeave: this.clear,
 	                        onMouseUp: this.clear },
 	                    '-'
 	                ),
 	                _react2['default'].createElement(_beeFormControl2['default'], _extends({}, others, {
+	                    disabled: true,
 	                    value: value,
 	                    onBlur: this.handleBlur,
 	                    onFocus: this.handleFocus,
@@ -8276,7 +8286,8 @@
 	                _react2['default'].createElement(
 	                    _beeInputGroup2['default'].Addon,
 	                    {
-	                        className: plusDisabled && 'disabled',
+	                        // className={plusDisabled && 'disabled'}
+	                        className: _class,
 	                        onMouseDown: this.handlePlusMouseDown,
 	                        onMouseLeave: this.clear,
 	                        onMouseUp: this.clear },
@@ -8603,6 +8614,10 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _reactDom = __webpack_require__(12);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
 	var _classnames = __webpack_require__(3);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
@@ -8620,6 +8635,8 @@
 	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
 	
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+	
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -8653,10 +8670,7 @@
 	      var value = e.target.value;
 	      var onChange = _this.props.onChange;
 	
-	      _this.setState({
-	        value: value,
-	        showSearch: value == null || value === ""
-	      });
+	      _this.setState(_defineProperty({ value: value, showSearch: false }, 'showSearch', value == ""));
 	      if (onChange) {
 	        onChange(value);
 	      }
@@ -8668,7 +8682,7 @@
 	
 	    _this.state = {
 	      showSearch: true,
-	      value: props.value == null ? "" : props.value
+	      value: props.value || ""
 	    };
 	    _this.input = {};
 	    return _this;
@@ -8698,7 +8712,7 @@
 	    if (size) {
 	      classes['' + size] = true;
 	    }
-	    if (type === "search") {
+	    if (type == "search") {
 	      classes['u-input-search'] = true;
 	    }
 	
@@ -8707,7 +8721,7 @@
 	      classNames = (0, _classnames2["default"])(clsPrefix, classes);
 	    }
 	
-	    if (type === "search") {
+	    if (type == "search") {
 	
 	      return _react2["default"].createElement(
 	        'span',
