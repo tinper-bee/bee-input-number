@@ -272,11 +272,7 @@ class InputNumber extends Component {
     }
 
     render() {
-<<<<<<< HEAD
         const {max, min, step,disabled, clsPrefix, className, delay, onBlur, onFocus, iconStyle, autoWidth, onChange, format, precision, ...others} = this.props;
-=======
-        const {max, min, step, clsPrefix, className, disabled,delay, onBlur, onFocus, iconStyle, autoWidth, onChange, format, precision, ...others} = this.props;
->>>>>>> e124e5b8fa8698f0b23a30d0b4fdfb0c0d5d5eb6
 
         let classes = {
             [`${clsPrefix}-auto`]: autoWidth,
@@ -286,12 +282,8 @@ class InputNumber extends Component {
         let {value, minusDisabled, plusDisabled} = this.state;
 
         value = format ? format(value) : value;
-<<<<<<< HEAD
 
         let disabledCursor = disabled? ' disabled-cursor':'';
-=======
-        let _class = disabled?'disabled':plusDisabled && 'disabled';
->>>>>>> e124e5b8fa8698f0b23a30d0b4fdfb0c0d5d5eb6
 
         return (
             <div>
@@ -299,12 +291,7 @@ class InputNumber extends Component {
                     iconStyle === 'double' ? (
                         <InputGroup className={classnames(className, classes)}>
                             <InputGroup.Addon
-<<<<<<< HEAD
                                 className={(minusDisabled && 'disabled' ) + disabledCursor}
-=======
-                            // className={plusDisabled && 'disabled'}
-                                className={_class}
->>>>>>> e124e5b8fa8698f0b23a30d0b4fdfb0c0d5d5eb6
                                 onMouseDown={ this.handleReduceMouseDown}
                                 onMouseLeave={ this.clear }
                                 onMouseUp={ this.clear }>
@@ -320,12 +307,7 @@ class InputNumber extends Component {
                                 onChange={ this.handleChange }
                             />
                             <InputGroup.Addon
-<<<<<<< HEAD
                                 className={(plusDisabled && 'disabled' ) + disabledCursor}
-=======
-                                // className={plusDisabled && 'disabled'}
-                                className={_class}
->>>>>>> e124e5b8fa8698f0b23a30d0b4fdfb0c0d5d5eb6
                                 onMouseDown={ this.handlePlusMouseDown}
                                 onMouseLeave={ this.clear }
                                 onMouseUp={ this.clear }>

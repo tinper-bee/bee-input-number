@@ -339,7 +339,7 @@ var InputNumber = function (_Component) {
 
 
     InputNumber.prototype.render = function render() {
-        var _classes;
+        var _classes, _extends2;
 
         var _props = this.props,
             max = _props.max,
@@ -348,7 +348,6 @@ var InputNumber = function (_Component) {
             disabled = _props.disabled,
             clsPrefix = _props.clsPrefix,
             className = _props.className,
-            disabled = _props.disabled,
             delay = _props.delay,
             onBlur = _props.onBlur,
             onFocus = _props.onFocus,
@@ -357,11 +356,7 @@ var InputNumber = function (_Component) {
             onChange = _props.onChange,
             format = _props.format,
             precision = _props.precision,
-<<<<<<< HEAD
             others = _objectWithoutProperties(_props, ['max', 'min', 'step', 'disabled', 'clsPrefix', 'className', 'delay', 'onBlur', 'onFocus', 'iconStyle', 'autoWidth', 'onChange', 'format', 'precision']);
-=======
-            others = _objectWithoutProperties(_props, ['max', 'min', 'step', 'clsPrefix', 'className', 'disabled', 'delay', 'onBlur', 'onFocus', 'iconStyle', 'autoWidth', 'onChange', 'format', 'precision']);
->>>>>>> e124e5b8fa8698f0b23a30d0b4fdfb0c0d5d5eb6
 
         var classes = (_classes = {}, _defineProperty(_classes, clsPrefix + '-auto', autoWidth), _defineProperty(_classes, '' + clsPrefix, true), _classes);
 
@@ -372,12 +367,8 @@ var InputNumber = function (_Component) {
 
 
         value = format ? format(value) : value;
-<<<<<<< HEAD
 
         var disabledCursor = disabled ? ' disabled-cursor' : '';
-=======
-        var _class = disabled ? 'disabled' : plusDisabled && 'disabled';
->>>>>>> e124e5b8fa8698f0b23a30d0b4fdfb0c0d5d5eb6
 
         return _react2["default"].createElement(
             'div',
@@ -388,34 +379,20 @@ var InputNumber = function (_Component) {
                 _react2["default"].createElement(
                     _beeInputGroup2["default"].Addon,
                     {
-<<<<<<< HEAD
                         className: (minusDisabled && 'disabled') + disabledCursor,
-=======
-                        // className={plusDisabled && 'disabled'}
-                        className: _class,
->>>>>>> e124e5b8fa8698f0b23a30d0b4fdfb0c0d5d5eb6
                         onMouseDown: this.handleReduceMouseDown,
                         onMouseLeave: this.clear,
                         onMouseUp: this.clear },
                     '-'
                 ),
-                _react2["default"].createElement(_beeFormControl2["default"], _extends({}, others, {
+                _react2["default"].createElement(_beeFormControl2["default"], _extends({}, others, (_extends2 = {
                     disabled: true,
-                    value: value,
-                    disabled: disabled,
-                    onBlur: this.handleBlur,
-                    onFocus: this.handleFocus,
-                    onChange: this.handleChange
-                })),
+                    value: value
+                }, _defineProperty(_extends2, 'disabled', disabled), _defineProperty(_extends2, 'onBlur', this.handleBlur), _defineProperty(_extends2, 'onFocus', this.handleFocus), _defineProperty(_extends2, 'onChange', this.handleChange), _extends2))),
                 _react2["default"].createElement(
                     _beeInputGroup2["default"].Addon,
                     {
-<<<<<<< HEAD
                         className: (plusDisabled && 'disabled') + disabledCursor,
-=======
-                        // className={plusDisabled && 'disabled'}
-                        className: _class,
->>>>>>> e124e5b8fa8698f0b23a30d0b4fdfb0c0d5d5eb6
                         onMouseDown: this.handlePlusMouseDown,
                         onMouseLeave: this.clear,
                         onMouseUp: this.clear },
