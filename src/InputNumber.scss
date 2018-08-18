@@ -40,6 +40,9 @@
           background: #ffe;
           color: #ccc;
         }
+        &.disabled-cursor {
+          cursor: not-allowed;
+        }
       }
       .reduce {
         position: relative;
@@ -60,6 +63,9 @@
           cursor: not-allowed;
           background: #ffe;
           color: #ccc;
+        }
+        &.disabled-cursor {
+          cursor: not-allowed;
         }
       }
       .uf {
@@ -90,6 +96,9 @@
       cursor: not-allowed;
       background: #ffe;
       color: #ccc;
+    }
+    &.disabled-cursor {
+      cursor: not-allowed;
     }
   }
   .u-input-number-auto .u-form-control {

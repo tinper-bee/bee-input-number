@@ -76,7 +76,7 @@
 	
 	var CARETUP = _react2['default'].createElement('i', { className: 'uf uf-arrow-up' });
 	
-	var Demo1 = __webpack_require__(105);var Demo2 = __webpack_require__(117);var Demo3 = __webpack_require__(118);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 这是标题", "code": "/**\n *\n * @title 这是标题\n * @description 这是描述\n *\n */\n\n\nimport React, {Component} from 'react';\nimport { InputNumber } from 'tinper-bee';\n\nclass Demo1 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\n    render() {\n        return (\n            <div>\n                <InputNumber precision={2} min={0} value={this.state.value} onChange={ this.handleChange }/>\n            </div>\n        )\n    }\n}\n\n", "desc": " 这是描述" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 这是标题", "code": "/**\n*\n* @title 这是标题\n* @description 自定义max=12,min=5,step=0.1\n*\n*/\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\n\nclass Demo2 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\tmax={12}\n\t\t\t\tmin={5}\n\t\t\t\tstep={0.1}\n\t\t\t\tvalue={this.state.value}\n\t\t\t\tonChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\n", "desc": " 自定义max=12,min=5,step=0.1" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 这是标题", "code": "/**\n*\n* @title 这是标题\n* @description 自定义max=12,min=5,step=2\n*\n*/\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee'; \n\nclass Demo3 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\ticonStyle=\"one\"\n\t\t\t\tmax={12}\n\t\t\t\tmin={5}\n\t\t\t\tstep={2}\n\t\t\t\tvalue={this.state.value}\n\t\t\t\tonChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\n", "desc": " 自定义max=12,min=5,step=2" }];
+	var Demo1 = __webpack_require__(105);var Demo2 = __webpack_require__(117);var Demo3 = __webpack_require__(118);var Demo4 = __webpack_require__(119);var Demo5 = __webpack_require__(120);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 数组选择控件 ", "code": "/**\n *\n* @title 数组选择控件 \n * @description 最简单输入控制\n *\n */\n\n\nimport React, {Component} from 'react';\nimport { InputNumber } from 'tinper-bee';\n\nclass Demo1 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\n    render() {\n        return (\n            <div>\n                <InputNumber precision={2} min={0} value={this.state.value} onChange={ this.handleChange }/>\n            </div>\n        )\n    }\n}\n\n", "desc": " 最简单输入控制" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 数组选择控件", "code": "/**\n*\n* @title 数组选择控件\n* @description 自定义max=12,min=5,step=0.1\n*\n*/\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\n\nclass Demo2 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\tmax={12}\n\t\t\t\tmin={5}\n\t\t\t\tstep={0.1}\n\t\t\t\tvalue={this.state.value}\n\t\t\t\tonChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\n", "desc": " 自定义max=12,min=5,step=0.1" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 数组选择控件", "code": "/**\n*\n* @title 数组选择控件\n* @description 自定义max=12,min=5,step=2\n*\n*/\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee'; \n\nclass Demo3 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\ticonStyle=\"one\"\n\t\t\t\tmax={12}\n\t\t\t\tmin={5}\n\t\t\t\tstep={2}\n\t\t\t\tvalue={this.state.value}\n\t\t\t\tonChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\n", "desc": " 自定义max=12,min=5,step=2" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 数组选择控件 ", "code": "/**\n *\n * @title 数组选择控件 \n * @description disabled 的单输入控制\n *\n */\n\n\nimport React, {Component} from 'react';\nimport { InputNumber } from 'tinper-bee';\n\nclass Demo4 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\n    render() {\n        return (\n            <div>\n                <InputNumber disabled precision={2} min={0} value={this.state.value} onChange={ this.handleChange }/>\n            </div>\n        )\n    }\n}\n\n", "desc": " disabled 的单输入控制" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 数组选择控件", "code": "/**\n*\n* @title 数组选择控件\n* @description 自定义max=12,min=5,step=2 且设置 disabled 处理\n*\n*/\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee'; \n\nclass Demo5 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\tdisabled\n\t\t\t\ticonStyle=\"one\"\n\t\t\t\tmax={12}\n\t\t\t\tmin={5}\n\t\t\t\tstep={2}\n\t\t\t\tvalue={this.state.value}\n\t\t\t\tonChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\n", "desc": " 自定义max=12,min=5,step=2 且设置 disabled 处理" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -576,7 +576,7 @@
 	  /**
 	   * You can use a custom element for this component
 	   */
-	  componentClass: _propTypes2["default"].oneOfType([_propTypes2["default"].element, _propTypes2["default"].string])
+	  componentClass: _propTypes2["default"].oneOf([_propTypes2["default"].element, _propTypes2["default"].string])
 	};
 	
 	var defaultProps = {
@@ -7827,8 +7827,8 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 这是标题
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 这是描述
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @title 数组选择控件 
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 最简单输入控制
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 	
@@ -8167,7 +8167,11 @@
 	        };
 	
 	        _this.handlePlusMouseDown = function (e) {
-	            var delay = _this.props.delay;
+	            var _this$props7 = _this.props,
+	                delay = _this$props7.delay,
+	                disabled = _this$props7.disabled;
+	
+	            if (disabled) return;
 	            var value = _this.state.value;
 	
 	            _this.plus(value);
@@ -8231,6 +8235,7 @@
 	            max = _props.max,
 	            min = _props.min,
 	            step = _props.step,
+	            disabled = _props.disabled,
 	            clsPrefix = _props.clsPrefix,
 	            className = _props.className,
 	            delay = _props.delay,
@@ -8241,7 +8246,7 @@
 	            onChange = _props.onChange,
 	            format = _props.format,
 	            precision = _props.precision,
-	            others = _objectWithoutProperties(_props, ['max', 'min', 'step', 'clsPrefix', 'className', 'delay', 'onBlur', 'onFocus', 'iconStyle', 'autoWidth', 'onChange', 'format', 'precision']);
+	            others = _objectWithoutProperties(_props, ['max', 'min', 'step', 'disabled', 'clsPrefix', 'className', 'delay', 'onBlur', 'onFocus', 'iconStyle', 'autoWidth', 'onChange', 'format', 'precision']);
 	
 	        var classes = (_classes = {}, _defineProperty(_classes, clsPrefix + '-auto', autoWidth), _defineProperty(_classes, '' + clsPrefix, true), _classes);
 	
@@ -8252,6 +8257,9 @@
 	
 	
 	        value = format ? format(value) : value;
+	
+	        var disabledCursor = disabled ? ' disabled-cursor' : '';
+	
 	        return _react2['default'].createElement(
 	            'div',
 	            null,
@@ -8261,7 +8269,7 @@
 	                _react2['default'].createElement(
 	                    _beeInputGroup2['default'].Addon,
 	                    {
-	                        className: minusDisabled && 'disabled',
+	                        className: (minusDisabled && 'disabled') + disabledCursor,
 	                        onMouseDown: this.handleReduceMouseDown,
 	                        onMouseLeave: this.clear,
 	                        onMouseUp: this.clear },
@@ -8269,6 +8277,7 @@
 	                ),
 	                _react2['default'].createElement(_beeFormControl2['default'], _extends({}, others, {
 	                    value: value,
+	                    disabled: disabled,
 	                    onBlur: this.handleBlur,
 	                    onFocus: this.handleFocus,
 	                    onChange: this.handleChange
@@ -8276,7 +8285,7 @@
 	                _react2['default'].createElement(
 	                    _beeInputGroup2['default'].Addon,
 	                    {
-	                        className: plusDisabled && 'disabled',
+	                        className: (plusDisabled && 'disabled') + disabledCursor,
 	                        onMouseDown: this.handlePlusMouseDown,
 	                        onMouseLeave: this.clear,
 	                        onMouseUp: this.clear },
@@ -8290,6 +8299,7 @@
 	                },
 	                _react2['default'].createElement(_beeFormControl2['default'], _extends({}, others, {
 	                    value: value,
+	                    disabled: disabled,
 	                    onBlur: this.handleBlur,
 	                    onFocus: this.handleFocus,
 	                    onChange: this.handleChange
@@ -8306,7 +8316,7 @@
 	                                onMouseDown: this.handlePlusMouseDown,
 	                                onMouseLeave: this.clear,
 	                                onMouseUp: this.clear,
-	                                className: (0, _classnames2['default'])('plus', { 'disabled': plusDisabled }) },
+	                                className: (0, _classnames2['default'])('plus', { 'disabled': plusDisabled, 'disabled-cursor': disabledCursor }) },
 	                            _react2['default'].createElement('span', { className: 'uf uf-arrow-up' })
 	                        ),
 	                        _react2['default'].createElement(
@@ -8315,7 +8325,7 @@
 	                                onMouseDown: this.handleReduceMouseDown,
 	                                onMouseLeave: this.clear,
 	                                onMouseUp: this.clear,
-	                                className: (0, _classnames2['default'])("reduce", { 'disabled': minusDisabled }) },
+	                                className: (0, _classnames2['default'])("reduce", { 'disabled': minusDisabled, 'disabled-cursor': disabledCursor }) },
 	                            _react2['default'].createElement('span', { className: ' uf uf-arrow-down' })
 	                        )
 	                    )
@@ -8603,6 +8613,10 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _reactDom = __webpack_require__(12);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
 	var _classnames = __webpack_require__(3);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
@@ -8620,6 +8634,8 @@
 	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
 	
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+	
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -8653,10 +8669,7 @@
 	      var value = e.target.value;
 	      var onChange = _this.props.onChange;
 	
-	      _this.setState({
-	        value: value,
-	        showSearch: value == null || value === ""
-	      });
+	      _this.setState(_defineProperty({ value: value, showSearch: false }, 'showSearch', value == ""));
 	      if (onChange) {
 	        onChange(value);
 	      }
@@ -8668,7 +8681,7 @@
 	
 	    _this.state = {
 	      showSearch: true,
-	      value: props.value == null ? "" : props.value
+	      value: props.value || ""
 	    };
 	    _this.input = {};
 	    return _this;
@@ -8698,7 +8711,7 @@
 	    if (size) {
 	      classes['' + size] = true;
 	    }
-	    if (type === "search") {
+	    if (type == "search") {
 	      classes['u-input-search'] = true;
 	    }
 	
@@ -8707,7 +8720,7 @@
 	      classNames = (0, _classnames2["default"])(clsPrefix, classes);
 	    }
 	
-	    if (type === "search") {
+	    if (type == "search") {
 	
 	      return _react2["default"].createElement(
 	        'span',
@@ -8875,7 +8888,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               *
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @title 这是标题
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @title 数组选择控件
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @description 自定义max=12,min=5,step=0.1
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               *
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
@@ -8944,7 +8957,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               *
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @title 这是标题
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @title 数组选择控件
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @description 自定义max=12,min=5,step=2
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               *
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
@@ -8984,6 +8997,144 @@
 	}(_react.Component);
 	
 	exports['default'] = Demo3;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 119 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(4);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _src = __webpack_require__(106);
+	
+	var _src2 = _interopRequireDefault(_src);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 数组选择控件 
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description disabled 的单输入控制
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+	
+	var Demo4 = function (_Component) {
+	    _inherits(Demo4, _Component);
+	
+	    function Demo4(props) {
+	        _classCallCheck(this, Demo4);
+	
+	        var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+	
+	        _this.handleChange = function (value) {
+	            _this.setState({
+	                value: value
+	            });
+	        };
+	
+	        _this.state = {
+	            value: 0
+	        };
+	        return _this;
+	    }
+	
+	    Demo4.prototype.render = function render() {
+	        return _react2['default'].createElement(
+	            'div',
+	            null,
+	            _react2['default'].createElement(_src2['default'], { disabled: true, precision: 2, min: 0, value: this.state.value, onChange: this.handleChange })
+	        );
+	    };
+	
+	    return Demo4;
+	}(_react.Component);
+	
+	exports['default'] = Demo4;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 120 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+					value: true
+	});
+	
+	var _react = __webpack_require__(4);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _src = __webpack_require__(106);
+	
+	var _src2 = _interopRequireDefault(_src);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               *
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @title 数组选择控件
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @description 自定义max=12,min=5,step=2 且设置 disabled 处理
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               *
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
+	
+	var Demo5 = function (_Component) {
+					_inherits(Demo5, _Component);
+	
+					function Demo5(props) {
+									_classCallCheck(this, Demo5);
+	
+									var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+	
+									_this.handleChange = function (value) {
+													_this.setState({
+																	value: value
+													});
+									};
+	
+									_this.state = {
+													value: 0
+									};
+									return _this;
+					}
+	
+					Demo5.prototype.render = function render() {
+									return _react2['default'].createElement(_src2['default'], {
+													disabled: true,
+													iconStyle: 'one',
+													max: 12,
+													min: 5,
+													step: 2,
+													value: this.state.value,
+													onChange: this.handleChange
+									});
+					};
+	
+					return Demo5;
+	}(_react.Component);
+	
+	exports['default'] = Demo5;
 	module.exports = exports['default'];
 
 /***/ })

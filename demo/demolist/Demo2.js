@@ -1,6 +1,6 @@
 /**
 *
-* @title 这是标题
+* @title 数组选择控件
 * @description 自定义max=12,min=5,step=0.1
 *
 */

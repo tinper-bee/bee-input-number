@@ -1,7 +1,7 @@
 /**
  *
-* @title 数组选择控件 
- * @description 最简单输入控制
+ * @title 数组选择控件 
+ * @description disabled 的单输入控制
  *
  */
 
@@ -9,7 +9,7 @@
 import React, {Component} from 'react';
 import InputNumber from '../../src';
 
-class Demo1 extends Component {
+class Demo4 extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -26,10 +26,10 @@ class Demo1 extends Component {
     render() {
         return (
             <div>
-                <InputNumber precision={2} min={0} value={this.state.value} onChange={ this.handleChange }/>
+                <InputNumber disabled precision={2} min={0} value={this.state.value} onChange={ this.handleChange }/>
             </div>
         )
     }
 }
 
-export default Demo1;
+export default Demo4;

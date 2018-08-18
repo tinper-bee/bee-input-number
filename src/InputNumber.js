@@ -250,7 +250,8 @@ class InputNumber extends Component {
     }
 
     handlePlusMouseDown = (e) => {
-        let {delay} = this.props;
+        let {delay,disabled} = this.props;
+        if(disabled)return;
         let {value} = this.state;
         this.plus(value);
         this.clear();
@@ -270,7 +271,7 @@ class InputNumber extends Component {
     }
 
     render() {
-        const {max, min, step, clsPrefix, className, delay, onBlur, onFocus, iconStyle, autoWidth, onChange, format, precision, ...others} = this.props;
+        const {max, min, step,disabled, clsPrefix, className, delay, onBlur, onFocus, iconStyle, autoWidth, onChange, format, precision, ...others} = this.props;
 
         let classes = {
             [`${clsPrefix}-auto`]: autoWidth,
@@ -279,15 +280,17 @@ class InputNumber extends Component {
 
         let {value, minusDisabled, plusDisabled} = this.state;
 
-
         value = format ? format(value) : value;
+
+        let disabledCursor = disabled? ' disabled-cursor':'';
+
         return (
             <div>
                 {
                     iconStyle === 'double' ? (
                         <InputGroup className={classnames(className, classes)}>
                             <InputGroup.Addon
-                                className={ minusDisabled && 'disabled'}
+                                className={(minusDisabled && 'disabled' ) + disabledCursor}
                                 onMouseDown={ this.handleReduceMouseDown}
                                 onMouseLeave={ this.clear }
                                 onMouseUp={ this.clear }>
@@ -296,12 +299,13 @@ class InputNumber extends Component {
                             <FormControl
                                 {...others}
                                 value={value}
+                                disabled={disabled}
                                 onBlur={ this.handleBlur }
                                 onFocus={this.handleFocus}
                                 onChange={ this.handleChange }
                             />
                             <InputGroup.Addon
-                                className={plusDisabled && 'disabled'}
+                                className={(plusDisabled && 'disabled' ) + disabledCursor}
                                 onMouseDown={ this.handlePlusMouseDown}
                                 onMouseLeave={ this.clear }
                                 onMouseUp={ this.clear }>
@@ -316,6 +320,7 @@ class InputNumber extends Component {
                             <FormControl
                                 {...others}
                                 value={value}
+                                disabled={disabled}
                                 onBlur={ this.handleBlur }
                                 onFocus={this.handleFocus}
                                 onChange={ this.handleChange }
@@ -326,14 +331,14 @@ class InputNumber extends Component {
                                     onMouseDown={ this.handlePlusMouseDown}
                                     onMouseLeave={ this.clear }
                                     onMouseUp={ this.clear }
-                                    className={classnames('plus',{'disabled': plusDisabled})}>
+                                    className={classnames('plus',{'disabled': plusDisabled,'disabled-cursor':disabledCursor})}>
                                     <span className="uf uf-arrow-up"/>
                                 </span>
                                     <span
                                         onMouseDown={ this.handleReduceMouseDown}
                                         onMouseLeave={ this.clear }
                                         onMouseUp={ this.clear }
-                                        className={classnames("reduce",{'disabled': minusDisabled})}>
+                                        className={classnames("reduce",{'disabled': minusDisabled,'disabled-cursor':disabledCursor})}>
                                         <span className=" uf uf-arrow-down"/>
                                 </span>
                                 </div>

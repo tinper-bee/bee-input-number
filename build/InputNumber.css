@@ -9,7 +9,7 @@
   width: 100%;
   height: 30px;
   cursor: text;
-  font-size: 14px;
+  font-size: 1.4rem;
   line-height: 1.5;
   color: #424242;
   background-color: #fff;
@@ -29,10 +29,10 @@
 
 .u-form-control.lg {
   height: 38px;
-  font-size: 14px; }
+  font-size: 1.4rem; }
 
 .u-form-control.sm {
-  font-size: 12px;
+  font-size: 1.2rem;
   height: 24px; }
 
 .u-input-search-wrapper {
@@ -204,6 +204,8 @@
         cursor: not-allowed;
         background: #ffe;
         color: #ccc; }
+      .u-input-number.u-input-group.simple .u-input-group-btn .icon-group .plus.disabled-cursor {
+        cursor: not-allowed; }
     .u-input-number.u-input-group.simple .u-input-group-btn .icon-group .reduce {
       position: relative;
       top: 0;
@@ -223,6 +225,8 @@
         cursor: not-allowed;
         background: #ffe;
         color: #ccc; }
+      .u-input-number.u-input-group.simple .u-input-group-btn .icon-group .reduce.disabled-cursor {
+        cursor: not-allowed; }
     .u-input-number.u-input-group.simple .u-input-group-btn .icon-group .uf {
       font-size: 12px;
       line-height: 12px; }
@@ -247,6 +251,8 @@
     cursor: not-allowed;
     background: #ffe;
     color: #ccc; }
+  .u-input-number .u-input-group-addon.disabled-cursor {
+    cursor: not-allowed; }
 
 .u-input-number .u-input-number-auto .u-form-control {
   width: 100%; }
