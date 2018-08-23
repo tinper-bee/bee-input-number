@@ -116,25 +116,29 @@ var InputNumber = function (_Component) {
             onChange && onChange(value);
         };
 
-        _this.handleFocus = function (e) {
+        _this.handleFocus = function (v) {
             var _this$props2 = _this.props,
                 onFocus = _this$props2.onFocus,
                 min = _this$props2.min,
                 max = _this$props2.max;
 
-            var value = e.target.value;
+            var value = v;
             if (!isNaN(value) && value >= min && value <= max) {
-                _this.tempStorage = e.target.value;
+                _this.tempStorage = v;
             }
-            onFocus && onFocus();
+            onFocus && onFocus(v);
         };
 
-        _this.handleBlur = function (e) {
+        _this.handleBlur = function (v) {
             var _this$props3 = _this.props,
                 onBlur = _this$props3.onBlur,
-                step = _this$props3.step;
+                step = _this$props3.step,
+                precision = _this$props3.precision;
 
-            var value = Number(e.target.value);
+            var value = Number(v);
+            if (precision) {
+                value = value.toFixed(precision);
+            }
             if (isNaN(value)) {
                 value = _this.tempStorage;
                 _this.setState({
@@ -142,11 +146,9 @@ var InputNumber = function (_Component) {
                 });
                 _this.detailDisable(value);
             } else {
-                console.log(value - step);
                 _this.plus(value - step);
             }
-
-            onBlur && onBlur();
+            onBlur && onBlur(v);
         };
 
         _this.detail = function (value, step, type) {
@@ -318,13 +320,15 @@ var InputNumber = function (_Component) {
     InputNumber.prototype.ComponentWillMount = function ComponentWillMount() {};
 
     InputNumber.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-        var data = judgeValue(nextProps);
-        this.setState({
-            value: data.value,
-            minusDisabled: data.minusDisabled,
-            plusDisabled: data.plusDisabled
-        });
-        this.tempStorage = data.value;
+        if (!nextProps.hasOwnProperty('precision')) {
+            var data = judgeValue(nextProps);
+            this.setState({
+                value: data.value,
+                minusDisabled: data.minusDisabled,
+                plusDisabled: data.plusDisabled
+            });
+            this.tempStorage = data.value;
+        }
     };
 
     InputNumber.prototype.ComponentWillUnMount = function ComponentWillUnMount() {

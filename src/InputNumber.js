@@ -77,13 +77,15 @@ class InputNumber extends Component {
 
     }
     componentWillReceiveProps(nextProps){
-        let data = judgeValue(nextProps);
-        this.setState({
-            value: data.value,
-            minusDisabled: data.minusDisabled,
-            plusDisabled: data.plusDisabled
-        });
-        this.tempStorage = data.value;
+        if(!nextProps.hasOwnProperty('precision')){
+            let data = judgeValue(nextProps);
+            this.setState({
+                value: data.value,
+                minusDisabled: data.minusDisabled,
+                plusDisabled: data.plusDisabled
+            });
+            this.tempStorage = data.value;
+        }
     }
 
     ComponentWillUnMount() {
@@ -103,18 +105,21 @@ class InputNumber extends Component {
         onChange && onChange(value);
     }
 
-    handleFocus = (e) => {
+    handleFocus = (v) => {
         let { onFocus, min, max } = this.props;
-        let value = e.target.value;
+        let value = v;
         if(!isNaN(value) && value >= min && value <= max){
-            this.tempStorage = e.target.value;
+            this.tempStorage = v;
         }
-        onFocus && onFocus();
+        onFocus && onFocus(v);
     }
 
-    handleBlur = (e) => {
-        const { onBlur, step } = this.props;
-        let value = Number(e.target.value);
+    handleBlur = (v) => {
+        const { onBlur, step,precision } = this.props;
+        let value = Number(v);
+        if(precision){
+            value = value.toFixed(precision);
+        }
         if(isNaN(value)){
             value = this.tempStorage;
             this.setState({
@@ -122,13 +127,9 @@ class InputNumber extends Component {
             });
             this.detailDisable(value);
         }else{
-            console.log(value - step)
             this.plus(value - step);
         }
-
-
-
-        onBlur && onBlur();
+        onBlur && onBlur(v);
     }
 
     detail = (value, step, type) => {

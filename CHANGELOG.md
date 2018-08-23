@@ -1,5 +1,15 @@
-<a name="1.1.3"></a>
-## [1.1.3](https://github.com/tinper-bee/bee-input-number/compare/v1.1.1...v1.1.3) (2018-06-22)
+<a name="1.1.6"></a>
+## [1.1.6](https://github.com/tinper-bee/bee-input-number/compare/v1.1.5...v1.1.6) (2018-08-23)
+
+
+
+<a name="1.1.5"></a>
+## [1.1.5](https://github.com/tinper-bee/bee-input-number/compare/v1.1.4...v1.1.5) (2018-08-18)
+
+
+
+<a name="1.1.4"></a>
+## [1.1.4](https://github.com/tinper-bee/bee-input-number/compare/v1.1.1...v1.1.4) (2018-08-10)
 
 
 ### Bug Fixes
@@ -9,26 +19,12 @@
 
 
 <a name="1.1.1"></a>
-## [1.1.1](https://github.com/tinper-bee/bee-input-number/compare/1.1.0...v1.1.1) (2018-06-22)
+## [1.1.1](https://github.com/tinper-bee/bee-input-number/compare/b95f340...v1.1.1) (2018-06-22)
 
 
 ### Bug Fixes
 
 * 修改实例 ([be52229](https://github.com/tinper-bee/bee-input-number/commit/be52229))
-
-
-
-<a name="1.1.0"></a>
-# [1.1.0](https://github.com/tinper-bee/bee-input-number/compare/1.0.5...1.1.0) (2017-12-21)
-
-
-
-<a name="1.0.5"></a>
-## [1.0.5](https://github.com/tinper-bee/bee-input-number/compare/b95f340...1.0.5) (2017-11-20)
-
-
-### Bug Fixes
-
 * 输入数字bug ([3241d17](https://github.com/tinper-bee/bee-input-number/commit/3241d17))
 * 输入数字bug ([b95f340](https://github.com/tinper-bee/bee-input-number/commit/b95f340))
 * 输入超量限制 ([e4080ef](https://github.com/tinper-bee/bee-input-number/commit/e4080ef))

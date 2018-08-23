@@ -68,6 +68,17 @@
           cursor: not-allowed;
         }
       }
+      .disabled-cursor.disabled{
+        background:none;
+      }
+      .disabled-cursor{
+        .uf{
+          color: #ccc;
+          &:hover {
+            color: #ccc;
+          }
+        }
+      }
       .uf {
         font-size: 12px;
         line-height: 12px;
@@ -99,6 +110,8 @@
     }
     &.disabled-cursor {
       cursor: not-allowed;
+      background:none;
+      color: #ccc;
     }
   }
   .u-input-number-auto .u-form-control {
