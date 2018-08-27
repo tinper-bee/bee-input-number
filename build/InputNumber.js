@@ -294,7 +294,11 @@ var InputNumber = function (_Component) {
         };
 
         _this.handleReduceMouseDown = function (e) {
-            var delay = _this.props.delay;
+            var _this$props8 = _this.props,
+                delay = _this$props8.delay,
+                disabled = _this$props8.disabled;
+
+            if (disabled) return;
             var value = _this.state.value;
 
             _this.minus(value);

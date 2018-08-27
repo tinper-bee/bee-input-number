@@ -263,7 +263,8 @@ class InputNumber extends Component {
     }
 
     handleReduceMouseDown = (e) => {
-        let {delay} = this.props;
+        let {delay,disabled} = this.props;
+        if(disabled)return;
         let {value} = this.state;
         this.minus(value);
         this.clear();
