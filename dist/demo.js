@@ -6476,7 +6476,6 @@
 	    max: _propTypes2['default'].number,
 	    min: _propTypes2['default'].number,
 	    step: _propTypes2['default'].number,
-	    value: _propTypes2['default'].number,
 	    autoWidth: _propTypes2['default'].bool,
 	    precision: _propTypes2['default'].number,
 	    format: _propTypes2['default'].func,
@@ -6497,6 +6496,7 @@
 	    var currentValue = void 0;
 	    var currentMinusDisabled = false;
 	    var currentPlusDisabled = false;
+	    if (isNaN(props.value)) throw new Error('value is not a number');
 	
 	    if (props.value) {
 	        currentValue = Number(props.value) || 0;
@@ -6534,6 +6534,8 @@
 	        var _this = _possibleConstructorReturn(this, _Component.call(this, props));
 	
 	        _this.handleChange = function (value) {
+	            if (isNaN(value)) throw new Error('value is not a number');
+	
 	            var _this$props = _this.props,
 	                onChange = _this$props.onChange,
 	                min = _this$props.min,

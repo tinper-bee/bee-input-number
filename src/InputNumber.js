@@ -8,7 +8,6 @@ const propTypes = {
     max: PropTypes.number,
     min: PropTypes.number,
     step: PropTypes.number,
-    value: PropTypes.number,
     autoWidth: PropTypes.bool,
     precision: PropTypes.number,
     format: PropTypes.func,
@@ -29,6 +28,7 @@ function judgeValue(props) {
     let currentValue;
     let currentMinusDisabled = false;
     let currentPlusDisabled = false;
+    if(isNaN(props.value))throw new Error ('value is not a number')
 
     if (props.value) {
         currentValue = Number(props.value) || 0;
@@ -95,6 +95,8 @@ class InputNumber extends Component {
 
 
     handleChange = (value) => {
+        if(isNaN(value))throw new Error ('value is not a number')
+
         const {onChange, min, max} = this.props;
 
         //value = this.detail(value, 0, 'reduce');
