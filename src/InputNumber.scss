@@ -4,19 +4,19 @@
 @import "../node_modules/bee-input-group/src/InputGroup.scss";
 
 .u-input-number {
+  width: 100%;
   &.u-input-group.simple .u-input-group-btn {
     position: relative;
     top: 0;
     z-index: 2;
     right: 0;
-    min-width: inherit;
+    width: 22px;
     .icon-group {
-      position: absolute;
-      top: 1px;
-      right: 2px;
-      border-left: 1px solid #d9d9d9;
+      border-right: 1px solid #bdbdbd;
+      border-top: 1px solid #bdbdbd;
+      border-bottom: 1px solid #bdbdbd;
       width: 22px;
-      height: 28px;
+      height: 30px;
       background: #fff;
       border-radius: 0 4px 4px 0;
       -webkit-transition: opacity .24s linear .1s;
@@ -91,15 +91,33 @@
   }
   &.u-input-group.simple .u-form-control {
     text-align: left;
-    width: 70px;
+    width: 100%;
+    border-right: 0;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    border-right: 1px solid #bdbdbd;
+    padding-right: 12px;
+  }
+  &.u-input-group.simple .u-form-control[disabled]{
+    border-color: #e0e0e0;
+  }
+  &.u-input-group.simple .u-form-control[disabled] + .u-input-group-btn .icon-group{
+    border-color: #e0e0e0;
   }
   &.u-input-group .u-form-control {
-    width: 70px;
+    width: 100%;
     text-align: center;
+    border-right: 1px solid #bdbdbd;
+  }
+  &.u-input-group .u-form-control[disabled]{
+    border-color: #e0e0e0;
+  }
+  &.u-input-group .u-form-control:focus {
+    border-color: #66afe9;
   }
   .u-input-group-addon {
+    position: relative;
     cursor: pointer;
-    width: auto;
     padding: 6px;
     user-select: none;
     -moz-user-select: none;
@@ -117,4 +135,23 @@
   .u-input-number-auto .u-form-control {
     width: 100%;
   }
+}
+
+// u-table 编辑 hock
+.u-table .u-table-tbody .u-table-row {
+  .u-input-number {
+    & .u-input-group-addon:first-of-type{
+      position: relative;
+      left: 2px;
+    }
+    & .u-input-group-addon:last-of-type{
+      position: relative;
+      right: 2px;
+    }
+  }
+  .u-input-number.u-input-group.simple {
+    .u-input-group-btn{
+      right: 2px;
+    }
+  } 
 }
