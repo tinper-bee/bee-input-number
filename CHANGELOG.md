@@ -1,3 +1,8 @@
+<a name="1.1.11"></a>
+## [1.1.11](https://github.com/tinper-bee/bee-input-number/compare/v1.1.10...v1.1.11) (2018-11-09)
+
+
+
 <a name="1.1.10"></a>
 ## [1.1.10](https://github.com/tinper-bee/bee-input-number/compare/v1.1.9...v1.1.10) (2018-11-08)
 

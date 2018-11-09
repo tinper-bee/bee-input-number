@@ -202,7 +202,7 @@
           cursor: not-allowed; }
       .u-input-number.u-input-group.simple .u-input-group-btn .icon-group .reduce {
         position: relative;
-        top: 0;
+        top: -1px;
         display: block;
         width: 100%;
         text-align: center;
