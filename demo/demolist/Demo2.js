@@ -1,7 +1,7 @@
 /**
 *
 * @title 数组选择控件
-* @description 自定义max=12,min=5,step=0.1
+* @description 自定义max=12,min=5,step=1
 *
 */
 
@@ -25,7 +25,7 @@ class Demo2 extends Component {
 			<InputNumber
 				max={12}
 				min={5}
-				step={0.1}
+				step={1}
 				value={this.state.value}
 				onChange={ this.handleChange }
 			/>

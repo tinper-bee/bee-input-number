@@ -77,7 +77,7 @@ class InputNumber extends Component {
 
     }
     componentWillReceiveProps(nextProps){
-        // if(!nextProps.hasOwnProperty('precision')){
+         if(!nextProps.hasOwnProperty('precision')){
             let data = judgeValue(nextProps);
             this.setState({
                 value: data.value,
@@ -85,7 +85,7 @@ class InputNumber extends Component {
                 plusDisabled: data.plusDisabled
             });
             this.tempStorage = data.value;
-        // }
+         }
     }
 
     ComponentWillUnMount() {
