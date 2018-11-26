@@ -28,7 +28,7 @@ function judgeValue(props) {
     let currentValue;
     let currentMinusDisabled = false;
     let currentPlusDisabled = false;
-    if(isNaN(props.value))throw new Error ('value is not a number')
+    // if(isNaN(props.value))throw new Error ('value is not a number')
 
     if (props.value) {
         currentValue = Number(props.value) || 0;
@@ -95,8 +95,8 @@ class InputNumber extends Component {
 
 
     handleChange = (value) => {
-        if(isNaN(value))throw new Error ('value is not a number')
-
+        // if(isNaN(value))throw new Error ('value is not a number')
+        judgeValue(value);
         const {onChange, min, max} = this.props;
 
         //value = this.detail(value, 0, 'reduce');
@@ -302,6 +302,7 @@ class InputNumber extends Component {
                                 -
                             </InputGroup.Addon>
                             <FormControl
+                                type='number'
                                 {...others}
                                 disabled
                                 value={value}
@@ -323,7 +324,8 @@ class InputNumber extends Component {
                             className={classnames(className, classes)}
                             simple
                         >
-                            <FormControl
+                            <FormControl 
+                                type='number'
                                 {...others}
                                 value={value}
                                 disabled={disabled}

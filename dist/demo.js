@@ -8079,7 +8079,7 @@
 	    var currentValue = void 0;
 	    var currentMinusDisabled = false;
 	    var currentPlusDisabled = false;
-	    if (isNaN(props.value)) throw new Error('value is not a number');
+	    // if(isNaN(props.value))throw new Error ('value is not a number')
 	
 	    if (props.value) {
 	        currentValue = Number(props.value) || 0;
@@ -8117,8 +8117,8 @@
 	        var _this = _possibleConstructorReturn(this, _Component.call(this, props));
 	
 	        _this.handleChange = function (value) {
-	            if (isNaN(value)) throw new Error('value is not a number');
-	
+	            // if(isNaN(value))throw new Error ('value is not a number')
+	            judgeValue(value);
 	            var _this$props = _this.props,
 	                onChange = _this$props.onChange,
 	                min = _this$props.min,
@@ -8410,7 +8410,9 @@
 	                        onMouseUp: this.clear },
 	                    '-'
 	                ),
-	                _react2['default'].createElement(_beeFormControl2['default'], _extends({}, others, (_extends2 = {
+	                _react2['default'].createElement(_beeFormControl2['default'], _extends({
+	                    type: 'number'
+	                }, others, (_extends2 = {
 	                    disabled: true,
 	                    value: value
 	                }, _defineProperty(_extends2, 'disabled', disabled), _defineProperty(_extends2, 'onBlur', this.handleBlur), _defineProperty(_extends2, 'onFocus', this.handleFocus), _defineProperty(_extends2, 'onChange', this.handleChange), _extends2))),
@@ -8429,7 +8431,9 @@
 	                    className: (0, _classnames2['default'])(className, classes),
 	                    simple: true
 	                },
-	                _react2['default'].createElement(_beeFormControl2['default'], _extends({}, others, {
+	                _react2['default'].createElement(_beeFormControl2['default'], _extends({
+	                    type: 'number'
+	                }, others, {
 	                    value: value,
 	                    disabled: disabled,
 	                    onBlur: this.handleBlur,

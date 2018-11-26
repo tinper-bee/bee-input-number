@@ -268,6 +268,11 @@
       color: #ccc; }
   .u-input-number .u-input-number-auto .u-form-control {
     width: 100%; }
+  .u-input-number .u-form-control::-webkit-outer-spin-button,
+  .u-input-number .u-form-control::-webkit-inner-spin-button {
+    -webkit-appearance: none; }
+  .u-input-number input[type="number"] {
+    -moz-appearance: textfield; }
 
 .u-table .u-table-tbody .u-table-row .u-input-number .u-input-group-addon:first-of-type {
   position: relative;
