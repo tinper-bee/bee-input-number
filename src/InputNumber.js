@@ -104,7 +104,7 @@ class InputNumber extends Component {
             this.tempStorage = value;
         }
         this.setState({value});
-        onChange && onChange(value);
+        onChange && onChange(Number(value));
     }
 
     handleFocus = (v) => {
@@ -195,7 +195,7 @@ class InputNumber extends Component {
         this.setState({
             value
         });
-        onChange && onChange(value);
+        onChange && onChange(Number(value));
         this.detailDisable(value);
     }
     detailDisable = (value) => {
@@ -242,7 +242,7 @@ class InputNumber extends Component {
         this.setState({
             value
         });
-        onChange && onChange(value);
+        onChange && onChange(Number(value));
         this.detailDisable(value);
     }
 

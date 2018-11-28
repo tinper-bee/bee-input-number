@@ -8130,7 +8130,7 @@
 	                _this.tempStorage = value;
 	            }
 	            _this.setState({ value: value });
-	            onChange && onChange(value);
+	            onChange && onChange(Number(value));
 	        };
 	
 	        _this.handleFocus = function (v) {
@@ -8229,7 +8229,7 @@
 	            _this.setState({
 	                value: value
 	            });
-	            onChange && onChange(value);
+	            onChange && onChange(Number(value));
 	            _this.detailDisable(value);
 	        };
 	
@@ -8285,7 +8285,7 @@
 	            _this.setState({
 	                value: value
 	            });
-	            onChange && onChange(value);
+	            onChange && onChange(Number(value));
 	            _this.detailDisable(value);
 	        };
 	

@@ -115,7 +115,7 @@ var InputNumber = function (_Component) {
                 _this.tempStorage = value;
             }
             _this.setState({ value: value });
-            onChange && onChange(value);
+            onChange && onChange(Number(value));
         };
 
         _this.handleFocus = function (v) {
@@ -214,7 +214,7 @@ var InputNumber = function (_Component) {
             _this.setState({
                 value: value
             });
-            onChange && onChange(value);
+            onChange && onChange(Number(value));
             _this.detailDisable(value);
         };
 
@@ -270,7 +270,7 @@ var InputNumber = function (_Component) {
             _this.setState({
                 value: value
             });
-            onChange && onChange(value);
+            onChange && onChange(Number(value));
             _this.detailDisable(value);
         };
 
