@@ -8341,15 +8341,15 @@
 	    InputNumber.prototype.ComponentWillMount = function ComponentWillMount() {};
 	
 	    InputNumber.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-	        if (!nextProps.hasOwnProperty('precision')) {
-	            var data = judgeValue(nextProps);
-	            this.setState({
-	                value: data.value,
-	                minusDisabled: data.minusDisabled,
-	                plusDisabled: data.plusDisabled
-	            });
-	            this.tempStorage = data.value;
-	        }
+	        //  if(!nextProps.hasOwnProperty('precision')){//如果没有 precision
+	        var data = judgeValue(nextProps);
+	        this.setState({
+	            value: data.value,
+	            minusDisabled: data.minusDisabled,
+	            plusDisabled: data.plusDisabled
+	        });
+	        this.tempStorage = data.value;
+	        //  }
 	    };
 	
 	    InputNumber.prototype.ComponentWillUnMount = function ComponentWillUnMount() {
