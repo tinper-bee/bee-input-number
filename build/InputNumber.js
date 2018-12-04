@@ -201,7 +201,8 @@ var InputNumber = function (_Component) {
                 min = _this$props5.min,
                 max = _this$props5.max,
                 step = _this$props5.step,
-                onChange = _this$props5.onChange;
+                onChange = _this$props5.onChange,
+                toNumber = _this$props5.toNumber;
 
 
             if (typeof min === "undefined") {
@@ -224,7 +225,7 @@ var InputNumber = function (_Component) {
             _this.setState({
                 value: value
             });
-            onChange && onChange(Number(value));
+            toNumber ? onChange && onChange(Number(value)) : onChange && onChange(value);
             _this.detailDisable(value);
         };
 
@@ -233,7 +234,8 @@ var InputNumber = function (_Component) {
                 max = _this$props6.max,
                 min = _this$props6.min,
                 step = _this$props6.step,
-                onChange = _this$props6.onChange;
+                onChange = _this$props6.onChange,
+                toNumber = _this$props6.toNumber;
 
             if (typeof max === "undefined") {
                 value = _this.detail(value, step, 'add');
@@ -253,7 +255,7 @@ var InputNumber = function (_Component) {
             _this.setState({
                 value: value
             });
-            onChange && onChange(Number(value));
+            toNumber ? onChange && onChange(Number(value)) : onChange && onChange(value);
             _this.detailDisable(value);
         };
 
