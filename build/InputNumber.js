@@ -60,7 +60,7 @@ var defaultProps = {
     delay: 300
 };
 
-function judgeValue(props) {
+function judgeValue(props, oldValue) {
     var currentValue = void 0;
     var currentMinusDisabled = false;
     var currentPlusDisabled = false;
@@ -72,6 +72,7 @@ function judgeValue(props) {
         currentValue = props.min;
     } else {
         currentValue = 0;
+        if (oldValue && Number(oldValue)) currentValue = Number(oldValue); //输入英文无效，显示上一次正确的值
     }
     if (currentValue <= props.min) {
         currentMinusDisabled = true;
@@ -327,7 +328,7 @@ var InputNumber = function (_Component) {
 
     InputNumber.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
         //  if(!nextProps.hasOwnProperty('precision')){//如果没有 precision
-        var data = judgeValue(nextProps);
+        var data = judgeValue(nextProps, this.state.value);
         this.setState({
             value: data.value,
             minusDisabled: data.minusDisabled,
@@ -395,9 +396,7 @@ var InputNumber = function (_Component) {
                         onMouseUp: this.clear },
                     '-'
                 ),
-                _react2["default"].createElement(_beeFormControl2["default"], _extends({
-                    type: 'number'
-                }, others, (_extends2 = {
+                _react2["default"].createElement(_beeFormControl2["default"], _extends({}, others, (_extends2 = {
                     disabled: true,
                     value: value
                 }, _defineProperty(_extends2, 'disabled', disabled), _defineProperty(_extends2, 'onBlur', this.handleBlur), _defineProperty(_extends2, 'onFocus', this.handleFocus), _defineProperty(_extends2, 'onChange', this.handleChange), _extends2))),
@@ -416,9 +415,7 @@ var InputNumber = function (_Component) {
                     className: (0, _classnames2["default"])(className, classes),
                     simple: true
                 },
-                _react2["default"].createElement(_beeFormControl2["default"], _extends({
-                    type: 'number'
-                }, others, {
+                _react2["default"].createElement(_beeFormControl2["default"], _extends({}, others, {
                     value: value,
                     disabled: disabled,
                     onBlur: this.handleBlur,

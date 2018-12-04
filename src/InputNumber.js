@@ -24,18 +24,19 @@ const defaultProps = {
     delay: 300
 };
 
-function judgeValue(props) {
+function judgeValue(props,oldValue) {
     let currentValue;
     let currentMinusDisabled = false;
     let currentPlusDisabled = false;
     // if(isNaN(props.value))throw new Error ('value is not a number')
 
     if (props.value) {
-        currentValue = Number(props.value) || 0;
+        currentValue = Number(props.value) ||0;
     } else if (props.min) {
         currentValue = props.min;
     } else {
         currentValue = 0;
+        if(oldValue&&Number(oldValue))currentValue=Number(oldValue);//输入英文无效，显示上一次正确的值
     }
     if (currentValue <= props.min) {
         currentMinusDisabled = true;
@@ -78,7 +79,7 @@ class InputNumber extends Component {
     }
     componentWillReceiveProps(nextProps){
         //  if(!nextProps.hasOwnProperty('precision')){//如果没有 precision
-            let data = judgeValue(nextProps);
+            let data = judgeValue(nextProps,this.state.value);
             this.setState({
                 value: data.value,
                 minusDisabled: data.minusDisabled,
@@ -302,7 +303,6 @@ class InputNumber extends Component {
                                 -
                             </InputGroup.Addon>
                             <FormControl
-                                type='number'
                                 {...others}
                                 disabled
                                 value={value}
@@ -325,7 +325,6 @@ class InputNumber extends Component {
                             simple
                         >
                             <FormControl 
-                                type='number'
                                 {...others}
                                 value={value}
                                 disabled={disabled}
