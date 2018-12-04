@@ -12,7 +12,8 @@ const propTypes = {
     precision: PropTypes.number,
     format: PropTypes.func,
     delay: PropTypes.number,
-    disabled:PropTypes.bool
+    disabled:PropTypes.bool,
+    toNumber:PropTypes.bool //回调函数内的值是否转换为数值类型
 };
 
 const defaultProps = {
@@ -21,32 +22,40 @@ const defaultProps = {
     clsPrefix: 'u-input-number',
     iconStyle: 'double',
     autoWidth: false,
-    delay: 300
+    delay: 300,
+    toNumber:true
 };
 
+/**
+ * 校验value
+ * @param {*} props 
+ * @param {原来的值} oldValue 
+ */
 function judgeValue(props,oldValue) {
     let currentValue;
     let currentMinusDisabled = false;
     let currentPlusDisabled = false;
-    // if(isNaN(props.value))throw new Error ('value is not a number')
-
-    if (props.value) {
-        currentValue = Number(props.value) ||0;
-    } else if (props.min) {
-        currentValue = props.min;
-    } else {
+    let { value,min,max,precision,onChange } = props;
+    if (value) {
+        currentValue = Number(value) ||0;
+    } else if (min) {
+        currentValue = min;
+    } else if(value==0){
         currentValue = 0;
-        if(oldValue&&Number(oldValue))currentValue=Number(oldValue);//输入英文无效，显示上一次正确的值
+    }else{//NaN
+        if(oldValue||(oldValue==0)){
+            currentValue = oldValue;
+        }
     }
-    if (currentValue <= props.min) {
+    if (currentValue <= min) {
         currentMinusDisabled = true;
     }
-    if (currentValue >= props.max) {
+    if (currentValue >= max) {
         currentPlusDisabled = true;
     }
 
     if(props.hasOwnProperty('precision')){
-        currentValue = currentValue.toFixed(props.precision);
+        currentValue = currentValue.toFixed(precision);
     }
 
     return {
@@ -71,69 +80,154 @@ class InputNumber extends Component {
         }
 
         this.timer = null;
-        this.tempStorage = data.value;
+        this.focus = false;
     }
 
     ComponentWillMount() {
 
     }
     componentWillReceiveProps(nextProps){
-        //  if(!nextProps.hasOwnProperty('precision')){//如果没有 precision
+        if(this.focus){
+            this.setState({
+                value: nextProps.value
+            });
+        }else{
             let data = judgeValue(nextProps,this.state.value);
             this.setState({
                 value: data.value,
                 minusDisabled: data.minusDisabled,
                 plusDisabled: data.plusDisabled
             });
-            this.tempStorage = data.value;
-        //  }
+        }
+        
     }
 
     ComponentWillUnMount() {
         this.clear();
     }
 
-
-
     handleChange = (value) => {
-        // if(isNaN(value))throw new Error ('value is not a number')
-        judgeValue(value);
-        const {onChange, min, max} = this.props;
-
-        //value = this.detail(value, 0, 'reduce');
-        if(!isNaN(value) && value >= min && value <= max){
-            this.tempStorage = value;
+        const { onChange,toNumber } = this.props;
+        if(isNaN(value)&&(value!='.'))return;
+        this.setState({
+            value
+        });
+        if(value=='.'||value.indexOf('.')==value.length-1){//当输入小数点的时候
+            onChange && onChange(value);
+        }else{
+            toNumber?onChange && onChange(Number(value)):onChange && onChange(value);
         }
-        this.setState({value});
-        onChange && onChange(Number(value));
+        
     }
 
-    handleFocus = (v) => {
+    handleFocus = (value,e) => {
+        this.focus = true;
         let { onFocus, min, max } = this.props;
-        let value = v;
-        if(!isNaN(value) && value >= min && value <= max){
-            this.tempStorage = v;
-        }
-        onFocus && onFocus(v);
+        onFocus && onFocus(value);
     }
 
     handleBlur = (v) => {
-        const { onBlur, step,precision } = this.props;
+        this.focus = false;        
+        const { onBlur,precision,onChange,toNumber } = this.props;
         let value = Number(v);
         if(precision){
             value = value.toFixed(precision);
         }
-        if(isNaN(value)){
-            value = this.tempStorage;
-            this.setState({
-                value
-            });
-            this.detailDisable(value);
+        this.setState({
+            value
+        });
+        this.detailDisable(value);
+        if(toNumber){
+            onBlur && onBlur(Number(value));
+            onChange && onChange(Number(value));
         }else{
-            this.plus(value - step);
+            onBlur && onBlur(value);
+            onChange && onChange(value);
         }
-        onBlur && onBlur(v);
+        
     }
+    /**
+     * 设置增加减少按钮是否可用
+     */
+    detailDisable = (value) => {
+        const { max, min, step } = this.props;
+
+        if(value >= max || Number(value) + Number(step) > max){
+            this.setState({
+                plusDisabled: true
+            })
+        }else{
+            this.setState({
+                plusDisabled: false
+            })
+        }
+        if(value <= min || value -step < min){
+            this.setState({
+                minusDisabled: true
+            })
+        }else{
+            this.setState({
+                minusDisabled: false
+            })
+        }
+
+    }
+    /**
+     * 减法
+     */
+    minus = (value) => {
+        const {min, max, step, onChange} = this.props;
+
+        if(typeof min === "undefined"){
+            value = this.detail(value, step, 'reduce');
+        }else{
+            if(value < min){
+                value = min;
+            }else{
+                let reducedValue = this.detail(value, step, 'reduce');
+                if(reducedValue >= min){
+                    value = reducedValue;
+                }
+            }
+        }
+
+        if(value > max){
+            value = max;
+        }
+
+        this.setState({
+            value
+        });
+        onChange && onChange(Number(value));
+        this.detailDisable(value);
+    }
+    /**
+     * 加法
+     */
+    plus = (value) => {
+        const {max, min, step, onChange} = this.props;
+        if(typeof max === "undefined"){
+            value = this.detail(value, step, 'add');
+        }else{
+            if(value > max){
+                value = max;
+            }else{
+                let addedValue = this.detail(value, step, 'add');
+                if(addedValue <= max){
+                    value = addedValue;
+                }
+            }
+        }
+        if(value < min){
+            value = min;
+        }
+        this.setState({
+            value
+        });
+        onChange && onChange(Number(value));
+        this.detailDisable(value);
+    }
+
 
     detail = (value, step, type) => {
         let {precision} = this.props;
@@ -173,80 +267,7 @@ class InputNumber extends Component {
         }
     }
 
-    minus = (value) => {
-        const {min, max, step, onChange} = this.props;
-
-        if(typeof min === "undefined"){
-            value = this.detail(value, step, 'reduce');
-        }else{
-            if(value < min){
-                value = min;
-            }else{
-                let reducedValue = this.detail(value, step, 'reduce');
-                if(reducedValue >= min){
-                    value = reducedValue;
-                }
-            }
-        }
-
-        if(value > max){
-            value = max;
-        }
-
-        this.setState({
-            value
-        });
-        onChange && onChange(Number(value));
-        this.detailDisable(value);
-    }
-    detailDisable = (value) => {
-        const { max, min, step } = this.props;
-
-        if(value >= max || Number(value) + Number(step) > max){
-            this.setState({
-                plusDisabled: true
-            })
-        }else{
-            this.setState({
-                plusDisabled: false
-            })
-        }
-        if(value <= min || value -step < min){
-            this.setState({
-                minusDisabled: true
-            })
-        }else{
-            this.setState({
-                minusDisabled: false
-            })
-        }
-
-    }
-
-    plus = (value) => {
-        const {max, min, step, onChange} = this.props;
-        if(typeof max === "undefined"){
-            value = this.detail(value, step, 'add');
-        }else{
-            if(value > max){
-                value = max;
-            }else{
-                let addedValue = this.detail(value, step, 'add');
-                if(addedValue <= max){
-                    value = addedValue;
-                }
-            }
-        }
-        if(value < min){
-            value = min;
-        }
-        this.setState({
-            value
-        });
-        onChange && onChange(Number(value));
-        this.detailDisable(value);
-    }
-
+    
 
     clear = () => {
         if (this.timer) {
@@ -277,7 +298,7 @@ class InputNumber extends Component {
     }
 
     render() {
-        const {max, min, step,disabled, clsPrefix, className, delay, onBlur, onFocus, iconStyle, autoWidth, onChange, format, precision, ...others} = this.props;
+        const {max, min, step,disabled, clsPrefix, className, delay, onBlur, onFocus, iconStyle, autoWidth, onChange, format, precision,toNumber, ...others} = this.props;
 
         let classes = {
             [`${clsPrefix}-auto`]: autoWidth,
@@ -304,7 +325,6 @@ class InputNumber extends Component {
                             </InputGroup.Addon>
                             <FormControl
                                 {...others}
-                                disabled
                                 value={value}
                                 disabled={disabled}
                                 onBlur={ this.handleBlur }
