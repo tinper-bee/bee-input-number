@@ -76,7 +76,7 @@
 	
 	var CARETUP = _react2['default'].createElement('i', { className: 'uf uf-arrow-up' });
 	
-	var Demo1 = __webpack_require__(84);var Demo2 = __webpack_require__(96);var Demo3 = __webpack_require__(97);var Demo4 = __webpack_require__(98);var Demo5 = __webpack_require__(99);var Demo6 = __webpack_require__(100);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 数组选择控件 ", "code": "/**\n *\n* @title 数组选择控件 \n * @description 最简单输入控制\n *\n */\n\n\nimport React, {Component} from 'react';\nimport { InputNumber } from 'tinper-bee';\n\nclass Demo1 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\n    render() {\n        return (\n            <div>\n                <InputNumber  precision={2} min={0} value={this.state.value} onChange={ this.handleChange }/>\n            </div>\n        )\n    }\n}\n\n", "desc": " 最简单输入控制" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 数组选择控件", "code": "/**\n*\n* @title 数组选择控件\n* @description 自定义max=12,min=5,step=1\n*\n*/\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\n\nclass Demo2 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\tmax={12}\n\t\t\t\tmin={5}\n\t\t\t\tstep={1}\n\t\t\t\tvalue={this.state.value}\n\t\t\t\tonChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\n", "desc": " 自定义max=12,min=5,step=1" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 数组选择控件", "code": "/**\n*\n* @title 数组选择控件\n* @description 自定义max=12,min=5,step=2\n*\n*/\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee'; \n\nclass Demo3 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n    handleChange = (value) => {\n\t\tconsole.log(value)\n        this.setState({\n            value: value\n        })\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\ticonStyle=\"one\"\n\t\t\t\tmax={12}\n\t\t\t\tmin={5}\n\t\t\t\tstep={2}\n\t\t\t\tvalue={this.state.value}\n\t\t\t\tonChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\n", "desc": " 自定义max=12,min=5,step=2" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 数组选择控件 ", "code": "/**\n *\n * @title 数组选择控件 \n * @description disabled 的单输入控制\n *\n */\n\n\nimport React, {Component} from 'react';\nimport { InputNumber } from 'tinper-bee';\n\nclass Demo4 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\n    render() {\n        return (\n            <div>\n                <InputNumber disabled precision={2} min={0} value={this.state.value} onChange={ this.handleChange }/>\n            </div>\n        )\n    }\n}\n\n", "desc": " disabled 的单输入控制" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 数组选择控件", "code": "/**\n*\n* @title 数组选择控件\n* @description 自定义max=12,min=5,step=2 且设置 disabled 处理\n*\n*/\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee'; \n\nclass Demo5 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 8\n        }\n    }\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\tdisabled\n\t\t\t\ticonStyle=\"one\"\n\t\t\t\tmax={12}\n\t\t\t\tmin={5}\n\t\t\t\tstep={2}\n\t\t\t\tvalue={this.state.value}\n\t\t\t\tonChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\n", "desc": " 自定义max=12,min=5,step=2 且设置 disabled 处理" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 保留两位小数", "code": "/**\n*\n* @title 保留两位小数\n* @description precision={2} 设置小数点后保留两位，失去焦点时数据会格式化为两位小数\n*\n*/\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee'; \n\nclass Demo6 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n    handleChange = (value) => {\n\t\tconsole.log(value)\n        this.setState({\n            value: value\n        })\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\ticonStyle=\"one\"\n\t\t\t\tprecision={2}\n\t\t\t\tvalue={this.state.value}\n\t\t\t\tonChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\n", "desc": " precision={2} 设置小数点后保留两位，失去焦点时数据会格式化为两位小数" }];
+	var Demo1 = __webpack_require__(84);var Demo2 = __webpack_require__(96);var Demo3 = __webpack_require__(97);var Demo4 = __webpack_require__(98);var Demo5 = __webpack_require__(99);var Demo6 = __webpack_require__(100);var Demo7 = __webpack_require__(101);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 数组选择控件 ", "code": "/**\n *\n* @title 数组选择控件 \n * @description 最简单输入控制\n *\n */\n\n\nimport React, {Component} from 'react';\nimport { InputNumber } from 'tinper-bee';\n\nclass Demo1 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\n    render() {\n        return (\n            <div>\n                <InputNumber  precision={2} min={0} value={this.state.value} onChange={ this.handleChange }/>\n            </div>\n        )\n    }\n}\n\n", "desc": " 最简单输入控制" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 数组选择控件", "code": "/**\n*\n* @title 数组选择控件\n* @description 自定义max=12,min=5,step=1\n*\n*/\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\n\nclass Demo2 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\tmax={12}\n\t\t\t\tmin={5}\n\t\t\t\tstep={1}\n\t\t\t\tvalue={this.state.value}\n\t\t\t\tonChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\n", "desc": " 自定义max=12,min=5,step=1" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 数组选择控件", "code": "/**\n*\n* @title 数组选择控件\n* @description 自定义max=12,min=5,step=2\n*\n*/\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee'; \n\nclass Demo3 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\ticonStyle=\"one\"\n\t\t\t\tmax={12}\n\t\t\t\tmin={5}\n\t\t\t\tstep={2}\n\t\t\t\tvalue={this.state.value}\n\t\t\t\tonChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\n", "desc": " 自定义max=12,min=5,step=2" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 数组选择控件 ", "code": "/**\n *\n * @title 数组选择控件 \n * @description disabled 的单输入控制\n *\n */\n\n\nimport React, {Component} from 'react';\nimport { InputNumber } from 'tinper-bee';\n\nclass Demo4 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\n    render() {\n        return (\n            <div>\n                <InputNumber disabled precision={2} min={0} value={this.state.value} onChange={ this.handleChange }/>\n            </div>\n        )\n    }\n}\n\n", "desc": " disabled 的单输入控制" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 数组选择控件", "code": "/**\n*\n* @title 数组选择控件\n* @description 自定义max=12,min=5,step=2 且设置 disabled 处理\n*\n*/\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee'; \n\nclass Demo5 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 8\n        }\n    }\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\tdisabled\n\t\t\t\ticonStyle=\"one\"\n\t\t\t\tmax={12}\n\t\t\t\tmin={5}\n\t\t\t\tstep={2}\n\t\t\t\tvalue={this.state.value}\n\t\t\t\tonChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\n", "desc": " 自定义max=12,min=5,step=2 且设置 disabled 处理" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 保留两位小数", "code": "/**\n*\n* @title 保留两位小数\n* @description precision={2} 设置小数点后保留两位，失去焦点时数据会格式化为两位小数\n*\n*/\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee'; \n\nclass Demo6 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n    handleChange = (value) => {\n\t\tconsole.log(value)\n        this.setState({\n            value: value\n        })\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\ticonStyle=\"one\"\n\t\t\t\tprecision={2}\n\t\t\t\tvalue={this.state.value}\n\t\t\t\tonChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\n", "desc": " precision={2} 设置小数点后保留两位，失去焦点时数据会格式化为两位小数" }, { "example": _react2['default'].createElement(Demo7, null), "title": " 显示千分符示例", "code": "/**\n *\n* @title 显示千分符示例\n * @description 设置toThousands={true}  只会在显示的时候带有千分符，onChange里的回调还是原来不带千分符的值\n *\n */\n\n\nimport React, {Component} from 'react';\nimport { InputNumber } from 'tinper-bee';\n\nclass Demo1 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n\n    handleChange = (value) => {\n        console.log('onChange:   '+value)\n        this.setState({\n            value: value\n        })\n    }\n\n    render() {\n        return (\n            <div>\n                <InputNumber toThousands={true} precision={2} min={0} value={this.state.value} onChange={ this.handleChange }/>\n            </div>\n        )\n    }\n}\n\n", "desc": " 设置toThousands={true}  只会在显示的时候带有千分符，onChange里的回调还是原来不带千分符的值" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -8064,6 +8064,7 @@
 	    format: _propTypes2['default'].func,
 	    delay: _propTypes2['default'].number,
 	    disabled: _propTypes2['default'].bool,
+	    toThousands: _propTypes2['default'].bool,
 	    toNumber: _propTypes2['default'].bool //回调函数内的值是否转换为数值类型
 	};
 	
@@ -8121,6 +8122,35 @@
 	        plusDisabled: currentPlusDisabled
 	    };
 	}
+	/**
+	 * 千分符
+	 * @param {要转换的数据} num 
+	 * @param {是否要小数点} point 
+	 */
+	function toThousands(number, point) {
+	    var num = (number || 0).toString();
+	    var integer = num.split('.')[0];
+	    var decimal = num.split('.')[1] || '';
+	    var result = '';
+	    while (integer.length > 3) {
+	        result = ',' + integer.slice(-3) + result;
+	        integer = integer.slice(0, integer.length - 3);
+	    }
+	    if (integer) {
+	        result = integer + result;
+	        if (num == '.' || num.indexOf('.') == num.length - 1) {
+	            result = result + '.' + decimal;
+	        } else if (decimal) {
+	            result = result + '.' + decimal;
+	        }
+	    }
+	    return result;
+	}
+	
+	function unThousands(number) {
+	    number = (number || 0).toString();
+	    return number.replace(/\,/g, '');
+	}
 	
 	var InputNumber = function (_Component) {
 	    _inherits(InputNumber, _Component);
@@ -8137,9 +8167,11 @@
 	                onChange = _this$props.onChange,
 	                toNumber = _this$props.toNumber;
 	
+	            value = unThousands(value);
 	            if (isNaN(value) && value != '.') return;
 	            _this.setState({
-	                value: value
+	                value: value,
+	                showValue: toThousands(value)
 	            });
 	            if (value == '.' || value.indexOf('.') == value.length - 1) {
 	                //当输入小数点的时候
@@ -8160,6 +8192,7 @@
 	        };
 	
 	        _this.handleBlur = function (v) {
+	            v = unThousands(v);
 	            _this.focus = false;
 	            var _this$props3 = _this.props,
 	                onBlur = _this$props3.onBlur,
@@ -8172,7 +8205,8 @@
 	                value = value.toFixed(precision);
 	            }
 	            _this.setState({
-	                value: value
+	                value: value,
+	                showValue: toThousands(value)
 	            });
 	            _this.detailDisable(value);
 	            if (toNumber) {
@@ -8238,7 +8272,8 @@
 	            }
 	
 	            _this.setState({
-	                value: value
+	                value: value,
+	                showValue: toThousands(value)
 	            });
 	            toNumber ? onChange && onChange(Number(value)) : onChange && onChange(value);
 	            _this.detailDisable(value);
@@ -8268,7 +8303,8 @@
 	                value = min;
 	            }
 	            _this.setState({
-	                value: value
+	                value: value,
+	                showValue: toThousands(value)
 	            });
 	            toNumber ? onChange && onChange(Number(value)) : onChange && onChange(value);
 	            _this.detailDisable(value);
@@ -8348,7 +8384,8 @@
 	        _this.state = {
 	            value: data.value,
 	            minusDisabled: data.minusDisabled,
-	            plusDisabled: data.plusDisabled
+	            plusDisabled: data.plusDisabled,
+	            showValue: toThousands(data.value)
 	        };
 	
 	        _this.timer = null;
@@ -8361,12 +8398,14 @@
 	    InputNumber.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
 	        if (this.focus) {
 	            this.setState({
-	                value: nextProps.value
+	                value: nextProps.value,
+	                showValue: toThousands(nextProps.value)
 	            });
 	        } else {
 	            var data = judgeValue(nextProps, this.state.value);
 	            this.setState({
 	                value: data.value,
+	                showValue: toThousands(data.value),
 	                minusDisabled: data.minusDisabled,
 	                plusDisabled: data.plusDisabled
 	            });
@@ -8400,6 +8439,7 @@
 	        var _classes;
 	
 	        var _props = this.props,
+	            toThousands = _props.toThousands,
 	            max = _props.max,
 	            min = _props.min,
 	            step = _props.step,
@@ -8415,14 +8455,15 @@
 	            format = _props.format,
 	            precision = _props.precision,
 	            toNumber = _props.toNumber,
-	            others = _objectWithoutProperties(_props, ['max', 'min', 'step', 'disabled', 'clsPrefix', 'className', 'delay', 'onBlur', 'onFocus', 'iconStyle', 'autoWidth', 'onChange', 'format', 'precision', 'toNumber']);
+	            others = _objectWithoutProperties(_props, ['toThousands', 'max', 'min', 'step', 'disabled', 'clsPrefix', 'className', 'delay', 'onBlur', 'onFocus', 'iconStyle', 'autoWidth', 'onChange', 'format', 'precision', 'toNumber']);
 	
 	        var classes = (_classes = {}, _defineProperty(_classes, clsPrefix + '-auto', autoWidth), _defineProperty(_classes, '' + clsPrefix, true), _classes);
 	
 	        var _state = this.state,
 	            value = _state.value,
 	            minusDisabled = _state.minusDisabled,
-	            plusDisabled = _state.plusDisabled;
+	            plusDisabled = _state.plusDisabled,
+	            showValue = _state.showValue;
 	
 	
 	        value = format ? format(value) : value;
@@ -8445,7 +8486,7 @@
 	                    '-'
 	                ),
 	                _react2['default'].createElement(_beeFormControl2['default'], _extends({}, others, {
-	                    value: value,
+	                    value: toThousands ? showValue : value,
 	                    disabled: disabled,
 	                    onBlur: this.handleBlur,
 	                    onFocus: this.handleFocus,
@@ -8467,7 +8508,7 @@
 	                    simple: true
 	                },
 	                _react2['default'].createElement(_beeFormControl2['default'], _extends({}, others, {
-	                    value: value,
+	                    value: toThousands ? showValue : value,
 	                    disabled: disabled,
 	                    onBlur: this.handleBlur,
 	                    onFocus: this.handleFocus,
@@ -9246,7 +9287,6 @@
 									var _this = _possibleConstructorReturn(this, _Component.call(this, props));
 	
 									_this.handleChange = function (value) {
-													console.log(value);
 													_this.setState({
 																	value: value
 													});
@@ -9480,6 +9520,74 @@
 	}(_react.Component);
 	
 	exports['default'] = Demo6;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 101 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(4);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _src = __webpack_require__(85);
+	
+	var _src2 = _interopRequireDefault(_src);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @title 显示千分符示例
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 设置toThousands={true}  只会在显示的时候带有千分符，onChange里的回调还是原来不带千分符的值
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+	
+	var Demo1 = function (_Component) {
+	    _inherits(Demo1, _Component);
+	
+	    function Demo1(props) {
+	        _classCallCheck(this, Demo1);
+	
+	        var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+	
+	        _this.handleChange = function (value) {
+	            console.log('onChange:   ' + value);
+	            _this.setState({
+	                value: value
+	            });
+	        };
+	
+	        _this.state = {
+	            value: 0
+	        };
+	        return _this;
+	    }
+	
+	    Demo1.prototype.render = function render() {
+	        return _react2['default'].createElement(
+	            'div',
+	            null,
+	            _react2['default'].createElement(_src2['default'], { toThousands: true, precision: 2, min: 0, value: this.state.value, onChange: this.handleChange })
+	        );
+	    };
+	
+	    return Demo1;
+	}(_react.Component);
+	
+	exports['default'] = Demo1;
 	module.exports = exports['default'];
 
 /***/ })

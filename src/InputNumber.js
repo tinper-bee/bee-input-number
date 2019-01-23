@@ -13,6 +13,7 @@ const propTypes = {
     format: PropTypes.func,
     delay: PropTypes.number,
     disabled:PropTypes.bool,
+    toThousands:PropTypes.bool,
     toNumber:PropTypes.bool //回调函数内的值是否转换为数值类型
 };
 
@@ -64,6 +65,38 @@ function judgeValue(props,oldValue) {
         plusDisabled: currentPlusDisabled
     }
 }
+/**
+ * 千分符
+ * @param {要转换的数据} num 
+ * @param {是否要小数点} point 
+ */
+function toThousands(number,point) {
+    let num = (number || 0).toString();
+    let integer = num.split('.')[0];
+    let decimal = num.split('.')[1]||'';
+    let result = '';
+    while (integer.length > 3) {
+        result = ',' + integer.slice(-3) + result;
+        integer = integer.slice(0, integer.length - 3);
+    }
+    if (integer) { 
+        result = integer + result ;
+        if(num=='.'||num.indexOf('.')==num.length-1){
+            result = result + '.'+decimal;
+        }else if (decimal){
+            result = result + '.'+decimal;
+        }
+     }
+    return result;
+}
+
+function unThousands(number){
+    number = (number || 0).toString();
+    return number.replace(/\,/g,'');
+}
+
+
+
 
 class InputNumber extends Component {
 
@@ -76,7 +109,8 @@ class InputNumber extends Component {
         this.state = {
             value: data.value,
             minusDisabled: data.minusDisabled,
-            plusDisabled: data.plusDisabled
+            plusDisabled: data.plusDisabled,
+            showValue:toThousands(data.value)
         }
 
         this.timer = null;
@@ -89,12 +123,14 @@ class InputNumber extends Component {
     componentWillReceiveProps(nextProps){
         if(this.focus){
             this.setState({
-                value: nextProps.value
+                value: nextProps.value,
+                showValue:toThousands(nextProps.value),
             });
         }else{
             let data = judgeValue(nextProps,this.state.value);
             this.setState({
                 value: data.value,
+                showValue:toThousands(data.value),
                 minusDisabled: data.minusDisabled,
                 plusDisabled: data.plusDisabled
             });
@@ -108,15 +144,18 @@ class InputNumber extends Component {
 
     handleChange = (value) => {
         const { onChange,toNumber } = this.props;
+        value = unThousands(value)
         if(isNaN(value)&&(value!='.'))return;
         this.setState({
-            value
+            value,
+            showValue:toThousands(value),
         });
         if(value=='.'||value.indexOf('.')==value.length-1){//当输入小数点的时候
             onChange && onChange(value);
         }else{
             toNumber?onChange && onChange(Number(value)):onChange && onChange(value);
         }
+        
         
     }
 
@@ -127,6 +166,7 @@ class InputNumber extends Component {
     }
 
     handleBlur = (v) => {
+        v = unThousands(v)
         this.focus = false;        
         const { onBlur,precision,onChange,toNumber } = this.props;
         let value = Number(v);
@@ -134,7 +174,8 @@ class InputNumber extends Component {
             value = value.toFixed(precision);
         }
         this.setState({
-            value
+            value,
+            showValue:toThousands(value)
         });
         this.detailDisable(value);
         if(toNumber){
@@ -196,7 +237,8 @@ class InputNumber extends Component {
         }
 
         this.setState({
-            value
+            value,
+            showValue:toThousands(value)
         });
         toNumber?onChange && onChange(Number(value)):onChange && onChange(value);
         this.detailDisable(value);
@@ -222,7 +264,8 @@ class InputNumber extends Component {
             value = min;
         }
         this.setState({
-            value
+            value,
+            showValue:toThousands(value)
         });
         toNumber?onChange && onChange(Number(value)):onChange && onChange(value);
         this.detailDisable(value);
@@ -298,14 +341,14 @@ class InputNumber extends Component {
     }
 
     render() {
-        const {max, min, step,disabled, clsPrefix, className, delay, onBlur, onFocus, iconStyle, autoWidth, onChange, format, precision,toNumber, ...others} = this.props;
+        const {toThousands, max, min, step,disabled, clsPrefix, className, delay, onBlur, onFocus, iconStyle, autoWidth, onChange, format, precision,toNumber, ...others} = this.props;
 
         let classes = {
             [`${clsPrefix}-auto`]: autoWidth,
             [`${clsPrefix}`]: true,
         };
 
-        let {value, minusDisabled, plusDisabled} = this.state;
+        let {value, minusDisabled, plusDisabled, showValue} = this.state;
 
         value = format ? format(value) : value;
 
@@ -325,7 +368,7 @@ class InputNumber extends Component {
                             </InputGroup.Addon>
                             <FormControl
                                 {...others}
-                                value={value}
+                                value={toThousands?showValue:value}
                                 disabled={disabled}
                                 onBlur={ this.handleBlur }
                                 onFocus={this.handleFocus}
@@ -346,7 +389,7 @@ class InputNumber extends Component {
                         >
                             <FormControl 
                                 {...others}
-                                value={value}
+                                value={toThousands?showValue:value}
                                 disabled={disabled}
                                 onBlur={ this.handleBlur }
                                 onFocus={this.handleFocus}

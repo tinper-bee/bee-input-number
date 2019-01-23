@@ -49,6 +49,7 @@ var propTypes = {
     format: _propTypes2["default"].func,
     delay: _propTypes2["default"].number,
     disabled: _propTypes2["default"].bool,
+    toThousands: _propTypes2["default"].bool,
     toNumber: _propTypes2["default"].bool //回调函数内的值是否转换为数值类型
 };
 
@@ -106,6 +107,35 @@ function judgeValue(props, oldValue) {
         plusDisabled: currentPlusDisabled
     };
 }
+/**
+ * 千分符
+ * @param {要转换的数据} num 
+ * @param {是否要小数点} point 
+ */
+function toThousands(number, point) {
+    var num = (number || 0).toString();
+    var integer = num.split('.')[0];
+    var decimal = num.split('.')[1] || '';
+    var result = '';
+    while (integer.length > 3) {
+        result = ',' + integer.slice(-3) + result;
+        integer = integer.slice(0, integer.length - 3);
+    }
+    if (integer) {
+        result = integer + result;
+        if (num == '.' || num.indexOf('.') == num.length - 1) {
+            result = result + '.' + decimal;
+        } else if (decimal) {
+            result = result + '.' + decimal;
+        }
+    }
+    return result;
+}
+
+function unThousands(number) {
+    number = (number || 0).toString();
+    return number.replace(/\,/g, '');
+}
 
 var InputNumber = function (_Component) {
     _inherits(InputNumber, _Component);
@@ -122,9 +152,11 @@ var InputNumber = function (_Component) {
                 onChange = _this$props.onChange,
                 toNumber = _this$props.toNumber;
 
+            value = unThousands(value);
             if (isNaN(value) && value != '.') return;
             _this.setState({
-                value: value
+                value: value,
+                showValue: toThousands(value)
             });
             if (value == '.' || value.indexOf('.') == value.length - 1) {
                 //当输入小数点的时候
@@ -145,6 +177,7 @@ var InputNumber = function (_Component) {
         };
 
         _this.handleBlur = function (v) {
+            v = unThousands(v);
             _this.focus = false;
             var _this$props3 = _this.props,
                 onBlur = _this$props3.onBlur,
@@ -157,7 +190,8 @@ var InputNumber = function (_Component) {
                 value = value.toFixed(precision);
             }
             _this.setState({
-                value: value
+                value: value,
+                showValue: toThousands(value)
             });
             _this.detailDisable(value);
             if (toNumber) {
@@ -223,7 +257,8 @@ var InputNumber = function (_Component) {
             }
 
             _this.setState({
-                value: value
+                value: value,
+                showValue: toThousands(value)
             });
             toNumber ? onChange && onChange(Number(value)) : onChange && onChange(value);
             _this.detailDisable(value);
@@ -253,7 +288,8 @@ var InputNumber = function (_Component) {
                 value = min;
             }
             _this.setState({
-                value: value
+                value: value,
+                showValue: toThousands(value)
             });
             toNumber ? onChange && onChange(Number(value)) : onChange && onChange(value);
             _this.detailDisable(value);
@@ -333,7 +369,8 @@ var InputNumber = function (_Component) {
         _this.state = {
             value: data.value,
             minusDisabled: data.minusDisabled,
-            plusDisabled: data.plusDisabled
+            plusDisabled: data.plusDisabled,
+            showValue: toThousands(data.value)
         };
 
         _this.timer = null;
@@ -346,12 +383,14 @@ var InputNumber = function (_Component) {
     InputNumber.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
         if (this.focus) {
             this.setState({
-                value: nextProps.value
+                value: nextProps.value,
+                showValue: toThousands(nextProps.value)
             });
         } else {
             var data = judgeValue(nextProps, this.state.value);
             this.setState({
                 value: data.value,
+                showValue: toThousands(data.value),
                 minusDisabled: data.minusDisabled,
                 plusDisabled: data.plusDisabled
             });
@@ -385,6 +424,7 @@ var InputNumber = function (_Component) {
         var _classes;
 
         var _props = this.props,
+            toThousands = _props.toThousands,
             max = _props.max,
             min = _props.min,
             step = _props.step,
@@ -400,14 +440,15 @@ var InputNumber = function (_Component) {
             format = _props.format,
             precision = _props.precision,
             toNumber = _props.toNumber,
-            others = _objectWithoutProperties(_props, ['max', 'min', 'step', 'disabled', 'clsPrefix', 'className', 'delay', 'onBlur', 'onFocus', 'iconStyle', 'autoWidth', 'onChange', 'format', 'precision', 'toNumber']);
+            others = _objectWithoutProperties(_props, ['toThousands', 'max', 'min', 'step', 'disabled', 'clsPrefix', 'className', 'delay', 'onBlur', 'onFocus', 'iconStyle', 'autoWidth', 'onChange', 'format', 'precision', 'toNumber']);
 
         var classes = (_classes = {}, _defineProperty(_classes, clsPrefix + '-auto', autoWidth), _defineProperty(_classes, '' + clsPrefix, true), _classes);
 
         var _state = this.state,
             value = _state.value,
             minusDisabled = _state.minusDisabled,
-            plusDisabled = _state.plusDisabled;
+            plusDisabled = _state.plusDisabled,
+            showValue = _state.showValue;
 
 
         value = format ? format(value) : value;
@@ -430,7 +471,7 @@ var InputNumber = function (_Component) {
                     '-'
                 ),
                 _react2["default"].createElement(_beeFormControl2["default"], _extends({}, others, {
-                    value: value,
+                    value: toThousands ? showValue : value,
                     disabled: disabled,
                     onBlur: this.handleBlur,
                     onFocus: this.handleFocus,
@@ -452,7 +493,7 @@ var InputNumber = function (_Component) {
                     simple: true
                 },
                 _react2["default"].createElement(_beeFormControl2["default"], _extends({}, others, {
-                    value: value,
+                    value: toThousands ? showValue : value,
                     disabled: disabled,
                     onBlur: this.handleBlur,
                     onFocus: this.handleFocus,
