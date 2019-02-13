@@ -12,7 +12,7 @@
 |precision|显示精度。如要输入小数，此属性必须设置|number|显示小数点后面的位数|
 |delay|当持续按住增减按钮式，变换的速度（毫秒）|number|300|
 |disabled|是否可编辑|string|-|
-|toNumber|回调内的值是否转换为number类型|bool|true|
+|toNumber|回调内的值是否转换为number类型。当正在输入小数点或者小数点后第一位为0时，不能转换为number类型|bool|true|
 |toThousands|是否显示千分符|bool|false|
 
 

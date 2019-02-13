@@ -18,6 +18,7 @@ class Demo1 extends Component {
     }
 
     handleChange = (value) => {
+        console.log(value);
         this.setState({
             value: value
         })
