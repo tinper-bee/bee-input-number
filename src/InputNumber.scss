@@ -17,7 +17,7 @@
             width: 22px;
             height: 30px;
             background: #fff;
-            border-radius: 0 4px 4px 0;
+            border-radius: 0 $border-radius $border-radius 0;
             -webkit-transition: opacity .24s linear .1s;
             transition: opacity .24s linear .1s;
             .plus {
@@ -92,22 +92,23 @@
         border-right: 0;
         border-bottom-right-radius: 0;
         border-top-right-radius: 0;
-        border-right: 1px solid #bdbdbd;
+        border-right: 1px solid $border-color;
         padding-right: 12px;
     }
     &.u-input-group.simple .u-form-control[disabled] {
-        border-color: #e0e0e0;
+        border-color:$border-color;
     }
     &.u-input-group.simple .u-form-control[disabled]+.u-input-group-btn .icon-group {
-        border-color: #e0e0e0;
+        border-color:$border-color;
     }
     &.u-input-group .u-form-control {
         width: 100%;
         text-align: center;
-        border-right: 1px solid #bdbdbd;
+        // border-right: 1px solid $border-color;
     }
     &.u-input-group .u-form-control[disabled] {
-        border-color: #e0e0e0;
+        border-top-color: $border-color;
+        border-bottom-color: $border-color;
     }
     &.u-input-group .u-form-control:focus {
         border-color: #66afe9;
@@ -118,6 +119,7 @@
         padding: 6px;
         user-select: none;
         -moz-user-select: none;
+        border:1px solid $border-color;
         &.disabled {
             cursor: not-allowed;
             background: #ffe;
