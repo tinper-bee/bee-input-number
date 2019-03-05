@@ -34,10 +34,10 @@
  },
  "dependencies": {
   "babel-runtime": "^6.22.0",
-  "bee-form-control": "^1.1.11",
-  "bee-input-group": "^1.0.3",
+  "bee-form-control": "latest",
+  "bee-input-group": "latest",
   "classnames": "^2.2.5",
-  "tinper-bee-core": "^2.0.14"
+  "tinper-bee-core": "latest"
  },
  "peerDependencies": {
   "react": "^15.3.0 || ^16.0",
@@ -45,7 +45,7 @@
   "prop-types": "15.6.0"
  },
  "devDependencies": {
-  "bee-button": "^2.0.4",
+  "bee-button": "latest",
   "bee-layout": "latest",
   "bee-panel": "latest",
   "chai": "^3.5.0",
