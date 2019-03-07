@@ -55,9 +55,8 @@
                 font-weight: 700;
                 &.disabled {
                     cursor: not-allowed;
-                    // background: #ffe;
-                    // color: #ccc;
                     background: transparent !important;
+                    color: #C1C7D0;
                 }
                 &.disabled-cursor {
                     background: #f7f9fb;
@@ -88,9 +87,8 @@
                 font-weight: 700;
                 &.disabled {
                     cursor: not-allowed;
-                    // background: #ffe;
-                    // color: #ccc;
                     background: transparent !important;
+                    color: #C1C7D0;
                 }
                 &.disabled-cursor {
                     cursor: not-allowed;
@@ -109,7 +107,7 @@
             }
             .disabled-cursor {
                 .uf {
-                    color: #ccc;
+                    color: #C1C7D0;
                     &:hover {
                         color: #ccc;
                     }
@@ -119,7 +117,7 @@
                 font-size: 12px;
                 line-height: 12px;
                 // &:hover {
-                //     color: #c2c8de;
+                //     color: #C1C7D0;
                 // }
             }
         }
@@ -166,7 +164,7 @@
         &.disabled {
             cursor: not-allowed;
             // background: #ffe;
-            color: #c2c8de;
+            color: #C1C7D0;
             background: transparent !important;
         }
         &.disabled-cursor {

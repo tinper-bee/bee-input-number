@@ -5459,7 +5459,8 @@ a, .mdl-accordion, .mdl-button, .mdl-card, .mdl-checkbox, .mdl-dropdown-menu,
         font-weight: 700; }
         .u-input-number.u-input-group.simple .u-input-group-btn .icon-group .plus.disabled {
           cursor: not-allowed;
-          background: transparent !important; }
+          background: transparent !important;
+          color: #C1C7D0; }
         .u-input-number.u-input-group.simple .u-input-group-btn .icon-group .plus.disabled-cursor {
           background: #f7f9fb;
           cursor: not-allowed; }
@@ -5484,7 +5485,8 @@ a, .mdl-accordion, .mdl-button, .mdl-card, .mdl-checkbox, .mdl-dropdown-menu,
         font-weight: 700; }
         .u-input-number.u-input-group.simple .u-input-group-btn .icon-group .reduce.disabled {
           cursor: not-allowed;
-          background: transparent !important; }
+          background: transparent !important;
+          color: #C1C7D0; }
         .u-input-number.u-input-group.simple .u-input-group-btn .icon-group .reduce.disabled-cursor {
           cursor: not-allowed;
           background: #f7f9fb; }
@@ -5496,7 +5498,7 @@ a, .mdl-accordion, .mdl-button, .mdl-card, .mdl-checkbox, .mdl-dropdown-menu,
       .u-input-number.u-input-group.simple .u-input-group-btn .icon-group .disabled-cursor.disabled {
         background: none; }
       .u-input-number.u-input-group.simple .u-input-group-btn .icon-group .disabled-cursor .uf {
-        color: #ccc; }
+        color: #C1C7D0; }
         .u-input-number.u-input-group.simple .u-input-group-btn .icon-group .disabled-cursor .uf:hover {
           color: #ccc; }
       .u-input-number.u-input-group.simple .u-input-group-btn .icon-group .uf {
@@ -5536,7 +5538,7 @@ a, .mdl-accordion, .mdl-button, .mdl-card, .mdl-checkbox, .mdl-dropdown-menu,
     background: transparent; }
     .u-input-number .u-input-group-addon.disabled {
       cursor: not-allowed;
-      color: #c2c8de;
+      color: #C1C7D0;
       background: transparent !important; }
     .u-input-number .u-input-group-addon.disabled-cursor {
       cursor: not-allowed;
