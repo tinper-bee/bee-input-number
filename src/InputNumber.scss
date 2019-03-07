@@ -4,6 +4,26 @@
 @import "../node_modules/bee-input-group/src/InputGroup.scss";
 .u-input-number {
     width: 100%;
+    border: 1px solid $border-color-base;
+    border-radius: $border-radius;
+
+    &.u-input-group>span{
+        background: transparent;
+        border: transparent;
+        // border-radius: $border-radius;
+    }
+
+    &.u-input-group>span:first-child{
+        border-right: 1px solid $border-color-base;
+    }
+    &.u-input-group>span:last-child{
+        border-left: 1px solid $border-color-base;
+        border-top-right-radius:  $border-radius;
+    }
+    &.u-input-group>span:hover{
+        background: #ebecf0;
+    }
+
     &.u-input-group.simple .u-input-group-btn {
         position: relative;
         top: 0;
@@ -11,9 +31,9 @@
         right: 0;
         width: 22px;
         .icon-group {
-            border-right: 1px solid #bdbdbd;
-            border-top: 1px solid #bdbdbd;
-            border-bottom: 1px solid #bdbdbd;
+            // border-right: 1px solid #bdbdbd;
+            // border-top: 1px solid #bdbdbd;
+            // border-bottom: 1px solid #bdbdbd;
             width: 22px;
             height: 32px;
             background: #fff;
@@ -35,11 +55,20 @@
                 font-weight: 700;
                 &.disabled {
                     cursor: not-allowed;
-                    background: #ffe;
-                    color: #ccc;
+                    // background: #ffe;
+                    // color: #ccc;
+                    background: transparent !important;
                 }
                 &.disabled-cursor {
+                    background: #f7f9fb;
                     cursor: not-allowed;
+                    &:hover {
+                        background: transparent;
+                    }
+                }
+                &:hover {
+                    background: #ebecf0;
+                    color: #555;
                 }
             }
             .reduce {
@@ -59,11 +88,20 @@
                 font-weight: 700;
                 &.disabled {
                     cursor: not-allowed;
-                    background: #ffe;
-                    color: #ccc;
+                    // background: #ffe;
+                    // color: #ccc;
+                    background: transparent !important;
                 }
                 &.disabled-cursor {
                     cursor: not-allowed;
+                    background: #f7f9fb;
+                    &:hover {
+                        background: transparent;
+                    }
+                } 
+                &:hover {
+                    background: #ebecf0;
+                    color: #555;
                 }
             }
             .disabled-cursor.disabled {
@@ -80,11 +118,14 @@
             .uf {
                 font-size: 12px;
                 line-height: 12px;
-                &:hover {
-                    color: blue;
-                }
+                // &:hover {
+                //     color: #c2c8de;
+                // }
             }
         }
+    }
+    &.u-input-group.simple .u-input-group-btn[disabled] {
+        background: #f7f9fb;
     }
     &.u-input-group.simple .u-form-control {
         text-align: left;
@@ -104,6 +145,7 @@
     &.u-input-group .u-form-control {
         width: 100%;
         text-align: center;
+        border: transparent;
         // border-right: 1px solid $border-color;
     }
     &.u-input-group .u-form-control[disabled] {
@@ -119,18 +161,21 @@
         padding: 6px;
         user-select: none;
         -moz-user-select: none;
-        border:1px solid $border-color;
+        background: transparent;
+        // border:1px solid $border-color;
         &.disabled {
             cursor: not-allowed;
-            background: #ffe;
-            color: #ccc;
+            // background: #ffe;
+            color: #c2c8de;
+            background: transparent !important;
         }
         &.disabled-cursor {
             cursor: not-allowed;
-            background: none;
+            background: #f7f9fb !important;
             color: #ccc;
         }
     }
+
     .u-input-number-auto .u-form-control {
         width: 100%;
     }
