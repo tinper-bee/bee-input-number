@@ -106,6 +106,20 @@ function judgeValue(props, oldValue) {
             };
         }
     }
+    if (currentValue == -Infinity) {
+        return {
+            value: min,
+            minusDisabled: true,
+            plusDisabled: false
+        };
+    }
+    if (currentValue == Infinity) {
+        return {
+            value: max,
+            minusDisabled: false,
+            plusDisabled: true
+        };
+    }
     if (currentValue <= min) {
         currentMinusDisabled = true;
         currentValue = min;
@@ -423,10 +437,12 @@ var InputNumber = function (_Component) {
 
     InputNumber.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
         if (this.focus) {
-            this.setState({
-                value: nextProps.value,
-                showValue: toThousands(nextProps.value)
-            });
+            if (nextProps.value == Infinity || nextProps.value == -Infinity) {} else {
+                this.setState({
+                    value: nextProps.value,
+                    showValue: toThousands(nextProps.value)
+                });
+            }
         } else {
             var data = judgeValue(nextProps, this.state.value);
             this.setState({
