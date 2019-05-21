@@ -34371,6 +34371,11 @@
 	    if (value != undefined) {
 	        if (value == '') {
 	            currentValue = '';
+	            return {
+	                value: '',
+	                minusDisabled: false,
+	                plusDisabled: false
+	            };
 	        } else {
 	            currentValue = Number(value) || 0;
 	        }

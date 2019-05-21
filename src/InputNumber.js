@@ -39,7 +39,12 @@ function judgeValue(props,oldValue) {
     let { value,min,max,precision,onChange } = props;
     if (value!=undefined) {
         if(value==''){
-            currentValue=''
+            currentValue='';
+            return {
+                value: '',
+                minusDisabled: false,
+                plusDisabled: false
+            }
         }else{
             currentValue = Number(value) ||0;
         }
