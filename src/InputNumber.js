@@ -24,7 +24,7 @@ const defaultProps = {
     iconStyle: 'double',
     autoWidth: false,
     delay: 300,
-    toNumber:true
+    toNumber:false
 };
 
 /**
