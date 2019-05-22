@@ -79,7 +79,7 @@ function judgeValue(props, oldValue) {
         onChange = props.onChange;
 
     if (value != undefined) {
-        if (value == '') {
+        if (value === '') {
             currentValue = '';
             return {
                 value: '',
@@ -144,7 +144,8 @@ function judgeValue(props, oldValue) {
  * @param {要转换的数据} num 
  */
 function toThousands(number) {
-    if (number == '') return '';
+    if (number === '') return '';
+    if (number === '0') return '0';
     var num = (number || 0).toString();
     var integer = num.split('.')[0];
     var decimal = num.split('.')[1] || '';
@@ -186,7 +187,7 @@ var InputNumber = function (_Component) {
                 max = _this$props.max,
                 min = _this$props.min;
 
-            if (value == '') {
+            if (value === '') {
                 onChange && onChange(value);
                 _this.setState({
                     value: value
@@ -230,7 +231,7 @@ var InputNumber = function (_Component) {
                 onChange = _this$props3.onChange,
                 toNumber = _this$props3.toNumber;
 
-            if (v == '') {
+            if (v === '') {
                 _this.setState({
                     value: v
                 });
