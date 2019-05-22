@@ -182,7 +182,9 @@ var InputNumber = function (_Component) {
         _this.handleChange = function (value) {
             var _this$props = _this.props,
                 onChange = _this$props.onChange,
-                toNumber = _this$props.toNumber;
+                toNumber = _this$props.toNumber,
+                max = _this$props.max,
+                min = _this$props.min;
 
             if (value == '') {
                 onChange && onChange(value);
@@ -192,6 +194,8 @@ var InputNumber = function (_Component) {
                 return;
             }
             value = unThousands(value);
+            if (Number(value) > max) return;
+            if (Number(value) < min) return;
             if (isNaN(value) && value != '.') return;
             _this.setState({
                 value: value,

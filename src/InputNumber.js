@@ -181,7 +181,7 @@ class InputNumber extends Component {
     }
 
     handleChange = (value) => {
-        const { onChange,toNumber } = this.props;
+        const { onChange,toNumber,max,min } = this.props;
         if(value==''){
             onChange && onChange(value);
             this.setState({
@@ -189,7 +189,9 @@ class InputNumber extends Component {
             })
             return;
         }
-        value = unThousands(value)
+        value = unThousands(value);
+        if(Number(value)>max)return;
+        if(Number(value)<min)return;
         if(isNaN(value)&&(value!='.'))return;
         this.setState({
             value,
