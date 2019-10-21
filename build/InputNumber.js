@@ -390,6 +390,7 @@ var InputNumber = function (_Component) {
         };
 
         _this.handlePlusMouseDown = function (e) {
+            e.preventDefault();
             var _this$props7 = _this.props,
                 delay = _this$props7.delay,
                 disabled = _this$props7.disabled;
@@ -405,6 +406,7 @@ var InputNumber = function (_Component) {
         };
 
         _this.handleReduceMouseDown = function (e) {
+            e.preventDefault();
             var _this$props8 = _this.props,
                 delay = _this$props8.delay,
                 disabled = _this$props8.disabled;

@@ -377,6 +377,7 @@ class InputNumber extends Component {
     }
 
     handlePlusMouseDown = (e) => {
+        e.preventDefault();
         let {delay,disabled} = this.props;
         if(disabled)return;
         let {value} = this.state;
@@ -388,6 +389,7 @@ class InputNumber extends Component {
     }
 
     handleReduceMouseDown = (e) => {
+        e.preventDefault();
         let {delay,disabled} = this.props;
         if(disabled)return;
         let {value} = this.state;
