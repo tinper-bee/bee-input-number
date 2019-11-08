@@ -13,7 +13,7 @@ class Demo1 extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: '-837423984'
+            value: 0
         }
     }
 
@@ -27,7 +27,7 @@ class Demo1 extends Component {
     render() {
         return (
             <div>
-                <InputNumber toThousands={true} precision={2} min={0} value={this.state.value} onChange={ this.handleChange }/>
+                <InputNumber toThousands={true} precision={2}  value={this.state.value} onChange={ this.handleChange }/>
             </div>
         )
     }
