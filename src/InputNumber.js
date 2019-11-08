@@ -119,6 +119,9 @@ function toThousands(number) {
             result = result + '.'+decimal;
         }
      }
+     if(result[0]=='-'){
+        result = result.replace('-,','-')
+    }
     return result;
 }
 
