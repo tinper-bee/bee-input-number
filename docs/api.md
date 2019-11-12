@@ -36,7 +36,7 @@ import 'bee-input-number/build/InputNumber.css';
 |toNumber|onChange回调内的值是否转换为number类型。当正在输入小数点或者小数点后第一位为0时，不能转换为number类型|bool|false|
 |toThousands|是否显示千分符|bool|false|
 |split|InputNumberGroup自定义分隔符|node|~|
-
+|displayCheckPrompt|是否显示超出限制范围之后的检验提示|bool|false|
 
 ## 注意事项
 

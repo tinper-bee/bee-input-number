@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import classnames from 'classnames';
 import InputGroup from 'bee-input-group';
 import FormControl from 'bee-form-control';
+import Message from 'bee-message';
 import PropTypes from 'prop-types';
 
 const propTypes = {
@@ -14,7 +15,8 @@ const propTypes = {
     delay: PropTypes.number,
     disabled:PropTypes.bool,
     toThousands:PropTypes.bool,
-    toNumber:PropTypes.bool //回调函数内的值是否转换为数值类型
+    toNumber:PropTypes.bool, //回调函数内的值是否转换为数值类型
+    displayCheckPrompt:PropTypes.bool, //是否显示超出限制范围之后的检验提示
 };
 
 const defaultProps = {
@@ -24,7 +26,8 @@ const defaultProps = {
     iconStyle: 'double',
     autoWidth: false,
     delay: 300,
-    toNumber:false
+    toNumber:false,
+    displayCheckPrompt:false
 };
 
 /**
@@ -185,7 +188,7 @@ class InputNumber extends Component {
     }
 
     handleChange = (value) => {
-        const { onChange,toNumber,max,min } = this.props;
+        const { onChange,toNumber,max,min,displayCheckPrompt } = this.props;
         if(value===''){
             onChange && onChange(value);
             this.setState({
@@ -194,8 +197,16 @@ class InputNumber extends Component {
             return;
         }
         value = unThousands(value);
-        if(Number(value)>max)return;
-        if(Number(value)<min)return;
+        if(Number(value)>max){
+            if(!displayCheckPrompt) return;
+            this.prompt(`输入的数字不能大于 ${max}`);
+            return;
+        }
+        if(Number(value)<min){
+            if(!displayCheckPrompt) return;
+            this.prompt(`输入的数字不能小于 ${min}`);
+            return;
+        }
         if(isNaN(value)&&(value!=='.')&&(value!=='-'))return;
         this.setState({
             value,
@@ -213,6 +224,11 @@ class InputNumber extends Component {
         }
         
         
+    }
+    //校验提示
+    prompt = (content) => {
+        Message.destroy();
+        Message.create({content: content, color: 'warninglight'});
     }
 
     handleFocus = (value,e) => {

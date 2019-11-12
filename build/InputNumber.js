@@ -22,6 +22,10 @@ var _beeFormControl = require('bee-form-control');
 
 var _beeFormControl2 = _interopRequireDefault(_beeFormControl);
 
+var _beeMessage = require('bee-message');
+
+var _beeMessage2 = _interopRequireDefault(_beeMessage);
+
 var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
@@ -50,7 +54,8 @@ var propTypes = {
     delay: _propTypes2["default"].number,
     disabled: _propTypes2["default"].bool,
     toThousands: _propTypes2["default"].bool,
-    toNumber: _propTypes2["default"].bool //回调函数内的值是否转换为数值类型
+    toNumber: _propTypes2["default"].bool, //回调函数内的值是否转换为数值类型
+    displayCheckPrompt: _propTypes2["default"].bool //是否显示超出限制范围之后的检验提示
 };
 
 var defaultProps = {
@@ -60,7 +65,8 @@ var defaultProps = {
     iconStyle: 'double',
     autoWidth: false,
     delay: 300,
-    toNumber: false
+    toNumber: false,
+    displayCheckPrompt: false
 };
 
 /**
@@ -188,7 +194,8 @@ var InputNumber = function (_Component) {
                 onChange = _this$props.onChange,
                 toNumber = _this$props.toNumber,
                 max = _this$props.max,
-                min = _this$props.min;
+                min = _this$props.min,
+                displayCheckPrompt = _this$props.displayCheckPrompt;
 
             if (value === '') {
                 onChange && onChange(value);
@@ -198,8 +205,16 @@ var InputNumber = function (_Component) {
                 return;
             }
             value = unThousands(value);
-            if (Number(value) > max) return;
-            if (Number(value) < min) return;
+            if (Number(value) > max) {
+                if (!displayCheckPrompt) return;
+                _this.prompt('\u8F93\u5165\u7684\u6570\u5B57\u4E0D\u80FD\u5927\u4E8E ' + max);
+                return;
+            }
+            if (Number(value) < min) {
+                if (!displayCheckPrompt) return;
+                _this.prompt('\u8F93\u5165\u7684\u6570\u5B57\u4E0D\u80FD\u5C0F\u4E8E ' + min);
+                return;
+            }
             if (isNaN(value) && value !== '.' && value !== '-') return;
             _this.setState({
                 value: value,
@@ -217,6 +232,11 @@ var InputNumber = function (_Component) {
             } else {
                 toNumber ? onChange && onChange(Number(value)) : onChange && onChange(value);
             }
+        };
+
+        _this.prompt = function (content) {
+            _beeMessage2["default"].destroy();
+            _beeMessage2["default"].create({ content: content, color: 'warninglight' });
         };
 
         _this.handleFocus = function (value, e) {
@@ -471,6 +491,8 @@ var InputNumber = function (_Component) {
     InputNumber.prototype.ComponentWillUnMount = function ComponentWillUnMount() {
         this.clear();
     };
+    //校验提示
+
     /**
      * 设置增加减少按钮是否可用
      */
