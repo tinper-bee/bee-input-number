@@ -24,10 +24,10 @@ class Demo2 extends Component {
 		return (
 			<InputNumber
 				max={12}
-				min={-9}
+				min={5}
 				step={1}
 				value={this.state.value}
-				onChange={ this.handleChange }
+                onChange={ this.handleChange }
 			/>
 		)
 	}

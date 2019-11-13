@@ -80,7 +80,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(277);var Demo2 = __webpack_require__(405);var Demo3 = __webpack_require__(406);var Demo4 = __webpack_require__(407);var Demo5 = __webpack_require__(408);var Demo6 = __webpack_require__(409);var Demo7 = __webpack_require__(410);var Demo8 = __webpack_require__(411);var Demo9 = __webpack_require__(412);var Demo10 = __webpack_require__(413);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基础示例 ", "code": "/**\n *\n* @title 基础示例 \n * @description 最简单输入控制\n *\n */\n\n\nimport React, { Component } from 'react';\nimport { Form, InputNumber } from 'tinper-bee';\n\n\nclass Demo1 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n\n    handleChange = (value) => {\n        console.log(value);\n        this.setState({\n            value: value\n        })\n    }\n\n    render () {\n        let { getFieldProps } = this.props.form;\n        return (\n            <div>\n                <InputNumber\n                    iconStyle=\"one\"\n                    min={-999999}\n                    max={999999}\n                    {...getFieldProps(\"valueStd\", {\n                        initialValue: 0\n                    })}\n                />\n            </div>\n        )\n    }\n}\n\nexport default Form.createForm()(Demo1);", "desc": " 最简单输入控制", "scss_code": "#tinperBeeDemo .u-input-number {\r\n    width: 200px;\r\n}" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 默认 iconStyle", "code": "/**\n*\n* @title 默认 iconStyle\n* @description 自定义 最大值 max=12,min=5,step=1\n*\n*/\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\n\n\nclass Demo2 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\tmax={12}\n\t\t\t\tmin={-9}\n\t\t\t\tstep={1}\n\t\t\t\tvalue={this.state.value}\n\t\t\t\tonChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\nexport default Demo2;", "desc": " 自定义 最大值 max=12,min=5,step=1" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 第二种iconStyle", "code": "/**\n*\n* @title 第二种iconStyle\n* @description 自定义max=12,min=5,step=2\n*\n*/\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\n \n\nclass Demo3 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\ticonStyle=\"one\"\n\t\t\t\tmax={12}\n\t\t\t\tmin={-9}\n\t\t\t\tstep={2}\n\t\t\t\tvalue={this.state.value}\n\t\t\t\tonChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\nexport default Demo3;", "desc": " 自定义max=12,min=5,step=2" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 默认iconStyle不可用状态", "code": "/**\n *\n * @title 默认iconStyle不可用状态\n * @description disabled 的单输入控制\n *\n */\n\n\nimport React, {Component} from 'react';\nimport { InputNumber } from 'tinper-bee';\n\n\nclass Demo4 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\n    render() {\n        return (\n            <div>\n                <InputNumber disabled precision={2} value={this.state.value} onChange={ this.handleChange }/>\n            </div>\n        )\n    }\n}\n\nexport default Demo4;", "desc": " disabled 的单输入控制" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 第二种iconStyle不可用状态", "code": "/**\n*\n* @title 第二种iconStyle不可用状态\n* @description 自定义max=12,min=5,step=2 且设置 disabled 处理\n*\n*/\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\n \n\nclass Demo5 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 8\n        }\n    }\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\tdisabled\n\t\t\t\ticonStyle=\"one\"\n\t\t\t\tmax={12}\n\t\t\t\tmin={-10}\n\t\t\t\tstep={2}\n\t\t\t\tvalue={this.state.value}\n\t\t\t\tonChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\nexport default Demo5;", "desc": " 自定义max=12,min=5,step=2 且设置 disabled 处理" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 保留两位小数", "code": "/**\n*\n* @title 保留两位小数\n* @description precision={2} 设置小数点后保留两位，失去焦点时数据会格式化为两位小数\n*\n*/\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\n \n\nclass Demo6 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n    handleChange = (value) => {\n\t\tconsole.log(value)\n        this.setState({\n            value: value\n        })\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\ticonStyle=\"one\"\n\t\t\t\tprecision={2}\n\t\t\t\tvalue={this.state.value}\n\t\t\t\tonChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\nexport default Demo6;", "desc": " precision={2} 设置小数点后保留两位，失去焦点时数据会格式化为两位小数" }, { "example": _react2['default'].createElement(Demo7, null), "title": " 显示千分符示例", "code": "/**\n *\n* @title 显示千分符示例\n * @description 设置toThousands={true}  只会在显示的时候带有千分符，onChange里的回调还是原来不带千分符的值\n *\n */\n\n\nimport React, {Component} from 'react';\nimport { InputNumber } from 'tinper-bee';\n\n\nclass Demo1 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n\n    handleChange = (value) => {\n        console.log('onChange:   '+value)\n        this.setState({\n            value: value\n        })\n    }\n\n    render() {\n        return (\n            <div>\n                <InputNumber toThousands={true} precision={2}  value={this.state.value} onChange={ this.handleChange }/>\n            </div>\n        )\n    }\n}\n\nexport default Demo1;", "desc": " 设置toThousands={true}  只会在显示的时候带有千分符，onChange里的回调还是原来不带千分符的值" }, { "example": _react2['default'].createElement(Demo8, null), "title": " 基础示例 ", "code": "/**\n *\n* @title 基础示例 \n * @description 最简单输入控制\n *\n */\n\n\nimport React, {Component} from 'react';\nimport { InputNumber } from 'tinper-bee';\n\n\nclass Demo1 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: ''\n        }\n    }\n\n    handleChange = (value) => {\n        console.log(value);\n        this.setState({\n            value: value\n        })\n    }\n\n    render() {\n        return (\n            <div>\n                <InputNumber  precision={2} value={this.state.value} onChange={ this.handleChange }/>\n            </div>\n        )\n    }\n}\n\nexport default Demo1;", "desc": " 最简单输入控制" }, { "example": _react2['default'].createElement(Demo9, null), "title": " 日期区间基础示例 ", "code": "/**\n *\n* @title 日期区间基础示例 \n * @description 使用 InputNumberGroup\n *\n */\n\n\nimport React, {Component} from 'react';\nimport { InputNumber } from 'tinper-bee';\n\n\nconst InputNumberGroup = InputNumber.InputNumberGroup;\n\nclass Demo9 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: [10,12]\n        }\n    }\n\n    handleChange = (value) => {\n        console.log(value);\n        this.setState({\n            value\n        })\n    }\n\n    render() {\n        return (\n            <div className='demo9'>\n                <InputNumberGroup \n                iconStyle='two'\n                onChange={this.handleChange} \n                placeholder={['请输入最小值','请输入最大值']}/>\n            </div>\n        )\n    }\n}\n\nexport default Demo9;", "desc": " 使用 InputNumberGroup" }, { "example": _react2['default'].createElement(Demo10, null), "title": " 输入时校验提示 ", "code": "/**\r\n *\r\n* @title 输入时校验提示 \r\n * @description 设置 displayCheckPrompt={true}，显示超出限制范围之后的提示。\r\n *\r\n */\r\n\r\n\r\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\r\n\r\n\r\nclass Demo10 extends Component {\r\n    render () {\r\n        return (\r\n            <InputNumber\r\n                iconStyle=\"one\"\r\n                min={-100}\r\n                max={100}\r\n                displayCheckPrompt={true}\r\n            />\r\n        )\r\n    }\r\n}\r\n\r\nexport default Demo10;", "desc": " 设置 displayCheckPrompt={true}，显示超出限制范围之后的提示。" }];
+	var Demo1 = __webpack_require__(278);var Demo2 = __webpack_require__(406);var Demo3 = __webpack_require__(407);var Demo4 = __webpack_require__(408);var Demo5 = __webpack_require__(409);var Demo6 = __webpack_require__(410);var Demo7 = __webpack_require__(411);var Demo8 = __webpack_require__(412);var Demo9 = __webpack_require__(413);var Demo10 = __webpack_require__(414);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基础示例 ", "code": "/**\n *\n* @title 基础示例 \n * @description 最简单输入控制\n *\n */\n\n\nimport React, { Component } from 'react';\nimport { Form, InputNumber } from 'tinper-bee';\n\n\nclass Demo1 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n\n    handleChange = (value) => {\n        console.log(value);\n        this.setState({\n            value: value\n        })\n    }\n\n    render () {\n        let { getFieldProps } = this.props.form;\n        return (\n            <div>\n                <InputNumber\n                    iconStyle=\"one\"\n                    min={-999999}\n                    max={999999}\n                    {...getFieldProps(\"valueStd\", {\n                        initialValue: 0\n                    })}\n                />\n            </div>\n        )\n    }\n}\n\nexport default Form.createForm()(Demo1);", "desc": " 最简单输入控制", "scss_code": "#tinperBeeDemo .u-input-number {\r\n    width: 200px;\r\n}" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 默认 iconStyle", "code": "/**\n*\n* @title 默认 iconStyle\n* @description 自定义 最大值 max=12,min=5,step=1\n*\n*/\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\n\n\nclass Demo2 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\tmax={12}\n\t\t\t\tmin={5}\n\t\t\t\tstep={1}\n\t\t\t\tvalue={this.state.value}\n                onChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\nexport default Demo2;", "desc": " 自定义 最大值 max=12,min=5,step=1" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 第二种iconStyle", "code": "/**\n*\n* @title 第二种iconStyle\n* @description 自定义max=12,min=5,step=2\n*\n*/\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\n \n\nclass Demo3 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\ticonStyle=\"one\"\n\t\t\t\tmax={12}\n\t\t\t\tmin={-9}\n\t\t\t\tstep={2}\n\t\t\t\tvalue={this.state.value}\n\t\t\t\tonChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\nexport default Demo3;", "desc": " 自定义max=12,min=5,step=2" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 默认iconStyle不可用状态", "code": "/**\n *\n * @title 默认iconStyle不可用状态\n * @description disabled 的单输入控制\n *\n */\n\n\nimport React, {Component} from 'react';\nimport { InputNumber } from 'tinper-bee';\n\n\nclass Demo4 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\n    render() {\n        return (\n            <div>\n                <InputNumber disabled precision={2} value={this.state.value} onChange={ this.handleChange }/>\n            </div>\n        )\n    }\n}\n\nexport default Demo4;", "desc": " disabled 的单输入控制" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 第二种iconStyle不可用状态", "code": "/**\n*\n* @title 第二种iconStyle不可用状态\n* @description 自定义max=12,min=5,step=2 且设置 disabled 处理\n*\n*/\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\n \n\nclass Demo5 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 8\n        }\n    }\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\tdisabled\n\t\t\t\ticonStyle=\"one\"\n\t\t\t\tmax={12}\n\t\t\t\tmin={-10}\n\t\t\t\tstep={2}\n\t\t\t\tvalue={this.state.value}\n\t\t\t\tonChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\nexport default Demo5;", "desc": " 自定义max=12,min=5,step=2 且设置 disabled 处理" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 保留两位小数", "code": "/**\n*\n* @title 保留两位小数\n* @description precision={2} 设置小数点后保留两位，失去焦点时数据会格式化为两位小数\n*\n*/\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\n \n\nclass Demo6 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n    handleChange = (value) => {\n\t\tconsole.log(value)\n        this.setState({\n            value: value\n        })\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\ticonStyle=\"one\"\n\t\t\t\tprecision={2}\n\t\t\t\tvalue={this.state.value}\n\t\t\t\tonChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\nexport default Demo6;", "desc": " precision={2} 设置小数点后保留两位，失去焦点时数据会格式化为两位小数" }, { "example": _react2['default'].createElement(Demo7, null), "title": " 显示千分符示例", "code": "/**\n *\n* @title 显示千分符示例\n * @description 设置toThousands={true}  只会在显示的时候带有千分符，onChange里的回调还是原来不带千分符的值\n *\n */\n\n\nimport React, {Component} from 'react';\nimport { InputNumber } from 'tinper-bee';\n\n\nclass Demo1 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n\n    handleChange = (value) => {\n        console.log('onChange:   '+value)\n        this.setState({\n            value: value\n        })\n    }\n\n    render() {\n        return (\n            <div>\n                <InputNumber toThousands={true} precision={2}  value={this.state.value} onChange={ this.handleChange }/>\n            </div>\n        )\n    }\n}\n\nexport default Demo1;", "desc": " 设置toThousands={true}  只会在显示的时候带有千分符，onChange里的回调还是原来不带千分符的值" }, { "example": _react2['default'].createElement(Demo8, null), "title": " 基础示例 ", "code": "/**\n *\n* @title 基础示例 \n * @description 最简单输入控制\n *\n */\n\n\nimport React, {Component} from 'react';\nimport { InputNumber } from 'tinper-bee';\n\n\nclass Demo1 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: ''\n        }\n    }\n\n    handleChange = (value) => {\n        console.log(value);\n        this.setState({\n            value: value\n        })\n    }\n\n    render() {\n        return (\n            <div>\n                <InputNumber  precision={2} value={this.state.value} onChange={ this.handleChange }/>\n            </div>\n        )\n    }\n}\n\nexport default Demo1;", "desc": " 最简单输入控制" }, { "example": _react2['default'].createElement(Demo9, null), "title": " 日期区间基础示例 ", "code": "/**\n *\n* @title 日期区间基础示例 \n * @description 使用 InputNumberGroup\n *\n */\n\n\nimport React, {Component} from 'react';\nimport { InputNumber } from 'tinper-bee';\n\n\nconst InputNumberGroup = InputNumber.InputNumberGroup;\n\nclass Demo9 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: [10,12]\n        }\n    }\n\n    handleChange = (value) => {\n        console.log(value);\n        this.setState({\n            value\n        })\n    }\n\n    render() {\n        return (\n            <div className='demo9'>\n                <InputNumberGroup \n                iconStyle='two'\n                onChange={this.handleChange} \n                placeholder={['请输入最小值','请输入最大值']}/>\n            </div>\n        )\n    }\n}\n\nexport default Demo9;", "desc": " 使用 InputNumberGroup" }, { "example": _react2['default'].createElement(Demo10, null), "title": " 输入时校验提示 ", "code": "/**\r\n *\r\n* @title 输入时校验提示 \r\n * @description 设置 displayCheckPrompt={true}，显示超出限制范围之后的提示。\r\n *\r\n */\r\n\r\n\r\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\r\n\r\n\r\nclass Demo10 extends Component {\r\n    render () {\r\n        return (\r\n            <InputNumber\r\n                iconStyle=\"one\"\r\n                min={-100}\r\n                max={100}\r\n                displayCheckPrompt={true}\r\n            />\r\n        )\r\n    }\r\n}\r\n\r\nexport default Demo10;", "desc": " 设置 displayCheckPrompt={true}，显示超出限制范围之后的提示。" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -37040,7 +37040,7 @@
 	
 	var _InputNumber2 = _interopRequireDefault(_InputNumber);
 	
-	var _InputNumberGroup = __webpack_require__(276);
+	var _InputNumberGroup = __webpack_require__(277);
 	
 	var _InputNumberGroup2 = _interopRequireDefault(_InputNumberGroup);
 	
@@ -37087,6 +37087,12 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
+	var _i18n = __webpack_require__(276);
+	
+	var _i18n2 = _interopRequireDefault(_i18n);
+	
+	var _tool = __webpack_require__(118);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
 	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
@@ -37111,6 +37117,7 @@
 	    delay: _propTypes2['default'].number,
 	    disabled: _propTypes2['default'].bool,
 	    toThousands: _propTypes2['default'].bool,
+	    locale: _propTypes2['default'].object,
 	    toNumber: _propTypes2['default'].bool, //回调函数内的值是否转换为数值类型
 	    displayCheckPrompt: _propTypes2['default'].bool //是否显示超出限制范围之后的检验提示
 	};
@@ -37123,85 +37130,16 @@
 	    autoWidth: false,
 	    delay: 300,
 	    toNumber: false,
-	    displayCheckPrompt: false
+	    displayCheckPrompt: false,
+	    locale: {}
 	};
 	
-	/**
-	 * 校验value
-	 * @param {*} props 
-	 * @param {原来的值} oldValue 
-	 */
-	function judgeValue(props, oldValue) {
-	    var currentValue = void 0;
-	    var currentMinusDisabled = false;
-	    var currentPlusDisabled = false;
-	    var value = props.value,
-	        min = props.min,
-	        max = props.max,
-	        precision = props.precision,
-	        onChange = props.onChange;
-	
-	    if (value != undefined) {
-	        if (value === '') {
-	            currentValue = '';
-	            return {
-	                value: '',
-	                minusDisabled: false,
-	                plusDisabled: false
-	            };
-	        } else {
-	            currentValue = Number(value) || 0;
-	        }
-	    } else if (min && value != '') {
-	        currentValue = min;
-	    } else if (value === '0' || value === 0) {
-	        currentValue = 0;
-	    } else {
-	        //NaN
-	        if (oldValue || oldValue === 0 || oldValue === '0') {
-	            currentValue = oldValue;
-	        } else {
-	            //value为空
-	            return {
-	                value: '',
-	                minusDisabled: false,
-	                plusDisabled: false
-	            };
-	        }
-	    }
-	    if (currentValue == -Infinity) {
-	        return {
-	            value: min,
-	            minusDisabled: true,
-	            plusDisabled: false
-	        };
-	    }
-	    if (currentValue == Infinity) {
-	        return {
-	            value: max,
-	            minusDisabled: false,
-	            plusDisabled: true
-	        };
-	    }
-	    if (currentValue <= min) {
-	        currentMinusDisabled = true;
-	        currentValue = min;
-	    }
-	    if (currentValue >= max) {
-	        currentPlusDisabled = true;
-	        currentValue = max;
-	    }
-	
-	    if (props.hasOwnProperty('precision')) {
-	        currentValue = Number(currentValue).toFixed(precision);
-	    }
-	
-	    return {
-	        value: currentValue,
-	        minusDisabled: currentMinusDisabled,
-	        plusDisabled: currentPlusDisabled
-	    };
+	//校验提示
+	function prompt(content) {
+	    _beeMessage2['default'].destroy();
+	    _beeMessage2['default'].create({ content: content, color: 'warninglight' });
 	}
+	
 	/**
 	 * 千分符
 	 * @param {要转换的数据} num 
@@ -37246,266 +37184,9 @@
 	
 	        var _this = _possibleConstructorReturn(this, _Component.call(this, props));
 	
-	        _this.handleChange = function (value) {
-	            var _this$props = _this.props,
-	                onChange = _this$props.onChange,
-	                toNumber = _this$props.toNumber,
-	                max = _this$props.max,
-	                min = _this$props.min,
-	                displayCheckPrompt = _this$props.displayCheckPrompt;
+	        _initialiseProps.call(_this);
 	
-	            if (value === '') {
-	                onChange && onChange(value);
-	                _this.setState({
-	                    value: value
-	                });
-	                return;
-	            }
-	            value = unThousands(value);
-	            if (Number(value) > max) {
-	                if (!displayCheckPrompt) return;
-	                _this.prompt('\u8F93\u5165\u7684\u6570\u5B57\u4E0D\u80FD\u5927\u4E8E ' + max);
-	                return;
-	            }
-	            if (Number(value) < min) {
-	                if (!displayCheckPrompt) return;
-	                _this.prompt('\u8F93\u5165\u7684\u6570\u5B57\u4E0D\u80FD\u5C0F\u4E8E ' + min);
-	                return;
-	            }
-	            if (isNaN(value) && value !== '.' && value !== '-') return;
-	            _this.setState({
-	                value: value,
-	                showValue: toThousands(value)
-	            });
-	            if (value === '-') {
-	                onChange && onChange(value);
-	            }
-	            if (value == '.' || value.indexOf('.') == value.length - 1) {
-	                //当输入小数点的时候
-	                onChange && onChange(value);
-	            } else if (value[value.indexOf('.') + 1] == 0) {
-	                //当输入 d.0 的时候，不转换Number
-	                onChange && onChange(value);
-	            } else {
-	                toNumber ? onChange && onChange(Number(value)) : onChange && onChange(value);
-	            }
-	        };
-	
-	        _this.prompt = function (content) {
-	            _beeMessage2['default'].destroy();
-	            _beeMessage2['default'].create({ content: content, color: 'warninglight' });
-	        };
-	
-	        _this.handleFocus = function (value, e) {
-	            _this.focus = true;
-	            var _this$props2 = _this.props,
-	                onFocus = _this$props2.onFocus,
-	                min = _this$props2.min,
-	                max = _this$props2.max;
-	
-	            onFocus && onFocus(value, e);
-	        };
-	
-	        _this.handleBlur = function (v, e) {
-	            _this.focus = false;
-	            var _this$props3 = _this.props,
-	                onBlur = _this$props3.onBlur,
-	                precision = _this$props3.precision,
-	                onChange = _this$props3.onChange,
-	                toNumber = _this$props3.toNumber;
-	
-	            if (v === '') {
-	                _this.setState({
-	                    value: v
-	                });
-	                onBlur && onBlur(v, e);
-	                onChange && onChange(v);
-	                return;
-	            }
-	            v = unThousands(v);
-	            var value = Number(v);
-	            if (_this.props.hasOwnProperty('precision')) {
-	                value = value.toFixed(precision);
-	            }
-	            _this.setState({
-	                value: value,
-	                showValue: toThousands(value)
-	            });
-	            _this.detailDisable(value);
-	            if (toNumber) {
-	                onBlur && onBlur(Number(value), e);
-	                onChange && onChange(Number(value));
-	            } else {
-	                onBlur && onBlur(value, e);
-	                onChange && onChange(value);
-	            }
-	        };
-	
-	        _this.detailDisable = function (value) {
-	            var _this$props4 = _this.props,
-	                max = _this$props4.max,
-	                min = _this$props4.min,
-	                step = _this$props4.step;
-	
-	
-	            if (value >= max || Number(value) + Number(step) > max) {
-	                _this.setState({
-	                    plusDisabled: true
-	                });
-	            } else {
-	                _this.setState({
-	                    plusDisabled: false
-	                });
-	            }
-	            if (value <= min || value - step < min) {
-	                _this.setState({
-	                    minusDisabled: true
-	                });
-	            } else {
-	                _this.setState({
-	                    minusDisabled: false
-	                });
-	            }
-	        };
-	
-	        _this.minus = function (value) {
-	            var _this$props5 = _this.props,
-	                min = _this$props5.min,
-	                max = _this$props5.max,
-	                step = _this$props5.step,
-	                onChange = _this$props5.onChange,
-	                toNumber = _this$props5.toNumber;
-	
-	            value = value === '-' ? 0 : value;
-	            if (typeof min === "undefined") {
-	                value = _this.detail(value, step, 'reduce');
-	            } else {
-	                if (value < min) {
-	                    value = min;
-	                } else {
-	                    var reducedValue = _this.detail(value, step, 'reduce');
-	                    if (reducedValue >= min) {
-	                        value = reducedValue;
-	                    }
-	                }
-	            }
-	
-	            if (value > max) {
-	                value = max;
-	            }
-	
-	            _this.setState({
-	                value: value,
-	                showValue: toThousands(value)
-	            });
-	            toNumber ? onChange && onChange(Number(value)) : onChange && onChange(value);
-	            _this.detailDisable(value);
-	        };
-	
-	        _this.plus = function (value) {
-	            var _this$props6 = _this.props,
-	                max = _this$props6.max,
-	                min = _this$props6.min,
-	                step = _this$props6.step,
-	                onChange = _this$props6.onChange,
-	                toNumber = _this$props6.toNumber;
-	
-	            value = value === '-' ? 0 : value;
-	            if (typeof max === "undefined") {
-	                value = _this.detail(value, step, 'add');
-	            } else {
-	                if (value > max) {
-	                    value = max;
-	                } else {
-	                    var addedValue = _this.detail(value, step, 'add');
-	                    if (addedValue <= max) {
-	                        value = addedValue;
-	                    }
-	                }
-	            }
-	            if (value < min) {
-	                value = min;
-	            }
-	            _this.setState({
-	                value: value,
-	                showValue: toThousands(value)
-	            });
-	            toNumber ? onChange && onChange(Number(value)) : onChange && onChange(value);
-	            _this.detailDisable(value);
-	        };
-	
-	        _this.detail = function (value, step, type) {
-	            var precision = _this.props.precision;
-	
-	
-	            var valueFloat = _this.separate(value);
-	            var stepFloat = _this.separate(step);
-	
-	            var ans = void 0;
-	            var stepFloatLength = stepFloat.toString().length;
-	            var valueFloatLength = valueFloat.toString().length;
-	
-	            if (typeof precision === 'undefined') {
-	                precision = Math.max(stepFloatLength, valueFloatLength);
-	            }
-	            var coefficient = Math.pow(10, Math.abs(stepFloatLength - valueFloatLength));
-	            if (type === 'add') {
-	                ans = (value * coefficient + step * coefficient) / coefficient;
-	            } else {
-	                ans = (value * coefficient - step * coefficient) / coefficient;
-	            }
-	
-	            return ans.toFixed(precision);
-	        };
-	
-	        _this.separate = function (value) {
-	            value = value !== null && value.toString();
-	            if (value.indexOf('.') > -1) {
-	                return value.split('.')[1];
-	            } else {
-	                return "";
-	            }
-	        };
-	
-	        _this.clear = function () {
-	            if (_this.timer) {
-	                clearTimeout(_this.timer);
-	            }
-	        };
-	
-	        _this.handlePlusMouseDown = function (e) {
-	            e.preventDefault();
-	            var _this$props7 = _this.props,
-	                delay = _this$props7.delay,
-	                disabled = _this$props7.disabled;
-	
-	            if (disabled) return;
-	            var value = _this.state.value;
-	
-	            _this.plus(value);
-	            _this.clear();
-	            _this.timer = setTimeout(function () {
-	                _this.handlePlusMouseDown();
-	            }, delay);
-	        };
-	
-	        _this.handleReduceMouseDown = function (e) {
-	            e.preventDefault();
-	            var _this$props8 = _this.props,
-	                delay = _this$props8.delay,
-	                disabled = _this$props8.disabled;
-	
-	            if (disabled) return;
-	            var value = _this.state.value;
-	
-	            _this.minus(value);
-	            _this.clear();
-	            _this.timer = setTimeout(function () {
-	                _this.handleReduceMouseDown();
-	            }, delay);
-	        };
-	
-	        var data = judgeValue(props);
+	        var data = _this.judgeValue(props);
 	
 	        _this.state = {
 	            value: data.value,
@@ -37518,6 +37199,12 @@
 	        _this.focus = false;
 	        return _this;
 	    }
+	    /**
+	     * 校验value
+	     * @param {*} props 
+	     * @param {原来的值} oldValue 
+	     */
+	
 	
 	    InputNumber.prototype.componentDidMount = function componentDidMount() {
 	        this.setState({
@@ -37535,7 +37222,7 @@
 	                });
 	            }
 	        } else {
-	            var data = judgeValue(nextProps, this.state.value);
+	            var data = this.judgeValue(nextProps, this.state.value);
 	            this.setState({
 	                value: data.value,
 	                showValue: toThousands(data.value),
@@ -37548,8 +37235,6 @@
 	    InputNumber.prototype.ComponentWillUnMount = function ComponentWillUnMount() {
 	        this.clear();
 	    };
-	    //校验提示
-	
 	    /**
 	     * 设置增加减少按钮是否可用
 	     */
@@ -37682,10 +37367,350 @@
 	    return InputNumber;
 	}(_react.Component);
 	
+	var _initialiseProps = function _initialiseProps() {
+	    var _this2 = this;
+	
+	    this.judgeValue = function (props, oldValue) {
+	        var currentValue = void 0;
+	        var currentMinusDisabled = false;
+	        var currentPlusDisabled = false;
+	        var value = props.value,
+	            min = props.min,
+	            max = props.max,
+	            precision = props.precision,
+	            onChange = props.onChange,
+	            displayCheckPrompt = props.displayCheckPrompt;
+	
+	        if (value != undefined) {
+	            if (value === '') {
+	                currentValue = '';
+	                return {
+	                    value: '',
+	                    minusDisabled: false,
+	                    plusDisabled: false
+	                };
+	            } else {
+	                currentValue = Number(value) || 0;
+	            }
+	        } else if (min && value != '') {
+	            currentValue = min;
+	        } else if (value === '0' || value === 0) {
+	            currentValue = 0;
+	        } else {
+	            //NaN
+	            if (oldValue || oldValue === 0 || oldValue === '0') {
+	                currentValue = oldValue;
+	            } else {
+	                //value为空
+	                return {
+	                    value: '',
+	                    minusDisabled: false,
+	                    plusDisabled: false
+	                };
+	            }
+	        }
+	        if (currentValue == -Infinity) {
+	            return {
+	                value: min,
+	                minusDisabled: true,
+	                plusDisabled: false
+	            };
+	        }
+	        if (currentValue == Infinity) {
+	            return {
+	                value: max,
+	                minusDisabled: false,
+	                plusDisabled: true
+	            };
+	        }
+	        var local = (0, _tool.getComponentLocale)(props, _this2.context, 'InputNumber', function () {
+	            return _i18n2['default'];
+	        });
+	        if (currentValue <= min) {
+	            if (displayCheckPrompt) prompt(local['msgMin']);
+	            currentMinusDisabled = true;
+	            currentValue = min;
+	        }
+	        if (currentValue >= max) {
+	            if (displayCheckPrompt) prompt(local['msgMax']);
+	            currentPlusDisabled = true;
+	            currentValue = max;
+	        }
+	
+	        if (props.hasOwnProperty('precision')) {
+	            currentValue = Number(currentValue).toFixed(precision);
+	        }
+	
+	        return {
+	            value: currentValue,
+	            minusDisabled: currentMinusDisabled,
+	            plusDisabled: currentPlusDisabled
+	        };
+	    };
+	
+	    this.handleChange = function (value) {
+	        var _props2 = _this2.props,
+	            onChange = _props2.onChange,
+	            toNumber = _props2.toNumber,
+	            max = _props2.max,
+	            min = _props2.min,
+	            displayCheckPrompt = _props2.displayCheckPrompt;
+	
+	        if (value === '') {
+	            onChange && onChange(value);
+	            _this2.setState({
+	                value: value
+	            });
+	            return;
+	        }
+	        value = unThousands(value);
+	        // if(Number(value)>max){
+	        //     if(!displayCheckPrompt) return;
+	        //     this.prompt(`输入的数字不能大于 ${max}`);
+	        //     return;
+	        // }
+	        // if(Number(value)<min){
+	        //     if(!displayCheckPrompt) return;
+	        //     this.prompt(`输入的数字不能小于 ${min}`);
+	        //     return;
+	        // }
+	        if (isNaN(value) && value !== '.' && value !== '-') return;
+	        _this2.setState({
+	            value: value,
+	            showValue: toThousands(value)
+	        });
+	        if (value === '-') {
+	            onChange && onChange(value);
+	        }
+	        if (value == '.' || value.indexOf('.') == value.length - 1) {
+	            //当输入小数点的时候
+	            onChange && onChange(value);
+	        } else if (value[value.indexOf('.') + 1] == 0) {
+	            //当输入 d.0 的时候，不转换Number
+	            onChange && onChange(value);
+	        } else {
+	            toNumber ? onChange && onChange(Number(value)) : onChange && onChange(value);
+	        }
+	    };
+	
+	    this.handleFocus = function (value, e) {
+	        _this2.focus = true;
+	        var _props3 = _this2.props,
+	            onFocus = _props3.onFocus,
+	            min = _props3.min,
+	            max = _props3.max;
+	
+	        onFocus && onFocus(value, e);
+	    };
+	
+	    this.handleBlur = function (v, e) {
+	        _this2.focus = false;
+	        var _props4 = _this2.props,
+	            onBlur = _props4.onBlur,
+	            precision = _props4.precision,
+	            onChange = _props4.onChange,
+	            toNumber = _props4.toNumber;
+	
+	        if (v === '') {
+	            _this2.setState({
+	                value: v
+	            });
+	            onBlur && onBlur(v, e);
+	            onChange && onChange(v);
+	            return;
+	        }
+	        v = unThousands(v);
+	        var value = Number(v);
+	        value = _this2.judgeValue(_this2.props, value).value;
+	        // if(this.props.hasOwnProperty('precision')){
+	        //     value = value.toFixed(precision);
+	        // }
+	        _this2.setState({
+	            value: value,
+	            showValue: toThousands(value)
+	        });
+	        _this2.detailDisable(value);
+	        if (toNumber) {
+	            onBlur && onBlur(Number(value), e);
+	            onChange && onChange(Number(value));
+	        } else {
+	            onBlur && onBlur(value, e);
+	            onChange && onChange(value);
+	        }
+	    };
+	
+	    this.detailDisable = function (value) {
+	        var _props5 = _this2.props,
+	            max = _props5.max,
+	            min = _props5.min,
+	            step = _props5.step;
+	
+	
+	        if (value >= max || Number(value) + Number(step) > max) {
+	            _this2.setState({
+	                plusDisabled: true
+	            });
+	        } else {
+	            _this2.setState({
+	                plusDisabled: false
+	            });
+	        }
+	        if (value <= min || value - step < min) {
+	            _this2.setState({
+	                minusDisabled: true
+	            });
+	        } else {
+	            _this2.setState({
+	                minusDisabled: false
+	            });
+	        }
+	    };
+	
+	    this.minus = function (value) {
+	        var _props6 = _this2.props,
+	            min = _props6.min,
+	            max = _props6.max,
+	            step = _props6.step,
+	            onChange = _props6.onChange,
+	            toNumber = _props6.toNumber;
+	
+	        value = value === '-' ? 0 : value;
+	        if (typeof min === "undefined") {
+	            value = _this2.detail(value, step, 'reduce');
+	        } else {
+	            if (value < min) {
+	                value = min;
+	            } else {
+	                var reducedValue = _this2.detail(value, step, 'reduce');
+	                if (reducedValue >= min) {
+	                    value = reducedValue;
+	                }
+	            }
+	        }
+	
+	        if (value > max) {
+	            value = max;
+	        }
+	
+	        _this2.setState({
+	            value: value,
+	            showValue: toThousands(value)
+	        });
+	        toNumber ? onChange && onChange(Number(value)) : onChange && onChange(value);
+	        _this2.detailDisable(value);
+	    };
+	
+	    this.plus = function (value) {
+	        var _props7 = _this2.props,
+	            max = _props7.max,
+	            min = _props7.min,
+	            step = _props7.step,
+	            onChange = _props7.onChange,
+	            toNumber = _props7.toNumber;
+	
+	        value = value === '-' ? 0 : value;
+	        if (typeof max === "undefined") {
+	            value = _this2.detail(value, step, 'add');
+	        } else {
+	            if (value > max) {
+	                value = max;
+	            } else {
+	                var addedValue = _this2.detail(value, step, 'add');
+	                if (addedValue <= max) {
+	                    value = addedValue;
+	                }
+	            }
+	        }
+	        if (value < min) {
+	            value = min;
+	        }
+	        _this2.setState({
+	            value: value,
+	            showValue: toThousands(value)
+	        });
+	        toNumber ? onChange && onChange(Number(value)) : onChange && onChange(value);
+	        _this2.detailDisable(value);
+	    };
+	
+	    this.detail = function (value, step, type) {
+	        var precision = _this2.props.precision;
+	
+	
+	        var valueFloat = _this2.separate(value);
+	        var stepFloat = _this2.separate(step);
+	
+	        var ans = void 0;
+	        var stepFloatLength = stepFloat.toString().length;
+	        var valueFloatLength = valueFloat.toString().length;
+	
+	        if (typeof precision === 'undefined') {
+	            precision = Math.max(stepFloatLength, valueFloatLength);
+	        }
+	        var coefficient = Math.pow(10, Math.abs(stepFloatLength - valueFloatLength));
+	        if (type === 'add') {
+	            ans = (value * coefficient + step * coefficient) / coefficient;
+	        } else {
+	            ans = (value * coefficient - step * coefficient) / coefficient;
+	        }
+	
+	        return ans.toFixed(precision);
+	    };
+	
+	    this.separate = function (value) {
+	        value = value !== null && value.toString();
+	        if (value.indexOf('.') > -1) {
+	            return value.split('.')[1];
+	        } else {
+	            return "";
+	        }
+	    };
+	
+	    this.clear = function () {
+	        if (_this2.timer) {
+	            clearTimeout(_this2.timer);
+	        }
+	    };
+	
+	    this.handlePlusMouseDown = function (e) {
+	        e.preventDefault();
+	        var _props8 = _this2.props,
+	            delay = _props8.delay,
+	            disabled = _props8.disabled;
+	
+	        if (disabled) return;
+	        var value = _this2.state.value;
+	
+	        _this2.plus(value);
+	        _this2.clear();
+	        _this2.timer = setTimeout(function () {
+	            _this2.handlePlusMouseDown();
+	        }, delay);
+	    };
+	
+	    this.handleReduceMouseDown = function (e) {
+	        e.preventDefault();
+	        var _props9 = _this2.props,
+	            delay = _props9.delay,
+	            disabled = _props9.disabled;
+	
+	        if (disabled) return;
+	        var value = _this2.state.value;
+	
+	        _this2.minus(value);
+	        _this2.clear();
+	        _this2.timer = setTimeout(function () {
+	            _this2.handleReduceMouseDown();
+	        }, delay);
+	    };
+	};
+	
 	;
 	
 	InputNumber.defaultProps = defaultProps;
 	InputNumber.propTypes = propTypes;
+	InputNumber.contextTypes = {
+	    beeLocale: _propTypes2['default'].object
+	};
 	exports['default'] = InputNumber;
 	module.exports = exports['default'];
 
@@ -37924,6 +37949,26 @@
 
 /***/ }),
 /* 276 */
+/***/ (function(module, exports) {
+
+	'use strict';
+	
+	module.exports = {
+	    'lang': 'zh-cn',
+	    'msgMax': '值不能大于最大值',
+	    'msgMin': '值不能小于最小值',
+	    'en-us': {
+	        'msgMax': 'value cannot be greater than the maximum',
+	        'msgMin': 'value cannot be less than minimum'
+	    },
+	    'zh-tw': {
+	        'msgMax': '值不能大於最大值',
+	        'msgMin': '值不能小於最小值'
+	    }
+	};
+
+/***/ }),
+/* 277 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38114,7 +38159,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 277 */
+/* 278 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38133,7 +38178,7 @@
 	
 	var _src2 = _interopRequireDefault(_src);
 	
-	var _beeForm = __webpack_require__(278);
+	var _beeForm = __webpack_require__(279);
 	
 	var _beeForm2 = _interopRequireDefault(_beeForm);
 	
@@ -38196,7 +38241,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 278 */
+/* 279 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38205,11 +38250,11 @@
 	  value: true
 	});
 	
-	var _Form = __webpack_require__(279);
+	var _Form = __webpack_require__(280);
 	
 	var _Form2 = _interopRequireDefault(_Form);
 	
-	var _FormItem = __webpack_require__(404);
+	var _FormItem = __webpack_require__(405);
 	
 	var _FormItem2 = _interopRequireDefault(_FormItem);
 	
@@ -38220,7 +38265,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 279 */
+/* 280 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38239,7 +38284,7 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _rcForm = __webpack_require__(280);
+	var _rcForm = __webpack_require__(281);
 	
 	var _classnames = __webpack_require__(5);
 	
@@ -38305,7 +38350,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 280 */
+/* 281 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38315,15 +38360,15 @@
 	});
 	exports.createForm = exports.formShape = exports.createFormField = undefined;
 	
-	var _createForm = __webpack_require__(281);
+	var _createForm = __webpack_require__(282);
 	
 	var _createForm2 = _interopRequireDefault(_createForm);
 	
-	var _createFormField = __webpack_require__(401);
+	var _createFormField = __webpack_require__(402);
 	
 	var _createFormField2 = _interopRequireDefault(_createFormField);
 	
-	var _propTypes = __webpack_require__(403);
+	var _propTypes = __webpack_require__(404);
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
@@ -38334,7 +38379,7 @@
 	exports.createForm = _createForm2['default']; // export this package's api
 
 /***/ }),
-/* 281 */
+/* 282 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38344,7 +38389,7 @@
 	});
 	exports.mixin = undefined;
 	
-	var _createBaseForm = __webpack_require__(282);
+	var _createBaseForm = __webpack_require__(283);
 	
 	var _createBaseForm2 = _interopRequireDefault(_createBaseForm);
 	
@@ -38382,7 +38427,7 @@
 	exports['default'] = createForm;
 
 /***/ }),
-/* 282 */
+/* 283 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -38391,19 +38436,19 @@
 	  value: true
 	});
 	
-	var _objectWithoutProperties2 = __webpack_require__(283);
+	var _objectWithoutProperties2 = __webpack_require__(284);
 	
 	var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
 	
-	var _defineProperty2 = __webpack_require__(284);
+	var _defineProperty2 = __webpack_require__(285);
 	
 	var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 	
-	var _extends5 = __webpack_require__(288);
+	var _extends5 = __webpack_require__(289);
 	
 	var _extends6 = _interopRequireDefault(_extends5);
 	
-	var _toConsumableArray2 = __webpack_require__(290);
+	var _toConsumableArray2 = __webpack_require__(291);
 	
 	var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
 	
@@ -38411,11 +38456,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _createReactClass = __webpack_require__(309);
+	var _createReactClass = __webpack_require__(310);
 	
 	var _createReactClass2 = _interopRequireDefault(_createReactClass);
 	
-	var _asyncValidator = __webpack_require__(315);
+	var _asyncValidator = __webpack_require__(316);
 	
 	var _asyncValidator2 = _interopRequireDefault(_asyncValidator);
 	
@@ -38423,23 +38468,23 @@
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
-	var _get = __webpack_require__(340);
+	var _get = __webpack_require__(341);
 	
 	var _get2 = _interopRequireDefault(_get);
 	
-	var _set = __webpack_require__(392);
+	var _set = __webpack_require__(393);
 	
 	var _set2 = _interopRequireDefault(_set);
 	
-	var _eq = __webpack_require__(377);
+	var _eq = __webpack_require__(378);
 	
 	var _eq2 = _interopRequireDefault(_eq);
 	
-	var _createFieldsStore = __webpack_require__(398);
+	var _createFieldsStore = __webpack_require__(399);
 	
 	var _createFieldsStore2 = _interopRequireDefault(_createFieldsStore);
 	
-	var _utils = __webpack_require__(402);
+	var _utils = __webpack_require__(403);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -39030,7 +39075,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)))
 
 /***/ }),
-/* 283 */
+/* 284 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -39050,14 +39095,14 @@
 	};
 
 /***/ }),
-/* 284 */
+/* 285 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	exports.__esModule = true;
 	
-	var _defineProperty = __webpack_require__(285);
+	var _defineProperty = __webpack_require__(286);
 	
 	var _defineProperty2 = _interopRequireDefault(_defineProperty);
 	
@@ -39079,16 +39124,16 @@
 	};
 
 /***/ }),
-/* 285 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	module.exports = { "default": __webpack_require__(286), __esModule: true };
-
-/***/ }),
 /* 286 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	__webpack_require__(287);
+	module.exports = { "default": __webpack_require__(287), __esModule: true };
+
+/***/ }),
+/* 287 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	__webpack_require__(288);
 	var $Object = __webpack_require__(149).Object;
 	module.exports = function defineProperty(it, key, desc) {
 	  return $Object.defineProperty(it, key, desc);
@@ -39096,7 +39141,7 @@
 
 
 /***/ }),
-/* 287 */
+/* 288 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var $export = __webpack_require__(147);
@@ -39105,14 +39150,14 @@
 
 
 /***/ }),
-/* 288 */
+/* 289 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	exports.__esModule = true;
 	
-	var _assign = __webpack_require__(289);
+	var _assign = __webpack_require__(290);
 	
 	var _assign2 = _interopRequireDefault(_assign);
 	
@@ -39133,20 +39178,20 @@
 	};
 
 /***/ }),
-/* 289 */
+/* 290 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	module.exports = { "default": __webpack_require__(145), __esModule: true };
 
 /***/ }),
-/* 290 */
+/* 291 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	exports.__esModule = true;
 	
-	var _from = __webpack_require__(291);
+	var _from = __webpack_require__(292);
 	
 	var _from2 = _interopRequireDefault(_from);
 	
@@ -39165,29 +39210,29 @@
 	};
 
 /***/ }),
-/* 291 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	module.exports = { "default": __webpack_require__(292), __esModule: true };
-
-/***/ }),
 /* 292 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	__webpack_require__(293);
-	__webpack_require__(302);
-	module.exports = __webpack_require__(149).Array.from;
-
+	module.exports = { "default": __webpack_require__(293), __esModule: true };
 
 /***/ }),
 /* 293 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	__webpack_require__(294);
+	__webpack_require__(303);
+	module.exports = __webpack_require__(149).Array.from;
+
+
+/***/ }),
+/* 294 */
+/***/ (function(module, exports, __webpack_require__) {
+
 	'use strict';
-	var $at = __webpack_require__(294)(true);
+	var $at = __webpack_require__(295)(true);
 	
 	// 21.1.3.27 String.prototype[@@iterator]()
-	__webpack_require__(295)(String, 'String', function (iterated) {
+	__webpack_require__(296)(String, 'String', function (iterated) {
 	  this._t = String(iterated); // target
 	  this._i = 0;                // next index
 	// 21.1.5.2.1 %StringIteratorPrototype%.next()
@@ -39203,7 +39248,7 @@
 
 
 /***/ }),
-/* 294 */
+/* 295 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var toInteger = __webpack_require__(172);
@@ -39226,19 +39271,19 @@
 
 
 /***/ }),
-/* 295 */
+/* 296 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	var LIBRARY = __webpack_require__(176);
 	var $export = __webpack_require__(147);
-	var redefine = __webpack_require__(296);
+	var redefine = __webpack_require__(297);
 	var hide = __webpack_require__(152);
-	var Iterators = __webpack_require__(297);
-	var $iterCreate = __webpack_require__(298);
-	var setToStringTag = __webpack_require__(299);
-	var getPrototypeOf = __webpack_require__(301);
-	var ITERATOR = __webpack_require__(300)('iterator');
+	var Iterators = __webpack_require__(298);
+	var $iterCreate = __webpack_require__(299);
+	var setToStringTag = __webpack_require__(300);
+	var getPrototypeOf = __webpack_require__(302);
+	var ITERATOR = __webpack_require__(301)('iterator');
 	var BUGGY = !([].keys && 'next' in [].keys()); // Safari has buggy iterators w/o `next`
 	var FF_ITERATOR = '@@iterator';
 	var KEYS = 'keys';
@@ -39301,31 +39346,31 @@
 
 
 /***/ }),
-/* 296 */
+/* 297 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__(152);
 
 
 /***/ }),
-/* 297 */
+/* 298 */
 /***/ (function(module, exports) {
 
 	module.exports = {};
 
 
 /***/ }),
-/* 298 */
+/* 299 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	var create = __webpack_require__(198);
 	var descriptor = __webpack_require__(161);
-	var setToStringTag = __webpack_require__(299);
+	var setToStringTag = __webpack_require__(300);
 	var IteratorPrototype = {};
 	
 	// 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
-	__webpack_require__(152)(IteratorPrototype, __webpack_require__(300)('iterator'), function () { return this; });
+	__webpack_require__(152)(IteratorPrototype, __webpack_require__(301)('iterator'), function () { return this; });
 	
 	module.exports = function (Constructor, NAME, next) {
 	  Constructor.prototype = create(IteratorPrototype, { next: descriptor(1, next) });
@@ -39334,12 +39379,12 @@
 
 
 /***/ }),
-/* 299 */
+/* 300 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var def = __webpack_require__(153).f;
 	var has = __webpack_require__(162);
-	var TAG = __webpack_require__(300)('toStringTag');
+	var TAG = __webpack_require__(301)('toStringTag');
 	
 	module.exports = function (it, tag, stat) {
 	  if (it && !has(it = stat ? it : it.prototype, TAG)) def(it, TAG, { configurable: true, value: tag });
@@ -39347,7 +39392,7 @@
 
 
 /***/ }),
-/* 300 */
+/* 301 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var store = __webpack_require__(175)('wks');
@@ -39364,7 +39409,7 @@
 
 
 /***/ }),
-/* 301 */
+/* 302 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
@@ -39383,20 +39428,20 @@
 
 
 /***/ }),
-/* 302 */
+/* 303 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	var ctx = __webpack_require__(150);
 	var $export = __webpack_require__(147);
 	var toObject = __webpack_require__(181);
-	var call = __webpack_require__(303);
-	var isArrayIter = __webpack_require__(304);
+	var call = __webpack_require__(304);
+	var isArrayIter = __webpack_require__(305);
 	var toLength = __webpack_require__(171);
-	var createProperty = __webpack_require__(305);
-	var getIterFn = __webpack_require__(306);
+	var createProperty = __webpack_require__(306);
+	var getIterFn = __webpack_require__(307);
 	
-	$export($export.S + $export.F * !__webpack_require__(308)(function (iter) { Array.from(iter); }), 'Array', {
+	$export($export.S + $export.F * !__webpack_require__(309)(function (iter) { Array.from(iter); }), 'Array', {
 	  // 22.1.2.1 Array.from(arrayLike, mapfn = undefined, thisArg = undefined)
 	  from: function from(arrayLike /* , mapfn = undefined, thisArg = undefined */) {
 	    var O = toObject(arrayLike);
@@ -39426,7 +39471,7 @@
 
 
 /***/ }),
-/* 303 */
+/* 304 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// call something on iterator step with safe closing on error
@@ -39444,12 +39489,12 @@
 
 
 /***/ }),
-/* 304 */
+/* 305 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// check on default Array iterator
-	var Iterators = __webpack_require__(297);
-	var ITERATOR = __webpack_require__(300)('iterator');
+	var Iterators = __webpack_require__(298);
+	var ITERATOR = __webpack_require__(301)('iterator');
 	var ArrayProto = Array.prototype;
 	
 	module.exports = function (it) {
@@ -39458,7 +39503,7 @@
 
 
 /***/ }),
-/* 305 */
+/* 306 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39472,12 +39517,12 @@
 
 
 /***/ }),
-/* 306 */
+/* 307 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var classof = __webpack_require__(307);
-	var ITERATOR = __webpack_require__(300)('iterator');
-	var Iterators = __webpack_require__(297);
+	var classof = __webpack_require__(308);
+	var ITERATOR = __webpack_require__(301)('iterator');
+	var Iterators = __webpack_require__(298);
 	module.exports = __webpack_require__(149).getIteratorMethod = function (it) {
 	  if (it != undefined) return it[ITERATOR]
 	    || it['@@iterator']
@@ -39486,12 +39531,12 @@
 
 
 /***/ }),
-/* 307 */
+/* 308 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// getting tag from 19.1.3.6 Object.prototype.toString()
 	var cof = __webpack_require__(168);
-	var TAG = __webpack_require__(300)('toStringTag');
+	var TAG = __webpack_require__(301)('toStringTag');
 	// ES3 wrong here
 	var ARG = cof(function () { return arguments; }()) == 'Arguments';
 	
@@ -39515,10 +39560,10 @@
 
 
 /***/ }),
-/* 308 */
+/* 309 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var ITERATOR = __webpack_require__(300)('iterator');
+	var ITERATOR = __webpack_require__(301)('iterator');
 	var SAFE_CLOSING = false;
 	
 	try {
@@ -39543,7 +39588,7 @@
 
 
 /***/ }),
-/* 309 */
+/* 310 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -39557,7 +39602,7 @@
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var factory = __webpack_require__(310);
+	var factory = __webpack_require__(311);
 	
 	if (typeof React === 'undefined') {
 	  throw Error(
@@ -39577,7 +39622,7 @@
 
 
 /***/ }),
-/* 310 */
+/* 311 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -39592,11 +39637,11 @@
 	
 	var _assign = __webpack_require__(43);
 	
-	var emptyObject = __webpack_require__(311);
-	var _invariant = __webpack_require__(312);
+	var emptyObject = __webpack_require__(312);
+	var _invariant = __webpack_require__(313);
 	
 	if (process.env.NODE_ENV !== 'production') {
-	  var warning = __webpack_require__(313);
+	  var warning = __webpack_require__(314);
 	}
 	
 	var MIXINS_KEY = 'mixins';
@@ -40510,7 +40555,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)))
 
 /***/ }),
-/* 311 */
+/* 312 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -40533,7 +40578,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)))
 
 /***/ }),
-/* 312 */
+/* 313 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -40592,7 +40637,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)))
 
 /***/ }),
-/* 313 */
+/* 314 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -40605,7 +40650,7 @@
 	
 	'use strict';
 	
-	var emptyFunction = __webpack_require__(314);
+	var emptyFunction = __webpack_require__(315);
 	
 	/**
 	 * Similar to invariant but only logs a warning if the condition is not met.
@@ -40660,7 +40705,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)))
 
 /***/ }),
-/* 314 */
+/* 315 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -40701,7 +40746,7 @@
 	module.exports = emptyFunction;
 
 /***/ }),
-/* 315 */
+/* 316 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40712,13 +40757,13 @@
 	
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 	
-	var _util = __webpack_require__(316);
+	var _util = __webpack_require__(317);
 	
-	var _validator = __webpack_require__(317);
+	var _validator = __webpack_require__(318);
 	
 	var _validator2 = _interopRequireDefault(_validator);
 	
-	var _messages2 = __webpack_require__(339);
+	var _messages2 = __webpack_require__(340);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -41003,7 +41048,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 316 */
+/* 317 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -41230,66 +41275,66 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)))
 
 /***/ }),
-/* 317 */
+/* 318 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _string = __webpack_require__(318);
+	var _string = __webpack_require__(319);
 	
 	var _string2 = _interopRequireDefault(_string);
 	
-	var _method = __webpack_require__(326);
+	var _method = __webpack_require__(327);
 	
 	var _method2 = _interopRequireDefault(_method);
 	
-	var _number = __webpack_require__(327);
+	var _number = __webpack_require__(328);
 	
 	var _number2 = _interopRequireDefault(_number);
 	
-	var _boolean = __webpack_require__(328);
+	var _boolean = __webpack_require__(329);
 	
 	var _boolean2 = _interopRequireDefault(_boolean);
 	
-	var _regexp = __webpack_require__(329);
+	var _regexp = __webpack_require__(330);
 	
 	var _regexp2 = _interopRequireDefault(_regexp);
 	
-	var _integer = __webpack_require__(330);
+	var _integer = __webpack_require__(331);
 	
 	var _integer2 = _interopRequireDefault(_integer);
 	
-	var _float = __webpack_require__(331);
+	var _float = __webpack_require__(332);
 	
 	var _float2 = _interopRequireDefault(_float);
 	
-	var _array = __webpack_require__(332);
+	var _array = __webpack_require__(333);
 	
 	var _array2 = _interopRequireDefault(_array);
 	
-	var _object = __webpack_require__(333);
+	var _object = __webpack_require__(334);
 	
 	var _object2 = _interopRequireDefault(_object);
 	
-	var _enum = __webpack_require__(334);
+	var _enum = __webpack_require__(335);
 	
 	var _enum2 = _interopRequireDefault(_enum);
 	
-	var _pattern = __webpack_require__(335);
+	var _pattern = __webpack_require__(336);
 	
 	var _pattern2 = _interopRequireDefault(_pattern);
 	
-	var _date = __webpack_require__(336);
+	var _date = __webpack_require__(337);
 	
 	var _date2 = _interopRequireDefault(_date);
 	
-	var _required = __webpack_require__(337);
+	var _required = __webpack_require__(338);
 	
 	var _required2 = _interopRequireDefault(_required);
 	
-	var _type = __webpack_require__(338);
+	var _type = __webpack_require__(339);
 	
 	var _type2 = _interopRequireDefault(_type);
 	
@@ -41316,18 +41361,18 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 318 */
+/* 319 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _rule = __webpack_require__(319);
+	var _rule = __webpack_require__(320);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
-	var _util = __webpack_require__(316);
+	var _util = __webpack_require__(317);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -41365,34 +41410,34 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 319 */
+/* 320 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _required = __webpack_require__(320);
+	var _required = __webpack_require__(321);
 	
 	var _required2 = _interopRequireDefault(_required);
 	
-	var _whitespace = __webpack_require__(321);
+	var _whitespace = __webpack_require__(322);
 	
 	var _whitespace2 = _interopRequireDefault(_whitespace);
 	
-	var _type = __webpack_require__(322);
+	var _type = __webpack_require__(323);
 	
 	var _type2 = _interopRequireDefault(_type);
 	
-	var _range = __webpack_require__(323);
+	var _range = __webpack_require__(324);
 	
 	var _range2 = _interopRequireDefault(_range);
 	
-	var _enum = __webpack_require__(324);
+	var _enum = __webpack_require__(325);
 	
 	var _enum2 = _interopRequireDefault(_enum);
 	
-	var _pattern = __webpack_require__(325);
+	var _pattern = __webpack_require__(326);
 	
 	var _pattern2 = _interopRequireDefault(_pattern);
 	
@@ -41409,14 +41454,14 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 320 */
+/* 321 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _util = __webpack_require__(316);
+	var _util = __webpack_require__(317);
 	
 	var util = _interopRequireWildcard(_util);
 	
@@ -41443,14 +41488,14 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 321 */
+/* 322 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _util = __webpack_require__(316);
+	var _util = __webpack_require__(317);
 	
 	var util = _interopRequireWildcard(_util);
 	
@@ -41477,7 +41522,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 322 */
+/* 323 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41486,11 +41531,11 @@
 	
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 	
-	var _util = __webpack_require__(316);
+	var _util = __webpack_require__(317);
 	
 	var util = _interopRequireWildcard(_util);
 	
-	var _required = __webpack_require__(320);
+	var _required = __webpack_require__(321);
 	
 	var _required2 = _interopRequireDefault(_required);
 	
@@ -41585,14 +41630,14 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 323 */
+/* 324 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _util = __webpack_require__(316);
+	var _util = __webpack_require__(317);
 	
 	var util = _interopRequireWildcard(_util);
 	
@@ -41657,14 +41702,14 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 324 */
+/* 325 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _util = __webpack_require__(316);
+	var _util = __webpack_require__(317);
 	
 	var util = _interopRequireWildcard(_util);
 	
@@ -41694,14 +41739,14 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 325 */
+/* 326 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _util = __webpack_require__(316);
+	var _util = __webpack_require__(317);
 	
 	var util = _interopRequireWildcard(_util);
 	
@@ -41741,18 +41786,18 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 326 */
+/* 327 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _rule = __webpack_require__(319);
+	var _rule = __webpack_require__(320);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
-	var _util = __webpack_require__(316);
+	var _util = __webpack_require__(317);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -41785,18 +41830,18 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 327 */
+/* 328 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _rule = __webpack_require__(319);
+	var _rule = __webpack_require__(320);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
-	var _util = __webpack_require__(316);
+	var _util = __webpack_require__(317);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -41833,16 +41878,16 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 328 */
+/* 329 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _util = __webpack_require__(316);
+	var _util = __webpack_require__(317);
 	
-	var _rule = __webpack_require__(319);
+	var _rule = __webpack_require__(320);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
@@ -41877,18 +41922,18 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 329 */
+/* 330 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _rule = __webpack_require__(319);
+	var _rule = __webpack_require__(320);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
-	var _util = __webpack_require__(316);
+	var _util = __webpack_require__(317);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -41921,18 +41966,18 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 330 */
+/* 331 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _rule = __webpack_require__(319);
+	var _rule = __webpack_require__(320);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
-	var _util = __webpack_require__(316);
+	var _util = __webpack_require__(317);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -41966,18 +42011,18 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 331 */
+/* 332 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _rule = __webpack_require__(319);
+	var _rule = __webpack_require__(320);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
-	var _util = __webpack_require__(316);
+	var _util = __webpack_require__(317);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -42011,18 +42056,18 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 332 */
+/* 333 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _rule = __webpack_require__(319);
+	var _rule = __webpack_require__(320);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
-	var _util = __webpack_require__(316);
+	var _util = __webpack_require__(317);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -42056,18 +42101,18 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 333 */
+/* 334 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _rule = __webpack_require__(319);
+	var _rule = __webpack_require__(320);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
-	var _util = __webpack_require__(316);
+	var _util = __webpack_require__(317);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -42100,18 +42145,18 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 334 */
+/* 335 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _rule = __webpack_require__(319);
+	var _rule = __webpack_require__(320);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
-	var _util = __webpack_require__(316);
+	var _util = __webpack_require__(317);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -42146,18 +42191,18 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 335 */
+/* 336 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _rule = __webpack_require__(319);
+	var _rule = __webpack_require__(320);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
-	var _util = __webpack_require__(316);
+	var _util = __webpack_require__(317);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -42193,18 +42238,18 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 336 */
+/* 337 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _rule = __webpack_require__(319);
+	var _rule = __webpack_require__(320);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
-	var _util = __webpack_require__(316);
+	var _util = __webpack_require__(317);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -42240,7 +42285,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 337 */
+/* 338 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42249,7 +42294,7 @@
 	
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 	
-	var _rule = __webpack_require__(319);
+	var _rule = __webpack_require__(320);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
@@ -42266,18 +42311,18 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 338 */
+/* 339 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _rule = __webpack_require__(319);
+	var _rule = __webpack_require__(320);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
-	var _util = __webpack_require__(316);
+	var _util = __webpack_require__(317);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -42301,7 +42346,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 339 */
+/* 340 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -42366,10 +42411,10 @@
 	var messages = exports.messages = newMessages();
 
 /***/ }),
-/* 340 */
+/* 341 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var baseGet = __webpack_require__(341);
+	var baseGet = __webpack_require__(342);
 	
 	/**
 	 * Gets the value at `path` of `object`. If the resolved value is
@@ -42405,11 +42450,11 @@
 
 
 /***/ }),
-/* 341 */
+/* 342 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var castPath = __webpack_require__(342),
-	    toKey = __webpack_require__(391);
+	var castPath = __webpack_require__(343),
+	    toKey = __webpack_require__(392);
 	
 	/**
 	 * The base implementation of `_.get` without support for default values.
@@ -42435,13 +42480,13 @@
 
 
 /***/ }),
-/* 342 */
+/* 343 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var isArray = __webpack_require__(343),
-	    isKey = __webpack_require__(344),
-	    stringToPath = __webpack_require__(353),
-	    toString = __webpack_require__(388);
+	var isArray = __webpack_require__(344),
+	    isKey = __webpack_require__(345),
+	    stringToPath = __webpack_require__(354),
+	    toString = __webpack_require__(389);
 	
 	/**
 	 * Casts `value` to a path array if it's not one.
@@ -42462,7 +42507,7 @@
 
 
 /***/ }),
-/* 343 */
+/* 344 */
 /***/ (function(module, exports) {
 
 	/**
@@ -42494,11 +42539,11 @@
 
 
 /***/ }),
-/* 344 */
+/* 345 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var isArray = __webpack_require__(343),
-	    isSymbol = __webpack_require__(345);
+	var isArray = __webpack_require__(344),
+	    isSymbol = __webpack_require__(346);
 	
 	/** Used to match property names within property paths. */
 	var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
@@ -42529,11 +42574,11 @@
 
 
 /***/ }),
-/* 345 */
+/* 346 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var baseGetTag = __webpack_require__(346),
-	    isObjectLike = __webpack_require__(352);
+	var baseGetTag = __webpack_require__(347),
+	    isObjectLike = __webpack_require__(353);
 	
 	/** `Object#toString` result references. */
 	var symbolTag = '[object Symbol]';
@@ -42564,12 +42609,12 @@
 
 
 /***/ }),
-/* 346 */
+/* 347 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var Symbol = __webpack_require__(347),
-	    getRawTag = __webpack_require__(350),
-	    objectToString = __webpack_require__(351);
+	var Symbol = __webpack_require__(348),
+	    getRawTag = __webpack_require__(351),
+	    objectToString = __webpack_require__(352);
 	
 	/** `Object#toString` result references. */
 	var nullTag = '[object Null]',
@@ -42598,10 +42643,10 @@
 
 
 /***/ }),
-/* 347 */
+/* 348 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var root = __webpack_require__(348);
+	var root = __webpack_require__(349);
 	
 	/** Built-in value references. */
 	var Symbol = root.Symbol;
@@ -42610,10 +42655,10 @@
 
 
 /***/ }),
-/* 348 */
+/* 349 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var freeGlobal = __webpack_require__(349);
+	var freeGlobal = __webpack_require__(350);
 	
 	/** Detect free variable `self`. */
 	var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
@@ -42625,7 +42670,7 @@
 
 
 /***/ }),
-/* 349 */
+/* 350 */
 /***/ (function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/** Detect free variable `global` from Node.js. */
@@ -42636,10 +42681,10 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ }),
-/* 350 */
+/* 351 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var Symbol = __webpack_require__(347);
+	var Symbol = __webpack_require__(348);
 	
 	/** Used for built-in method references. */
 	var objectProto = Object.prototype;
@@ -42688,7 +42733,7 @@
 
 
 /***/ }),
-/* 351 */
+/* 352 */
 /***/ (function(module, exports) {
 
 	/** Used for built-in method references. */
@@ -42716,7 +42761,7 @@
 
 
 /***/ }),
-/* 352 */
+/* 353 */
 /***/ (function(module, exports) {
 
 	/**
@@ -42751,10 +42796,10 @@
 
 
 /***/ }),
-/* 353 */
+/* 354 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var memoizeCapped = __webpack_require__(354);
+	var memoizeCapped = __webpack_require__(355);
 	
 	/** Used to match property names within property paths. */
 	var rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
@@ -42784,10 +42829,10 @@
 
 
 /***/ }),
-/* 354 */
+/* 355 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var memoize = __webpack_require__(355);
+	var memoize = __webpack_require__(356);
 	
 	/** Used as the maximum memoize cache size. */
 	var MAX_MEMOIZE_SIZE = 500;
@@ -42816,10 +42861,10 @@
 
 
 /***/ }),
-/* 355 */
+/* 356 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var MapCache = __webpack_require__(356);
+	var MapCache = __webpack_require__(357);
 	
 	/** Error message constants. */
 	var FUNC_ERROR_TEXT = 'Expected a function';
@@ -42895,14 +42940,14 @@
 
 
 /***/ }),
-/* 356 */
+/* 357 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var mapCacheClear = __webpack_require__(357),
-	    mapCacheDelete = __webpack_require__(382),
-	    mapCacheGet = __webpack_require__(385),
-	    mapCacheHas = __webpack_require__(386),
-	    mapCacheSet = __webpack_require__(387);
+	var mapCacheClear = __webpack_require__(358),
+	    mapCacheDelete = __webpack_require__(383),
+	    mapCacheGet = __webpack_require__(386),
+	    mapCacheHas = __webpack_require__(387),
+	    mapCacheSet = __webpack_require__(388);
 	
 	/**
 	 * Creates a map cache object to store key-value pairs.
@@ -42933,12 +42978,12 @@
 
 
 /***/ }),
-/* 357 */
+/* 358 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var Hash = __webpack_require__(358),
-	    ListCache = __webpack_require__(373),
-	    Map = __webpack_require__(381);
+	var Hash = __webpack_require__(359),
+	    ListCache = __webpack_require__(374),
+	    Map = __webpack_require__(382);
 	
 	/**
 	 * Removes all key-value entries from the map.
@@ -42960,14 +43005,14 @@
 
 
 /***/ }),
-/* 358 */
+/* 359 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var hashClear = __webpack_require__(359),
-	    hashDelete = __webpack_require__(369),
-	    hashGet = __webpack_require__(370),
-	    hashHas = __webpack_require__(371),
-	    hashSet = __webpack_require__(372);
+	var hashClear = __webpack_require__(360),
+	    hashDelete = __webpack_require__(370),
+	    hashGet = __webpack_require__(371),
+	    hashHas = __webpack_require__(372),
+	    hashSet = __webpack_require__(373);
 	
 	/**
 	 * Creates a hash object.
@@ -42998,10 +43043,10 @@
 
 
 /***/ }),
-/* 359 */
+/* 360 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var nativeCreate = __webpack_require__(360);
+	var nativeCreate = __webpack_require__(361);
 	
 	/**
 	 * Removes all key-value entries from the hash.
@@ -43019,10 +43064,10 @@
 
 
 /***/ }),
-/* 360 */
+/* 361 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var getNative = __webpack_require__(361);
+	var getNative = __webpack_require__(362);
 	
 	/* Built-in method references that are verified to be native. */
 	var nativeCreate = getNative(Object, 'create');
@@ -43031,11 +43076,11 @@
 
 
 /***/ }),
-/* 361 */
+/* 362 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var baseIsNative = __webpack_require__(362),
-	    getValue = __webpack_require__(368);
+	var baseIsNative = __webpack_require__(363),
+	    getValue = __webpack_require__(369);
 	
 	/**
 	 * Gets the native function at `key` of `object`.
@@ -43054,13 +43099,13 @@
 
 
 /***/ }),
-/* 362 */
+/* 363 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var isFunction = __webpack_require__(363),
-	    isMasked = __webpack_require__(365),
-	    isObject = __webpack_require__(364),
-	    toSource = __webpack_require__(367);
+	var isFunction = __webpack_require__(364),
+	    isMasked = __webpack_require__(366),
+	    isObject = __webpack_require__(365),
+	    toSource = __webpack_require__(368);
 	
 	/**
 	 * Used to match `RegExp`
@@ -43107,11 +43152,11 @@
 
 
 /***/ }),
-/* 363 */
+/* 364 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var baseGetTag = __webpack_require__(346),
-	    isObject = __webpack_require__(364);
+	var baseGetTag = __webpack_require__(347),
+	    isObject = __webpack_require__(365);
 	
 	/** `Object#toString` result references. */
 	var asyncTag = '[object AsyncFunction]',
@@ -43150,7 +43195,7 @@
 
 
 /***/ }),
-/* 364 */
+/* 365 */
 /***/ (function(module, exports) {
 
 	/**
@@ -43187,10 +43232,10 @@
 
 
 /***/ }),
-/* 365 */
+/* 366 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var coreJsData = __webpack_require__(366);
+	var coreJsData = __webpack_require__(367);
 	
 	/** Used to detect methods masquerading as native. */
 	var maskSrcKey = (function() {
@@ -43213,10 +43258,10 @@
 
 
 /***/ }),
-/* 366 */
+/* 367 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var root = __webpack_require__(348);
+	var root = __webpack_require__(349);
 	
 	/** Used to detect overreaching core-js shims. */
 	var coreJsData = root['__core-js_shared__'];
@@ -43225,7 +43270,7 @@
 
 
 /***/ }),
-/* 367 */
+/* 368 */
 /***/ (function(module, exports) {
 
 	/** Used for built-in method references. */
@@ -43257,7 +43302,7 @@
 
 
 /***/ }),
-/* 368 */
+/* 369 */
 /***/ (function(module, exports) {
 
 	/**
@@ -43276,7 +43321,7 @@
 
 
 /***/ }),
-/* 369 */
+/* 370 */
 /***/ (function(module, exports) {
 
 	/**
@@ -43299,10 +43344,10 @@
 
 
 /***/ }),
-/* 370 */
+/* 371 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var nativeCreate = __webpack_require__(360);
+	var nativeCreate = __webpack_require__(361);
 	
 	/** Used to stand-in for `undefined` hash values. */
 	var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -43335,10 +43380,10 @@
 
 
 /***/ }),
-/* 371 */
+/* 372 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var nativeCreate = __webpack_require__(360);
+	var nativeCreate = __webpack_require__(361);
 	
 	/** Used for built-in method references. */
 	var objectProto = Object.prototype;
@@ -43364,10 +43409,10 @@
 
 
 /***/ }),
-/* 372 */
+/* 373 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var nativeCreate = __webpack_require__(360);
+	var nativeCreate = __webpack_require__(361);
 	
 	/** Used to stand-in for `undefined` hash values. */
 	var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -43393,14 +43438,14 @@
 
 
 /***/ }),
-/* 373 */
+/* 374 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var listCacheClear = __webpack_require__(374),
-	    listCacheDelete = __webpack_require__(375),
-	    listCacheGet = __webpack_require__(378),
-	    listCacheHas = __webpack_require__(379),
-	    listCacheSet = __webpack_require__(380);
+	var listCacheClear = __webpack_require__(375),
+	    listCacheDelete = __webpack_require__(376),
+	    listCacheGet = __webpack_require__(379),
+	    listCacheHas = __webpack_require__(380),
+	    listCacheSet = __webpack_require__(381);
 	
 	/**
 	 * Creates an list cache object.
@@ -43431,7 +43476,7 @@
 
 
 /***/ }),
-/* 374 */
+/* 375 */
 /***/ (function(module, exports) {
 
 	/**
@@ -43450,10 +43495,10 @@
 
 
 /***/ }),
-/* 375 */
+/* 376 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var assocIndexOf = __webpack_require__(376);
+	var assocIndexOf = __webpack_require__(377);
 	
 	/** Used for built-in method references. */
 	var arrayProto = Array.prototype;
@@ -43491,10 +43536,10 @@
 
 
 /***/ }),
-/* 376 */
+/* 377 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var eq = __webpack_require__(377);
+	var eq = __webpack_require__(378);
 	
 	/**
 	 * Gets the index at which the `key` is found in `array` of key-value pairs.
@@ -43518,7 +43563,7 @@
 
 
 /***/ }),
-/* 377 */
+/* 378 */
 /***/ (function(module, exports) {
 
 	/**
@@ -43561,10 +43606,10 @@
 
 
 /***/ }),
-/* 378 */
+/* 379 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var assocIndexOf = __webpack_require__(376);
+	var assocIndexOf = __webpack_require__(377);
 	
 	/**
 	 * Gets the list cache value for `key`.
@@ -43586,10 +43631,10 @@
 
 
 /***/ }),
-/* 379 */
+/* 380 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var assocIndexOf = __webpack_require__(376);
+	var assocIndexOf = __webpack_require__(377);
 	
 	/**
 	 * Checks if a list cache value for `key` exists.
@@ -43608,10 +43653,10 @@
 
 
 /***/ }),
-/* 380 */
+/* 381 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var assocIndexOf = __webpack_require__(376);
+	var assocIndexOf = __webpack_require__(377);
 	
 	/**
 	 * Sets the list cache `key` to `value`.
@@ -43640,11 +43685,11 @@
 
 
 /***/ }),
-/* 381 */
+/* 382 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var getNative = __webpack_require__(361),
-	    root = __webpack_require__(348);
+	var getNative = __webpack_require__(362),
+	    root = __webpack_require__(349);
 	
 	/* Built-in method references that are verified to be native. */
 	var Map = getNative(root, 'Map');
@@ -43653,10 +43698,10 @@
 
 
 /***/ }),
-/* 382 */
+/* 383 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var getMapData = __webpack_require__(383);
+	var getMapData = __webpack_require__(384);
 	
 	/**
 	 * Removes `key` and its value from the map.
@@ -43677,10 +43722,10 @@
 
 
 /***/ }),
-/* 383 */
+/* 384 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var isKeyable = __webpack_require__(384);
+	var isKeyable = __webpack_require__(385);
 	
 	/**
 	 * Gets the data for `map`.
@@ -43701,7 +43746,7 @@
 
 
 /***/ }),
-/* 384 */
+/* 385 */
 /***/ (function(module, exports) {
 
 	/**
@@ -43722,10 +43767,10 @@
 
 
 /***/ }),
-/* 385 */
+/* 386 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var getMapData = __webpack_require__(383);
+	var getMapData = __webpack_require__(384);
 	
 	/**
 	 * Gets the map value for `key`.
@@ -43744,10 +43789,10 @@
 
 
 /***/ }),
-/* 386 */
+/* 387 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var getMapData = __webpack_require__(383);
+	var getMapData = __webpack_require__(384);
 	
 	/**
 	 * Checks if a map value for `key` exists.
@@ -43766,10 +43811,10 @@
 
 
 /***/ }),
-/* 387 */
+/* 388 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var getMapData = __webpack_require__(383);
+	var getMapData = __webpack_require__(384);
 	
 	/**
 	 * Sets the map `key` to `value`.
@@ -43794,10 +43839,10 @@
 
 
 /***/ }),
-/* 388 */
+/* 389 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var baseToString = __webpack_require__(389);
+	var baseToString = __webpack_require__(390);
 	
 	/**
 	 * Converts `value` to a string. An empty string is returned for `null`
@@ -43828,13 +43873,13 @@
 
 
 /***/ }),
-/* 389 */
+/* 390 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var Symbol = __webpack_require__(347),
-	    arrayMap = __webpack_require__(390),
-	    isArray = __webpack_require__(343),
-	    isSymbol = __webpack_require__(345);
+	var Symbol = __webpack_require__(348),
+	    arrayMap = __webpack_require__(391),
+	    isArray = __webpack_require__(344),
+	    isSymbol = __webpack_require__(346);
 	
 	/** Used as references for various `Number` constants. */
 	var INFINITY = 1 / 0;
@@ -43871,7 +43916,7 @@
 
 
 /***/ }),
-/* 390 */
+/* 391 */
 /***/ (function(module, exports) {
 
 	/**
@@ -43898,10 +43943,10 @@
 
 
 /***/ }),
-/* 391 */
+/* 392 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var isSymbol = __webpack_require__(345);
+	var isSymbol = __webpack_require__(346);
 	
 	/** Used as references for various `Number` constants. */
 	var INFINITY = 1 / 0;
@@ -43925,10 +43970,10 @@
 
 
 /***/ }),
-/* 392 */
+/* 393 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var baseSet = __webpack_require__(393);
+	var baseSet = __webpack_require__(394);
 	
 	/**
 	 * Sets the value at `path` of `object`. If a portion of `path` doesn't exist,
@@ -43966,14 +44011,14 @@
 
 
 /***/ }),
-/* 393 */
+/* 394 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var assignValue = __webpack_require__(394),
-	    castPath = __webpack_require__(342),
-	    isIndex = __webpack_require__(397),
-	    isObject = __webpack_require__(364),
-	    toKey = __webpack_require__(391);
+	var assignValue = __webpack_require__(395),
+	    castPath = __webpack_require__(343),
+	    isIndex = __webpack_require__(398),
+	    isObject = __webpack_require__(365),
+	    toKey = __webpack_require__(392);
 	
 	/**
 	 * The base implementation of `_.set`.
@@ -44019,11 +44064,11 @@
 
 
 /***/ }),
-/* 394 */
+/* 395 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var baseAssignValue = __webpack_require__(395),
-	    eq = __webpack_require__(377);
+	var baseAssignValue = __webpack_require__(396),
+	    eq = __webpack_require__(378);
 	
 	/** Used for built-in method references. */
 	var objectProto = Object.prototype;
@@ -44053,10 +44098,10 @@
 
 
 /***/ }),
-/* 395 */
+/* 396 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var defineProperty = __webpack_require__(396);
+	var defineProperty = __webpack_require__(397);
 	
 	/**
 	 * The base implementation of `assignValue` and `assignMergeValue` without
@@ -44084,10 +44129,10 @@
 
 
 /***/ }),
-/* 396 */
+/* 397 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var getNative = __webpack_require__(361);
+	var getNative = __webpack_require__(362);
 	
 	var defineProperty = (function() {
 	  try {
@@ -44101,7 +44146,7 @@
 
 
 /***/ }),
-/* 397 */
+/* 398 */
 /***/ (function(module, exports) {
 
 	/** Used as references for various `Number` constants. */
@@ -44132,7 +44177,7 @@
 
 
 /***/ }),
-/* 398 */
+/* 399 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44141,33 +44186,33 @@
 	  value: true
 	});
 	
-	var _defineProperty2 = __webpack_require__(284);
+	var _defineProperty2 = __webpack_require__(285);
 	
 	var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 	
-	var _extends2 = __webpack_require__(288);
+	var _extends2 = __webpack_require__(289);
 	
 	var _extends3 = _interopRequireDefault(_extends2);
 	
-	var _classCallCheck2 = __webpack_require__(399);
+	var _classCallCheck2 = __webpack_require__(400);
 	
 	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 	
-	var _createClass2 = __webpack_require__(400);
+	var _createClass2 = __webpack_require__(401);
 	
 	var _createClass3 = _interopRequireDefault(_createClass2);
 	
 	exports['default'] = createFieldsStore;
 	
-	var _set = __webpack_require__(392);
+	var _set = __webpack_require__(393);
 	
 	var _set2 = _interopRequireDefault(_set);
 	
-	var _createFormField = __webpack_require__(401);
+	var _createFormField = __webpack_require__(402);
 	
 	var _createFormField2 = _interopRequireDefault(_createFormField);
 	
-	var _utils = __webpack_require__(402);
+	var _utils = __webpack_require__(403);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -44480,7 +44525,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 399 */
+/* 400 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -44494,14 +44539,14 @@
 	};
 
 /***/ }),
-/* 400 */
+/* 401 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	exports.__esModule = true;
 	
-	var _defineProperty = __webpack_require__(285);
+	var _defineProperty = __webpack_require__(286);
 	
 	var _defineProperty2 = _interopRequireDefault(_defineProperty);
 	
@@ -44526,7 +44571,7 @@
 	}();
 
 /***/ }),
-/* 401 */
+/* 402 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -44535,11 +44580,11 @@
 	  value: true
 	});
 	
-	var _extends2 = __webpack_require__(288);
+	var _extends2 = __webpack_require__(289);
 	
 	var _extends3 = _interopRequireDefault(_extends2);
 	
-	var _classCallCheck2 = __webpack_require__(399);
+	var _classCallCheck2 = __webpack_require__(400);
 	
 	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 	
@@ -44566,7 +44611,7 @@
 	}
 
 /***/ }),
-/* 402 */
+/* 403 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44575,7 +44620,7 @@
 	  value: true
 	});
 	
-	var _extends2 = __webpack_require__(288);
+	var _extends2 = __webpack_require__(289);
 	
 	var _extends3 = _interopRequireDefault(_extends2);
 	
@@ -44756,7 +44801,7 @@
 	}
 
 /***/ }),
-/* 403 */
+/* 404 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44796,7 +44841,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 404 */
+/* 405 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44873,7 +44918,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 405 */
+/* 406 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44928,7 +44973,7 @@
 	    Demo2.prototype.render = function render() {
 	        return _react2['default'].createElement(_src2['default'], {
 	            max: 12,
-	            min: -9,
+	            min: 5,
 	            step: 1,
 	            value: this.state.value,
 	            onChange: this.handleChange
@@ -44942,7 +44987,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 406 */
+/* 407 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45012,7 +45057,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 407 */
+/* 408 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45079,7 +45124,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 408 */
+/* 409 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45150,7 +45195,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 409 */
+/* 410 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45219,7 +45264,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 410 */
+/* 411 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45287,7 +45332,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 411 */
+/* 412 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45355,7 +45400,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 412 */
+/* 413 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45428,7 +45473,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 413 */
+/* 414 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
