@@ -306,10 +306,10 @@
 .u-input-number.u-input-number-sm.u-input-group.simple .u-input-group-btn .icon-group {
   height: 26px; }
 
-.u-input-number.u-input-number-sm.u-input-group.simple .u-input-group-btn {
+.u-input-number-out .u-input-number.u-input-number-sm.u-input-group.simple .u-input-group-btn {
   top: 0px; }
 
-.u-input-number.u-input-number-lg.u-input-group.simple .u-input-group-btn {
+.u-input-number-out .u-input-number.u-input-number-lg.u-input-group.simple .u-input-group-btn {
   top: 0px; }
 
 .u-input-number-group .u-input-number-out {
