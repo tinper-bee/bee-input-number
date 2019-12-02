@@ -81,19 +81,17 @@ function unThousands(number){
 function setCaretPosition(ctrl,pos,need) {
     
     if(ctrl&&need){
-        window.setTimeout(()=>{
-            if(ctrl.setSelectionRange) {
-                ctrl.focus();
-                ctrl.setSelectionRange(pos,pos);
-                // IE8 and below
-            } else if(ctrl.createTextRange) {
-                var range = ctrl.createTextRange();
-                range.collapse(true);
-                range.moveEnd('character', pos);
-                range.moveStart('character', pos);
-                range.select();
-            }
-        },0)
+        if(ctrl.setSelectionRange) {
+            ctrl.focus();
+            ctrl.setSelectionRange(pos,pos);
+            // IE8 and below
+        } else if(ctrl.createTextRange) {
+            var range = ctrl.createTextRange();
+            range.collapse(true);
+            range.moveEnd('character', pos);
+            range.moveStart('character', pos);
+            range.select();
+        }
         
     }
     
@@ -228,7 +226,7 @@ class InputNumber extends Component {
     handleChange = (value) => {
         let selectionStart = this.input.selectionStart==undefined?this.input.input.selectionStart:this.input.selectionStart;
         this.selectionStart = selectionStart;
-        const { onChange,toNumber,max,min,displayCheckPrompt } = this.props;
+        const { onChange,toNumber } = this.props;
         if(value===''){
             onChange && onChange(value);
             this.setState({

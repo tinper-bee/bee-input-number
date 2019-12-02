@@ -37480,10 +37480,7 @@
 	        _this3.selectionStart = selectionStart;
 	        var _props2 = _this3.props,
 	            onChange = _props2.onChange,
-	            toNumber = _props2.toNumber,
-	            max = _props2.max,
-	            min = _props2.min,
-	            displayCheckPrompt = _props2.displayCheckPrompt;
+	            toNumber = _props2.toNumber;
 	
 	        if (value === '') {
 	            onChange && onChange(value);

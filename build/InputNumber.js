@@ -120,19 +120,17 @@ function unThousands(number) {
 function setCaretPosition(ctrl, pos, need) {
 
     if (ctrl && need) {
-        window.setTimeout(function () {
-            if (ctrl.setSelectionRange) {
-                ctrl.focus();
-                ctrl.setSelectionRange(pos, pos);
-                // IE8 and below
-            } else if (ctrl.createTextRange) {
-                var range = ctrl.createTextRange();
-                range.collapse(true);
-                range.moveEnd('character', pos);
-                range.moveStart('character', pos);
-                range.select();
-            }
-        }, 0);
+        if (ctrl.setSelectionRange) {
+            ctrl.focus();
+            ctrl.setSelectionRange(pos, pos);
+            // IE8 and below
+        } else if (ctrl.createTextRange) {
+            var range = ctrl.createTextRange();
+            range.collapse(true);
+            range.moveEnd('character', pos);
+            range.moveStart('character', pos);
+            range.select();
+        }
     }
 }
 
@@ -423,10 +421,7 @@ var _initialiseProps = function _initialiseProps() {
         _this3.selectionStart = selectionStart;
         var _props2 = _this3.props,
             onChange = _props2.onChange,
-            toNumber = _props2.toNumber,
-            max = _props2.max,
-            min = _props2.min,
-            displayCheckPrompt = _props2.displayCheckPrompt;
+            toNumber = _props2.toNumber;
 
         if (value === '') {
             onChange && onChange(value);
