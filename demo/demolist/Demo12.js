@@ -29,8 +29,8 @@ class Demo12 extends Component {
                 <InputNumber
                     iconStyle="one"
                     // precision={2}
-                    // min={-9007199254740990}
-                    // max={9007199254740990}
+                    min={-10}
+                    max={10}
                     onFocus={(value,e)=>{
                         console.log(value+"  ==== ",e);
                         this.setState({
@@ -43,8 +43,9 @@ class Demo12 extends Component {
                         //     value
                         // })
                     }}
+                    precision={8}
                     step={1} 
-                    format={value => ` ${value} 千克`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                    format={value => ` ${value} 千克`.replace(/\B(?=(\d{3})+(?!\d))/g, ':')}
                     value={this.state.value}
                 />
 
