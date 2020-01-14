@@ -249,6 +249,7 @@ var InputNumber = function (_Component) {
             showValue = _state.showValue;
 
 
+        value = precision != null ? Number(value).toFixed(precision) : value;
         value = format && !this.focus ? format(value) : value;
 
         var disabledCursor = disabled ? ' disabled-cursor' : '';
