@@ -43,7 +43,7 @@ class Demo12 extends Component {
                         //     value
                         // })
                     }}
-                    precision={8}
+                    // precision={8}
                     step={1} 
                     format={value => ` ${value} 千克`.replace(/\B(?=(\d{3})+(?!\d))/g, ':')}
                     value={this.state.value}
