@@ -515,8 +515,9 @@ class InputNumber extends Component {
 
         let {value, minusDisabled, plusDisabled, showValue} = this.state;
 
+        value = precision != null?Number(value).toFixed(precision):value;
         value = format && !this.focus? format(value) : value;
-
+    
         let disabledCursor = disabled? ' disabled-cursor':'';
         let disabledCon = disabled? ' disabled-con':'';
         return (
