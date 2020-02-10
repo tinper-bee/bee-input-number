@@ -29,8 +29,8 @@ class Demo12 extends Component {
                 <InputNumber
                     iconStyle="one"
                     // precision={2}
-                    min={-10}
-                    max={10}
+                    // min={-10}
+                    // max={10}
                     onFocus={(value,e)=>{
                         console.log(value+"  ==== ",e);
                         this.setState({

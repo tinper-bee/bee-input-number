@@ -505,7 +505,7 @@ class InputNumber extends Component {
     }
 
     render() {
-        const {toThousands, max, min, step,disabled, clsPrefix, className, delay, onBlur, onFocus, iconStyle, autoWidth, onChange, format, precision,toNumber, ...others} = this.props;
+        const {toThousands,minusRight, max, min, step,disabled, clsPrefix, className, delay, onBlur, onFocus, iconStyle, autoWidth, onChange, format, precision,toNumber, ...others} = this.props;
         let classes = {
             [`${clsPrefix}-auto`]: autoWidth,
             [`${clsPrefix}`]: true,
@@ -517,7 +517,9 @@ class InputNumber extends Component {
 
         value = precision != null?Number(value).toFixed(precision):value;
         value = format && !this.focus? format(value) : value;
-    
+        if(minusRight && String(value).indexOf('-')!=-1){
+            value = String(value).replace("-","")+"-";
+        }
         let disabledCursor = disabled? ' disabled-cursor':'';
         let disabledCon = disabled? ' disabled-con':'';
         return (

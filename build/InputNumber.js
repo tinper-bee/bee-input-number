@@ -223,6 +223,7 @@ var InputNumber = function (_Component) {
 
         var _props = this.props,
             toThousands = _props.toThousands,
+            minusRight = _props.minusRight,
             max = _props.max,
             min = _props.min,
             step = _props.step,
@@ -238,7 +239,7 @@ var InputNumber = function (_Component) {
             format = _props.format,
             precision = _props.precision,
             toNumber = _props.toNumber,
-            others = _objectWithoutProperties(_props, ['toThousands', 'max', 'min', 'step', 'disabled', 'clsPrefix', 'className', 'delay', 'onBlur', 'onFocus', 'iconStyle', 'autoWidth', 'onChange', 'format', 'precision', 'toNumber']);
+            others = _objectWithoutProperties(_props, ['toThousands', 'minusRight', 'max', 'min', 'step', 'disabled', 'clsPrefix', 'className', 'delay', 'onBlur', 'onFocus', 'iconStyle', 'autoWidth', 'onChange', 'format', 'precision', 'toNumber']);
 
         var classes = (_classes = {}, _defineProperty(_classes, clsPrefix + '-auto', autoWidth), _defineProperty(_classes, '' + clsPrefix, true), _defineProperty(_classes, clsPrefix + '-lg', others.size === "lg"), _defineProperty(_classes, clsPrefix + '-sm', others.size === "sm"), _classes);
 
@@ -251,7 +252,9 @@ var InputNumber = function (_Component) {
 
         value = precision != null ? Number(value).toFixed(precision) : value;
         value = format && !this.focus ? format(value) : value;
-
+        if (minusRight && String(value).indexOf('-') != -1) {
+            value = String(value).replace("-", "") + "-";
+        }
         var disabledCursor = disabled ? ' disabled-cursor' : '';
         var disabledCon = disabled ? ' disabled-con' : '';
         return _react2["default"].createElement(
