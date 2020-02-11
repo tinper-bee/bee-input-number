@@ -250,7 +250,7 @@ var InputNumber = function (_Component) {
             showValue = _state.showValue;
 
 
-        value = precision != null ? Number(value).toFixed(precision) : value;
+        value = precision != null && !this.focus ? Number(value).toFixed(precision) : value;
         value = format && !this.focus ? format(value) : value;
         if (minusRight && String(value).indexOf('-') != -1) {
             value = String(value).replace("-", "") + "-";
