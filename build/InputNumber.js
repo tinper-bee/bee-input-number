@@ -249,8 +249,12 @@ var InputNumber = function (_Component) {
             plusDisabled = _state.plusDisabled,
             showValue = _state.showValue;
 
+        // if(String(value).indexOf('.') !== -1 && this.props.precision){
+        //     // || Number(String(String(value).split(".")[1]).length()) < this.props.precision
+        //     value = String(value).split('.')[0]+"."+value.substring((value.indexOf(".")+1),this.props.precision);
+        // }
 
-        value = precision != null && !this.focus ? Number(value).toFixed(precision) : value;
+        value = precision != null ? this.getPrecision(value) : value;
         value = format && !this.focus ? format(value) : value;
         if (minusRight && String(value).indexOf('-') != -1) {
             value = String(value).replace("-", "") + "-";
@@ -420,7 +424,8 @@ var _initialiseProps = function _initialiseProps() {
         }
 
         if (props.hasOwnProperty('precision')) {
-            currentValue = Number(currentValue).toFixed(precision);
+            // currentValue = Number(currentValue).toFixed(precision);
+            currentValue = _this3.getPrecision(currentValue);
         }
         if (props.minusRight) {
             currentValue = currentValue.toString();
@@ -548,7 +553,8 @@ var _initialiseProps = function _initialiseProps() {
             value = min;
         }
         if (_this3.props.hasOwnProperty('precision')) {
-            value = value.toFixed(precision);
+            // value = value.toFixed(precision);
+            value = _this3.getPrecision(value);
         }
         value = value.toString();
         if (minusRight && value.indexOf('-') != -1) {
@@ -732,6 +738,22 @@ var _initialiseProps = function _initialiseProps() {
         _this3.timer = setTimeout(function () {
             _this3.handleReduceMouseDown();
         }, delay);
+    };
+
+    this.getPrecision = function (value) {
+        value = String(value);
+        var precision = _this3.props.precision;
+
+        if (!precision || String(value.split(".")[1]).length === precision) {
+            return value;
+        }
+        var before = value.substring(0, 1),
+            len = value.length,
+            after = value.substring(len - 1, len);
+        before = before === "-" ? before : "";
+        after = after === "-" ? after : "";
+        value = value.replace("-", '');
+        return before + Number(value).toFixed(precision) + after;
     };
 };
 

@@ -190,7 +190,8 @@ class InputNumber extends Component {
         }
 
         if(props.hasOwnProperty('precision')){
-            currentValue = Number(currentValue).toFixed(precision);
+            // currentValue = Number(currentValue).toFixed(precision);
+            currentValue = this.getPrecision(currentValue);
         }
         if(props.minusRight){
             currentValue = currentValue.toString();
@@ -328,7 +329,8 @@ class InputNumber extends Component {
             value = min;
         }
         if(this.props.hasOwnProperty('precision')){
-            value = value.toFixed(precision);
+            // value = value.toFixed(precision);
+            value = this.getPrecision(value);
         }
         value = value.toString();
         if(minusRight&&(value.indexOf('-')!=-1)){//负号转到后边
@@ -504,6 +506,20 @@ class InputNumber extends Component {
         }, delay);
     }
 
+    getPrecision = (value)=>{
+        value = String(value);
+        const {precision} = this.props;
+        if(!precision || String(value.split(".")[1]).length === precision){
+            return value;
+        }
+        let before = value.substring(0,1),len = value.length,
+        after = value.substring(len-1,len);
+        before = before === "-"?before:"";
+        after = after === "-"?after:"";
+        value = value.replace("-",'');
+        return before+Number(value).toFixed(precision)+after;
+    }
+
     render() {
         const {toThousands,minusRight, max, min, step,disabled, clsPrefix, className, delay, onBlur, onFocus, iconStyle, autoWidth, onChange, format, precision,toNumber, ...others} = this.props;
         let classes = {
@@ -514,8 +530,7 @@ class InputNumber extends Component {
         };
 
         let {value, minusDisabled, plusDisabled, showValue} = this.state;
-
-        value = precision != null&& !this.focus?Number(value).toFixed(precision):value;
+        value = precision != null?this.getPrecision(value):value;
         value = format && !this.focus? format(value) : value;
         if(minusRight && String(value).indexOf('-')!=-1){
             value = String(value).replace("-","")+"-";
