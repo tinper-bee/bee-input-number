@@ -522,8 +522,12 @@ class InputNumber extends Component {
         return before+Number(value).toFixed(precision)+after;
     }
 
+    handleBtnClick = (type)=>{
+        this.props.handleBtnClick(type,this.state.value)
+    }
+
     render() {
-        const {handleBtnClick,toThousands,minusRight, max, min, step,disabled, clsPrefix, className, delay, onBlur, onFocus, iconStyle, autoWidth, onChange, format, precision,toNumber, ...others} = this.props;
+        const {toThousands,minusRight, max, min, step,disabled, clsPrefix, className, delay, onBlur, onFocus, iconStyle, autoWidth, onChange, format, precision,toNumber, ...others} = this.props;
         let classes = {
             [`${clsPrefix}-auto`]: autoWidth,
             [`${clsPrefix}`]: true,
@@ -545,7 +549,7 @@ class InputNumber extends Component {
                     iconStyle === 'double' ? (
                         <InputGroup className={classnames(className, classes,disabledCon)}>
                             <InputGroup.Addon
-                                onClick={()=>{minusDisabled?'':handleBtnClick('down')}}
+                                onClick={()=>{minusDisabled?'':this.handleBtnClick('down')}}
                                 className={(minusDisabled && 'disabled' ) + disabledCursor}
                                 onMouseDown={ this.handleReduceMouseDown}
                                 onMouseLeave={ this.clear }
@@ -562,7 +566,7 @@ class InputNumber extends Component {
                                 ref={ref=>this.input = ref}
                             />
                             <InputGroup.Addon
-                                onClick={()=>{plusDisabled?'':handleBtnClick('up')}}
+                                onClick={()=>{plusDisabled?'':this.handleBtnClick('up')}}
                                 className={(plusDisabled && 'disabled' ) + disabledCursor}
                                 onMouseDown={ this.handlePlusMouseDown}
                                 onMouseLeave={ this.clear }
@@ -587,7 +591,7 @@ class InputNumber extends Component {
                             <InputGroup.Button>
                                 <div className={classnames("icon-group")}>
                                 <span
-                                    onClick={()=>{plusDisabled?'':handleBtnClick('up')}}
+                                    onClick={()=>{plusDisabled?'':this.handleBtnClick('up')}}
                                     onMouseDown={ this.handlePlusMouseDown}
                                     onMouseLeave={ this.clear }
                                     onMouseUp={ this.clear }
@@ -595,7 +599,7 @@ class InputNumber extends Component {
                                     <span className="uf uf-arrow-up"/>
                                 </span>
                                     <span
-                                        onClick={()=>{minusDisabled?'':handleBtnClick('down')}}
+                                        onClick={()=>{minusDisabled?'':this.handleBtnClick('down')}}
                                         onMouseDown={ this.handleReduceMouseDown}
                                         onMouseLeave={ this.clear }
                                         onMouseUp={ this.clear }

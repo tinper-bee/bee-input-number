@@ -224,7 +224,6 @@ var InputNumber = function (_Component) {
             _this2 = this;
 
         var _props = this.props,
-            handleBtnClick = _props.handleBtnClick,
             toThousands = _props.toThousands,
             minusRight = _props.minusRight,
             max = _props.max,
@@ -242,7 +241,7 @@ var InputNumber = function (_Component) {
             format = _props.format,
             precision = _props.precision,
             toNumber = _props.toNumber,
-            others = _objectWithoutProperties(_props, ['handleBtnClick', 'toThousands', 'minusRight', 'max', 'min', 'step', 'disabled', 'clsPrefix', 'className', 'delay', 'onBlur', 'onFocus', 'iconStyle', 'autoWidth', 'onChange', 'format', 'precision', 'toNumber']);
+            others = _objectWithoutProperties(_props, ['toThousands', 'minusRight', 'max', 'min', 'step', 'disabled', 'clsPrefix', 'className', 'delay', 'onBlur', 'onFocus', 'iconStyle', 'autoWidth', 'onChange', 'format', 'precision', 'toNumber']);
 
         var classes = (_classes = {}, _defineProperty(_classes, clsPrefix + '-auto', autoWidth), _defineProperty(_classes, '' + clsPrefix, true), _defineProperty(_classes, clsPrefix + '-lg', others.size === "lg"), _defineProperty(_classes, clsPrefix + '-sm', others.size === "sm"), _classes);
 
@@ -269,7 +268,7 @@ var InputNumber = function (_Component) {
                     _beeInputGroup2["default"].Addon,
                     {
                         onClick: function onClick() {
-                            minusDisabled ? '' : handleBtnClick('down');
+                            minusDisabled ? '' : _this2.handleBtnClick('down');
                         },
                         className: (minusDisabled && 'disabled') + disabledCursor,
                         onMouseDown: this.handleReduceMouseDown,
@@ -291,7 +290,7 @@ var InputNumber = function (_Component) {
                     _beeInputGroup2["default"].Addon,
                     {
                         onClick: function onClick() {
-                            plusDisabled ? '' : handleBtnClick('up');
+                            plusDisabled ? '' : _this2.handleBtnClick('up');
                         },
                         className: (plusDisabled && 'disabled') + disabledCursor,
                         onMouseDown: this.handlePlusMouseDown,
@@ -325,7 +324,7 @@ var InputNumber = function (_Component) {
                             'span',
                             {
                                 onClick: function onClick() {
-                                    plusDisabled ? '' : handleBtnClick('up');
+                                    plusDisabled ? '' : _this2.handleBtnClick('up');
                                 },
                                 onMouseDown: this.handlePlusMouseDown,
                                 onMouseLeave: this.clear,
@@ -337,7 +336,7 @@ var InputNumber = function (_Component) {
                             'span',
                             {
                                 onClick: function onClick() {
-                                    minusDisabled ? '' : handleBtnClick('down');
+                                    minusDisabled ? '' : _this2.handleBtnClick('down');
                                 },
                                 onMouseDown: this.handleReduceMouseDown,
                                 onMouseLeave: this.clear,
@@ -764,6 +763,10 @@ var _initialiseProps = function _initialiseProps() {
         after = after === "-" ? after : "";
         value = value.replace("-", '');
         return before + Number(value).toFixed(precision) + after;
+    };
+
+    this.handleBtnClick = function (type) {
+        _this3.props.handleBtnClick(type, _this3.state.value);
     };
 };
 
