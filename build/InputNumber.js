@@ -63,7 +63,8 @@ var propTypes = {
     locale: _propTypes2["default"].object,
     toNumber: _propTypes2["default"].bool, //回调函数内的值是否转换为数值类型
     displayCheckPrompt: _propTypes2["default"].bool, //是否显示超出限制范围之后的检验提示
-    minusRight: _propTypes2["default"].bool //负号是否在右边
+    minusRight: _propTypes2["default"].bool, //负号是否在右边
+    handleBtnClick: _propTypes2["default"].func //加减按钮点击回调
 };
 
 var defaultProps = {
@@ -75,7 +76,8 @@ var defaultProps = {
     delay: 300,
     toNumber: false,
     displayCheckPrompt: false,
-    locale: {}
+    locale: {},
+    handleBtnClick: function handleBtnClick() {}
 };
 
 //校验提示
@@ -222,6 +224,7 @@ var InputNumber = function (_Component) {
             _this2 = this;
 
         var _props = this.props,
+            handleBtnClick = _props.handleBtnClick,
             toThousands = _props.toThousands,
             minusRight = _props.minusRight,
             max = _props.max,
@@ -239,7 +242,7 @@ var InputNumber = function (_Component) {
             format = _props.format,
             precision = _props.precision,
             toNumber = _props.toNumber,
-            others = _objectWithoutProperties(_props, ['toThousands', 'minusRight', 'max', 'min', 'step', 'disabled', 'clsPrefix', 'className', 'delay', 'onBlur', 'onFocus', 'iconStyle', 'autoWidth', 'onChange', 'format', 'precision', 'toNumber']);
+            others = _objectWithoutProperties(_props, ['handleBtnClick', 'toThousands', 'minusRight', 'max', 'min', 'step', 'disabled', 'clsPrefix', 'className', 'delay', 'onBlur', 'onFocus', 'iconStyle', 'autoWidth', 'onChange', 'format', 'precision', 'toNumber']);
 
         var classes = (_classes = {}, _defineProperty(_classes, clsPrefix + '-auto', autoWidth), _defineProperty(_classes, '' + clsPrefix, true), _defineProperty(_classes, clsPrefix + '-lg', others.size === "lg"), _defineProperty(_classes, clsPrefix + '-sm', others.size === "sm"), _classes);
 
@@ -248,11 +251,6 @@ var InputNumber = function (_Component) {
             minusDisabled = _state.minusDisabled,
             plusDisabled = _state.plusDisabled,
             showValue = _state.showValue;
-
-        // if(String(value).indexOf('.') !== -1 && this.props.precision){
-        //     // || Number(String(String(value).split(".")[1]).length()) < this.props.precision
-        //     value = String(value).split('.')[0]+"."+value.substring((value.indexOf(".")+1),this.props.precision);
-        // }
 
         value = precision != null ? this.getPrecision(value) : value;
         value = format && !this.focus ? format(value) : value;
@@ -270,6 +268,9 @@ var InputNumber = function (_Component) {
                 _react2["default"].createElement(
                     _beeInputGroup2["default"].Addon,
                     {
+                        onClick: function onClick() {
+                            minusDisabled ? '' : handleBtnClick('down');
+                        },
                         className: (minusDisabled && 'disabled') + disabledCursor,
                         onMouseDown: this.handleReduceMouseDown,
                         onMouseLeave: this.clear,
@@ -289,6 +290,9 @@ var InputNumber = function (_Component) {
                 _react2["default"].createElement(
                     _beeInputGroup2["default"].Addon,
                     {
+                        onClick: function onClick() {
+                            plusDisabled ? '' : handleBtnClick('up');
+                        },
                         className: (plusDisabled && 'disabled') + disabledCursor,
                         onMouseDown: this.handlePlusMouseDown,
                         onMouseLeave: this.clear,
@@ -320,6 +324,9 @@ var InputNumber = function (_Component) {
                         _react2["default"].createElement(
                             'span',
                             {
+                                onClick: function onClick() {
+                                    plusDisabled ? '' : handleBtnClick('up');
+                                },
                                 onMouseDown: this.handlePlusMouseDown,
                                 onMouseLeave: this.clear,
                                 onMouseUp: this.clear,
@@ -329,6 +336,9 @@ var InputNumber = function (_Component) {
                         _react2["default"].createElement(
                             'span',
                             {
+                                onClick: function onClick() {
+                                    minusDisabled ? '' : handleBtnClick('down');
+                                },
                                 onMouseDown: this.handleReduceMouseDown,
                                 onMouseLeave: this.clear,
                                 onMouseUp: this.clear,
