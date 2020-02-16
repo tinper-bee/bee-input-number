@@ -752,9 +752,10 @@ var _initialiseProps = function _initialiseProps() {
 
     this.getPrecision = function (value) {
         if (!value && value === "") return value;
+        value = String(value);
         var precision = _this3.props.precision;
 
-        if (!precision || String(value.split(".")[1]).length === precision) {
+        if (!precision || value.indexOf(".") !== -1 && String(value.split(".")[1]).length === precision) {
             return value;
         }
         var before = value.substring(0, 1),

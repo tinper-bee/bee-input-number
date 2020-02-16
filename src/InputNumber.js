@@ -511,8 +511,9 @@ class InputNumber extends Component {
 
     getPrecision = (value)=>{
         if(!value && value === "")return value;
+        value = String(value);
         const {precision} = this.props;
-        if(!precision || String(value.split(".")[1]).length === precision){
+        if (!precision || (value.indexOf(".") !== -1 && String(value.split(".")[1]).length === precision)) {
             return value;
         }
         let before = value.substring(0,1),len = value.length,
