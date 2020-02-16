@@ -76,7 +76,8 @@ function toThousands(number) {
 }
 
 function unThousands(number){
-    number = (number || 0).toString();
+    if(!number || number === "")return number;
+    number = number.toString();
     return number.replace(/\,/g,'');
 }
 
@@ -305,7 +306,7 @@ class InputNumber extends Component {
         const { onBlur,precision,onChange,toNumber,max,min,displayCheckPrompt,minusRight } = this.props;
         const local = getComponentLocale(this.props, this.context, 'InputNumber', () => i18n);
         v = this.state.value;//在onBlur的时候不需要活输入框的只，而是要获取state中的值，因为有format的时候就会有问题。
-        if(v===''){
+        if(v==='' || !v){
             this.setState({
                 value:v
             })
@@ -509,7 +510,7 @@ class InputNumber extends Component {
     }
 
     getPrecision = (value)=>{
-        value = String(value);
+        if(!value && value === "")return value;
         const {precision} = this.props;
         if(!precision || String(value.split(".")[1]).length === precision){
             return value;
@@ -536,7 +537,7 @@ class InputNumber extends Component {
         };
 
         let {value, minusDisabled, plusDisabled, showValue} = this.state;
-        value = precision != null?this.getPrecision(value):value;
+        value = precision != null && !this.focus?this.getPrecision(value):value;
         value = format && !this.focus? format(value) : value;
         if(minusRight && String(value).indexOf('-')!=-1){
             value = String(value).replace("-","")+"-";

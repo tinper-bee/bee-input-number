@@ -116,7 +116,8 @@ function toThousands(number) {
 }
 
 function unThousands(number) {
-    number = (number || 0).toString();
+    if (!number || number === "") return number;
+    number = number.toString();
     return number.replace(/\,/g, '');
 }
 
@@ -251,7 +252,7 @@ var InputNumber = function (_Component) {
             plusDisabled = _state.plusDisabled,
             showValue = _state.showValue;
 
-        value = precision != null ? this.getPrecision(value) : value;
+        value = precision != null && !this.focus ? this.getPrecision(value) : value;
         value = format && !this.focus ? format(value) : value;
         if (minusRight && String(value).indexOf('-') != -1) {
             value = String(value).replace("-", "") + "-";
@@ -535,7 +536,7 @@ var _initialiseProps = function _initialiseProps() {
             return _i18n2["default"];
         });
         v = _this3.state.value; //在onBlur的时候不需要活输入框的只，而是要获取state中的值，因为有format的时候就会有问题。
-        if (v === '') {
+        if (v === '' || !v) {
             _this3.setState({
                 value: v
             });
@@ -750,7 +751,7 @@ var _initialiseProps = function _initialiseProps() {
     };
 
     this.getPrecision = function (value) {
-        value = String(value);
+        if (!value && value === "") return value;
         var precision = _this3.props.precision;
 
         if (!precision || String(value.split(".")[1]).length === precision) {
