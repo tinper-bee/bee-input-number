@@ -12,7 +12,7 @@ class Demo12 extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            value:'-100000.031416'
+            value:0
         }
     }
 

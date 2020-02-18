@@ -75,12 +75,6 @@ function toThousands(number) {
     return result;
 }
 
-function unThousands(number){
-    if(!number || number === "")return number;
-    number = number.toString();
-    return number.replace(/\,/g,'');
-}
-
 
 function setCaretPosition(ctrl,pos,need) {
     
@@ -110,9 +104,8 @@ class InputNumber extends Component {
         // 初始化状态，加减按钮是否可用，根据当前值判断
 
         let data = this.judgeValue(props);
-
         this.state = {
-            value: data.value,
+            value:data.value,
             minusDisabled: data.minusDisabled,
             plusDisabled: data.plusDisabled,
             showValue:toThousands(data.value)
@@ -122,6 +115,14 @@ class InputNumber extends Component {
         this.focus = false;
         this.selectionStart = 0;
     }
+
+    // unThousands = (number) =>{
+    //     if(!number || number === "")return number;
+    //     number = number.toString();
+    //     return number.replace(new RegExp(this.props.formatSymbol,'g'),'');
+    //     // return number.replace(/\,/g,'');
+    // }
+
     /**
      * 校验value
      * @param {*} props 
@@ -151,9 +152,10 @@ class InputNumber extends Component {
             }else{
                 currentValue = Number(value) ||0;
             }
-        } else if (min&&(value!='')) {
-            currentValue = min;
-        } else if(value==='0'||value===0){
+        } //lse if (min&&(value!='')) {//mdd中提出bug
+            //currentValue = min;
+        //} 
+        else if(value==='0'||value===0){
             currentValue = 0;
         }else{//NaN
             if(oldValue||(oldValue===0)||(oldValue==='0')){
@@ -255,11 +257,16 @@ class InputNumber extends Component {
             })
             return;
         }
-        value = unThousands(value);
+        // value = this.unThousands(value);
         if(minusRight){
             if(value.match(/-/g)&&value.match(/-/g).length>1)return
         }else{
             if(isNaN(value)&&(value!=='.')&&(value!=='-'))return;
+        }
+        if(value.indexOf(".") !== -1){//小数最大值处理
+            let prec = String(value.split(".")[1]).replace("-","");
+            if(this.props.precision && prec.length > this.props.precision)return;
+            if(prec.length > 8)return;
         }
         this.setState({
             value,
@@ -297,13 +304,13 @@ class InputNumber extends Component {
 
     handleFocus = (value,e) => {
         this.focus = true;
-        let { onFocus, min, max } = this.props;
-        onFocus && onFocus(unThousands(this.state.showValue), e);
+        let {onFocus, min, max } = this.props;
+        onFocus && onFocus(this.getPrecision(this.state.value), e);
     }
 
     handleBlur = (v,e) => {
         this.focus = false;        
-        const { onBlur,precision,onChange,toNumber,max,min,displayCheckPrompt,minusRight } = this.props;
+        const {onBlur,precision,onChange,toNumber,max,min,displayCheckPrompt,minusRight } = this.props;
         const local = getComponentLocale(this.props, this.context, 'InputNumber', () => i18n);
         v = this.state.value;//在onBlur的时候不需要活输入框的只，而是要获取state中的值，因为有format的时候就会有问题。
         if(v==='' || !v){
@@ -314,14 +321,14 @@ class InputNumber extends Component {
             onBlur && onBlur(v,e);
             return;
         }
-        let value = unThousands(v);
+        // let value = this.unThousands(v);
+        let value = v;
         if(minusRight){
             if(value.indexOf('-')!=-1){//所有位置的负号转到前边
                 value = value.replace('-','');
                 value = '-'+value;
             }
         }
-        
         value = isNaN(Number(value)) ? 0 : Number(value);
         if(value>max){
             if(displayCheckPrompt)prompt(local['msgMax']);
@@ -346,8 +353,8 @@ class InputNumber extends Component {
         });
         this.detailDisable(value);
         if(toNumber&&(!minusRight)){
-            onChange && onChange(Number(value));
-            onBlur && onBlur(Number(value),e);
+            onChange && onChange(value);
+            onBlur && onBlur(value,e);
         }else{
             onChange && onChange(value);
             onBlur && onBlur(value,e);
@@ -488,8 +495,8 @@ class InputNumber extends Component {
     handlePlusMouseDown = (e) => {
         e.preventDefault();
         let {delay,disabled} = this.props;
-        if(disabled)return;
         let {value} = this.state;
+        if(disabled)return;
         this.plus(value);
         this.clear();
         this.timer = setTimeout(() => {
@@ -500,8 +507,8 @@ class InputNumber extends Component {
     handleReduceMouseDown = (e) => {
         e.preventDefault();
         let {delay,disabled} = this.props;
-        if(disabled)return;
         let {value} = this.state;
+        if(disabled)return;
         this.minus(value);
         this.clear();
         this.timer = setTimeout(() => {
@@ -513,7 +520,7 @@ class InputNumber extends Component {
         if(!value && value === "")return value;
         value = String(value);
         const {precision} = this.props;
-        if (!precision || (value.indexOf(".") !== -1 && String(value.split(".")[1]).length === precision)) {
+        if (precision == undefined || (value.indexOf(".") !== -1 && String(value.split(".")[1]).length === precision)) {
             return value;
         }
         let before = value.substring(0,1),len = value.length,

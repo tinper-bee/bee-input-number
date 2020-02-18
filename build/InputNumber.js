@@ -115,12 +115,6 @@ function toThousands(number) {
     return result;
 }
 
-function unThousands(number) {
-    if (!number || number === "") return number;
-    number = number.toString();
-    return number.replace(/\,/g, '');
-}
-
 function setCaretPosition(ctrl, pos, need) {
 
     if (ctrl && need) {
@@ -151,7 +145,6 @@ var InputNumber = function (_Component) {
         _initialiseProps.call(_this);
 
         var data = _this.judgeValue(props);
-
         _this.state = {
             value: data.value,
             minusDisabled: data.minusDisabled,
@@ -164,6 +157,14 @@ var InputNumber = function (_Component) {
         _this.selectionStart = 0;
         return _this;
     }
+
+    // unThousands = (number) =>{
+    //     if(!number || number === "")return number;
+    //     number = number.toString();
+    //     return number.replace(new RegExp(this.props.formatSymbol,'g'),'');
+    //     // return number.replace(/\,/g,'');
+    // }
+
     /**
      * 校验value
      * @param {*} props 
@@ -388,23 +389,24 @@ var _initialiseProps = function _initialiseProps() {
             } else {
                 currentValue = Number(value) || 0;
             }
-        } else if (min && value != '') {
-            currentValue = min;
-        } else if (value === '0' || value === 0) {
-            currentValue = 0;
-        } else {
-            //NaN
-            if (oldValue || oldValue === 0 || oldValue === '0') {
-                currentValue = oldValue;
+        } //lse if (min&&(value!='')) {//mdd中提出bug
+        //currentValue = min;
+        //} 
+        else if (value === '0' || value === 0) {
+                currentValue = 0;
             } else {
-                //value为空
-                return {
-                    value: '',
-                    minusDisabled: false,
-                    plusDisabled: false
-                };
+                //NaN
+                if (oldValue || oldValue === 0 || oldValue === '0') {
+                    currentValue = oldValue;
+                } else {
+                    //value为空
+                    return {
+                        value: '',
+                        minusDisabled: false,
+                        plusDisabled: false
+                    };
+                }
             }
-        }
         if (currentValue == -Infinity) {
             return {
                 value: min,
@@ -469,11 +471,17 @@ var _initialiseProps = function _initialiseProps() {
             });
             return;
         }
-        value = unThousands(value);
+        // value = this.unThousands(value);
         if (minusRight) {
             if (value.match(/-/g) && value.match(/-/g).length > 1) return;
         } else {
             if (isNaN(value) && value !== '.' && value !== '-') return;
+        }
+        if (value.indexOf(".") !== -1) {
+            //小数最大值处理
+            var prec = String(value.split(".")[1]).replace("-", "");
+            if (_this3.props.precision && prec.length > _this3.props.precision) return;
+            if (prec.length > 8) return;
         }
         _this3.setState({
             value: value,
@@ -517,7 +525,7 @@ var _initialiseProps = function _initialiseProps() {
             min = _props3.min,
             max = _props3.max;
 
-        onFocus && onFocus(unThousands(_this3.state.showValue), e);
+        onFocus && onFocus(_this3.getPrecision(_this3.state.value), e);
     };
 
     this.handleBlur = function (v, e) {
@@ -544,7 +552,8 @@ var _initialiseProps = function _initialiseProps() {
             onBlur && onBlur(v, e);
             return;
         }
-        var value = unThousands(v);
+        // let value = this.unThousands(v);
+        var value = v;
         if (minusRight) {
             if (value.indexOf('-') != -1) {
                 //所有位置的负号转到前边
@@ -552,7 +561,6 @@ var _initialiseProps = function _initialiseProps() {
                 value = '-' + value;
             }
         }
-
         value = isNaN(Number(value)) ? 0 : Number(value);
         if (value > max) {
             if (displayCheckPrompt) prompt(local['msgMax']);
@@ -578,8 +586,8 @@ var _initialiseProps = function _initialiseProps() {
         });
         _this3.detailDisable(value);
         if (toNumber && !minusRight) {
-            onChange && onChange(Number(value));
-            onBlur && onBlur(Number(value), e);
+            onChange && onChange(value);
+            onBlur && onBlur(value, e);
         } else {
             onChange && onChange(value);
             onBlur && onBlur(value, e);
@@ -723,10 +731,9 @@ var _initialiseProps = function _initialiseProps() {
         var _props8 = _this3.props,
             delay = _props8.delay,
             disabled = _props8.disabled;
-
-        if (disabled) return;
         var value = _this3.state.value;
 
+        if (disabled) return;
         _this3.plus(value);
         _this3.clear();
         _this3.timer = setTimeout(function () {
@@ -739,10 +746,9 @@ var _initialiseProps = function _initialiseProps() {
         var _props9 = _this3.props,
             delay = _props9.delay,
             disabled = _props9.disabled;
-
-        if (disabled) return;
         var value = _this3.state.value;
 
+        if (disabled) return;
         _this3.minus(value);
         _this3.clear();
         _this3.timer = setTimeout(function () {
@@ -755,7 +761,7 @@ var _initialiseProps = function _initialiseProps() {
         value = String(value);
         var precision = _this3.props.precision;
 
-        if (!precision || value.indexOf(".") !== -1 && String(value.split(".")[1]).length === precision) {
+        if (precision == undefined || value.indexOf(".") !== -1 && String(value.split(".")[1]).length === precision) {
             return value;
         }
         var before = value.substring(0, 1),
