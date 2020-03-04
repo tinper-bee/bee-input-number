@@ -269,9 +269,7 @@ var InputNumber = function (_Component) {
                 _react2["default"].createElement(
                     _beeInputGroup2["default"].Addon,
                     {
-                        onClick: function onClick() {
-                            minusDisabled ? '' : _this2.handleBtnClick('down');
-                        },
+                        // onClick={()=>{minusDisabled?'':this.handleBtnClick('down')}}
                         className: (minusDisabled && 'disabled') + disabledCursor,
                         onMouseDown: this.handleReduceMouseDown,
                         onMouseLeave: this.clear,
@@ -291,9 +289,7 @@ var InputNumber = function (_Component) {
                 _react2["default"].createElement(
                     _beeInputGroup2["default"].Addon,
                     {
-                        onClick: function onClick() {
-                            plusDisabled ? '' : _this2.handleBtnClick('up');
-                        },
+                        // onClick={()=>{plusDisabled?'':this.handleBtnClick('up')}}
                         className: (plusDisabled && 'disabled') + disabledCursor,
                         onMouseDown: this.handlePlusMouseDown,
                         onMouseLeave: this.clear,
@@ -325,9 +321,7 @@ var InputNumber = function (_Component) {
                         _react2["default"].createElement(
                             'span',
                             {
-                                onClick: function onClick() {
-                                    plusDisabled ? '' : _this2.handleBtnClick('up');
-                                },
+                                // onClick={()=>{plusDisabled?'':this.handleBtnClick('up')}}
                                 onMouseDown: this.handlePlusMouseDown,
                                 onMouseLeave: this.clear,
                                 onMouseUp: this.clear,
@@ -337,9 +331,7 @@ var InputNumber = function (_Component) {
                         _react2["default"].createElement(
                             'span',
                             {
-                                onClick: function onClick() {
-                                    minusDisabled ? '' : _this2.handleBtnClick('down');
-                                },
+                                // onClick={()=> minusDisabled?'':this.handleBtnClick('down')}
                                 onMouseDown: this.handleReduceMouseDown,
                                 onMouseLeave: this.clear,
                                 onMouseUp: this.clear,
@@ -543,8 +535,7 @@ var _initialiseProps = function _initialiseProps() {
         var local = (0, _tool.getComponentLocale)(_this3.props, _this3.context, 'InputNumber', function () {
             return _i18n2["default"];
         });
-        // v = this.state.value;//在onBlur的时候不需要活输入框的只，而是要获取state中的值，因为有format的时候就会有问题。
-        v = _this3.state.value === "-" ? "" : _this3.state.value;
+        v = _this3.state.value; //在onBlur的时候不需要活输入框的只，而是要获取state中的值，因为有format的时候就会有问题。
         if (v === '' || !v) {
             _this3.setState({
                 value: v
@@ -653,6 +644,7 @@ var _initialiseProps = function _initialiseProps() {
             showValue: toThousands(value)
         });
         toNumber ? onChange && onChange(Number(value)) : onChange && onChange(value);
+        _this3.handleBtnClick('down', value);
         _this3.detailDisable(value);
     };
 
@@ -685,6 +677,7 @@ var _initialiseProps = function _initialiseProps() {
             showValue: toThousands(value)
         });
         toNumber ? onChange && onChange(Number(value)) : onChange && onChange(value);
+        _this3.handleBtnClick('up', value);
         _this3.detailDisable(value);
     };
 
@@ -728,7 +721,7 @@ var _initialiseProps = function _initialiseProps() {
     };
 
     this.handlePlusMouseDown = function (e) {
-        e.preventDefault();
+        e.preventDefault && e.preventDefault();
         var _props8 = _this3.props,
             delay = _props8.delay,
             disabled = _props8.disabled;
@@ -738,12 +731,12 @@ var _initialiseProps = function _initialiseProps() {
         _this3.plus(value);
         _this3.clear();
         _this3.timer = setTimeout(function () {
-            _this3.handlePlusMouseDown();
+            _this3.handlePlusMouseDown(e);
         }, delay);
     };
 
     this.handleReduceMouseDown = function (e) {
-        e.preventDefault();
+        e.preventDefault && e.preventDefault();
         var _props9 = _this3.props,
             delay = _props9.delay,
             disabled = _props9.disabled;
@@ -774,8 +767,8 @@ var _initialiseProps = function _initialiseProps() {
         return before + Number(value).toFixed(precision) + after;
     };
 
-    this.handleBtnClick = function (type) {
-        _this3.props.handleBtnClick(type, _this3.state.value);
+    this.handleBtnClick = function (type, value) {
+        _this3.props.handleBtnClick(type, value);
     };
 };
 

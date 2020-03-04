@@ -312,8 +312,7 @@ class InputNumber extends Component {
         this.focus = false;        
         const {onBlur,precision,onChange,toNumber,max,min,displayCheckPrompt,minusRight } = this.props;
         const local = getComponentLocale(this.props, this.context, 'InputNumber', () => i18n);
-        // v = this.state.value;//在onBlur的时候不需要活输入框的只，而是要获取state中的值，因为有format的时候就会有问题。
-        v = this.state.value ==="-"?"":this.state.value;
+        v = this.state.value;//在onBlur的时候不需要活输入框的只，而是要获取state中的值，因为有format的时候就会有问题。
         if(v==='' || !v){
             this.setState({
                 value:v
@@ -415,6 +414,7 @@ class InputNumber extends Component {
             showValue:toThousands(value)
         });
         toNumber?onChange && onChange(Number(value)):onChange && onChange(value);
+        this.handleBtnClick('down',value);
         this.detailDisable(value);
     }
     /**
@@ -443,6 +443,7 @@ class InputNumber extends Component {
             showValue:toThousands(value)
         });
         toNumber?onChange && onChange(Number(value)):onChange && onChange(value);
+        this.handleBtnClick('up',value);
         this.detailDisable(value);
     }
 
@@ -494,24 +495,24 @@ class InputNumber extends Component {
     }
 
     handlePlusMouseDown = (e) => {
-        e.preventDefault();
+        e.preventDefault && e.preventDefault();
         let {delay,disabled} = this.props;
         let {value} = this.state;
         if(disabled)return;
         this.plus(value);
         this.clear();
         this.timer = setTimeout(() => {
-            this.handlePlusMouseDown();
+            this.handlePlusMouseDown(e);
         }, delay);
     }
 
     handleReduceMouseDown = (e) => {
-        e.preventDefault();
+        e.preventDefault && e.preventDefault();
         let {delay,disabled} = this.props;
         let {value} = this.state;
         if(disabled)return;
         this.minus(value);
-        this.clear();
+        this.clear(); 
         this.timer = setTimeout(() => {
             this.handleReduceMouseDown();
         }, delay);
@@ -532,8 +533,8 @@ class InputNumber extends Component {
         return before+Number(value).toFixed(precision)+after;
     }
 
-    handleBtnClick = (type)=>{
-        this.props.handleBtnClick(type,this.state.value)
+    handleBtnClick = (type,value)=>{
+        this.props.handleBtnClick(type,value)
     }
 
     render() {
@@ -559,7 +560,7 @@ class InputNumber extends Component {
                     iconStyle === 'double' ? (
                         <InputGroup className={classnames(className, classes,disabledCon)}>
                             <InputGroup.Addon
-                                onClick={()=>{minusDisabled?'':this.handleBtnClick('down')}}
+                                // onClick={()=>{minusDisabled?'':this.handleBtnClick('down')}}
                                 className={(minusDisabled && 'disabled' ) + disabledCursor}
                                 onMouseDown={ this.handleReduceMouseDown}
                                 onMouseLeave={ this.clear }
@@ -576,7 +577,7 @@ class InputNumber extends Component {
                                 ref={ref=>this.input = ref}
                             />
                             <InputGroup.Addon
-                                onClick={()=>{plusDisabled?'':this.handleBtnClick('up')}}
+                                // onClick={()=>{plusDisabled?'':this.handleBtnClick('up')}}
                                 className={(plusDisabled && 'disabled' ) + disabledCursor}
                                 onMouseDown={ this.handlePlusMouseDown}
                                 onMouseLeave={ this.clear }
@@ -601,7 +602,7 @@ class InputNumber extends Component {
                             <InputGroup.Button>
                                 <div className={classnames("icon-group")}>
                                 <span
-                                    onClick={()=>{plusDisabled?'':this.handleBtnClick('up')}}
+                                    // onClick={()=>{plusDisabled?'':this.handleBtnClick('up')}}
                                     onMouseDown={ this.handlePlusMouseDown}
                                     onMouseLeave={ this.clear }
                                     onMouseUp={ this.clear }
@@ -609,7 +610,7 @@ class InputNumber extends Component {
                                     <span className="uf uf-arrow-up"/>
                                 </span>
                                     <span
-                                        onClick={()=>{minusDisabled?'':this.handleBtnClick('down')}}
+                                        // onClick={()=> minusDisabled?'':this.handleBtnClick('down')}
                                         onMouseDown={ this.handleReduceMouseDown}
                                         onMouseLeave={ this.clear }
                                         onMouseUp={ this.clear }
