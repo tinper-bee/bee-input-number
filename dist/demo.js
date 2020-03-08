@@ -16671,6 +16671,12 @@
 	    InputNumber.prototype.ComponentWillUnMount = function ComponentWillUnMount() {
 	        this.clear();
 	    };
+	
+	    /**
+	     *  @memberof InputNumber
+	     * type 是否要四舍五入(此参数无效,超长不让输入)
+	     */
+	
 	    /**
 	     * 设置增加减少按钮是否可用
 	     */
@@ -16917,6 +16923,20 @@
 	        };
 	    };
 	
+	    this.numToFixed = function (value, fixed, type) {
+	        if (!value && String(value) !== "0") return value;
+	        if (!fixed && String(fixed) !== "0") return value;
+	        var preIndex = value.indexOf(".");
+	        if (value.indexOf(".") === -1) return value;
+	        preIndex++;
+	        var endIndex = preIndex + fixed;
+	        var precValue = value.substr(preIndex, endIndex) + "0000000000";
+	        if (type) {
+	            return Number(value).toFixed(fixed);
+	        }
+	        return value.split(".")[0] + "." + precValue.substr(0, fixed);
+	    };
+	
 	    this.handleChange = function (value) {
 	        var selectionStart = _this3.input.selectionStart == undefined ? _this3.input.input.selectionStart : _this3.input.selectionStart;
 	        _this3.selectionStart = selectionStart;
@@ -16936,12 +16956,12 @@
 	        // value = this.unThousands(value);
 	        if (minusRight) {
 	            if (value.match(/-/g) && value.match(/-/g).length > 1) return;
-	        } else {
-	            if (isNaN(value) && value !== '.' && value !== '-') return;
 	        }
+	        if (isNaN(value) && value !== '.' && value !== '-') return;
 	        if (value.indexOf(".") !== -1) {
 	            //小数最大值处理
 	            var prec = String(value.split(".")[1]).replace("-", "");
+	            if (_this3.props.precision === 0 && (prec === "" || prec != "")) return;
 	            if (_this3.props.precision && prec.length > _this3.props.precision) return;
 	            if (prec.length > 8) return;
 	        }
@@ -17000,7 +17020,8 @@
 	            max = _props4.max,
 	            min = _props4.min,
 	            displayCheckPrompt = _props4.displayCheckPrompt,
-	            minusRight = _props4.minusRight;
+	            minusRight = _props4.minusRight,
+	            round = _props4.round;
 	
 	        var local = (0, _tool.getComponentLocale)(_this3.props, _this3.context, 'InputNumber', function () {
 	            return _i18n2['default'];
@@ -17014,8 +17035,8 @@
 	            onBlur && onBlur(v, e);
 	            return;
 	        }
-	        // let value = this.unThousands(v);
-	        var value = v;
+	        // let value = this.unThousands(v); 
+	        var value = _this3.numToFixed(v, precision, round);
 	        if (minusRight) {
 	            if (value.indexOf('-') != -1) {
 	                //所有位置的负号转到前边
@@ -17225,6 +17246,7 @@
 	        value = String(value);
 	        var precision = _this3.props.precision;
 	
+	        if (precision === 0) return value;
 	        if (precision == undefined || value.indexOf(".") !== -1 && String(value.split(".")[1]).length === precision) {
 	            return value;
 	        }
@@ -17234,6 +17256,12 @@
 	        before = before === "-" ? before : "";
 	        after = after === "-" ? after : "";
 	        value = value.replace("-", '');
+	        var precV = "000000000000";
+	        if (value.indexOf(".") === -1) {
+	            precV = precV.substr(0, precision);
+	            precV = precV ? "." + precV : precV;
+	            value = value + precV;
+	        }
 	        return before + Number(value).toFixed(precision) + after;
 	    };
 	

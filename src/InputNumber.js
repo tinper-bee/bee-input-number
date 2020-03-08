@@ -245,10 +245,28 @@ class InputNumber extends Component {
         this.clear();
     }
 
+    /**
+     *  @memberof InputNumber
+     * type 是否要四舍五入(此参数无效,超长不让输入)
+     */
+    numToFixed = (value,fixed,type) => {
+        if(!value && String(value) !== "0")return value;
+        if(!fixed && String(fixed) !== "0")return value;
+        let preIndex = value.indexOf(".");
+        if(value.indexOf(".") === -1)return value;
+        preIndex++;
+        let endIndex = (preIndex+fixed);
+        let precValue = value.substr(preIndex,endIndex)+"0000000000";
+        if(type){
+            return Number(value).toFixed(fixed);
+        }
+        return value.split(".")[0] +"."+ precValue.substr(0,fixed);
+    }
+
     handleChange = (value) => {
         let selectionStart = this.input.selectionStart==undefined?this.input.input.selectionStart:this.input.selectionStart;
         this.selectionStart = selectionStart;
-        const { onChange,toNumber,minusRight } = this.props;
+        const { onChange,toNumber,minusRight} = this.props;
         if(value===''){
             onChange && onChange(value);
             this.setState({
@@ -260,11 +278,11 @@ class InputNumber extends Component {
         // value = this.unThousands(value);
         if(minusRight){
             if(value.match(/-/g)&&value.match(/-/g).length>1)return
-        }else{
-            if(isNaN(value)&&(value!=='.')&&(value!=='-'))return;
         }
+        if(isNaN(value)&&(value!=='.')&&(value!=='-'))return;
         if(value.indexOf(".") !== -1){//小数最大值处理
             let prec = String(value.split(".")[1]).replace("-","");
+            if(this.props.precision === 0 && (prec ==="" || prec !=""))return;
             if(this.props.precision && prec.length > this.props.precision)return;
             if(prec.length > 8)return;
         }
@@ -310,7 +328,7 @@ class InputNumber extends Component {
 
     handleBlur = (v,e) => {
         this.focus = false;        
-        const {onBlur,precision,onChange,toNumber,max,min,displayCheckPrompt,minusRight } = this.props;
+        const {onBlur,precision,onChange,toNumber,max,min,displayCheckPrompt,minusRight,round } = this.props;
         const local = getComponentLocale(this.props, this.context, 'InputNumber', () => i18n);
         v = this.state.value;//在onBlur的时候不需要活输入框的只，而是要获取state中的值，因为有format的时候就会有问题。
         if(v==='' || !v){
@@ -321,8 +339,8 @@ class InputNumber extends Component {
             onBlur && onBlur(v,e);
             return;
         }
-        // let value = this.unThousands(v);
-        let value = v;
+        // let value = this.unThousands(v); 
+        let value = this.numToFixed(v,precision,round);
         if(minusRight){
             if(value.indexOf('-')!=-1){//所有位置的负号转到前边
                 value = value.replace('-','');
@@ -522,6 +540,7 @@ class InputNumber extends Component {
         if(!value && value === "")return value;
         value = String(value);
         const {precision} = this.props;
+        if(precision === 0)return value;
         if (precision == undefined || (value.indexOf(".") !== -1 && String(value.split(".")[1]).length === precision)) {
             return value;
         }
@@ -530,6 +549,12 @@ class InputNumber extends Component {
         before = before === "-"?before:"";
         after = after === "-"?after:"";
         value = value.replace("-",'');
+        let precV = "000000000000";
+        if(value.indexOf(".") === -1){
+            precV = precV.substr(0,precision);
+            precV = precV?"."+precV:precV;
+            value = value + precV;
+        }
         return before+Number(value).toFixed(precision)+after;
     }
 
