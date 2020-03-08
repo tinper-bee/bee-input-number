@@ -250,7 +250,8 @@ class InputNumber extends Component {
      * type 是否要四舍五入(此参数无效,超长不让输入)
      */
     numToFixed = (value,fixed,type) => {
-        if(!value && String(value) !== "0")return value;
+        value = String(value);
+        if(!value && value !== "0")return value;
         if(!fixed && String(fixed) !== "0")return value;
         let preIndex = value.indexOf(".");
         if(value.indexOf(".") === -1)return value;

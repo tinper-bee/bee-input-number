@@ -454,7 +454,8 @@ var _initialiseProps = function _initialiseProps() {
     };
 
     this.numToFixed = function (value, fixed, type) {
-        if (!value && String(value) !== "0") return value;
+        value = String(value);
+        if (!value && value !== "0") return value;
         if (!fixed && String(fixed) !== "0") return value;
         var preIndex = value.indexOf(".");
         if (value.indexOf(".") === -1) return value;
