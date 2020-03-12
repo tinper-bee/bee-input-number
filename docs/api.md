@@ -34,7 +34,6 @@ import 'bee-input-number/build/InputNumber.css';
 |delay|当持续按住增减按钮式，变换的速度（毫秒）|number|300|
 |disabled|是否可编辑|string|-|
 |toNumber|onChange回调内的值是否转换为number类型。当正在输入小数点或者小数点后第一位为0时，不能转换为number类型|bool|false|
-|toThousands|是否显示千分符|bool|false|
 |split|InputNumberGroup自定义分隔符|node|~|
 |displayCheckPrompt|是否显示超出限制范围之后的检验提示|bool|false|
 |size|选择框大小，可选 lg sm|string|default|
