@@ -13,7 +13,7 @@ class Demo1 extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: 1
+            value: null
         }
     }
 
@@ -34,7 +34,7 @@ class Demo1 extends Component {
             <div>
                 <InputNumber
                     iconStyle="one"
-                    min={1}
+                    min={5}
                     max={10}
                     onChange={this.handleChange}
                     handleBtnClick={this.handleBtnClick}

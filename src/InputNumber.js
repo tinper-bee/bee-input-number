@@ -497,12 +497,16 @@ class InputNumber extends Component {
      * @returns {*}
      */
     separate = (value) => {
-        value = value !== null && value.toString();
-        if (value.indexOf('.') > -1) {
-            return value.split('.')[1];
-        } else {
-            return "";
-        }
+        if(value==null||value==undefined){
+            return ""
+        }else{
+            value = value.toString();
+            if(value.indexOf('.') > -1){
+                return value.split('.')[1];
+            }else{
+                return ""
+            }
+        } 
     }
 
     
