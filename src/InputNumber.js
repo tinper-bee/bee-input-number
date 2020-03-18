@@ -431,6 +431,8 @@ class InputNumber extends Component {
         this.setState({
             value,
             showValue:toThousands(value)
+        },()=>{
+            this.input.input.focus&&this.input.input.focus()
         });
         toNumber?onChange && onChange(Number(value)):onChange && onChange(value);
         this.handleBtnClick('down',value);
@@ -460,6 +462,8 @@ class InputNumber extends Component {
         this.setState({
             value,
             showValue:toThousands(value)
+        },()=>{
+            this.input.input.focus&&this.input.input.focus()
         });
         toNumber?onChange && onChange(Number(value)):onChange && onChange(value);
         this.handleBtnClick('up',value);
@@ -537,7 +541,7 @@ class InputNumber extends Component {
         this.minus(value);
         this.clear(); 
         this.timer = setTimeout(() => {
-            this.handleReduceMouseDown();
+            this.handleReduceMouseDown(e);
         }, delay);
     }
 

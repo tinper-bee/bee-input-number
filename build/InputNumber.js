@@ -664,6 +664,8 @@ var _initialiseProps = function _initialiseProps() {
         _this3.setState({
             value: value,
             showValue: toThousands(value)
+        }, function () {
+            _this3.input.input.focus && _this3.input.input.focus();
         });
         toNumber ? onChange && onChange(Number(value)) : onChange && onChange(value);
         _this3.handleBtnClick('down', value);
@@ -697,6 +699,8 @@ var _initialiseProps = function _initialiseProps() {
         _this3.setState({
             value: value,
             showValue: toThousands(value)
+        }, function () {
+            _this3.input.input.focus && _this3.input.input.focus();
         });
         toNumber ? onChange && onChange(Number(value)) : onChange && onChange(value);
         _this3.handleBtnClick('up', value);
@@ -772,7 +776,7 @@ var _initialiseProps = function _initialiseProps() {
         _this3.minus(value);
         _this3.clear();
         _this3.timer = setTimeout(function () {
-            _this3.handleReduceMouseDown();
+            _this3.handleReduceMouseDown(e);
         }, delay);
     };
 
