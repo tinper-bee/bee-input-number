@@ -1,3 +1,8 @@
+<a name="2.2.26"></a>
+## [2.2.26](https://github.com/tinper-bee/bee-input-number/compare/v2.2.25...v2.2.26) (2020-03-18)
+
+
+
 <a name="2.2.25"></a>
 ## [2.2.25](https://github.com/tinper-bee/bee-input-number/compare/v2.2.24...v2.2.25) (2020-03-16)
 
