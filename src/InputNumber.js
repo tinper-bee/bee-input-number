@@ -141,7 +141,7 @@ class InputNumber extends Component {
             }
             value = Number(value);
         }
-        if (value!=undefined) {
+        if ((value!=undefined)&&(value!=null)) {
             if(value===''){
                 currentValue='';
                 return {

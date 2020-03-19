@@ -376,7 +376,7 @@ var _initialiseProps = function _initialiseProps() {
             }
             value = Number(value);
         }
-        if (value != undefined) {
+        if (value != undefined && value != null) {
             if (value === '') {
                 currentValue = '';
                 return {
