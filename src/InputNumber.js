@@ -158,14 +158,15 @@ class InputNumber extends Component {
         else if(value==='0'||value===0){
             currentValue = 0;
         }else{//NaN
-            if(oldValue||(oldValue===0)||(oldValue==='0')){
-                currentValue = oldValue;
-            }else{//value为空
-                return {
-                    value: '',
-                    minusDisabled: false,
-                    plusDisabled: false
-                }
+            // if(oldValue||(oldValue===0)||(oldValue==='0')){
+            //     currentValue = oldValue;
+            // }else{//value为空
+                
+            // }
+            return {
+                value: '',
+                minusDisabled: false,
+                plusDisabled: false
             }
         }
         if(currentValue==-Infinity){

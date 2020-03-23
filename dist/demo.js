@@ -37445,7 +37445,7 @@
 	            }
 	            value = Number(value);
 	        }
-	        if (value != undefined) {
+	        if (value != undefined && value != null) {
 	            if (value === '') {
 	                currentValue = '';
 	                return {
@@ -37463,16 +37463,16 @@
 	                currentValue = 0;
 	            } else {
 	                //NaN
-	                if (oldValue || oldValue === 0 || oldValue === '0') {
-	                    currentValue = oldValue;
-	                } else {
-	                    //value为空
-	                    return {
-	                        value: '',
-	                        minusDisabled: false,
-	                        plusDisabled: false
-	                    };
-	                }
+	                // if(oldValue||(oldValue===0)||(oldValue==='0')){
+	                //     currentValue = oldValue;
+	                // }else{//value为空
+	
+	                // }
+	                return {
+	                    value: '',
+	                    minusDisabled: false,
+	                    plusDisabled: false
+	                };
 	            }
 	        if (currentValue == -Infinity) {
 	            return {
