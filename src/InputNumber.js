@@ -546,6 +546,7 @@ class InputNumber extends Component {
     }
 
     getPrecision = (value)=>{
+        if(value==null||value==undefined)return value;
         if(!value && value === "")return value;
         value = String(value);
         const {precision} = this.props;

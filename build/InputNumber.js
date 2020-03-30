@@ -394,16 +394,16 @@ var _initialiseProps = function _initialiseProps() {
                 currentValue = 0;
             } else {
                 //NaN
-                // if(oldValue||(oldValue===0)||(oldValue==='0')){
-                //     currentValue = oldValue;
-                // }else{//value为空
-
-                // }
-                return {
-                    value: '',
-                    minusDisabled: false,
-                    plusDisabled: false
-                };
+                if (oldValue || oldValue === 0 || oldValue === '0') {
+                    currentValue = oldValue;
+                } else {
+                    //value为空
+                    return {
+                        value: '',
+                        minusDisabled: false,
+                        plusDisabled: false
+                    };
+                }
             }
         if (currentValue == -Infinity) {
             return {
@@ -781,6 +781,7 @@ var _initialiseProps = function _initialiseProps() {
     };
 
     this.getPrecision = function (value) {
+        if (value == null || value == undefined) return value;
         if (!value && value === "") return value;
         value = String(value);
         var precision = _this3.props.precision;
