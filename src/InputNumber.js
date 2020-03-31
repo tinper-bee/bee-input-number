@@ -558,12 +558,19 @@ class InputNumber extends Component {
         after = value.substring(len-1,len);
         before = before === "-"?before:"";
         after = after === "-"?after:"";
-        value = value.replace("-",'');
-        let precV = "000000000000";
+        //是科学计数法，不replace - 
+        if(before)value = value.substring(1,len-1);
+        if(after)value = value.substring(0,len-1);
+        // value = value.replace("-",'');
+        let precV = "000000000000000000000000000000000000000000000000000000000000000000000000";
         if(value.indexOf(".") === -1){
             precV = precV.substr(0,precision);
             precV = precV?"."+precV:precV;
-            value = value + precV;
+            if((!isNaN(value))&&(value.indexOf('-')!=-1||value.indexOf('+')!=-1)&&(value.indexOf('e')!=-1)){//是科学计数法，不拼接0000000
+
+            }else{
+                value = value + precV;
+            }
         }
         return before+Number(value).toFixed(precision)+after;
     }
