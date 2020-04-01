@@ -293,8 +293,7 @@ class InputNumber extends Component {
         });
         if(value==='-'){
             onChange && onChange(value);
-        }
-        if(value=='.'||value.indexOf('.')==value.length-1){//当输入小数点的时候
+        }else if(value=='.'||value.indexOf('.')==value.length-1){//当输入小数点的时候
             onChange && onChange(value);
         }else if(value[value.indexOf('.')+1]==0){//当输入 d.0 的时候，不转换Number
             onChange && onChange(value);

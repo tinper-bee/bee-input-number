@@ -502,8 +502,7 @@ var _initialiseProps = function _initialiseProps() {
         });
         if (value === '-') {
             onChange && onChange(value);
-        }
-        if (value == '.' || value.indexOf('.') == value.length - 1) {
+        } else if (value == '.' || value.indexOf('.') == value.length - 1) {
             //当输入小数点的时候
             onChange && onChange(value);
         } else if (value[value.indexOf('.') + 1] == 0) {
