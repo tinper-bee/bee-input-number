@@ -325,6 +325,19 @@ class InputNumber extends Component {
         let {onFocus, min, max } = this.props;
         onFocus && onFocus(this.getPrecision(this.state.value), e);
     }
+    /**
+     * 恢复科学技术法的问题
+     */
+    getFullNum = (num)=>{
+        //处理非数字
+        if(isNaN(num)){return num};
+        
+        //处理不需要转换的数字
+        var str = ''+num;
+        if(!/e/i.test(str)){return num;};
+        let _precision = this.props.precision?this.props.precision:18;
+        return (Number(num)).toFixed(_precision).replace(/\.?0+$/, "");
+    }
 
     handleBlur = (v,e) => {
         this.focus = false;        
@@ -548,6 +561,7 @@ class InputNumber extends Component {
         if(value==null||value==undefined)return value;
         if(!value && value === "")return value;
         value = String(value);
+        value = value.indexOf("e") !== -1?this.getFullNum(value):value;
         const {precision} = this.props;
         if(precision === 0)return value;
         if (precision == undefined || (value.indexOf(".") !== -1 && String(value.split(".")[1]).length === precision)) {
@@ -590,6 +604,7 @@ class InputNumber extends Component {
         let {value, minusDisabled, plusDisabled, showValue} = this.state;
         value = precision != null && !this.focus?this.getPrecision(value):value;
         value = format && !this.focus? format(value) : value;
+        value = String(value).indexOf("e") !== -1?this.getFullNum(value):value;
         if(minusRight && String(value).indexOf('-')!=-1){
             value = String(value).replace("-","")+"-";
         }
