@@ -208,6 +208,10 @@ var InputNumber = function (_Component) {
      */
 
     /**
+     * 恢复科学技术法的问题
+     */
+
+    /**
      * 设置增加减少按钮是否可用
      */
 
@@ -261,6 +265,7 @@ var InputNumber = function (_Component) {
 
         value = precision != null && !this.focus ? this.getPrecision(value) : value;
         value = format && !this.focus ? format(value) : value;
+        value = String(value).indexOf("e") !== -1 ? this.getFullNum(value) : value;
         if (minusRight && String(value).indexOf('-') != -1) {
             value = String(value).replace("-", "") + "-";
         }
@@ -540,6 +545,21 @@ var _initialiseProps = function _initialiseProps() {
         onFocus && onFocus(_this3.getPrecision(_this3.state.value), e);
     };
 
+    this.getFullNum = function (num) {
+        //处理非数字
+        if (isNaN(num)) {
+            return num;
+        };
+
+        //处理不需要转换的数字
+        var str = '' + num;
+        if (!/e/i.test(str)) {
+            return num;
+        };
+        var _precision = _this3.props.precision ? _this3.props.precision : 18;
+        return Number(num).toFixed(_precision).replace(/\.?0+$/, "");
+    };
+
     this.handleBlur = function (v, e) {
         _this3.focus = false;
         var _props4 = _this3.props,
@@ -783,6 +803,7 @@ var _initialiseProps = function _initialiseProps() {
         if (value == null || value == undefined) return value;
         if (!value && value === "") return value;
         value = String(value);
+        value = value.indexOf("e") !== -1 ? _this3.getFullNum(value) : value;
         var precision = _this3.props.precision;
 
         if (precision === 0) return value;
