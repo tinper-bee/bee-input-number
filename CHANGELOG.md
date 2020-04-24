@@ -1,3 +1,12 @@
+## [2.2.32](https://github.com/tinper-bee/bee-input-number/compare/v2.2.31...v2.2.32) (2020-04-24)
+
+
+### Bug Fixes
+
+* 自动化 ([94af09e](https://github.com/tinper-bee/bee-input-number/commit/94af09e3f8c80b1491a2b42e83db3d01aa9b88f8))
+
+
+
 <a name="2.2.30"></a>
 ## [2.2.30](https://github.com/tinper-bee/bee-input-number/compare/v2.2.29...v2.2.30) (2020-04-01)
 
