@@ -1,3 +1,12 @@
+## [2.2.34](https://github.com/tinper-bee/bee-input-number/compare/v2.2.33...v2.2.34) (2020-06-18)
+
+
+### Bug Fixes
+
+* 最小值传0,无法减小问题 ([c0609f6](https://github.com/tinper-bee/bee-input-number/commit/c0609f6fd6d47e7bc3dd2b9130c6ef51a59a16e7))
+
+
+
 ## [2.2.33](https://github.com/tinper-bee/bee-input-number/compare/v2.2.32...v2.2.33) (2020-06-12)
 
 
