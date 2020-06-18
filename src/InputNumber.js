@@ -425,11 +425,11 @@ class InputNumber extends Component {
         if(typeof min === "undefined"){
             value = this.detail(value, step, 'reduce');
         }else{
-            if(min&&value < min){
+            if(value < min){
                 value = min;
             }else{
                 let reducedValue = this.detail(value, step, 'reduce');
-                if(min&&reducedValue >= min){
+                if(reducedValue >= min){
                     value = reducedValue;
                 }
             }
