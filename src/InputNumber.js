@@ -420,11 +420,12 @@ class InputNumber extends Component {
      * 减法
      */
     minus = (value) => {
-        const {min, max, step, onChange, toNumber} = this.props;
+        let {min, max, step, onChange, toNumber} = this.props;
         value = (value === '-') ? 0 : value;
         if(typeof min === "undefined"){
             value = this.detail(value, step, 'reduce');
         }else{
+            min = Number(min)
             if(value < min){
                 value = min;
             }else{
@@ -434,10 +435,13 @@ class InputNumber extends Component {
                 }
             }
         }
-
-        if(max&&value > max){
-            value = max;
+        if(max){
+            max = Number(max)
+            if(value > max){
+                value = max;
+            }
         }
+        
 
         this.setState({
             value,
@@ -453,11 +457,12 @@ class InputNumber extends Component {
      * 加法
      */
     plus = (value) => {
-        const {max, min, step, onChange, toNumber} = this.props;
+        let {max, min, step, onChange, toNumber} = this.props;
         value = (value === '-') ? 0 : value;
         if(typeof max === "undefined"){
             value = this.detail(value, step, 'add');
         }else{
+            max = Number(max)
             if(max&&value > max){
                 value = max;
             }else{
@@ -467,9 +472,13 @@ class InputNumber extends Component {
                 }
             }
         }
-        if(min&&value < min){
-            value = min;
+        if(min){
+            min = Number(min)
+            if(value < min){
+                value = min;
+            }
         }
+        
         this.setState({
             value,
             showValue:toThousands(value)

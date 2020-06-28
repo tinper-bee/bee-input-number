@@ -37734,6 +37734,7 @@
 	        if (typeof min === "undefined") {
 	            value = _this3.detail(value, step, 'reduce');
 	        } else {
+	            min = Number(min);
 	            if (value < min) {
 	                value = min;
 	            } else {
@@ -37743,9 +37744,11 @@
 	                }
 	            }
 	        }
-	
-	        if (max && value > max) {
-	            value = max;
+	        if (max) {
+	            max = Number(max);
+	            if (value > max) {
+	                value = max;
+	            }
 	        }
 	
 	        _this3.setState({
@@ -37771,6 +37774,7 @@
 	        if (typeof max === "undefined") {
 	            value = _this3.detail(value, step, 'add');
 	        } else {
+	            max = Number(max);
 	            if (max && value > max) {
 	                value = max;
 	            } else {
@@ -37780,9 +37784,13 @@
 	                }
 	            }
 	        }
-	        if (min && value < min) {
-	            value = min;
+	        if (min) {
+	            min = Number(min);
+	            if (value < min) {
+	                value = min;
+	            }
 	        }
+	
 	        _this3.setState({
 	            value: value,
 	            showValue: toThousands(value)
