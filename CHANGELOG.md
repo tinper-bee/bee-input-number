@@ -1,3 +1,12 @@
+## [2.2.35](https://github.com/tinper-bee/bee-input-number/compare/v2.2.34...v2.2.35) (2020-06-28)
+
+
+### Bug Fixes
+
+* 适配max min传字符串 ([6bc2bd4](https://github.com/tinper-bee/bee-input-number/commit/6bc2bd437b0f0b3118685257c1db5663d65b99ab))
+
+
+
 ## [2.2.34](https://github.com/tinper-bee/bee-input-number/compare/v2.2.33...v2.2.34) (2020-06-18)
 
 
