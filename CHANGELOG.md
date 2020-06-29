@@ -1,3 +1,12 @@
+## [2.2.36](https://github.com/tinper-bee/bee-input-number/compare/v2.2.35...v2.2.36) (2020-06-29)
+
+
+### Bug Fixes
+
+* 负数失焦问题 ([eb1ca6f](https://github.com/tinper-bee/bee-input-number/commit/eb1ca6f6a983de9f9929ae55d782915fe2451b86))
+
+
+
 ## [2.2.35](https://github.com/tinper-bee/bee-input-number/compare/v2.2.34...v2.2.35) (2020-06-28)
 
 
