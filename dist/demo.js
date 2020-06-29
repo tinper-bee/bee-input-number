@@ -37892,7 +37892,7 @@
 	        before = before === "-" ? before : "";
 	        after = after === "-" ? after : "";
 	        //是科学计数法，不replace - 
-	        if (before) value = value.substring(1, len - 1);
+	        if (before) value = value.substring(1, len);
 	        if (after) value = value.substring(0, len - 1);
 	        // value = value.replace("-",'');
 	        var precV = "000000000000000000000000000000000000000000000000000000000000000000000000";
