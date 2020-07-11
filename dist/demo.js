@@ -37218,7 +37218,8 @@
 	            value: data.value,
 	            minusDisabled: data.minusDisabled,
 	            plusDisabled: data.plusDisabled,
-	            showValue: toThousands(data.value)
+	            showValue: toThousands(data.value),
+	            placeholderShow: true
 	        };
 	
 	        _this.timer = null;
@@ -37346,6 +37347,11 @@
 	            iconStyle === 'double' ? _react2['default'].createElement(
 	                _beeInputGroup2['default'],
 	                { className: (0, _classnames2['default'])(className, classes, disabledCon) },
+	                this.isIE() && !value ? _react2['default'].createElement(
+	                    'div',
+	                    { onClick: this.placeholderClick, style: { 'display': this.state.placeholderShow ? 'block' : 'none' }, className: clsPrefix + '-placeholder' },
+	                    this.props.placeholder
+	                ) : '',
 	                _react2['default'].createElement(
 	                    _beeInputGroup2['default'].Addon,
 	                    {
@@ -37382,6 +37388,11 @@
 	                    className: (0, _classnames2['default'])(className, classes, disabledCon),
 	                    simple: true
 	                },
+	                this.isIE() && !value ? _react2['default'].createElement(
+	                    'div',
+	                    { onClick: this.placeholderClick, style: { 'display': this.state.placeholderShow ? 'block' : 'none' }, className: clsPrefix + '-placeholder' },
+	                    this.props.placeholder
+	                ) : '',
 	                _react2['default'].createElement(_beeFormControl2['default'], _extends({}, others, {
 	                    value: toThousands ? showValue : value,
 	                    disabled: disabled,
@@ -37684,7 +37695,8 @@
 	        }
 	        _this3.setState({
 	            value: value,
-	            showValue: toThousands(value)
+	            showValue: toThousands(value),
+	            placeholderShow: true
 	        });
 	        _this3.detailDisable(value);
 	        if (toNumber && !minusRight) {
@@ -37910,6 +37922,20 @@
 	
 	    this.handleBtnClick = function (type, value) {
 	        _this3.props.handleBtnClick(type, value);
+	    };
+	
+	    this.isIE = function () {
+	        if (window) {
+	            if (!!window.ActiveXObject || "ActiveXObject" in window) return true;
+	        }
+	        return false;
+	    };
+	
+	    this.placeholderClick = function () {
+	        _this3.input.input.focus();
+	        _this3.setState({
+	            placeholderShow: false
+	        });
 	    };
 	};
 	

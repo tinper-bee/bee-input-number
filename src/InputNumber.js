@@ -108,7 +108,8 @@ class InputNumber extends Component {
             value:data.value,
             minusDisabled: data.minusDisabled,
             plusDisabled: data.plusDisabled,
-            showValue:toThousands(data.value)
+            showValue:toThousands(data.value),
+            placeholderShow:true
         }
 
         this.timer = null;
@@ -380,7 +381,8 @@ class InputNumber extends Component {
         }
         this.setState({
             value,
-            showValue:toThousands(value)
+            showValue:toThousands(value),
+            placeholderShow:true
         });
         this.detailDisable(value);
         if(toNumber&&(!minusRight)){
@@ -599,6 +601,18 @@ class InputNumber extends Component {
     handleBtnClick = (type,value)=>{
         this.props.handleBtnClick(type,value)
     }
+    isIE = ()=>{
+        if(window){
+            if (!!window.ActiveXObject || "ActiveXObject" in window)return true;
+        }
+        return false;
+    }
+    placeholderClick=()=>{
+        this.input.input.focus()
+        this.setState({
+            placeholderShow:false
+        })
+    }
 
     render() {
         const {toThousands,minusRight, max, min, step,disabled, clsPrefix, className, delay, onBlur, onFocus, iconStyle, autoWidth, onChange, format, precision,toNumber, ...others} = this.props;
@@ -623,6 +637,9 @@ class InputNumber extends Component {
                 {
                     iconStyle === 'double' ? (
                         <InputGroup className={classnames(className, classes,disabledCon)}>
+                            {
+                                this.isIE()&&(!value)?<div onClick={this.placeholderClick} style={{'display':this.state.placeholderShow?'block':'none'}} className={`${clsPrefix}-placeholder`}>{this.props.placeholder}</div>:''
+                            }
                             <InputGroup.Addon
                                 // onClick={()=>{minusDisabled?'':this.handleBtnClick('down')}}
                                 className={(minusDisabled && 'disabled' ) + disabledCursor}
@@ -654,6 +671,9 @@ class InputNumber extends Component {
                             className={classnames(className, classes,disabledCon)}
                             simple
                         > 
+                            {
+                                this.isIE()&&(!value)?<div onClick={this.placeholderClick} style={{'display':this.state.placeholderShow?'block':'none'}} className={`${clsPrefix}-placeholder`}>{this.props.placeholder}</div>:''
+                            }
                             <FormControl 
                                 {...others}
                                 value={toThousands?showValue:value}
