@@ -1,3 +1,12 @@
+## [2.2.37](https://github.com/tinper-bee/bee-input-number/compare/v2.2.36...v2.2.37) (2020-07-11)
+
+
+### Features
+
+* 兼容IE11 placeholder ([b7063ec](https://github.com/tinper-bee/bee-input-number/commit/b7063eca47aafe7cd3589bab8074225a3d648cd1))
+
+
+
 ## [2.2.36](https://github.com/tinper-bee/bee-input-number/compare/v2.2.35...v2.2.36) (2020-06-29)
 
 
