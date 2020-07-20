@@ -1,3 +1,12 @@
+## [2.2.38](https://github.com/tinper-bee/bee-input-number/compare/v2.2.37...v2.2.38) (2020-07-20)
+
+
+### Bug Fixes
+
+* 修复IE placeholder兼容问题 ([3a9a13b](https://github.com/tinper-bee/bee-input-number/commit/3a9a13b76e6ffd2b660171838128534187cf7287))
+
+
+
 ## [2.2.37](https://github.com/tinper-bee/bee-input-number/compare/v2.2.36...v2.2.37) (2020-07-11)
 
 
