@@ -17,6 +17,9 @@ $disable-border-color:#dfe1e6;
         position: absolute;
         z-index: 2;
         font-size: 12px;
+        width: calc(100% - 44px);
+        white-space: nowrap;
+        overflow: hidden;
     }
     &.u-input-group.simple .u-input-number-placeholder{
         left: 12px;
@@ -24,7 +27,7 @@ $disable-border-color:#dfe1e6;
     }
     &.u-input-number-sm {
         .u-input-number-placeholder{
-            left: 30px;
+            left: 31px;
             top: 4px;
             width: calc(100% - 63px);
             text-align: center;
@@ -45,7 +48,7 @@ $disable-border-color:#dfe1e6;
     }
     &.u-input-number-lg {
         .u-input-number-placeholder{
-            left: 30px;
+            left: 31px;
             top: 12px;
             width: calc(100% - 63px);
             text-align: center;

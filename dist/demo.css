@@ -171,12 +171,15 @@
     color: #757575;
     position: absolute;
     z-index: 2;
-    font-size: 12px; }
+    font-size: 12px;
+    width: calc(100% - 44px);
+    white-space: nowrap;
+    overflow: hidden; }
   .u-input-number.u-input-group.simple .u-input-number-placeholder {
     left: 12px;
     top: 8px; }
   .u-input-number.u-input-number-sm .u-input-number-placeholder {
-    left: 30px;
+    left: 31px;
     top: 4px;
     width: calc(100% - 63px);
     text-align: center; }
@@ -188,7 +191,7 @@
     width: auto;
     max-width: calc(100% - 63px); }
   .u-input-number.u-input-number-lg .u-input-number-placeholder {
-    left: 30px;
+    left: 31px;
     top: 12px;
     width: calc(100% - 63px);
     text-align: center; }
