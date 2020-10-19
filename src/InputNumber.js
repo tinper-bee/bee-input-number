@@ -49,7 +49,7 @@ function prompt (content)  {
 
 /**
  * 千分符
- * @param {要转换的数据} num 
+ * @param {要转换的数据} num
  */
 function toThousands(number) {
     if(number==='')return '';
@@ -62,7 +62,7 @@ function toThousands(number) {
         result = ',' + integer.slice(-3) + result;
         integer = integer.slice(0, integer.length - 3);
     }
-    if (integer) { 
+    if (integer) {
         result = integer + result ;
         if(num=='.'||num.indexOf('.')==num.length-1){
             result = result + '.'+decimal;
@@ -78,7 +78,7 @@ function toThousands(number) {
 
 
 function setCaretPosition(ctrl,pos,need) {
-    
+
     if(ctrl&&need){
         if(ctrl.setSelectionRange) {
             ctrl.focus();
@@ -91,9 +91,9 @@ function setCaretPosition(ctrl,pos,need) {
             range.moveStart('character', pos);
             range.select();
         }
-        
+
     }
-    
+
 }
 
 
@@ -127,8 +127,8 @@ class InputNumber extends Component {
 
     /**
      * 校验value
-     * @param {*} props 
-     * @param {原来的值} oldValue 
+     * @param {*} props
+     * @param {原来的值} oldValue
      */
     judgeValue = (props,oldValue)=> {
         let currentValue;
@@ -156,7 +156,7 @@ class InputNumber extends Component {
             }
         } //lse if (min&&(value!='')) {//mdd中提出bug
             //currentValue = min;
-        //} 
+        //}
         else if(value==='0'||value===0){
             currentValue = 0;
         }else{//NaN
@@ -207,7 +207,7 @@ class InputNumber extends Component {
                 currentValue = currentValue+'-';
             }
         }
-        
+
         return {
             value: currentValue,
             minusDisabled: currentMinusDisabled,
@@ -224,14 +224,14 @@ class InputNumber extends Component {
     componentWillReceiveProps(nextProps){
         if(this.focus){
             if(nextProps.value==Infinity||nextProps.value==-Infinity){
-                
+
             }else{
                 this.setState({
                     value: nextProps.value,
                     showValue:toThousands(nextProps.value),
                 });
             }
-            
+
         }else{
             let data = this.judgeValue(nextProps,this.state.value);
             this.setState({
@@ -261,7 +261,7 @@ class InputNumber extends Component {
         let endIndex = (preIndex+fixed);
         let precValue = value.substr(preIndex,endIndex)+"0000000000";
         if(type){
-            return Number(value).toFixed(fixed);
+            return (Number(value) + 1e-14).toFixed(fixed);
         }
         return value.split(".")[0] +"."+ precValue.substr(0,fixed);
     }
@@ -320,7 +320,7 @@ class InputNumber extends Component {
             setCaretPosition(this.input&&this.input.input,position,true)
         }
     }
-    
+
 
     handleFocus = (value,e) => {
         this.focus = true;
@@ -333,7 +333,7 @@ class InputNumber extends Component {
     getFullNum = (num)=>{
         //处理非数字
         if(isNaN(num)){return num};
-        
+
         //处理不需要转换的数字
         var str = ''+num;
         if(!/e/i.test(str)){return num;};
@@ -342,7 +342,7 @@ class InputNumber extends Component {
     }
 
     handleBlur = (v,e) => {
-        this.focus = false;        
+        this.focus = false;
         const {onBlur,precision,onChange,toNumber,max,min,displayCheckPrompt,minusRight,round } = this.props;
         const local = getComponentLocale(this.props, this.context, 'InputNumber', () => i18n);
         v = this.state.value;//在onBlur的时候不需要活输入框的只，而是要获取state中的值，因为有format的时候就会有问题。
@@ -354,7 +354,7 @@ class InputNumber extends Component {
             onBlur && onBlur(v,e);
             return;
         }
-        // let value = this.unThousands(v); 
+        // let value = this.unThousands(v);
         let value = this.numToFixed(v,precision,round);
         if(minusRight){
             if(value.indexOf('-')!=-1){//所有位置的负号转到前边
@@ -444,7 +444,7 @@ class InputNumber extends Component {
                 value = max;
             }
         }
-        
+
 
         this.setState({
             value,
@@ -481,7 +481,7 @@ class InputNumber extends Component {
                 value = min;
             }
         }
-        
+
         this.setState({
             value,
             showValue:toThousands(value)
@@ -533,10 +533,10 @@ class InputNumber extends Component {
             }else{
                 return ""
             }
-        } 
+        }
     }
 
-    
+
 
     clear = () => {
         if (this.timer) {
@@ -562,7 +562,7 @@ class InputNumber extends Component {
         let {value} = this.state;
         if(disabled)return;
         this.minus(value);
-        this.clear(); 
+        this.clear();
         this.timer = setTimeout(() => {
             this.handleReduceMouseDown(e);
         }, delay);
@@ -582,7 +582,7 @@ class InputNumber extends Component {
         after = value.substring(len-1,len);
         before = before === "-"?before:"";
         after = after === "-"?after:"";
-        //是科学计数法，不replace - 
+        //是科学计数法，不replace -
         if(before)value = value.substring(1,len);
         if(after)value = value.substring(0,len-1);
         // value = value.replace("-",'');
@@ -641,7 +641,7 @@ class InputNumber extends Component {
                             {
                                 this.isIE()&&(!value)?<div onClick={this.placeholderClick} style={{'display':this.state.placeholderShow?'block':'none'}} className={`${clsPrefix}-placeholder`}>{this.props.placeholder}</div>:''
                             }
-                            { hideActionButton ? '' : 
+                            { hideActionButton ? '' :
                                 <InputGroup.Addon
                                     // onClick={()=>{minusDisabled?'':this.handleBtnClick('down')}}
                                     className={(minusDisabled && 'disabled' ) + disabledCursor}
@@ -660,7 +660,7 @@ class InputNumber extends Component {
                                 onChange={ this.handleChange }
                                 ref={ref=>this.input = ref}
                             />
-                            { hideActionButton ? '' : 
+                            { hideActionButton ? '' :
                                 <InputGroup.Addon
                                     // onClick={()=>{plusDisabled?'':this.handleBtnClick('up')}}
                                     className={(plusDisabled && 'disabled' ) + disabledCursor}
@@ -675,11 +675,11 @@ class InputNumber extends Component {
                         <InputGroup
                             className={classnames(className, classes,disabledCon)}
                             simple
-                        > 
+                        >
                             {
                                 this.isIE()&&(!value)?<div onClick={this.placeholderClick} style={{'display':this.state.placeholderShow?'block':'none'}} className={`${clsPrefix}-placeholder`}>{this.props.placeholder}</div>:''
                             }
-                            <FormControl 
+                            <FormControl
                                 {...others}
                                 value={toThousands?showValue:value}
                                 disabled={disabled}
@@ -688,7 +688,7 @@ class InputNumber extends Component {
                                 onChange={ this.handleChange }
                                 ref={ref=>this.input = ref}
                             />
-                            { hideActionButton ? '' : 
+                            { hideActionButton ? '' :
                             <InputGroup.Button>
                                 <div className={classnames("icon-group")}>
                                 <span
