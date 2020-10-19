@@ -1,3 +1,12 @@
+## [2.2.41](https://github.com/tinper-bee/bee-input-number/compare/v2.2.40...v2.2.41) (2020-10-19)
+
+
+### Bug Fixes
+
+* 解决针对部分数值 toFixed异常的问题 ([0d9e754](https://github.com/tinper-bee/bee-input-number/commit/0d9e754f102f19fcd5d883d0f5e162cda51a4554))
+
+
+
 ## [2.2.40](https://github.com/tinper-bee/bee-input-number/compare/v2.2.39...v2.2.40) (2020-08-13)
 
 
