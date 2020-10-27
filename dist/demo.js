@@ -66,7 +66,7 @@
 	
 	var _beeClipboard2 = _interopRequireDefault(_beeClipboard);
 	
-	var _src = __webpack_require__(270);
+	var _src = __webpack_require__(271);
 	
 	var _src2 = _interopRequireDefault(_src);
 	
@@ -80,7 +80,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(279);var Demo2 = __webpack_require__(280);var Demo3 = __webpack_require__(281);var Demo4 = __webpack_require__(282);var Demo5 = __webpack_require__(283);var Demo6 = __webpack_require__(284);var Demo8 = __webpack_require__(285);var Demo9 = __webpack_require__(286);var Demo10 = __webpack_require__(287);var Demo11 = __webpack_require__(288);var Demo12 = __webpack_require__(289);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基础示例 ", "code": "/**\n *\n* @title 基础示例 \n * @description 最简单输入控制。最小值为0，最大值为10000\n *\n */\n\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\n\n\nclass Demo1 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: null\n        }\n    }\n\n    handleChange = (value) => {\n        console.log(value);\n        this.setState({\n            value: value\n        })\n    }\n    handleBtnClick = (value) => {\n        console.log(value);\n        \n    }\n\n    \n    render () {\n        return (\n            <div>\n                <InputNumber\n                    iconStyle=\"one\"\n                    min={0}\n                    max={10000}\n                    onChange={this.handleChange}\n                    handleBtnClick={this.handleBtnClick}\n                    value={this.state.value}\n                />\n            </div>\n        )\n    }\n}\n\nexport default Demo1;", "desc": " 最简单输入控制。最小值为0，最大值为10000", "scss_code": "#tinperBeeDemo .u-input-number {\r\n    width: 200px;\r\n}" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 默认 iconStyle", "code": "/**\n*\n* @title 默认 iconStyle\n* @description 自定义 最大值 max=12,min=5,step=1\n*\n*/\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\n\n\nclass Demo2 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 5\n        }\n    }\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\tmax={12}\n\t\t\t\tmin={5}\n\t\t\t\tstep={1}\n\t\t\t\tvalue={this.state.value}\n                onChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\nexport default Demo2;", "desc": " 自定义 最大值 max=12,min=5,step=1" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 第二种iconStyle", "code": "/**\n*\n* @title 第二种iconStyle\n* @description 自定义max=12,min=5,step=2\n*\n*/\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\n \n\nclass Demo3 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\ticonStyle=\"one\"\n\t\t\t\tmax={12}\n\t\t\t\tmin={-9}\n\t\t\t\tstep={2}\n\t\t\t\tvalue={this.state.value}\n\t\t\t\tonChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\nexport default Demo3;", "desc": " 自定义max=12,min=5,step=2" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 默认iconStyle不可用状态", "code": "/**\n *\n * @title 默认iconStyle不可用状态\n * @description disabled 的单输入控制\n *\n */\n\n\nimport React, {Component} from 'react';\nimport { InputNumber } from 'tinper-bee';\n\n\nclass Demo4 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\n    render() {\n        return (\n            <div>\n                <InputNumber disabled precision={2} value={this.state.value} onChange={ this.handleChange }/>\n            </div>\n        )\n    }\n}\n\nexport default Demo4;", "desc": " disabled 的单输入控制" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 第二种iconStyle不可用状态", "code": "/**\n*\n* @title 第二种iconStyle不可用状态\n* @description 自定义max=12,min=5,step=2 且设置 disabled 处理\n*\n*/\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\n \n\nclass Demo5 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 8\n        }\n    }\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\tdisabled\n\t\t\t\ticonStyle=\"one\"\n\t\t\t\tmax={12}\n\t\t\t\tmin={-10}\n\t\t\t\tstep={2}\n\t\t\t\tvalue={this.state.value}\n\t\t\t\tonChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\nexport default Demo5;", "desc": " 自定义max=12,min=5,step=2 且设置 disabled 处理" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 保留两位小数", "code": "/**\n*\n* @title 保留两位小数\n* @description precision={2} 设置小数点后保留两位，失去焦点时数据会格式化为两位小数\n*\n*/\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\n \n\nclass Demo6 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n    handleChange = (value) => {\n\t\tconsole.log(value)\n        this.setState({\n            value: value\n        })\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\ticonStyle=\"one\"\n\t\t\t\tprecision={2}\n\t\t\t\tvalue={this.state.value}\n\t\t\t\tonChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\nexport default Demo6;", "desc": " precision={2} 设置小数点后保留两位，失去焦点时数据会格式化为两位小数" }, { "example": _react2['default'].createElement(Demo8, null), "title": " 基础示例 ", "code": "/**\n *\n* @title 基础示例 \n * @description 最简单输入控制\n *\n */\n\n\nimport React, {Component} from 'react';\nimport { InputNumber } from 'tinper-bee';\n\n\nclass Demo1 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: '1'\n        }\n    }\n\n    handleChange = (value) => {\n        console.log(value);\n        this.setState({\n            value: value\n        })\n    }\n\n    render() {\n        return (\n            <div>\n                <InputNumber  precision={2} value={this.state.value} onChange={ this.handleChange }/>\n            </div>\n        )\n    }\n}\n\nexport default Demo1;", "desc": " 最简单输入控制" }, { "example": _react2['default'].createElement(Demo9, null), "title": " 数字区间基础示例 ", "code": "/**\n *\n* @title 数字区间基础示例 \n * @description 使用 InputNumberGroup\n *\n */\n\n\nimport React, {Component} from 'react';\nimport { InputNumber } from 'tinper-bee';\n\n\nconst InputNumberGroup = InputNumber.InputNumberGroup;\n\nclass Demo9 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: [10,12]\n        }\n    }\n\n    handleChange = (value) => {\n        console.log(value);\n        this.setState({\n            value\n        })\n    }\n\n    render() {\n        return (\n            <div className='demo9'>\n                <InputNumberGroup \n                iconStyle='two'\n                value={this.state.value}\n                onChange={this.handleChange} \n                placeholder={['请输入最小值','请输入最大值']}/>\n            </div>\n        )\n    }\n}\n\nexport default Demo9;", "desc": " 使用 InputNumberGroup" }, { "example": _react2['default'].createElement(Demo10, null), "title": " 输入时校验提示 ", "code": "/**\r\n *\r\n* @title 输入时校验提示 \r\n * @description 设置 displayCheckPrompt={true}，显示超出限制范围之后的提示。\r\n *\r\n */\r\n\r\n\r\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\r\n\r\n\r\nclass Demo10 extends Component {\r\n    render () {\r\n        return (\r\n            <InputNumber\r\n                iconStyle=\"one\"\r\n                min={-100}\r\n                max={100}\r\n                value={0}\r\n                displayCheckPrompt={true}\r\n            />\r\n        )\r\n    }\r\n}\r\n\r\nexport default Demo10;", "desc": " 设置 displayCheckPrompt={true}，显示超出限制范围之后的提示。" }, { "example": _react2['default'].createElement(Demo11, null), "title": " size 属性 ", "code": "/**\n *\n* @title size 属性 \n * @description size=\"md\" / \"lg\" / \"sm\" 分别表示中号(默认)、大号、小号\n *\n */\n\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\n\n\nclass Demo11 extends Component {\n    render () {\n        return (\n            <div>\n                <InputNumber\n                    size='lg'\n                    iconStyle=\"one\"\n                    min={-999999}\n                    max={999999}\n                />\n                <br/>\n                <InputNumber\n                    size='sm'\n                    iconStyle=\"one\"\n                    min={-999999}\n                    max={999999}\n                />\n                <br/>\n                <InputNumber\n                    size='lg'\n                    min={-999999}\n                    max={999999}\n                />\n                <br/>\n                <InputNumber\n                    size='sm'\n                    min={-999999}\n                    max={999999}\n                />\n            </div>\n        )\n    }\n}\n\nexport default Demo11;", "desc": " size=\"md\" / \"lg\" / \"sm\" 分别表示中号(默认)、大号、小号" }, { "example": _react2['default'].createElement(Demo12, null), "title": " 多格式组件", "code": "/**\n *\n* @title 多格式组件\n * @description 自定义 format ，支持格式自定义\n *  \n */\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\n\n\nclass Demo12 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value:0\n        }\n    }\n\n    handleChange = (value) => {\n        console.log(value);\n        this.setState({\n            value: value\n        })\n    }\n    render () {\n        return (\n            <div className=\"demo12\">\n                销售价格:\n                <InputNumber\n                    iconStyle=\"one\"\n                    // precision={2}\n                    // min={-10}\n                    // max={10}\n                    onFocus={(value,e)=>{\n                        console.log(value+\"  ==== \",e);\n                        this.setState({\n                            value\n                        })\n                    }}\n                    onBlur={(value,e)=>{\n                        console.log(\"  ==== \",e);\n                        // this.setState({\n                        //     value\n                        // })\n                    }}\n                    // precision={8}\n                    step={1} \n                    format={value => ` ${value} 千克`.replace(/\\B(?=(\\d{3})+(?!\\d))/g, ':')}\n                    value={this.state.value}\n                />\n\n                {/* 销售占比:\n                <InputNumber\n                    iconStyle=\"one\" \n                    format={value => `${value} %`}\n                    value={this.state.value}\n                /> */}\n            </div>\n        )\n    }\n}\n\nexport default Demo12;", "desc": " 自定义 format ，支持格式自定义" }];
+	var Demo1 = __webpack_require__(280);var Demo2 = __webpack_require__(281);var Demo3 = __webpack_require__(282);var Demo4 = __webpack_require__(283);var Demo5 = __webpack_require__(284);var Demo6 = __webpack_require__(285);var Demo8 = __webpack_require__(286);var Demo9 = __webpack_require__(287);var Demo10 = __webpack_require__(288);var Demo11 = __webpack_require__(289);var Demo12 = __webpack_require__(290);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基础示例 ", "code": "/**\r\n *\r\n* @title 基础示例 \r\n * @description 最简单输入控制。最小值为0，最大值为10000\r\n *\r\n */\r\n\r\n\r\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\r\n\r\n\r\nclass Demo1 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            value: null\r\n        }\r\n    }\r\n\r\n    handleChange = (value) => {\r\n        console.log(value);\r\n        this.setState({\r\n            value: value\r\n        })\r\n    }\r\n    handleBtnClick = (value) => {\r\n        console.log(value);\r\n        \r\n    }\r\n\r\n    \r\n    render () {\r\n        return (\r\n            <div>\r\n                <InputNumber\r\n                    iconStyle=\"one\"\r\n                    min={0}\r\n                    max={10000}\r\n                    onChange={this.handleChange}\r\n                    handleBtnClick={this.handleBtnClick}\r\n                    value={this.state.value}\r\n                />\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\nexport default Demo1;\r\n", "desc": " 最简单输入控制。最小值为0，最大值为10000", "scss_code": "#tinperBeeDemo .u-input-number {\r\n    width: 200px;\r\n}" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 默认 iconStyle", "code": "/**\r\n*\r\n* @title 默认 iconStyle\r\n* @description 自定义 最大值 max=12,min=5,step=1\r\n*\r\n*/\r\n\r\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\r\n\r\n\r\nclass Demo2 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            value: 5\r\n        }\r\n    }\r\n    handleChange = (value) => {\r\n        this.setState({\r\n            value: value\r\n        })\r\n    }\r\n\trender () {\r\n\t\treturn (\r\n\t\t\t<InputNumber\r\n\t\t\t\tmax={12}\r\n\t\t\t\tmin={5}\r\n\t\t\t\tstep={1}\r\n\t\t\t\tvalue={this.state.value}\r\n                onChange={ this.handleChange }\r\n\t\t\t/>\r\n\t\t)\r\n\t}\r\n}\r\n\r\nexport default Demo2;", "desc": " 自定义 最大值 max=12,min=5,step=1" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 第二种iconStyle", "code": "/**\r\n*\r\n* @title 第二种iconStyle\r\n* @description 自定义max=12,min=5,step=2\r\n*\r\n*/\r\n\r\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\r\n \r\n\r\nclass Demo3 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            value: 0\r\n        }\r\n    }\r\n    handleChange = (value) => {\r\n        this.setState({\r\n            value: value\r\n        })\r\n    }\r\n\trender () {\r\n\t\treturn (\r\n\t\t\t<InputNumber\r\n\t\t\t\ticonStyle=\"one\"\r\n\t\t\t\tmax={12}\r\n\t\t\t\tmin={-9}\r\n\t\t\t\tstep={2}\r\n\t\t\t\tvalue={this.state.value}\r\n\t\t\t\tonChange={ this.handleChange }\r\n\t\t\t/>\r\n\t\t)\r\n\t}\r\n}\r\n\r\nexport default Demo3;", "desc": " 自定义max=12,min=5,step=2" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 默认iconStyle不可用状态", "code": "/**\r\n *\r\n * @title 默认iconStyle不可用状态\r\n * @description disabled 的单输入控制\r\n *\r\n */\r\n\r\n\r\nimport React, {Component} from 'react';\nimport { InputNumber } from 'tinper-bee';\r\n\r\n\r\nclass Demo4 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            value: 0\r\n        }\r\n    }\r\n\r\n    handleChange = (value) => {\r\n        this.setState({\r\n            value: value\r\n        })\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div>\r\n                <InputNumber disabled precision={2} value={this.state.value} onChange={ this.handleChange }/>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\nexport default Demo4;", "desc": " disabled 的单输入控制" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 第二种iconStyle不可用状态", "code": "/**\r\n*\r\n* @title 第二种iconStyle不可用状态\r\n* @description 自定义max=12,min=5,step=2 且设置 disabled 处理\r\n*\r\n*/\r\n\r\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\r\n \r\n\r\nclass Demo5 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            value: 8\r\n        }\r\n    }\r\n    handleChange = (value) => {\r\n        this.setState({\r\n            value: value\r\n        })\r\n    }\r\n\trender () {\r\n\t\treturn (\r\n\t\t\t<InputNumber\r\n\t\t\t\tdisabled\r\n\t\t\t\ticonStyle=\"one\"\r\n\t\t\t\tmax={12}\r\n\t\t\t\tmin={-10}\r\n\t\t\t\tstep={2}\r\n\t\t\t\tvalue={this.state.value}\r\n\t\t\t\tonChange={ this.handleChange }\r\n\t\t\t/>\r\n\t\t)\r\n\t}\r\n}\r\n\r\nexport default Demo5;", "desc": " 自定义max=12,min=5,step=2 且设置 disabled 处理" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 保留两位小数", "code": "/**\r\n*\r\n* @title 保留两位小数\r\n* @description precision={2} 设置小数点后保留两位，失去焦点时数据会格式化为两位小数\r\n*\r\n*/\r\n\r\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\r\n \r\n\r\nclass Demo6 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            value: 0\r\n        }\r\n    }\r\n    handleChange = (value) => {\r\n\t\tconsole.log(value)\r\n        this.setState({\r\n            value: value\r\n        })\r\n    }\r\n\trender () {\r\n\t\treturn (\r\n\t\t\t<InputNumber\r\n\t\t\t\ticonStyle=\"one\"\r\n\t\t\t\tprecision={2}\r\n\t\t\t\tvalue={this.state.value}\r\n\t\t\t\tonChange={ this.handleChange }\r\n\t\t\t/>\r\n\t\t)\r\n\t}\r\n}\r\n\r\nexport default Demo6;", "desc": " precision={2} 设置小数点后保留两位，失去焦点时数据会格式化为两位小数" }, { "example": _react2['default'].createElement(Demo8, null), "title": " 基础示例 ", "code": "/**\r\n *\r\n* @title 基础示例 \r\n * @description 最简单输入控制\r\n *\r\n */\r\n\r\n\r\nimport React, {Component} from 'react';\nimport { InputNumber } from 'tinper-bee';\r\n\r\n\r\nclass Demo1 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            value: '1'\r\n        }\r\n    }\r\n\r\n    handleChange = (value) => {\r\n        console.log(value);\r\n        this.setState({\r\n            value: value\r\n        })\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div>\r\n                <InputNumber  precision={2} value={this.state.value} onChange={ this.handleChange }/>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\nexport default Demo1;", "desc": " 最简单输入控制" }, { "example": _react2['default'].createElement(Demo9, null), "title": " 数字区间基础示例 ", "code": "/**\r\n *\r\n* @title 数字区间基础示例 \r\n * @description 使用 InputNumberGroup\r\n *\r\n */\r\n\r\n\r\nimport React, {Component} from 'react';\nimport { InputNumber } from 'tinper-bee';\r\n\r\n\r\nconst InputNumberGroup = InputNumber.InputNumberGroup;\r\n\r\nclass Demo9 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            value: [10,12]\r\n        }\r\n    }\r\n\r\n    handleChange = (value) => {\r\n        console.log(value);\r\n        this.setState({\r\n            value\r\n        })\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div className='demo9'>\r\n                <InputNumberGroup \r\n                iconStyle='two'\r\n                value={this.state.value}\r\n                onChange={this.handleChange} \r\n                placeholder={['请输入最小值','请输入最大值']}/>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\nexport default Demo9;", "desc": " 使用 InputNumberGroup" }, { "example": _react2['default'].createElement(Demo10, null), "title": " 输入时校验提示 ", "code": "/**\r\n *\r\n* @title 输入时校验提示 \r\n * @description 设置 displayCheckPrompt={true}，显示超出限制范围之后的提示。\r\n *\r\n */\r\n\r\n\r\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\r\n\r\n\r\nclass Demo10 extends Component {\r\n    render () {\r\n        return (\r\n            <InputNumber\r\n                iconStyle=\"one\"\r\n                min={-100}\r\n                max={100}\r\n                value={0}\r\n                displayCheckPrompt={true}\r\n            />\r\n        )\r\n    }\r\n}\r\n\r\nexport default Demo10;", "desc": " 设置 displayCheckPrompt={true}，显示超出限制范围之后的提示。" }, { "example": _react2['default'].createElement(Demo11, null), "title": " size 属性 ", "code": "/**\r\n *\r\n* @title size 属性 \r\n * @description size=\"md\" / \"lg\" / \"sm\" 分别表示中号(默认)、大号、小号\r\n *\r\n */\r\n\r\n\r\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\r\n\r\n\r\nclass Demo11 extends Component {\r\n    render () {\r\n        return (\r\n            <div>\r\n                <InputNumber\r\n                    size='lg'\r\n                    iconStyle=\"one\"\r\n                    min={-999999}\r\n                    max={999999}\r\n                />\r\n                <br/>\r\n                <InputNumber\r\n                    size='sm'\r\n                    iconStyle=\"one\"\r\n                    min={-999999}\r\n                    max={999999}\r\n                />\r\n                <br/>\r\n                <InputNumber\r\n                    size='lg'\r\n                    min={-999999}\r\n                    max={999999}\r\n                />\r\n                <br/>\r\n                <InputNumber\r\n                    size='sm'\r\n                    min={-999999}\r\n                    max={999999}\r\n                />\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\nexport default Demo11;", "desc": " size=\"md\" / \"lg\" / \"sm\" 分别表示中号(默认)、大号、小号" }, { "example": _react2['default'].createElement(Demo12, null), "title": " 多格式组件", "code": "/**\r\n *\r\n* @title 多格式组件\r\n * @description 自定义 format ，支持格式自定义\r\n *  \r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\r\n\r\n\r\nclass Demo12 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            value:0\r\n        }\r\n    }\r\n\r\n    handleChange = (value) => {\r\n        console.log(value);\r\n        this.setState({\r\n            value: value\r\n        })\r\n    }\r\n    render () {\r\n        return (\r\n            <div className=\"demo12\">\r\n                销售价格:\r\n                <InputNumber\r\n                    iconStyle=\"one\"\r\n                    // precision={2}\r\n                    // min={-10}\r\n                    // max={10}\r\n                    onFocus={(value,e)=>{\r\n                        console.log(value+\"  ==== \",e);\r\n                        this.setState({\r\n                            value\r\n                        })\r\n                    }}\r\n                    onBlur={(value,e)=>{\r\n                        console.log(\"  ==== \",e);\r\n                        // this.setState({\r\n                        //     value\r\n                        // })\r\n                    }}\r\n                    // precision={8}\r\n                    step={1} \r\n                    format={value => ` ${value} 千克`.replace(/\\B(?=(\\d{3})+(?!\\d))/g, ':')}\r\n                    value={this.state.value}\r\n                />\r\n\r\n                {/* 销售占比:\r\n                <InputNumber\r\n                    iconStyle=\"one\" \r\n                    format={value => `${value} %`}\r\n                    value={this.state.value}\r\n                /> */}\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\nexport default Demo12;", "desc": " 自定义 format ，支持格式自定义" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -10109,11 +10109,11 @@
 	
 	var _beeModal2 = _interopRequireDefault(_beeModal);
 	
-	var _beeFormControl = __webpack_require__(268);
+	var _beeFormControl = __webpack_require__(269);
 	
 	var _beeFormControl2 = _interopRequireDefault(_beeFormControl);
 	
-	var _beeButton = __webpack_require__(265);
+	var _beeButton = __webpack_require__(266);
 	
 	var _beeButton2 = _interopRequireDefault(_beeButton);
 	
@@ -10222,7 +10222,6 @@
 	        return _react2["default"].createElement(
 	            _beeTooltip2["default"],
 	            { className: 'u-clipboard-tooltip',
-	                positionTop: '20px',
 	                overlay: tootipContent,
 	                placement: 'top' },
 	            _react2["default"].createElement(
@@ -14111,7 +14110,7 @@
 	
 	var _Modal2 = _interopRequireDefault(_Modal);
 	
-	var _confirm = __webpack_require__(264);
+	var _confirm = __webpack_require__(265);
 	
 	var _confirm2 = _interopRequireDefault(_confirm);
 	
@@ -14257,15 +14256,15 @@
 	
 	var _ModalDialog2 = _interopRequireDefault(_ModalDialog);
 	
-	var _ModalFooter = __webpack_require__(261);
+	var _ModalFooter = __webpack_require__(262);
 	
 	var _ModalFooter2 = _interopRequireDefault(_ModalFooter);
 	
-	var _ModalHeader = __webpack_require__(262);
+	var _ModalHeader = __webpack_require__(263);
 	
 	var _ModalHeader2 = _interopRequireDefault(_ModalHeader);
 	
-	var _ModalTitle = __webpack_require__(263);
+	var _ModalTitle = __webpack_require__(264);
 	
 	var _ModalTitle2 = _interopRequireDefault(_ModalTitle);
 	
@@ -16147,7 +16146,7 @@
 	
 	var _beeDnd2 = _interopRequireDefault(_beeDnd);
 	
-	var _reResizable = __webpack_require__(260);
+	var _reResizable = __webpack_require__(261);
 	
 	var _reResizable2 = _interopRequireDefault(_reResizable);
 	
@@ -32704,9 +32703,9 @@
 
 	module.exports = __webpack_require__(250).default;
 	module.exports.utils = __webpack_require__(251);
-	module.exports.Responsive = __webpack_require__(257).default;
-	module.exports.Responsive.utils = __webpack_require__(258);
-	module.exports.WidthProvider = __webpack_require__(259).default;
+	module.exports.Responsive = __webpack_require__(258).default;
+	module.exports.Responsive.utils = __webpack_require__(259);
+	module.exports.WidthProvider = __webpack_require__(260).default;
 
 
 /***/ }),
@@ -34416,7 +34415,7 @@
 	};
 	
 	module.exports.Resizable = __webpack_require__(254).default;
-	module.exports.ResizableBox = __webpack_require__(256).default;
+	module.exports.ResizableBox = __webpack_require__(257).default;
 
 
 /***/ }),
@@ -34430,11 +34429,11 @@
 	
 	var _react = _interopRequireDefault(__webpack_require__(1));
 	
-	var _propTypes = _interopRequireDefault(__webpack_require__(6));
-	
 	var _reactDraggable = __webpack_require__(243);
 	
 	var _utils = __webpack_require__(255);
+	
+	var _propTypes = __webpack_require__(256);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -34442,7 +34441,7 @@
 	
 	function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 	
-	function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+	function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 	
 	function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 	
@@ -34452,9 +34451,7 @@
 	
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
-	var Resizable =
-	/*#__PURE__*/
-	function (_React$Component) {
+	var Resizable = /*#__PURE__*/function (_React$Component) {
 	  _inheritsLoose(Resizable, _React$Component);
 	
 	  function Resizable() {
@@ -34466,31 +34463,42 @@
 	
 	    _this = _React$Component.call.apply(_React$Component, [this].concat(args)) || this;
 	
-	    _defineProperty(_assertThisInitialized(_this), "state", {
-	      slackW: 0,
-	      slackH: 0
-	    });
+	    _defineProperty(_assertThisInitialized(_this), "state", undefined);
+	
+	    _defineProperty(_assertThisInitialized(_this), "lastHandleRect", null);
+	
+	    _defineProperty(_assertThisInitialized(_this), "slack", null);
 	
 	    return _this;
 	  }
 	
 	  var _proto = Resizable.prototype;
 	
+	  _proto.componentWillUnmount = function componentWillUnmount() {
+	    this.resetData();
+	  };
+	
 	  _proto.lockAspectRatio = function lockAspectRatio(width, height, aspectRatio) {
 	    height = width / aspectRatio;
 	    width = height * aspectRatio;
 	    return [width, height];
-	  } // If you do this, be careful of constraints
+	  };
+	
+	  _proto.resetData = function resetData() {
+	    this.lastHandleRect = this.slack = null;
+	  } // Clamp width and height within provided constraints
 	  ;
 	
 	  _proto.runConstraints = function runConstraints(width, height) {
 	    var _ref = [this.props.minConstraints, this.props.maxConstraints],
 	        min = _ref[0],
 	        max = _ref[1];
-	    if (!min && !max) return [width, height]; // Fit width & height to aspect ratio
+	    if (!min && !max) return [width, height]; // If constraining to min and max, we need to also fit width and height to aspect ratio.
 	
 	    if (this.props.lockAspectRatio) {
-	      if (height === this.props.height) {
+	      var resizingHorizontally = height === this.props.height;
+	
+	      if (resizingHorizontally) {
 	        var ratio = this.props.width / this.props.height;
 	        height = width / ratio;
 	        width = height * ratio;
@@ -34509,9 +34517,10 @@
 	    // we start removing slack, the element won't react to it right away until it's been
 	    // completely removed.
 	
-	    var _this$state = this.state,
-	        slackW = _this$state.slackW,
-	        slackH = _this$state.slackH;
+	    var _ref2 = this.slack || [0, 0],
+	        slackW = _ref2[0],
+	        slackH = _ref2[1];
+	
 	    width += slackW;
 	    height += slackH;
 	
@@ -34523,19 +34532,10 @@
 	    if (max) {
 	      width = Math.min(max[0], width);
 	      height = Math.min(max[1], height);
-	    } // If the numbers changed, we must have introduced some slack. Record it for the next iteration.
+	    } // If the width or height changed, we must have introduced some slack. Record it for the next iteration.
 	
 	
-	    slackW += oldW - width;
-	    slackH += oldH - height;
-	
-	    if (slackW !== this.state.slackW || slackH !== this.state.slackH) {
-	      this.setState({
-	        slackW: slackW,
-	        slackH: slackH
-	      });
-	    }
-	
+	    this.slack = [slackW + (oldW - width), slackH + (oldH - height)];
 	    return [width, height];
 	  }
 	  /**
@@ -34549,94 +34549,105 @@
 	  _proto.resizeHandler = function resizeHandler(handlerName, axis) {
 	    var _this2 = this;
 	
-	    return function (e, _ref2) {
-	      var node = _ref2.node,
-	          deltaX = _ref2.deltaX,
-	          deltaY = _ref2.deltaY;
-	      deltaX /= _this2.props.transformScale;
-	      deltaY /= _this2.props.transformScale; // Axis restrictions
+	    return function (e, _ref3) {
+	      var node = _ref3.node,
+	          deltaX = _ref3.deltaX,
+	          deltaY = _ref3.deltaY;
+	      // Reset data in case it was left over somehow (should not be possible)
+	      if (handlerName === 'onResizeStart') _this2.resetData(); // Axis restrictions
 	
-	      var canDragX = (_this2.props.axis === 'both' || _this2.props.axis === 'x') && ['n', 's'].indexOf(axis) === -1;
-	      var canDragY = (_this2.props.axis === 'both' || _this2.props.axis === 'y') && ['e', 'w'].indexOf(axis) === -1; // reverse delta if using top or left drag handles
+	      var canDragX = (_this2.props.axis === 'both' || _this2.props.axis === 'x') && axis !== 'n' && axis !== 's';
+	      var canDragY = (_this2.props.axis === 'both' || _this2.props.axis === 'y') && axis !== 'e' && axis !== 'w'; // No dragging possible.
 	
-	      if (canDragX && axis[axis.length - 1] === 'w') {
-	        deltaX = -deltaX;
-	      }
+	      if (!canDragX && !canDragY) return; // Decompose axis for later use
 	
-	      if (canDragY && axis[0] === 'n') {
-	        deltaY = -deltaY;
-	      } // Update w/h
+	      var axisV = axis[0];
+	      var axisH = axis[axis.length - 1]; // intentionally not axis[1], so that this catches axis === 'w' for example
+	      // Track the element being dragged to account for changes in position.
+	      // If a handle's position is changed between callbacks, we need to factor this in to the next callback.
+	      // Failure to do so will cause the element to "skip" when resized upwards or leftwards.
+	
+	      var handleRect = node.getBoundingClientRect();
+	
+	      if (_this2.lastHandleRect != null) {
+	        // If the handle has repositioned on either axis since last render,
+	        // we need to increase our callback values by this much.
+	        // Only checking 'n', 'w' since resizing by 's', 'w' won't affect the overall position on page,
+	        if (axisH === 'w') {
+	          var deltaLeftSinceLast = handleRect.left - _this2.lastHandleRect.left;
+	          deltaX += deltaLeftSinceLast;
+	        }
+	
+	        if (axisV === 'n') {
+	          var deltaTopSinceLast = handleRect.top - _this2.lastHandleRect.top;
+	          deltaY += deltaTopSinceLast;
+	        }
+	      } // Storage of last rect so we know how much it has really moved.
 	
 	
-	      var width = _this2.props.width + (canDragX ? deltaX : 0);
-	      var height = _this2.props.height + (canDragY ? deltaY : 0); // Early return if no change
+	      _this2.lastHandleRect = handleRect; // Reverse delta if using top or left drag handles.
 	
-	      var widthChanged = width !== _this2.props.width,
-	          heightChanged = height !== _this2.props.height;
-	      if (handlerName === 'onResize' && !widthChanged && !heightChanged) return;
+	      if (axisH === 'w') deltaX = -deltaX;
+	      if (axisV === 'n') deltaY = -deltaY; // Update w/h by the deltas. Also factor in transformScale.
+	
+	      var width = _this2.props.width + (canDragX ? deltaX / _this2.props.transformScale : 0);
+	      var height = _this2.props.height + (canDragY ? deltaY / _this2.props.transformScale : 0); // Run user-provided constraints.
 	
 	      var _this2$runConstraints = _this2.runConstraints(width, height);
 	
 	      width = _this2$runConstraints[0];
 	      height = _this2$runConstraints[1];
-	      // Set the appropriate state for this handler.
-	      var newState = {};
+	      var dimensionsChanged = width !== _this2.props.width || height !== _this2.props.height; // Call user-supplied callback if present.
 	
-	      if (handlerName === 'onResizeStart') {// nothing
-	      } else if (handlerName === 'onResizeStop') {
-	        newState.slackW = newState.slackH = 0;
-	      } else {
-	        // Early return if no change after constraints
-	        if (width === _this2.props.width && height === _this2.props.height) return;
-	      }
+	      var cb = typeof _this2.props[handlerName] === 'function' ? _this2.props[handlerName] : null; // Don't call 'onResize' if dimensions haven't changed.
 	
-	      var hasCb = typeof _this2.props[handlerName] === 'function';
+	      var shouldSkipCb = handlerName === 'onResize' && !dimensionsChanged;
 	
-	      if (hasCb) {
-	        // $FlowIgnore isn't refining this correctly to SyntheticEvent
+	      if (cb && !shouldSkipCb) {
 	        if (typeof e.persist === 'function') e.persist();
-	
-	        _this2.setState(newState, function () {
-	          return _this2.props[handlerName](e, {
-	            node: node,
-	            size: {
-	              width: width,
-	              height: height
-	            },
-	            handle: axis
-	          });
+	        cb(e, {
+	          node: node,
+	          size: {
+	            width: width,
+	            height: height
+	          },
+	          handle: axis
 	        });
-	      } else {
-	        _this2.setState(newState);
-	      }
+	      } // Reset internal data
+	
+	
+	      if (handlerName === 'onResizeStop') _this2.resetData();
 	    };
 	  };
 	
-	  _proto.renderResizeHandle = function renderResizeHandle(resizeHandle) {
+	  _proto.renderResizeHandle = function renderResizeHandle(resizeHandleAxis) {
 	    var handle = this.props.handle;
 	
 	    if (handle) {
 	      if (typeof handle === 'function') {
-	        return handle(resizeHandle);
+	        return handle(resizeHandleAxis);
 	      }
 	
 	      return handle;
 	    }
 	
-	    return _react.default.createElement("span", {
-	      className: "react-resizable-handle react-resizable-handle-" + resizeHandle
+	    return /*#__PURE__*/_react.default.createElement("span", {
+	      className: "react-resizable-handle react-resizable-handle-" + resizeHandleAxis
 	    });
 	  };
 	
 	  _proto.render = function render() {
 	    var _this3 = this;
 	
+	    // Pass along only props not meant for the `<Resizable>`.`
 	    // eslint-disable-next-line no-unused-vars
 	    var _this$props = this.props,
 	        children = _this$props.children,
+	        className = _this$props.className,
 	        draggableOpts = _this$props.draggableOpts,
 	        width = _this$props.width,
 	        height = _this$props.height,
+	        handle = _this$props.handle,
 	        handleSize = _this$props.handleSize,
 	        lockAspectRatio = _this$props.lockAspectRatio,
 	        axis = _this$props.axis,
@@ -34647,23 +34658,22 @@
 	        onResizeStart = _this$props.onResizeStart,
 	        resizeHandles = _this$props.resizeHandles,
 	        transformScale = _this$props.transformScale,
-	        p = _objectWithoutPropertiesLoose(_this$props, ["children", "draggableOpts", "width", "height", "handleSize", "lockAspectRatio", "axis", "minConstraints", "maxConstraints", "onResize", "onResizeStop", "onResizeStart", "resizeHandles", "transformScale"]);
-	
-	    var className = p.className ? p.className + " react-resizable" : 'react-resizable'; // What we're doing here is getting the child of this element, and cloning it with this element's props.
+	        p = _objectWithoutPropertiesLoose(_this$props, ["children", "className", "draggableOpts", "width", "height", "handle", "handleSize", "lockAspectRatio", "axis", "minConstraints", "maxConstraints", "onResize", "onResizeStop", "onResizeStart", "resizeHandles", "transformScale"]); // What we're doing here is getting the child of this element, and cloning it with this element's props.
 	    // We are then defining its children as:
 	    // Its original children (resizable's child's children), and
 	    // One or more draggable handles.
 	
-	    return (0, _utils.cloneElement)(children, _objectSpread({}, p, {
-	      className: className,
-	      children: [children.props.children, resizeHandles.map(function (h) {
-	        return _react.default.createElement(_reactDraggable.DraggableCore, _extends({}, draggableOpts, {
-	          key: "resizableHandle-" + h,
-	          onStop: _this3.resizeHandler('onResizeStop', h),
-	          onStart: _this3.resizeHandler('onResizeStart', h),
-	          onDrag: _this3.resizeHandler('onResize', h)
-	        }), _this3.renderResizeHandle(h));
-	      })]
+	
+	    return (0, _utils.cloneElement)(children, _objectSpread(_objectSpread({}, p), {}, {
+	      className: (className ? className + " " : '') + "react-resizable",
+	      children: [].concat(children.props.children, resizeHandles.map(function (handleAxis) {
+	        return /*#__PURE__*/_react.default.createElement(_reactDraggable.DraggableCore, _extends({}, draggableOpts, {
+	          key: "resizableHandle-" + handleAxis,
+	          onStop: _this3.resizeHandler('onResizeStop', handleAxis),
+	          onStart: _this3.resizeHandler('onResizeStart', handleAxis),
+	          onDrag: _this3.resizeHandler('onResize', handleAxis)
+	        }), _this3.renderResizeHandle(handleAxis));
+	      }))
 	    }));
 	  };
 	
@@ -34672,52 +34682,7 @@
 	
 	exports.default = Resizable;
 	
-	_defineProperty(Resizable, "propTypes", {
-	  //
-	  // Required Props
-	  //
-	  // Require that one and only one child be present.
-	  children: _propTypes.default.element.isRequired,
-	  // Initial w/h
-	  width: _propTypes.default.number.isRequired,
-	  height: _propTypes.default.number.isRequired,
-	  //
-	  // Optional props
-	  //
-	  // Custom resize handle
-	  handle: _propTypes.default.element,
-	  // If you change this, be sure to update your css
-	  handleSize: _propTypes.default.array,
-	  // Defines which resize handles should be rendered (default: 'se')
-	  // Allows for any combination of:
-	  // 's' - South handle (bottom-center)
-	  // 'w' - West handle (left-center)
-	  // 'e' - East handle (right-center)
-	  // 'n' - North handle (top-center)
-	  // 'sw' - Southwest handle (bottom-left)
-	  // 'nw' - Northwest handle (top-left)
-	  // 'se' - Southeast handle (bottom-right)
-	  // 'ne' - Northeast handle (top-center)
-	  resizeHandles: _propTypes.default.arrayOf(_propTypes.default.oneOf(['s', 'w', 'e', 'n', 'sw', 'nw', 'se', 'ne'])),
-	  transformScale: _propTypes.default.number,
-	  // If true, will only allow width/height to move in lockstep
-	  lockAspectRatio: _propTypes.default.bool,
-	  // Restricts resizing to a particular axis (default: 'both')
-	  // 'both' - allows resizing by width or height
-	  // 'x' - only allows the width to be changed
-	  // 'y' - only allows the height to be changed
-	  // 'none' - disables resizing altogether
-	  axis: _propTypes.default.oneOf(['both', 'x', 'y', 'none']),
-	  // Min/max size
-	  minConstraints: _propTypes.default.arrayOf(_propTypes.default.number),
-	  maxConstraints: _propTypes.default.arrayOf(_propTypes.default.number),
-	  // Callbacks
-	  onResizeStop: _propTypes.default.func,
-	  onResizeStart: _propTypes.default.func,
-	  onResize: _propTypes.default.func,
-	  // These will be passed wholesale to react-draggable's DraggableCore
-	  draggableOpts: _propTypes.default.object
-	});
+	_defineProperty(Resizable, "propTypes", _propTypes.resizableProps);
 	
 	_defineProperty(Resizable, "defaultProps", {
 	  handleSize: [20, 20],
@@ -34744,21 +34709,21 @@
 	
 	function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 	
-	function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+	function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 	
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
 	// React.addons.cloneWithProps look-alike that merges style & className.
 	function cloneElement(element, props) {
 	  if (props.style && element.props.style) {
-	    props.style = _objectSpread({}, element.props.style, {}, props.style);
+	    props.style = _objectSpread(_objectSpread({}, element.props.style), props.style);
 	  }
 	
 	  if (props.className && element.props.className) {
 	    props.className = element.props.className + " " + props.className;
 	  }
 	
-	  return _react.default.cloneElement(element, props);
+	  return /*#__PURE__*/_react.default.cloneElement(element, props);
 	}
 
 /***/ }),
@@ -34768,17 +34733,144 @@
 	"use strict";
 	
 	exports.__esModule = true;
+	exports.resizableProps = void 0;
+	
+	var _propTypes = _interopRequireDefault(__webpack_require__(6));
+	
+	var _reactDraggable = __webpack_require__(243);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var resizableProps = {
+	  /*
+	  * Restricts resizing to a particular axis (default: 'both')
+	  * 'both' - allows resizing by width or height
+	  * 'x' - only allows the width to be changed
+	  * 'y' - only allows the height to be changed
+	  * 'none' - disables resizing altogether
+	  * */
+	  axis: _propTypes.default.oneOf(['both', 'x', 'y', 'none']),
+	  className: _propTypes.default.string,
+	
+	  /*
+	  * Require that one and only one child be present.
+	  * */
+	  children: _propTypes.default.element.isRequired,
+	
+	  /*
+	  * These will be passed wholesale to react-draggable's DraggableCore
+	  * */
+	  draggableOpts: _propTypes.default.shape({
+	    allowAnyClick: _propTypes.default.bool,
+	    cancel: _propTypes.default.string,
+	    children: _propTypes.default.node,
+	    disabled: _propTypes.default.bool,
+	    enableUserSelectHack: _propTypes.default.bool,
+	    offsetParent: _propTypes.default.node,
+	    grid: _propTypes.default.arrayOf(_propTypes.default.number),
+	    handle: _propTypes.default.string,
+	    nodeRef: _propTypes.default.object,
+	    onStart: _propTypes.default.func,
+	    onDrag: _propTypes.default.func,
+	    onStop: _propTypes.default.func,
+	    onMouseDown: _propTypes.default.func,
+	    scale: _propTypes.default.number
+	  }),
+	
+	  /*
+	  * Initial height
+	  * */
+	  height: _propTypes.default.number.isRequired,
+	
+	  /*
+	  * Customize cursor resize handle
+	  * */
+	  handle: _propTypes.default.oneOfType([_propTypes.default.node, _propTypes.default.func]),
+	
+	  /*
+	  * If you change this, be sure to update your css
+	  * */
+	  handleSize: _propTypes.default.arrayOf(_propTypes.default.number),
+	  lockAspectRatio: _propTypes.default.bool,
+	
+	  /*
+	  * Max X & Y measure
+	  * */
+	  maxConstraints: _propTypes.default.arrayOf(_propTypes.default.number),
+	
+	  /*
+	  * Min X & Y measure
+	  * */
+	  minConstraints: _propTypes.default.arrayOf(_propTypes.default.number),
+	
+	  /*
+	  * Called on stop resize event
+	  * */
+	  onResizeStop: _propTypes.default.func,
+	
+	  /*
+	  * Called on start resize event
+	  * */
+	  onResizeStart: _propTypes.default.func,
+	
+	  /*
+	  * Called on resize event
+	  * */
+	  onResize: _propTypes.default.func,
+	
+	  /*
+	  * Defines which resize handles should be rendered (default: 'se')
+	  * 's' - South handle (bottom-center)
+	  * 'w' - West handle (left-center)
+	  * 'e' - East handle (right-center)
+	  * 'n' - North handle (top-center)
+	  * 'sw' - Southwest handle (bottom-left)
+	  * 'nw' - Northwest handle (top-left)
+	  * 'se' - Southeast handle (bottom-right)
+	  * 'ne' - Northeast handle (top-center)
+	  * */
+	  resizeHandles: _propTypes.default.arrayOf(_propTypes.default.oneOf(['s', 'w', 'e', 'n', 'sw', 'nw', 'se', 'ne'])),
+	
+	  /*
+	  * If `transform: scale(n)` is set on the parent, this should be set to `n`.
+	  * */
+	  transformScale: _propTypes.default.number,
+	
+	  /*
+	   * Initial width
+	   */
+	  width: _propTypes.default.number.isRequired
+	};
+	exports.resizableProps = resizableProps;
+
+/***/ }),
+/* 257 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	exports.__esModule = true;
 	exports.default = void 0;
 	
-	var _react = _interopRequireDefault(__webpack_require__(1));
+	var React = _interopRequireWildcard(__webpack_require__(1));
 	
 	var _propTypes = _interopRequireDefault(__webpack_require__(6));
 	
 	var _Resizable = _interopRequireDefault(__webpack_require__(254));
 	
+	var _propTypes2 = __webpack_require__(256);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+	
 	function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+	
+	function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+	
+	function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 	
 	function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 	
@@ -34788,10 +34880,7 @@
 	
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
-	// An example use of Resizable.
-	var ResizableBox =
-	/*#__PURE__*/
-	function (_React$Component) {
+	var ResizableBox = /*#__PURE__*/function (_React$Component) {
 	  _inheritsLoose(ResizableBox, _React$Component);
 	
 	  function ResizableBox() {
@@ -34812,8 +34901,6 @@
 	
 	    _defineProperty(_assertThisInitialized(_this), "onResize", function (e, data) {
 	      var size = data.size;
-	      var width = size.width,
-	          height = size.height;
 	
 	      if (_this.props.onResize) {
 	        e.persist && e.persist();
@@ -34863,46 +34950,44 @@
 	        width = _this$props.width,
 	        height = _this$props.height,
 	        resizeHandles = _this$props.resizeHandles,
-	        props = _objectWithoutPropertiesLoose(_this$props, ["handle", "handleSize", "onResize", "onResizeStart", "onResizeStop", "draggableOpts", "minConstraints", "maxConstraints", "lockAspectRatio", "axis", "width", "height", "resizeHandles"]);
+	        style = _this$props.style,
+	        transformScale = _this$props.transformScale,
+	        props = _objectWithoutPropertiesLoose(_this$props, ["handle", "handleSize", "onResize", "onResizeStart", "onResizeStop", "draggableOpts", "minConstraints", "maxConstraints", "lockAspectRatio", "axis", "width", "height", "resizeHandles", "style", "transformScale"]);
 	
-	    return _react.default.createElement(_Resizable.default, {
+	    return /*#__PURE__*/React.createElement(_Resizable.default, {
+	      axis: axis,
+	      draggableOpts: draggableOpts,
 	      handle: handle,
 	      handleSize: handleSize,
-	      width: this.state.width,
 	      height: this.state.height,
+	      lockAspectRatio: lockAspectRatio,
+	      maxConstraints: maxConstraints,
+	      minConstraints: minConstraints,
 	      onResizeStart: onResizeStart,
 	      onResize: this.onResize,
 	      onResizeStop: onResizeStop,
-	      draggableOpts: draggableOpts,
-	      minConstraints: minConstraints,
-	      maxConstraints: maxConstraints,
-	      lockAspectRatio: lockAspectRatio,
-	      axis: axis,
-	      resizeHandles: resizeHandles
-	    }, _react.default.createElement("div", _extends({
-	      style: {
+	      resizeHandles: resizeHandles,
+	      transformScale: transformScale,
+	      width: this.state.width
+	    }, /*#__PURE__*/React.createElement("div", _extends({}, props, {
+	      style: _objectSpread(_objectSpread({}, style), {}, {
 	        width: this.state.width + 'px',
 	        height: this.state.height + 'px'
-	      }
-	    }, props)));
+	      })
+	    })));
 	  };
 	
 	  return ResizableBox;
-	}(_react.default.Component);
+	}(React.Component);
 	
 	exports.default = ResizableBox;
 	
-	_defineProperty(ResizableBox, "propTypes", {
-	  height: _propTypes.default.number,
-	  width: _propTypes.default.number
-	});
-	
-	_defineProperty(ResizableBox, "defaultProps", {
-	  handleSize: [20, 20]
-	});
+	_defineProperty(ResizableBox, "propTypes", _objectSpread(_objectSpread({}, _propTypes2.resizableProps), {}, {
+	  children: _propTypes.default.element
+	}));
 
 /***/ }),
-/* 257 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -34925,7 +35010,7 @@
 	
 	var _utils = __webpack_require__(251);
 	
-	var _responsiveUtils = __webpack_require__(258);
+	var _responsiveUtils = __webpack_require__(259);
 	
 	var _ReactGridLayout = __webpack_require__(250);
 	
@@ -35134,7 +35219,7 @@
 	exports.default = ResponsiveReactGridLayout;
 
 /***/ }),
-/* 258 */
+/* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -35226,7 +35311,7 @@
 	}
 
 /***/ }),
-/* 259 */
+/* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -35325,7 +35410,7 @@
 	}
 
 /***/ }),
-/* 260 */
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36073,7 +36158,7 @@
 
 
 /***/ }),
-/* 261 */
+/* 262 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36149,7 +36234,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 262 */
+/* 263 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36280,7 +36365,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 263 */
+/* 264 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36357,7 +36442,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 264 */
+/* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36386,11 +36471,11 @@
 	
 	var _Modal2 = _interopRequireDefault(_Modal);
 	
-	var _beeButton = __webpack_require__(265);
+	var _beeButton = __webpack_require__(266);
 	
 	var _beeButton2 = _interopRequireDefault(_beeButton);
 	
-	var _ConfirmModal = __webpack_require__(267);
+	var _ConfirmModal = __webpack_require__(268);
 	
 	var _ConfirmModal2 = _interopRequireDefault(_ConfirmModal);
 	
@@ -36607,7 +36692,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 265 */
+/* 266 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36616,7 +36701,7 @@
 	  value: true
 	});
 	
-	var _Button = __webpack_require__(266);
+	var _Button = __webpack_require__(267);
 	
 	var _Button2 = _interopRequireDefault(_Button);
 	
@@ -36626,7 +36711,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 266 */
+/* 267 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36801,7 +36886,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 267 */
+/* 268 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36818,7 +36903,7 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _beeButton = __webpack_require__(265);
+	var _beeButton = __webpack_require__(266);
 	
 	var _beeButton2 = _interopRequireDefault(_beeButton);
 	
@@ -36851,7 +36936,7 @@
 	};
 	
 	var defaultProps = {
-	    title: "提示信息",
+	    // title: "提示信息",
 	    onOk: function onOk() {},
 	    onCancel: function onCancel() {},
 	    content: "确认要删除吗 ?",
@@ -36904,7 +36989,7 @@
 	                    resizable: true,
 	                    width: 400
 	                },
-	                _react2["default"].createElement(
+	                title ? _react2["default"].createElement(
 	                    _Modal2["default"].Header,
 	                    { closeButton: true, className: 'ac-confirm-header' },
 	                    _react2["default"].createElement(
@@ -36912,7 +36997,7 @@
 	                        { className: 'ac-confirm-header-title' },
 	                        title
 	                    )
-	                ),
+	                ) : null,
 	                _react2["default"].createElement(
 	                    _Modal2["default"].Body,
 	                    { className: 'ac-confirm-body' },
@@ -36937,6 +37022,16 @@
 	                    { className: 'ac-confirm-footer' },
 	                    _react2["default"].createElement(
 	                        _beeButton2["default"],
+	                        { colors: 'secondary', onClick: function onClick() {
+	                                _this2.setState({
+	                                    show: false
+	                                });
+	                                onCancel();
+	                            } },
+	                        locale.cancel
+	                    ),
+	                    _react2["default"].createElement(
+	                        _beeButton2["default"],
 	                        { colors: 'primary', onClick: function onClick() {
 	                                _this2.setState({
 	                                    show: false
@@ -36944,16 +37039,6 @@
 	                                onOk();
 	                            } },
 	                        locale.ok
-	                    ),
-	                    _react2["default"].createElement(
-	                        _beeButton2["default"],
-	                        { bordered: true, onClick: function onClick() {
-	                                _this2.setState({
-	                                    show: false
-	                                });
-	                                onCancel();
-	                            } },
-	                        locale.cancel
 	                    )
 	                )
 	            )
@@ -36969,7 +37054,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 268 */
+/* 269 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36978,7 +37063,7 @@
 	  value: true
 	});
 	
-	var _FormControl = __webpack_require__(269);
+	var _FormControl = __webpack_require__(270);
 	
 	var _FormControl2 = _interopRequireDefault(_FormControl);
 	
@@ -36988,7 +37073,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 269 */
+/* 270 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37279,7 +37364,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 270 */
+/* 271 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37288,11 +37373,11 @@
 	  value: true
 	});
 	
-	var _InputNumber = __webpack_require__(271);
+	var _InputNumber = __webpack_require__(272);
 	
 	var _InputNumber2 = _interopRequireDefault(_InputNumber);
 	
-	var _InputNumberGroup = __webpack_require__(278);
+	var _InputNumberGroup = __webpack_require__(279);
 	
 	var _InputNumberGroup2 = _interopRequireDefault(_InputNumberGroup);
 	
@@ -37304,7 +37389,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 271 */
+/* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37323,11 +37408,11 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _beeInputGroup = __webpack_require__(272);
+	var _beeInputGroup = __webpack_require__(273);
 	
 	var _beeInputGroup2 = _interopRequireDefault(_beeInputGroup);
 	
-	var _beeFormControl = __webpack_require__(268);
+	var _beeFormControl = __webpack_require__(269);
 	
 	var _beeFormControl2 = _interopRequireDefault(_beeFormControl);
 	
@@ -37339,7 +37424,7 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _i18n = __webpack_require__(277);
+	var _i18n = __webpack_require__(278);
 	
 	var _i18n2 = _interopRequireDefault(_i18n);
 	
@@ -37398,7 +37483,7 @@
 	
 	/**
 	 * 千分符
-	 * @param {要转换的数据} num 
+	 * @param {要转换的数据} num
 	 */
 	function toThousands(number) {
 	    if (number === '') return '';
@@ -37457,6 +37542,8 @@
 	        var data = _this.judgeValue(props);
 	        _this.state = {
 	            value: data.value,
+	            max: Number.MAX_SAFE_INTEGER || Math.pow(2, 53) - 1,
+	            min: Number.MIN_SAFE_INTEGER || (Math.pow(2, 53) - 1) * -1,
 	            minusDisabled: data.minusDisabled,
 	            plusDisabled: data.plusDisabled,
 	            showValue: toThousands(data.value),
@@ -37478,8 +37565,8 @@
 	
 	    /**
 	     * 校验value
-	     * @param {*} props 
-	     * @param {原来的值} oldValue 
+	     * @param {*} props
+	     * @param {原来的值} oldValue
 	     */
 	
 	
@@ -37549,8 +37636,6 @@
 	        var _props = this.props,
 	            toThousands = _props.toThousands,
 	            minusRight = _props.minusRight,
-	            max = _props.max,
-	            min = _props.min,
 	            step = _props.step,
 	            disabled = _props.disabled,
 	            clsPrefix = _props.clsPrefix,
@@ -37565,7 +37650,7 @@
 	            precision = _props.precision,
 	            toNumber = _props.toNumber,
 	            hideActionButton = _props.hideActionButton,
-	            others = _objectWithoutProperties(_props, ['toThousands', 'minusRight', 'max', 'min', 'step', 'disabled', 'clsPrefix', 'className', 'delay', 'onBlur', 'onFocus', 'iconStyle', 'autoWidth', 'onChange', 'format', 'precision', 'toNumber', 'hideActionButton']);
+	            others = _objectWithoutProperties(_props, ['toThousands', 'minusRight', 'step', 'disabled', 'clsPrefix', 'className', 'delay', 'onBlur', 'onFocus', 'iconStyle', 'autoWidth', 'onChange', 'format', 'precision', 'toNumber', 'hideActionButton']);
 	
 	        var classes = (_classes = {}, _defineProperty(_classes, clsPrefix + '-auto', autoWidth), _defineProperty(_classes, '' + clsPrefix, true), _defineProperty(_classes, clsPrefix + '-lg', others.size === "lg"), _defineProperty(_classes, clsPrefix + '-sm', others.size === "sm"), _classes);
 	
@@ -37694,6 +37779,8 @@
 	            onChange = props.onChange,
 	            displayCheckPrompt = props.displayCheckPrompt;
 	
+	        if (!max && _this3.state) max = _this3.state.max;
+	        if (!min && _this3.state) min = _this3.state.min;
 	        if (props.minusRight) {
 	            value = value.toString();
 	            if (value.indexOf('-') != -1) {
@@ -37716,7 +37803,7 @@
 	            }
 	        } //lse if (min&&(value!='')) {//mdd中提出bug
 	        //currentValue = min;
-	        //} 
+	        //}
 	        else if (value === '0' || value === 0) {
 	                currentValue = 0;
 	            } else {
@@ -37790,7 +37877,7 @@
 	        var endIndex = preIndex + fixed;
 	        var precValue = value.substr(preIndex, endIndex) + "0000000000";
 	        if (type) {
-	            return Number(value).toFixed(fixed);
+	            return (Number(value) + 1e-14).toFixed(fixed);
 	        }
 	        return value.split(".")[0] + "." + precValue.substr(0, fixed);
 	    };
@@ -37895,6 +37982,8 @@
 	            minusRight = _props4.minusRight,
 	            round = _props4.round;
 	
+	        if (!max) max = _this3.state.max;
+	        if (!min) min = _this3.state.min;
 	        var local = (0, _tool.getComponentLocale)(_this3.props, _this3.context, 'InputNumber', function () {
 	            return _i18n2['default'];
 	        });
@@ -37907,7 +37996,7 @@
 	            onBlur && onBlur(v, e);
 	            return;
 	        }
-	        // let value = this.unThousands(v); 
+	        // let value = this.unThousands(v);
 	        var value = _this3.numToFixed(v, precision, round);
 	        if (minusRight) {
 	            if (value.indexOf('-') != -1) {
@@ -37956,6 +38045,8 @@
 	            min = _props5.min,
 	            step = _props5.step;
 	
+	        if (!max) max = _this3.state.max;
+	        if (!min) min = _this3.state.min;
 	        if (max && (value >= max || Number(value) + Number(step) > max)) {
 	            _this3.setState({
 	                plusDisabled: true
@@ -37984,6 +38075,8 @@
 	            onChange = _props6.onChange,
 	            toNumber = _props6.toNumber;
 	
+	        if (!max) max = _this3.state.max;
+	        if (!min) min = _this3.state.min;
 	        value = value === '-' ? 0 : value;
 	        if (typeof min === "undefined") {
 	            value = _this3.detail(value, step, 'reduce');
@@ -38024,6 +38117,8 @@
 	            onChange = _props7.onChange,
 	            toNumber = _props7.toNumber;
 	
+	        if (!max) max = _this3.state.max;
+	        if (!min) min = _this3.state.min;
 	        value = value === '-' ? 0 : value;
 	        if (typeof max === "undefined") {
 	            value = _this3.detail(value, step, 'add');
@@ -38145,7 +38240,7 @@
 	            after = value.substring(len - 1, len);
 	        before = before === "-" ? before : "";
 	        after = after === "-" ? after : "";
-	        //是科学计数法，不replace - 
+	        //是科学计数法，不replace -
 	        if (before) value = value.substring(1, len);
 	        if (after) value = value.substring(0, len - 1);
 	        // value = value.replace("-",'');
@@ -38192,15 +38287,15 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 272 */
+/* 273 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	module.exports = __webpack_require__(273);
+	module.exports = __webpack_require__(274);
 
 /***/ }),
-/* 273 */
+/* 274 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38219,11 +38314,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _beeInputGroupAddon = __webpack_require__(274);
+	var _beeInputGroupAddon = __webpack_require__(275);
 	
 	var _beeInputGroupAddon2 = _interopRequireDefault(_beeInputGroupAddon);
 	
-	var _InputGroupButton = __webpack_require__(276);
+	var _InputGroupButton = __webpack_require__(277);
 	
 	var _InputGroupButton2 = _interopRequireDefault(_InputGroupButton);
 	
@@ -38280,7 +38375,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 274 */
+/* 275 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38289,7 +38384,7 @@
 	  value: true
 	});
 	
-	var _InputGroupAddon = __webpack_require__(275);
+	var _InputGroupAddon = __webpack_require__(276);
 	
 	var _InputGroupAddon2 = _interopRequireDefault(_InputGroupAddon);
 	
@@ -38299,7 +38394,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 275 */
+/* 276 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38362,7 +38457,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 276 */
+/* 277 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38425,7 +38520,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 277 */
+/* 278 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -38445,7 +38540,7 @@
 	};
 
 /***/ }),
-/* 278 */
+/* 279 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38464,7 +38559,7 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _InputNumber = __webpack_require__(271);
+	var _InputNumber = __webpack_require__(272);
 	
 	var _InputNumber2 = _interopRequireDefault(_InputNumber);
 	
@@ -38636,7 +38731,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 279 */
+/* 280 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38649,7 +38744,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _src = __webpack_require__(270);
+	var _src = __webpack_require__(271);
 	
 	var _src2 = _interopRequireDefault(_src);
 	
@@ -38715,7 +38810,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 280 */
+/* 281 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38728,7 +38823,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _src = __webpack_require__(270);
+	var _src = __webpack_require__(271);
 	
 	var _src2 = _interopRequireDefault(_src);
 	
@@ -38784,7 +38879,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 281 */
+/* 282 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38797,7 +38892,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _src = __webpack_require__(270);
+	var _src = __webpack_require__(271);
 	
 	var _src2 = _interopRequireDefault(_src);
 	
@@ -38854,7 +38949,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 282 */
+/* 283 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38867,7 +38962,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _src = __webpack_require__(270);
+	var _src = __webpack_require__(271);
 	
 	var _src2 = _interopRequireDefault(_src);
 	
@@ -38921,7 +39016,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 283 */
+/* 284 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38934,7 +39029,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _src = __webpack_require__(270);
+	var _src = __webpack_require__(271);
 	
 	var _src2 = _interopRequireDefault(_src);
 	
@@ -38992,7 +39087,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 284 */
+/* 285 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39005,7 +39100,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _src = __webpack_require__(270);
+	var _src = __webpack_require__(271);
 	
 	var _src2 = _interopRequireDefault(_src);
 	
@@ -39061,7 +39156,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 285 */
+/* 286 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39074,7 +39169,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _src = __webpack_require__(270);
+	var _src = __webpack_require__(271);
 	
 	var _src2 = _interopRequireDefault(_src);
 	
@@ -39129,7 +39224,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 286 */
+/* 287 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39142,7 +39237,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _src = __webpack_require__(270);
+	var _src = __webpack_require__(271);
 	
 	var _src2 = _interopRequireDefault(_src);
 	
@@ -39203,7 +39298,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 287 */
+/* 288 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39216,7 +39311,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _src = __webpack_require__(270);
+	var _src = __webpack_require__(271);
 	
 	var _src2 = _interopRequireDefault(_src);
 	
@@ -39261,7 +39356,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 288 */
+/* 289 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39274,7 +39369,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _src = __webpack_require__(270);
+	var _src = __webpack_require__(271);
 	
 	var _src2 = _interopRequireDefault(_src);
 	
@@ -39341,7 +39436,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 289 */
+/* 290 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39354,7 +39449,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _src = __webpack_require__(270);
+	var _src = __webpack_require__(271);
 	
 	var _src2 = _interopRequireDefault(_src);
 	

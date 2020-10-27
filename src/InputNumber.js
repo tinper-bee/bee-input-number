@@ -107,6 +107,8 @@ class InputNumber extends Component {
         let data = this.judgeValue(props);
         this.state = {
             value:data.value,
+			max: Number.MAX_SAFE_INTEGER || Math.pow(2, 53) - 1,
+			min: Number.MIN_SAFE_INTEGER || (Math.pow(2, 53) - 1) * -1,
             minusDisabled: data.minusDisabled,
             plusDisabled: data.plusDisabled,
             showValue:toThousands(data.value),
@@ -135,6 +137,8 @@ class InputNumber extends Component {
         let currentMinusDisabled = false;
         let currentPlusDisabled = false;
         let { value,min,max,precision,onChange,displayCheckPrompt } = props;
+        if(!max && this.state) max = this.state.max;
+        if(!min && this.state) min = this.state.min;
         if(props.minusRight){
             value = value.toString();
             if(value.indexOf('-')!=-1){//所有位置的负号转到前边
@@ -343,7 +347,9 @@ class InputNumber extends Component {
 
     handleBlur = (v,e) => {
         this.focus = false;
-        const {onBlur,precision,onChange,toNumber,max,min,displayCheckPrompt,minusRight,round } = this.props;
+        let {onBlur,precision,onChange,toNumber,max,min,displayCheckPrompt,minusRight,round } = this.props;
+		if(!max) max = this.state.max;
+		if(!min) min = this.state.min;
         const local = getComponentLocale(this.props, this.context, 'InputNumber', () => i18n);
         v = this.state.value;//在onBlur的时候不需要活输入框的只，而是要获取state中的值，因为有format的时候就会有问题。
         if(v==='' || !v){
@@ -398,7 +404,9 @@ class InputNumber extends Component {
      * 设置增加减少按钮是否可用
      */
     detailDisable = (value) => {
-        const { max, min, step } = this.props;
+        let { max, min, step } = this.props;
+		if(!max) max = this.state.max;
+		if(!min) min = this.state.min;
         if(max&&(value >= max || Number(value) + Number(step) > max)){
             this.setState({
                 plusDisabled: true
@@ -424,6 +432,8 @@ class InputNumber extends Component {
      */
     minus = (value) => {
         let {min, max, step, onChange, toNumber} = this.props;
+		if(!max) max = this.state.max;
+		if(!min) min = this.state.min;
         value = (value === '-') ? 0 : value;
         if(typeof min === "undefined"){
             value = this.detail(value, step, 'reduce');
@@ -461,6 +471,8 @@ class InputNumber extends Component {
      */
     plus = (value) => {
         let {max, min, step, onChange, toNumber} = this.props;
+		if(!max) max = this.state.max;
+		if(!min) min = this.state.min;
         value = (value === '-') ? 0 : value;
         if(typeof max === "undefined"){
             value = this.detail(value, step, 'add');
@@ -616,7 +628,7 @@ class InputNumber extends Component {
     }
 
     render() {
-        const {toThousands,minusRight, max, min, step,disabled, clsPrefix, className, delay, onBlur, onFocus, iconStyle, autoWidth, onChange, format, precision,toNumber, hideActionButton, ...others} = this.props;
+        const {toThousands,minusRight,  step,disabled, clsPrefix, className, delay, onBlur, onFocus, iconStyle, autoWidth, onChange, format, precision,toNumber, hideActionButton, ...others} = this.props;
         let classes = {
             [`${clsPrefix}-auto`]: autoWidth,
             [`${clsPrefix}`]: true,
