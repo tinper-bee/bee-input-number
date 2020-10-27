@@ -1,3 +1,13 @@
+## [2.2.42](https://github.com/tinper-bee/bee-input-number/compare/v2.2.41...v2.2.42) (2020-10-27)
+
+
+### Bug Fixes
+
+* 修改max的默认值为Number.MIN_SAFE_INTEGER，min的默认值为Number.MIN_SAFE_INTEGER ([20751b5](https://github.com/tinper-bee/bee-input-number/commit/20751b524d987ce88fb3189350407f52351ac5b4))
+* 修改构建Node版本为8 ([236b36f](https://github.com/tinper-bee/bee-input-number/commit/236b36f16a3f74ee4ee888b3732156cd37a1482a))
+
+
+
 ## [2.2.41](https://github.com/tinper-bee/bee-input-number/compare/v2.2.40...v2.2.41) (2020-10-19)
 
 
