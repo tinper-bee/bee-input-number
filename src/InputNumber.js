@@ -329,8 +329,12 @@ class InputNumber extends Component {
     handleFocus = (value,e) => {
         this.focus = true;
         let {onFocus, min, max } = this.props;
-        onFocus && onFocus(this.getPrecision(this.state.value), e);
-    }
+        if (onFocus) {
+			onFocus(this.getPrecision(this.state.value), e)
+		} else {
+			this.forceUpdate();
+		}
+	}
     /**
      * 恢复科学技术法的问题
      */
@@ -638,7 +642,9 @@ class InputNumber extends Component {
 
         let {value, minusDisabled, plusDisabled, showValue} = this.state;
         value = precision != null && !this.focus?this.getPrecision(value):value;
+        console.log(format, this.focus)
         value = format && !this.focus? format(value) : value;
+        console.log(value, 8888)
         value = String(value).indexOf("e") !== -1?this.getFullNum(value):value;
         if(minusRight && String(value).indexOf('-')!=-1){
             value = String(value).replace("-","")+"-";
