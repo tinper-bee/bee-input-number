@@ -1,3 +1,12 @@
+## [2.2.43](https://github.com/tinper-bee/bee-input-number/compare/v2.2.42...v2.2.43) (2020-10-30)
+
+
+### Bug Fixes
+
+* 解决使用format时，再次输入需要通过focus手动触发更新的问题 ([8eb9b47](https://github.com/tinper-bee/bee-input-number/commit/8eb9b4747d55a16ec2cdf36ef7c9b5a0d57bdd02))
+
+
+
 ## [2.2.42](https://github.com/tinper-bee/bee-input-number/compare/v2.2.41...v2.2.42) (2020-10-27)
 
 
