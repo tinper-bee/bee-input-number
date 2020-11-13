@@ -1,3 +1,12 @@
+## [2.2.44](https://github.com/tinper-bee/bee-input-number/compare/v2.2.43...v2.2.44) (2020-11-13)
+
+
+### Bug Fixes
+
+* min 设置为0无效问题 ([511d79b](https://github.com/tinper-bee/bee-input-number/commit/511d79b9a967cf110d64c34db369f55227863bc5))
+
+
+
 ## [2.2.43](https://github.com/tinper-bee/bee-input-number/compare/v2.2.42...v2.2.43) (2020-10-30)
 
 
