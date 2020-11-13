@@ -137,8 +137,8 @@ class InputNumber extends Component {
         let currentMinusDisabled = false;
         let currentPlusDisabled = false;
         let { value,min,max,precision,onChange,displayCheckPrompt } = props;
-        if(!max && this.state) max = this.state.max;
-        if(!min && this.state) min = this.state.min;
+        if(!max && max !== 0 && this.state) max = this.state.max;
+        if(!min && min !== 0 && this.state) min = this.state.min;
         if(props.minusRight){
             value = value.toString();
             if(value.indexOf('-')!=-1){//所有位置的负号转到前边
@@ -352,8 +352,8 @@ class InputNumber extends Component {
     handleBlur = (v,e) => {
         this.focus = false;
         let {onBlur,precision,onChange,toNumber,max,min,displayCheckPrompt,minusRight,round } = this.props;
-		if(!max) max = this.state.max;
-		if(!min) min = this.state.min;
+		if(!max && max !==0 ) max = this.state.max;
+		if(!min && min !== 0) min = this.state.min;
         const local = getComponentLocale(this.props, this.context, 'InputNumber', () => i18n);
         v = this.state.value;//在onBlur的时候不需要活输入框的只，而是要获取state中的值，因为有format的时候就会有问题。
         if(v==='' || !v){
@@ -409,8 +409,8 @@ class InputNumber extends Component {
      */
     detailDisable = (value) => {
         let { max, min, step } = this.props;
-		if(!max) max = this.state.max;
-		if(!min) min = this.state.min;
+		if(!max && max !== 0) max = this.state.max;
+		if(!min && min !== 0) min = this.state.min;
         if(max&&(value >= max || Number(value) + Number(step) > max)){
             this.setState({
                 plusDisabled: true
@@ -436,8 +436,8 @@ class InputNumber extends Component {
      */
     minus = (value) => {
         let {min, max, step, onChange, toNumber} = this.props;
-		if(!max) max = this.state.max;
-		if(!min) min = this.state.min;
+		if(!max && max !== 0) max = this.state.max;
+		if(!min && min !== 0) min = this.state.min;
         value = (value === '-') ? 0 : value;
         if(typeof min === "undefined"){
             value = this.detail(value, step, 'reduce');
@@ -475,8 +475,8 @@ class InputNumber extends Component {
      */
     plus = (value) => {
         let {max, min, step, onChange, toNumber} = this.props;
-		if(!max) max = this.state.max;
-		if(!min) min = this.state.min;
+		if(!max && max !== 0) max = this.state.max;
+		if(!min && min !== 0) min = this.state.min;
         value = (value === '-') ? 0 : value;
         if(typeof max === "undefined"){
             value = this.detail(value, step, 'add');
