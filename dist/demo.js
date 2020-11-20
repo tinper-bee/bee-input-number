@@ -14558,7 +14558,7 @@
 	
 	    var dialogMarginTop = 30;
 	    //ResizeStart 时，计算 ModalDialog 的 offsetTop
-	    var topPosStyle = this.offsetTop > 0 ? { top: this.offsetTop - dialogMarginTop } : null;
+	    var topPosStyle = this.offsetTop > 0 && !draging ? { top: this.offsetTop - dialogMarginTop } : null;
 	
 	    var _splitComponent = (0, _tinperBeeCore.splitComponent)(props, _Modal2["default"]),
 	        _splitComponent2 = _slicedToArray(_splitComponent, 2),
@@ -37580,9 +37580,14 @@
 	    InputNumber.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
 	        if (this.focus) {
 	            if (nextProps.value == Infinity || nextProps.value == -Infinity) {} else {
+	                var nextValue = nextProps.value;
+	                var isThousand = this.isThousandth(nextValue); // 是否是千分位
+	                if (isThousand) {
+	                    nextValue = this.delcommafy(nextValue);
+	                }
 	                this.setState({
-	                    value: nextProps.value,
-	                    showValue: toThousands(nextProps.value)
+	                    value: nextValue,
+	                    showValue: toThousands(nextValue)
 	                });
 	            }
 	        } else {
@@ -37609,6 +37614,8 @@
 	     * 恢复科学技术法的问题
 	     */
 	
+	    // 去掉千分位
+	
 	    /**
 	     * 设置增加减少按钮是否可用
 	     */
@@ -37620,6 +37627,8 @@
 	    /**
 	     * 加法
 	     */
+	
+	    // 是否是千分位
 	
 	
 	    /**
@@ -37904,7 +37913,8 @@
 	        if (minusRight) {
 	            if (value.match(/-/g) && value.match(/-/g).length > 1) return;
 	        }
-	        if (isNaN(value) && value !== '.' && value !== '-') return;
+	        var thousandth = _this3.isThousandth(value); // 是否是千分位
+	        if (isNaN(value) && value !== '.' && value !== '-' && !thousandth) return;
 	        if (value.indexOf(".") !== -1) {
 	            //小数最大值处理
 	            var prec = String(value.split(".")[1]).replace("-", "");
@@ -38045,6 +38055,18 @@
 	        }
 	    };
 	
+	    this.delcommafy = function (num) {
+	        //去除千分位中的‘，’
+	        if (num && num != 'undefined' && num != 'null') {
+	            var numS = num;
+	            numS = numS.toString();
+	            numS = numS.replace(/,/gi, '');
+	            return numS;
+	        } else {
+	            return num;
+	        }
+	    };
+	
 	    this.detailDisable = function (value) {
 	        var _props5 = _this3.props,
 	            max = _props5.max,
@@ -38179,6 +38201,11 @@
 	        }
 	
 	        return ans.toFixed(precision);
+	    };
+	
+	    this.isThousandth = function (value) {
+	        var regex = /(?:^[-]?[1-9]\d{0,2}(?:$|(?:,\d{3})*(?:$|(\.\d{1,2}$))))|(?:(?:^[0](\.\d{1,2})?)|(?:^[-][0]\.\d{1,2}))$/;
+	        return regex.test(value);
 	    };
 	
 	    this.separate = function (value) {

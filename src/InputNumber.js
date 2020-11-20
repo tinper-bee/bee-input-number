@@ -230,9 +230,14 @@ class InputNumber extends Component {
             if(nextProps.value==Infinity||nextProps.value==-Infinity){
 
             }else{
+                let nextValue = nextProps.value;
+                let isThousand = this.isThousandth(nextValue); // 是否是千分位
+                if (isThousand){
+                    nextValue = this.delcommafy(nextValue);
+                }
                 this.setState({
-                    value: nextProps.value,
-                    showValue:toThousands(nextProps.value),
+                    value: nextValue,
+                    showValue:toThousands(nextValue),
                 });
             }
 
@@ -286,7 +291,8 @@ class InputNumber extends Component {
         if(minusRight){
             if(value.match(/-/g)&&value.match(/-/g).length>1)return
         }
-        if(isNaN(value)&&(value!=='.')&&(value!=='-'))return;
+        let thousandth = this.isThousandth(value); // 是否是千分位
+        if(isNaN(value)&&(value!=='.')&&(value!=='-')&&(!thousandth))return;
         if(value.indexOf(".") !== -1){//小数最大值处理
             let prec = String(value.split(".")[1]).replace("-","");
             if(this.props.precision === 0 && (prec ==="" || prec !=""))return;
@@ -330,7 +336,7 @@ class InputNumber extends Component {
         this.focus = true;
         let {onFocus, min, max } = this.props;
         if (onFocus) {
-			onFocus(this.getPrecision(this.state.value), e)
+            onFocus(this.getPrecision(this.state.value), e)
 		} else {
 			this.forceUpdate();
 		}
@@ -402,6 +408,17 @@ class InputNumber extends Component {
         }else{
             onChange && onChange(value);
             onBlur && onBlur(value,e);
+        }
+    }
+    // 去掉千分位
+    delcommafy = (num) => {//去除千分位中的‘，’
+        if(num&&num!='undefined'&&num!='null'){
+            let numS = num;
+            numS = numS.toString();
+            numS = numS.replace(/,/gi, '');
+            return numS;
+        }else {
+            return num;
         }
     }
     /**
@@ -532,6 +549,11 @@ class InputNumber extends Component {
 
         return ans.toFixed(precision);
 
+    }
+    // 是否是千分位
+    isThousandth = (value) => {
+        let regex = /(?:^[-]?[1-9]\d{0,2}(?:$|(?:,\d{3})*(?:$|(\.\d{1,2}$))))|(?:(?:^[0](\.\d{1,2})?)|(?:^[-][0]\.\d{1,2}))$/;
+        return regex.test(value);
     }
 
     /**
