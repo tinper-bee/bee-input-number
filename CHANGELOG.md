@@ -1,3 +1,7 @@
+## [2.2.45](https://github.com/tinper-bee/bee-input-number/compare/v2.2.44...v2.2.45) (2020-11-20)
+
+
+
 ## [2.2.44](https://github.com/tinper-bee/bee-input-number/compare/v2.2.43...v2.2.44) (2020-11-13)
 
 
